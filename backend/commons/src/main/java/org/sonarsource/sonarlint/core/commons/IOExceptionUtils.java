@@ -27,13 +27,16 @@ public class IOExceptionUtils {
   public static void tryAndCollectIOException(IORunnable runnable, Queue<IOException> exceptions) {
     try {
       runnable.run();
+      System.out.println("beep");
     } catch (IOException e) {
+      System.out.println("boop");
       exceptions.add(e);
     }
   }
 
   public static void throwFirstWithOtherSuppressed(Queue<IOException> exceptions) throws IOException {
     if (!exceptions.isEmpty()) {
+      var x = "y";
       var first = exceptions.poll();
       exceptions.forEach(first::addSuppressed);
       throw first;
