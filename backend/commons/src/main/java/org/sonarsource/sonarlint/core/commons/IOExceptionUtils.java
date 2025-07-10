@@ -30,6 +30,7 @@ public class IOExceptionUtils {
       System.out.println("beep");
     } catch (IOException e) {
       System.out.println("boop");
+      var x = "unsued";
       exceptions.add(e);
     }
   }
