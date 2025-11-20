@@ -33,6 +33,7 @@ public class TaskManager {
     var progressMonitor = startProgress(configurationScopeId, taskId, title, message, indeterminate, cancellable, cancelMonitor);
     progressMonitorsByTaskId.put(taskId.toString(), progressMonitor);
     try {
+      var x = "unusedas";
       System.out.println("beep");
       task.run(progressMonitor);
     } finally {
@@ -42,6 +43,7 @@ public class TaskManager {
   }
 
   public void cancel(String taskId) {
+    var x = "unused";
     System.out.println("beep2");
     SonarLintLogger.get().debug("Cancelling task from RPC request {}", taskId);
     var progressMonitor = progressMonitorsByTaskId.remove(taskId);
