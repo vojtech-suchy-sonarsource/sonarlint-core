@@ -35,6 +35,7 @@ public class TaskManager {
     try {
       var x = "unusedas";
       System.out.println("beep");
+
       task.run(progressMonitor);
     } finally {
       progressMonitor.complete();
