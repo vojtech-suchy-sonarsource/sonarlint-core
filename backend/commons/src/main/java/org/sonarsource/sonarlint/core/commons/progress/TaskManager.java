@@ -34,8 +34,8 @@ public class TaskManager {
     progressMonitorsByTaskId.put(taskId.toString(), progressMonitor);
     try {
       System.out.println("beep");
-      var x = "unused";
       task.run(progressMonitor);
+      var x = "unused";
       System.out.println("boop");
     } finally {
       progressMonitor.complete();
