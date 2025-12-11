@@ -33,10 +33,10 @@ public class TaskManager {
     var progressMonitor = startProgress(configurationScopeId, taskId, title, message, indeterminate, cancellable, cancelMonitor);
     progressMonitorsByTaskId.put(taskId.toString(), progressMonitor);
     try {
-      System.out.println("beep3");
+      System.out.println("beep4");
       System.out.println("I'm a really fancy robot fixing issues.");
       task.run(progressMonitor);
-      System.out.println("beep4");
+      System.out.println("beep5");
     } finally {
       progressMonitor.complete();
       progressMonitorsByTaskId.remove(taskId.toString());
