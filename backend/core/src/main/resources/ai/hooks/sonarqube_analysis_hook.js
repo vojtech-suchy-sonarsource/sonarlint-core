@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-// SonarQube for IDE {{AGENT}} Hook - sonarqube_analysis_hook
-// Auto-generated script for Node.js
-// Connects AI Agents to SonarQube for IDE backend
+//ACR-eec36d5e7d874d9b81437868c9c4ef4e
+//ACR-aff1490ffe5e41619637d7ee33473ea3
+//ACR-33a0b9d8a7de49af8724b33c615ae8a0
 
 const http = require('node:http');
 
@@ -91,7 +91,7 @@ function analyzeFile(port, filePath) {
   });
 }
 
-// Read the event JSON from stdin
+//ACR-05c0afad57754aae9c4cc2053314661e
 let eventJson = '';
 process.stdin.setEncoding('utf8');
 
