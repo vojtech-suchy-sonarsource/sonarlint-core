@@ -40,7 +40,7 @@ public abstract class Command {
     // most commands are not cancelable
   }
 
-  public boolean shouldCancelPost(Command executingCommand) {
+  public boolean shouldCancelPost() {
     return false;
   }
 
