@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2a1bd3b9c1d84efaa01ac3c25b0e53b3
+ACR-e4a11c16bac14232917e5f0ec78ffdaf
+ACR-bd314e99dc574a3da375b33119e5b5c7
+ACR-ae71c50c292e4a93b4b0ec131a420d12
+ACR-49825a1a53294e64be46ff211b3f8120
+ACR-54b92ef3c1ce46ee8ad426cffa387b6e
+ACR-c277a32fca874ee087f600b59d03e8ca
+ACR-592c4739d2734b66a181b58e51d72327
+ACR-8574fbc634f449d3ac235a8ea6dec8e9
+ACR-d4f2955af18445a191716bd3001aa004
+ACR-646bc71f26c94a7dbb2476864531204a
+ACR-eb2508b2396f4217bbfd9179f46246be
+ACR-b2cc2da831bc4a5ea2bd7b16124c4a37
+ACR-e2b2005422a34ebfaca5ea964ea7460f
+ACR-f91a44a3dcd64cc988ff8f1e660193b2
+ACR-865cec911f0441d1a4b9c6c0ac16adb8
+ACR-fb0710cdc2e74fa5b0727dc71d2d2d8f
  */
 package org.sonarsource.sonarlint.core;
 
@@ -64,8 +64,8 @@ public class SonarCloudActiveEnvironment {
     return getRegionByUri(uri).isPresent();
   }
 
-  /**
-   *  Before calling this method, caller should make sure URI is SonarCloud
+  /*ACR-a51bb6e56cb74983bdf7be006d63c36a
+ACR-9f34403f8cfc4eafb620383aec1f84a6
    */
   public SonarCloudRegion getRegionOrThrow(String uri) {
     var regionOpt = getRegionByUri(uri);

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-534de0d7524a494b85bd72116a02bef3
+ACR-a59e4499b60042d8bca19133b8d3be37
+ACR-6a598441153541aabeffee1037c2ff58
+ACR-2a56fb736ce7440d9d026b3f1934816f
+ACR-5343f9a41d87428d9f34ccab2854ed10
+ACR-a413f43573c9477496124b5a1329dc81
+ACR-ea879c2fe873498a87c60ed7315c9d17
+ACR-605ca9d7ea234f42a44078bb794010f2
+ACR-a10efc20b62a42b7ae762590ff96ec62
+ACR-0f8e80ae23fe4b37bdd85773cc235d10
+ACR-593cd8f1e69b4e7fbb6d2608ec2fd5ad
+ACR-eb8da7170dab48e3bd3ac91eaff7f5ab
+ACR-8914bb794b4a482f84493449f540f178
+ACR-d7d61304788f472ebdf4ed6c32c2e107
+ACR-78807e87934f4e09bc05008a5ca6c561
+ACR-540510e3d244433c92c679ae7eaf4319
+ACR-1b5d84d8ef0e40dc8209f5bee0dc07a5
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.initialize;
 
@@ -54,13 +54,13 @@ public class InitializeParams {
   private final TelemetryMigrationDto telemetryMigration;
   private final LogLevel logLevel;
 
-  /**
-   * @deprecated use newer constructor with log level
-   * @param enabledLanguagesInStandaloneMode if IPYTHON is part of the list and a configuration scope is bound, standalone active rules will be used
-   * @param telemetryConstantAttributes Static information about the client, that will be sent with the telemetry payload
-   * @param workDir                     Path to work directory. If null, will default to [sonarlintUserHome]/work
-   * @param sonarlintUserHome           Path to SonarLint user home directory. If null, will default to the SONARLINT_USER_HOME env variable if set, else ~/.sonarlint
-   * @param standaloneRuleConfigByKey   Local rule configuration for standalone analysis. This configuration will override defaults rule activation and parameters.
+  /*ACR-7cb18e4e45534796b7bdda56ebe78125
+ACR-9e16078152a94c96b5f4976e57ca6e54
+ACR-8268ae91dd7542cc9b392c68dae66720
+ACR-de6f6ef6b1764956a9c457b77dd5eefa
+ACR-c1e3d266f6194a3da875760ee6bff777
+ACR-98876afe676f46ecbced394665d00675
+ACR-82afde166fcf4432acf409e4dc8857be
    */
   @Deprecated(since = "10.35", forRemoval = true)
   public InitializeParams(
@@ -90,12 +90,12 @@ public class InitializeParams {
       LogLevel.TRACE);
   }
 
-  /**
-   * @param telemetryConstantAttributes      Static information about the client, that will be sent with the telemetry payload
-   * @param workDir                          Path to work directory. If null, will default to [sonarlintUserHome]/work
-   * @param enabledLanguagesInStandaloneMode if IPYTHON is part of the list and a configuration scope is bound, standalone active rules will be used
-   * @param sonarlintUserHome                Path to SonarLint user home directory. If null, will default to the SONARLINT_USER_HOME env variable if set, else ~/.sonarlint
-   * @param standaloneRuleConfigByKey        Local rule configuration for standalone analysis. This configuration will override defaults rule activation and parameters.
+  /*ACR-af225e0f4e74431b9f7908e51ca399fb
+ACR-a2d05273fcf84f45b29eb1bed593821a
+ACR-ef2089a768274e20904b8f3e71e4a060
+ACR-f11b0ef7838644db8a679f77c3385743
+ACR-b60a71c660e241679c94054be8abc4d8
+ACR-2dbbf4a383854498afcd6ddcd6aa1458
    */
   public InitializeParams(
     ClientConstantInfoDto clientConstantInfo,

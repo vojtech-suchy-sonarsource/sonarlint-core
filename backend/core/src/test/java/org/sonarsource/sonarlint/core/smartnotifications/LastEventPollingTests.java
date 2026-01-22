@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6373267c5f9744eba392688cfe2275d2
+ACR-c5f2b1ea7ff64de791be434834b6ee2b
+ACR-b3eaf3db0993408f8448d785ffbe71f7
+ACR-12f04992ac704b5c8a5612a147407cb3
+ACR-d80921a8a359466eb154d38b565fe7fd
+ACR-5a51cf9457cf48aeb4ca1a30acd11410
+ACR-bdb89a869cfc4a009252175427247e4e
+ACR-ae8b11ede33c464ca6175337b4b580f1
+ACR-363366347dee4df68afe9e88eb943230
+ACR-41fff756258940aba9725d78a7249b12
+ACR-f69a6371da164419b042bfb6dd70b50e
+ACR-0a221759144c406ca26e18bf352f6123
+ACR-a776495e773e42f6ab87553dd78cef9a
+ACR-6c66136b2da84265987458dfb54a2df8
+ACR-434c4e0ed8b24958afa5337e3dda65ab
+ACR-42ae19533d594fe09b88caad55e399d8
+ACR-373041a6de204a30b6d211d6f54680d6
  */
 package org.sonarsource.sonarlint.core.smartnotifications;
 

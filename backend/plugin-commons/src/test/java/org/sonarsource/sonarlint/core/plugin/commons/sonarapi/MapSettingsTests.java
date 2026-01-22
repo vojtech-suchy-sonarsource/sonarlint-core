@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-497b1fb0d12b4f5882f90a2f47f1a619
+ACR-0c8f90e276904fada318c2c790efacfe
+ACR-4e938ec753144ae3b586a72c62e39ced
+ACR-33927d25e9fb451280ae7052d7d629a2
+ACR-975d311be2e84b158b2017ae4f5b7240
+ACR-8a00ee4af0f54e0da21eac57e96e4c0c
+ACR-ac17e4bb707949efbe510692c5f77f36
+ACR-680f4940527442cd9a44f2d95b2df07d
+ACR-661b3b97928641339605bdda02422670
+ACR-6a5be193d4634df1a063ebbae0706911
+ACR-c2f71574854a494c9fcc18c147286dca
+ACR-69fcd9d6fac64b30ae3b2b183427244a
+ACR-a89ba21b5a494d0092cb2e356c4f5272
+ACR-1971f8d1bf6a4c829e71581eb7923fd5
+ACR-f8ee2c593c60413fa5b92d1afa060e5b
+ACR-a1582c117ace43c9a0cc15decbd664ba
+ACR-32b768b59e674cfd9bd333a90eb99a58
  */
 package org.sonarsource.sonarlint.core.plugin.commons.sonarapi;
 
@@ -253,7 +253,7 @@ class MapSettingsTests {
   @Test
   void ignore_case_of_boolean_values() {
     var settings = new MapSettings(Map.of("foo", "true", "bar", "TRUE",
-      // labels in UI
+      //ACR-e5ae3944789a4642b292e0b6b1625abe
       "baz", "True"));
 
     assertThat(settings.getBoolean("foo")).isTrue();
@@ -275,7 +275,7 @@ class MapSettingsTests {
     var settings = new MapSettings(Map.of());
     settings.getDefinitions().addComponent(MyComponent.class);
 
-    // property definition has been loaded, ie for default value
+    //ACR-636c356ab6a94cc4bcd6d6fde18d7afe
     assertThat(settings.getDefaultValue("foo")).isEqualTo("bar");
   }
 
@@ -346,7 +346,7 @@ class MapSettingsTests {
 
   @Test
   void should_load_value_of_deprecated_key() {
-    // it's used for example when deprecated settings are set through command-line
+    //ACR-0acc898cc6324ae99f67810c2c4a4373
     var settings = new MapSettings(definitions, Map.of("oldKey", "value of oldKey"));
 
     assertThat(settings.getString("newKey")).isEqualTo("value of oldKey");

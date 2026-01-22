@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-eb071c3596f44cb4bf59f6f9ab29a983
+ACR-8e2f2438df7a4e3f9ed62b5bf491b61f
+ACR-ac4403be54ee495ebb95b5d1d3a90525
+ACR-780bceb07dcb4f0cbd3df872bff51f38
+ACR-c000485e6b1945d8ad3d3439e6b33889
+ACR-8322967a471c401bbcc79143ebedbfda
+ACR-20064b6f98d442dda4b24f803d26251a
+ACR-17453f4e57144258a53830f2054c5839
+ACR-a79689a5fe524ffcbadd0dadd8482ab7
+ACR-25d1ac6f589646bc85eedf2b20c8a9d0
+ACR-e2598c7a237f415e80eb6c17d5e70e18
+ACR-a9aa7f5fe8ae4ebaaaf501ef565b549a
+ACR-d2722b2d2ef14815a19c85df30df592f
+ACR-6589893e887944ee8293826c78156787
+ACR-02d2b2b6c1974295b4c532c87e33e3f6
+ACR-9b5ca841afa247e593b1855cdfe4df7b
+ACR-3f6930b3315f4b27aaa85a9f1f5c63d7
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -102,7 +102,7 @@ public class ServerIssueUpdater {
     try {
       issues.addAll(issueDownloader.downloadFromBatch(serverApi, fileKey, branchName, cancelMonitor));
     } catch (Exception e) {
-      // null as cause so that it doesn't get wrapped
+      //ACR-4dfec44edbb84df6a1f9983b408f5284
       throw new DownloadException("Failed to update file issues: " + e.getMessage(), null);
     }
     storage.project(projectKey).findings().replaceAllIssuesOfFile(branchName, serverFileRelativePath, issues);
@@ -114,7 +114,7 @@ public class ServerIssueUpdater {
     try {
       newTaintIssues = new ArrayList<>(taintIssueDownloader.downloadTaintFromIssueSearch(serverApi, projectKey, branchName, cancelMonitor));
     } catch (Exception e) {
-      // null as cause so that it doesn't get wrapped
+      //ACR-4d42cb04a2454221a4b959bae9754795
       throw new DownloadException("Failed to update file taint vulnerabilities: " + e.getMessage(), null);
     }
     var findingsStorage = storage.project(projectKey).findings();

@@ -1,21 +1,21 @@
 /*
- * Java Custom Rules Plugin
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-19f08b6d71fd4d2d8b395205fcef5ece
+ACR-eb7f7138df5b451681444d1e069f3393
+ACR-a74d8202daef4fb4a86c4ffd9326315d
+ACR-27e00c526dc04d3fa576e82c8b73d20c
+ACR-a02f6262499c400e8aa518fef393450c
+ACR-a57e1358c76e406f99dbb3c0a4ca742c
+ACR-42fdd0ac7d7544feba9f7cd7e5cb3b86
+ACR-9b15468885a1442e99191d72967a3b7e
+ACR-ec21c099193946d9a3cdcd574c25f24b
+ACR-07a1038450a54f00b5a35d5af55dc28d
+ACR-e26d10ec2ddc4a62b9b30f284b17ea79
+ACR-f57a9731e0a44eab8e62f1faa80b68d7
+ACR-59f7301c862340adbfb302f88a8a7765
+ACR-168758af2d9949448cac09dc3e461816
+ACR-233f907b12ee409ba23d95436d753591
+ACR-1a30934f60af451db4c1575ac07c4e5e
+ACR-f5775001346b43ebab9507e9c621633c
  */
 package org.sonar.samples.java.checks;
 
@@ -38,9 +38,9 @@ public class AvoidAnnotationRule extends BaseTreeVisitor implements JavaFileScan
 
   private JavaFileScannerContext context;
 
-  /**
-   * Name of the annotation to avoid. Value can be set by users in Quality profiles.
-   * The key
+  /*ACR-793e0d78b306453f8507f9b4c125cd13
+ACR-d0c15125264f4b1292989c73383c62fd
+ACR-6762a7a405814f6797f6e20665c30b74
    */
   @RuleProperty(
     defaultValue = DEFAULT_VALUE,
@@ -66,8 +66,8 @@ public class AvoidAnnotationRule extends BaseTreeVisitor implements JavaFileScan
       }
     }
 
-    // The call to the super implementation allows to continue the visit of the AST.
-    // Be careful to always call this method to visit every node of the tree.
+    //ACR-3d332b9c7e254b049abad7ab9f8e5850
+    //ACR-e963a688472148598457c964bca19c46
     super.visitMethod(tree);
   }
 }

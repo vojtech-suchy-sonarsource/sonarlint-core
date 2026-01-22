@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-55bd54f474554142bc2c36064118775b
+ACR-75fd003849fe4b33b54135837d473886
+ACR-b277c3f98e2c4874ab4a0e2043f3d579
+ACR-3aa9e2a6e7ce4dcab3ca776fdfc88ecd
+ACR-da9467f6ba294e7390c1d1043d2124ff
+ACR-f134b3673e684ceca008f0870e41482e
+ACR-6cecaf8424204310ae06e6dfb1469284
+ACR-c228518026014885aeec4515ff6647de
+ACR-d3ef3e9f4cba4fe1b340cc4b9913aa03
+ACR-b899bfb7e9f0433ba78035da9e641852
+ACR-ea081975622541e1a668cda832856cdf
+ACR-1b9bc564ae8c49f59f8962c147e6f219
+ACR-6f80fe94c5ea4f01aa740763ca2484c8
+ACR-de707d1da6494f66915039c00ad73eac
+ACR-1620d6b446824b82b0b52685e06574c0
+ACR-0aed43d29f9f4219a9f2ee71a63853fe
+ACR-ab179a9a758241e293b22603099b9a9f
  */
 package mediumtest.sonarcodecontext;
 
@@ -70,7 +70,7 @@ class SonarCodeContextMediumTests {
   }
 
   @SonarLintTest
-  // Relies on bash script
+  //ACR-981e00346fc34e10938f24123f48c097
   @DisabledOnOs(OS.WINDOWS)
   void should_regenerate_on_binding_change(SonarLintTestHarness harness, @TempDir Path baseDir, @TempDir Path binDir)
     throws IOException {
@@ -98,7 +98,7 @@ class SonarCodeContextMediumTests {
         .withProject(PROJECT_KEY, p -> p.withMainBranch("main")))
       .start(client);
 
-    // Initial add triggers generation
+    //ACR-1cf04854dcff4ca6ae5ada05d944fd1d
     backend.getConfigurationService().didAddConfigurationScopes(new DidAddConfigurationScopesParams(List.of(
       new ConfigurationScopeDto(CONFIG_SCOPE_ID, null, true, CONFIG_SCOPE_ID,
         new BindingConfigurationDto(CONNECTION_ID, PROJECT_KEY, true)))));
@@ -106,7 +106,7 @@ class SonarCodeContextMediumTests {
     var sonarMd = baseDir.resolve(".sonar-code-context").resolve("SONAR.md");
     await().untilAsserted(() -> assertThat(Files.exists(sonarMd)).isTrue());
 
-    // Remove SONAR.md to verify it is re-generated on binding change
+    //ACR-803c31308f8644939e1525587897bafe
     Files.deleteIfExists(sonarMd);
     assertThat(Files.exists(sonarMd)).isFalse();
 
@@ -118,13 +118,13 @@ class SonarCodeContextMediumTests {
   }
 
   @SonarLintTest
-  // Relies on bash script
+  //ACR-f7df24ed57a644ba98b4017afe572c71
   @DisabledOnOs(OS.WINDOWS)
   void should_generate_sonar_md_and_mdc_on_bound_scope_when_dogfooding(SonarLintTestHarness harness, @TempDir Path baseDir, @TempDir Path binDir)
     throws IOException {
-    // Arrange PATH with a fake 'sonar-code-context' CLI
+    //ACR-c385c2e4137646619188799425848f4a
     var cliPath = createFakeCli(binDir);
-    // Force the service to use our fake CLI
+    //ACR-f05195c852834e7d85d0f8ab10ec755e
     System.setProperty("sonar.code.context.executable", cliPath.toString());
     environmentVariables.set(SONARSOURCE_DOGFOODING_ENV_VAR_KEY, "1");
 
@@ -148,7 +148,7 @@ class SonarCodeContextMediumTests {
         .withProject(PROJECT_KEY, p -> p.withMainBranch("main")))
       .start(client);
 
-    // Add a bound configuration scope (triggers the event listener)
+    //ACR-0628168ca9e6466cbac8f209737be290
     backend.getConfigurationService().didAddConfigurationScopes(new DidAddConfigurationScopesParams(List.of(
       new ConfigurationScopeDto(CONFIG_SCOPE_ID, null, true, CONFIG_SCOPE_ID,
         new BindingConfigurationDto(CONNECTION_ID, PROJECT_KEY, true)))));
@@ -167,7 +167,7 @@ class SonarCodeContextMediumTests {
   @SonarLintTest
   void should_not_generate_files_when_not_dogfooding(SonarLintTestHarness harness, @TempDir Path baseDir, @TempDir Path binDir)
     throws IOException {
-    // Arrange PATH with a fake 'sonar-code-context' CLI, but do not set dogfooding flag
+    //ACR-4242e3be63624c79a1ed02ec643290aa
     var cliPath = createFakeCli(binDir);
     System.setProperty("sonar.code.context.executable", cliPath.toString());
 
@@ -264,7 +264,7 @@ class SonarCodeContextMediumTests {
     try {
       Files.setPosixFilePermissions(cli, Set.of(PosixFilePermission.OWNER_EXECUTE, PosixFilePermission.OWNER_READ, PosixFilePermission.OWNER_WRITE));
     } catch (UnsupportedOperationException e) {
-      // On non-POSIX FS (e.g., Windows CI), fallback to default and hope exec works via PATHEXT
+      //ACR-d4d769a403d14a32b3a3fedd0caf061f
     }
     return cli;
   }

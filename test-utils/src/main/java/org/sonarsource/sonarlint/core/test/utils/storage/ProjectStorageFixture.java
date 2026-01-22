@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b5a2828a8b334272af4727fae0f66a47
+ACR-47a1bcbbb8764d71aa8934e6bf890df7
+ACR-7bcf35a68085460ba6e229984847ad97
+ACR-753291b7860b478ea856f60c0a46e771
+ACR-ecb6871c119a43cbb98802101cdecc6c
+ACR-faf3659ef31c4be68a76933cfd8f1a14
+ACR-bc4eb7bbd3d840d1b9130935b8f5ea80
+ACR-b9d242d7df08473e81e567c3b1d5e1bb
+ACR-5573e6d54dbb4a4cb805f0c2640f40a4
+ACR-662cba4d95134f3098a833089d409757
+ACR-b9c6725891d24ab8bb7c0ccf96a3f975
+ACR-e1dc03cc8ee34c7aa31c0e859ebbaf2f
+ACR-95f43857e68a42468ba68601ed9aea78
+ACR-d7ce031de1834f5bbd849b4f49cb86c2
+ACR-6b17e8e9cf2f4b2e9eab5ad9849739a9
+ACR-cc8abfd318df4ad0bbd5c8640f4735bb
+ACR-f5f5100c4f794529a68bf75748853261
  */
 package org.sonarsource.sonarlint.core.test.utils.storage;
 
@@ -132,10 +132,10 @@ public class ProjectStorageFixture {
       return this;
     }
 
-    /**
-     * It writes an illegal content to the last_event_polling.pb file,
-     * that leads to StorageException being thrown on the file read.
-     * It emulates the situation when this file is not accessible during sync.
+    /*ACR-90ba1f0ecae74dfd973440214719c950
+ACR-55eadf73743948e29f362996b096a194
+ACR-2a26108aedc84550a786853dedf5641b
+ACR-3be8e8ea464742d590a739bded97aee8
      */
     public ProjectStorageBuilder shouldThrowOnReadLastEvenPollingTime() {
       this.shouldThrowOnReadLastEvenPollingTime = true;

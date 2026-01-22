@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-aa416caede734937873f49145f4b7784
+ACR-d3614f37c9b148f682074676ae3e4afd
+ACR-0ec580d8cee9477bb6e28adcb23c0f37
+ACR-4238cd79f2bf455abf625e800dd0b1c2
+ACR-e7d9a86c3d7c43d79cdee2f1b95cb6ba
+ACR-fbdcfd9ec927489cbf67f1c4023642cc
+ACR-25927367d08e4fcea918118113019990
+ACR-e8599725acb149ffa7bcc87b01241156
+ACR-562fd601a6ee4e91b9604874be0cf176
+ACR-1e0cdb7c15114360b25f5ccdbc422738
+ACR-0bac2974f0eb440e92e1969cd536ade2
+ACR-5b16b10fc75a49f88af80643eba412d8
+ACR-5cf0343f555b4a3caba72e4213b33893
+ACR-f464f6621f2946458afed5a80e9a89a6
+ACR-c72356ef057e406592b6bcaa256f487b
+ACR-ab836885347d40909ecf118206a71f5f
+ACR-4849a62084ef41a9bef4c7a425c33aca
  */
 package org.sonarsource.sonarlint.core.active.rules;
 
@@ -171,7 +171,7 @@ public class ActiveRulesService {
     return filteredActiveRules.stream().map(ruleDefinition -> {
       Map<String, String> effectiveParams = new HashMap<>(ruleDefinition.getDefaultParams());
       ofNullable(standaloneRuleConfig.get(ruleDefinition.getKey())).ifPresent(config -> effectiveParams.putAll(config.getParamValueByKey()));
-      // No template rules in standalone mode
+      //ACR-4be71406011046cfb62eb1bd34039bb9
       return new ActiveRuleDetails(ruleDefinition.getKey(), ruleDefinition.getLanguage().getSonarLanguageKey(), effectiveParams, null, ruleDefinition.getDefaultSeverity(),
         ruleDefinition.getType(), ruleDefinition.getCleanCodeAttribute().orElse(CONVENTIONAL), ruleDefinition.getDefaultImpacts(),
         ruleDefinition.getVulnerabilityProbability().orElse(null));
@@ -221,7 +221,7 @@ public class ActiveRulesService {
         }
       });
     if (languageSupportRepository.getEnabledLanguagesInConnectedMode().contains(SonarLanguage.IPYTHON)) {
-      // Jupyter Notebooks are not yet fully supported in connected mode, use standalone rule configuration in the meantime
+      //ACR-9f18144dc9b445f5a6ed428e41f884e6
       var iPythonRules = getStandaloneActiveRules()
         .stream().filter(rule -> rule.languageKey().equals(SonarLanguage.IPYTHON.getSonarLanguageKey()))
         .toList();
@@ -260,10 +260,10 @@ public class ActiveRulesService {
   private boolean isHotspotTrackingPossible(String connectionId) {
     var connection = connectionConfigurationRepository.getConnectionById(connectionId);
     if (connection == null) {
-      // Connection is gone
+      //ACR-e7cb616806454d26a6b403731a0b5abc
       return false;
     }
-    // when storage is not present, consider hotspots should not be detected
+    //ACR-181d53a2f13f4e72956f1be1fa1966f7
     return storageService.connection(connectionId).serverInfo().read().isPresent();
   }
 
@@ -303,7 +303,7 @@ public class ActiveRulesService {
     while (iterator.hasNext()) {
       var binding = iterator.next().getKey();
       if (binding.connectionId().equals(event.getRemovedConnectionId())) {
-        // evict the cache, active rules will be lazily loaded next time they are needed
+        //ACR-0701e050c0004073990b10c184d2df2e
         iterator.remove();
       }
     }
@@ -316,14 +316,14 @@ public class ActiveRulesService {
     var previousProjectKey = previousBinding.sonarProjectKey();
     if (previousConnectionId != null && previousProjectKey != null
       && configurationRepository.getBoundScopesToConnectionAndSonarProject(previousConnectionId, previousProjectKey).isEmpty()) {
-      // evict the cache, active rules will be lazily loaded next time they are needed
+      //ACR-4ae1007b459a4be992c4b5330d44e837
       activeRulesPerBinding.remove(new Binding(previousConnectionId, previousProjectKey));
     }
   }
 
   @EventListener
   public void onAnalyzerConfigurationSynchronized(AnalyzerConfigurationSynchronized event) {
-    // evict the cache, active rules will be lazily loaded next time they are needed
+    //ACR-50bfa5f4401d4039b0160763e83b302e
     activeRulesPerBinding.remove(event.binding());
   }
 
@@ -332,7 +332,7 @@ public class ActiveRulesService {
     var connectionId = eventReceived.getConnectionId();
     var serverEvent = eventReceived.getEvent();
     if (serverEvent instanceof RuleSetChangedEvent ruleSetChangedEvent) {
-      // evict the cache, active rules will be lazily loaded next time they are needed
+      //ACR-88198065d0224d6ea6043a840e970d1f
       ruleSetChangedEvent.getProjectKeys().forEach(projectKey -> activeRulesPerBinding.remove(new Binding(connectionId, projectKey)));
       updateStorage(connectionId, ruleSetChangedEvent);
       eventPublisher.publishEvent(
@@ -412,7 +412,7 @@ public class ActiveRulesService {
 
     return findServerActiveRuleInStorage(binding, ruleKey)
       .map(storageRule -> hydrateDetailsWithServer(connectionId, storageRule, serverUsesStandardSeverityMode, cancelMonitor))
-      // try from loaded rules, for e.g. extra analyzers
+      //ACR-9148d787ade745c69ff4953b3a9a1abe
       .orElseGet(() -> rulesRepository.getRule(connectionId, ruleKey)
         .map(r -> RuleDetails.from(r, standaloneRuleConfig.get(ruleKey)))
         .orElseThrow(() -> ruleNotFoundInPlugins(ruleKey, connectionId)));
@@ -423,12 +423,12 @@ public class ActiveRulesService {
     try {
       analyzerConfiguration = storageService.binding(binding).analyzerConfiguration().read();
     } catch (StorageException e) {
-      // XXX we should make sure this situation can not happen (sync should be enforced at least once)
+      //ACR-ac149a2b5c4d49b980c201111baea932
       return Optional.empty();
     }
     return analyzerConfiguration.getRuleSetByLanguageKey().values().stream()
       .flatMap(s -> s.getRules().stream())
-      // XXX is it important to migrate the rule repos in tryConvertDeprecatedKeys?
+      //ACR-68dc3bd646484ce7861aa7d2e8e5d87b
       .filter(r -> tryConvertDeprecatedKeys(binding.connectionId(), r).getRuleKey().equals(ruleKey)).findFirst();
   }
 
@@ -437,7 +437,7 @@ public class ActiveRulesService {
     if (StringUtils.isNotBlank(possiblyDeprecatedActiveRuleFromStorage.getTemplateKey())) {
       ruleOrTemplateDefinition = rulesRepository.getRule(connectionId, possiblyDeprecatedActiveRuleFromStorage.getTemplateKey()).orElse(null);
       if (ruleOrTemplateDefinition == null) {
-        // The rule template is not known among our loaded analyzers, so return it untouched, to let calling code take appropriate decision
+        //ACR-17a34d3bd4e64f98848b25a54d2c76b2
         return possiblyDeprecatedActiveRuleFromStorage;
       }
       var ruleKeyPossiblyWithDeprecatedRepo = RuleKey.parse(possiblyDeprecatedActiveRuleFromStorage.getRuleKey());
@@ -448,7 +448,7 @@ public class ActiveRulesService {
     } else {
       ruleOrTemplateDefinition = rulesRepository.getRule(connectionId, possiblyDeprecatedActiveRuleFromStorage.getRuleKey()).orElse(null);
       if (ruleOrTemplateDefinition == null) {
-        // The rule is not known among our loaded analyzers, so return it untouched, to let calling code take appropriate decision
+        //ACR-6002c6cadec243039a69b6c4af5f6134
         return possiblyDeprecatedActiveRuleFromStorage;
       }
       return new ServerActiveRule(ruleOrTemplateDefinition.getKey(), possiblyDeprecatedActiveRuleFromStorage.getSeverity(), possiblyDeprecatedActiveRuleFromStorage.getParams(),

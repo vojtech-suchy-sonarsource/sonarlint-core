@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-9d2312f6d42b4374bb341cda780df8de
+ACR-da17a2b07d5e4d0f8f6ce18ad2eebd56
+ACR-412ddcb057a04725b06b779fc82d2353
+ACR-21274afc269443a9b4211d8d10a0fa76
+ACR-3d43c685a25f46c5b19b929b66fa61b5
+ACR-4c746db87f544b23b19f9f44fec98c08
+ACR-fcd3354f251d446080de64d04fbaf5b8
+ACR-0f220e6957754cc29858a77a343f62e8
+ACR-54f6fc2f432b4ac08a1ceb5a7b126dbb
+ACR-3d9d550b00a3415b9041e60b652ea26a
+ACR-fe1d3c1f65cc4a369efaffa3d19ff6d1
+ACR-4d2df811bc804108a04c306a3631becd
+ACR-5a7825bc0daa47258bcca79cbcfad51e
+ACR-a5648bc855994829a3de5d0fd3decebe
+ACR-618edbd1dc00418cb7f4d95e9d8c1f38
+ACR-dadeee20e95e4918b27a0a0da02cda8f
+ACR-933752df90674e6f910958b06d468b62
  */
 package org.sonarsource.sonarlint.core.test.utils.server;
 
@@ -893,7 +893,7 @@ public class ServerFixture {
     }
 
     public void registerSystemApiResponses() {
-      // API is public, so it can't return 401 or 403 status
+      //ACR-06ced13cf51849e6a35aff6001603270
       var statusesToSkip = Set.of(401, 403);
       var status = statusesToSkip.contains(responseCodes.statusCode) ? 200 : responseCodes.statusCode;
       mockServer.stubFor(get("/api/system/status")
@@ -1397,7 +1397,7 @@ public class ServerFixture {
         var uriPath = "/api/measures/component.protobuf?additionalFields=" + periodFieldName + "&metricKeys=projects&component=" + projectKey;
         mockServer.stubFor(get(uriPath)
           .willReturn(aResponse().withResponseBody(protobufBody(
-            // TODO Override with whatever is set on the branch fixture?
+            //ACR-fbedff7cb15b4dd88ae0b0b2859ded6d
             Measures.ComponentWsResponse.newBuilder()
               .setComponent(Measures.Component.newBuilder()
                 .setKey(projectKey)
@@ -1545,7 +1545,7 @@ public class ServerFixture {
       organizationsByKey.forEach((organizationKey, organization) -> {
         var enabledProjectKeys = organization.aiCodeFixFeature.enabledProjectKeys == null ? null
           : ("[" + String.join(", ", organization.aiCodeFixFeature.enabledProjectKeys) + "]");
-        // this payload will change in the future and will need to update the fixture to have up to date payload example
+        //ACR-b1e072f108f44fe28846bae3715753d4
         var aiCodeFix = "\"aiCodeFix\": {" +
           "\"enablement\": \"" + organization.aiCodeFixFeature.enablement.name() + "\"," +
           "\"enabledProjectKeys\":" + enabledProjectKeys + "," +
@@ -1580,7 +1580,7 @@ public class ServerFixture {
       if (!serverSentEventsEnabled) {
         return;
       }
-      // wiremock does not support SSE, so we redirect to our custom SSE server
+      //ACR-e30089c6b1b641299a118c48c01469f7
       mockServer.stubFor(get(urlPathEqualTo("/api/push/sonarlint_events"))
         .withQueryParam("projectKeys", equalTo(String.join(",", projectsByProjectKey.keySet())))
         .withQueryParam("languages", new AnythingPattern())

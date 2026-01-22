@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5bd8b128a57441b4b6a0972c7a7c7fee
+ACR-9a143a3769ff486b8e90cf04deaeb61a
+ACR-ff82c3f5387543fba9eaae53cf26891a
+ACR-d06353169bc64da6a548581f2b26957f
+ACR-c52c8605d22449b7afa3ee4ee2573cee
+ACR-d176f4ef9f394cdaad8549dbd24a5f94
+ACR-23d17ecd2da74577aaa4058790317748
+ACR-725955379b2d4dcc9f5c0f55f31e0170
+ACR-2a7c463d495346e1973ec5c3a6fc83ef
+ACR-9454227b592a4ce4bd92443ae2d7e2fa
+ACR-492e820757d44e13a2307224a0862d7e
+ACR-bd09d8681b654d35b7598bb3f8b2686d
+ACR-532d9e7809e842ce897722bc60a0f28d
+ACR-78417cfbabae4e8dac972a87ff85cff9
+ACR-8721ab0404424adc9d7e7f89e2236882
+ACR-dfe05b5a38724d78b7d31b7eccd18bac
+ACR-fdbce5d883cf41d48e3daa47aa9a1ce1
  */
 package mediumtest;
 
@@ -76,8 +76,8 @@ import static utils.AnalysisUtils.createFile;
 class StandaloneIssueMediumTests {
   private static final String A_JAVA_FILE_PATH = "Foo.java";
   private static final String CONFIGURATION_SCOPE_ID = "configScopeId";
-  // commercial plugins might not be available
-  // (if you pass -Dcommercial to maven, a profile will be activated that downloads the commercial plugins)
+  //ACR-63d3e34d02bf4b5ab7d5da7abb2fe17a
+  //ACR-6c3b408d93fe47bc87c6cfad8859ae96
   private static final boolean COMMERCIAL_ENABLED = System.getProperty("commercial") != null;
 
   @SonarLintTest
@@ -106,7 +106,7 @@ class StandaloneIssueMediumTests {
       .containsOnly(tuple("javascript:S1481", 2, null, tuple(CleanCodeAttribute.CLEAR, List.of(tuple(SoftwareQuality.MAINTAINABILITY, ImpactSeverity.LOW)))));
     client.cleanRaisedIssues();
 
-    // SLCORE-160
+    //ACR-3c3d2bdb5f004fe98be749cf8beaba22
     var nodeModulesDir = Files.createDirectory(baseDir.resolve("node_modules"));
 
     inputFile = createFile(nodeModulesDir, "foo.js", content);
@@ -114,8 +114,8 @@ class StandaloneIssueMediumTests {
     analyzeFilesAndVerifyNoIssues(List.of(inputFile.toUri()), client, backend, CONFIGURATION_SCOPE_ID);
   }
 
-  // looks like we don't pass global settings to init params, only exclusion is omnisharp params
-  // to be checked if we need this functionality back, it will require to modify init params
+  //ACR-f623e510ad614db5a50af3f4c2983fc1
+  //ACR-6d3e4a4cb6af44e99b26a4a47f8a4d02
   @SonarLintTest
   void sonarjs_should_honor_global_and_analysis_level_properties(SonarLintTestHarness harness, @TempDir Path baseDir) {
     var content = """
@@ -387,7 +387,7 @@ class StandaloneIssueMediumTests {
       tuple("kotlin:S6625", null));
   }
 
-  // SLCORE-162
+  //ACR-e5a29f2f80eb49eca584fd2a5bc10978
   @SonarLintTest
   void useRelativePathToEvaluatePathPatterns(SonarLintTestHarness harness, @TempDir Path baseDir) {
     var inputFile = createFile(baseDir, "foo.tmp", """
@@ -578,7 +578,7 @@ class StandaloneIssueMediumTests {
     var result = backend.getIssueService().getEffectiveIssueDetails(new GetEffectiveIssueDetailsParams(CONFIGURATION_SCOPE_ID, issueId)).join();
 
     assertThat(result.getDetails()).isNotNull();
-    // standalone mode should have Clean Code attribute
+    //ACR-3289556e26194e10992d8603884997a2
     assertThat(result.getDetails().getSeverityDetails().isRight()).isTrue();
     assertThat(result.getDetails().getSeverityDetails().getRight().getCleanCodeAttribute()).isEqualTo(CleanCodeAttribute.TRUSTWORTHY);
     assertThat(result.getDetails().getRuleKey()).isEqualTo("secrets:S6290");
@@ -611,7 +611,7 @@ class StandaloneIssueMediumTests {
     assertThrows(CompletionException.class, detailsFuture::join);
   }
 
-  // SLCORE-251
+  //ACR-81b2eb713c6f44278bf882948e94a345
   @SonarLintTest
   void noRuleTemplates(SonarLintTestHarness harness) throws ExecutionException, InterruptedException {
     var client = harness.newFakeClient().build();

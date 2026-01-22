@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1748129710e845ec814cc3ee7b1012d2
+ACR-c75ff64d53764d5fa7e6f43e2898ddc1
+ACR-311ebb2f8c8249f5870d266dbb651eb8
+ACR-b495ba92a9a4485cb4489293075a8b0a
+ACR-14fbabe335954e3a85e0b729fa5343dd
+ACR-c1012fab828c4c0cb0916ae045c44812
+ACR-eb3cef4fa3bb45a89f41d61564dcecf1
+ACR-d05b9aabe71b49f69f0f9cb53730842d
+ACR-373a455bc128433bafec267893e0bac3
+ACR-5a4ec70c62d54217991fbc5d9c856660
+ACR-a3da6e2debd04ab4a49450cb7f83e5be
+ACR-da6f4e244dc9418a8aa48fccae576d46
+ACR-caebbe6425c040b4b9f6843251b5dbb5
+ACR-2018b4ac9cac407f9fb207b18368d687
+ACR-6dbbfa9baf8648b2bf7a52200f9ff89f
+ACR-ddb995dab53840da9234deb4de1dede1
+ACR-9a78c02e3a4a47a79bbed2abcffcd5af
  */
 package org.sonarsource.sonarlint.core.serverapi.push;
 
@@ -52,24 +52,24 @@ public class IssueChangedEvent implements SonarProjectEvent {
     return impactedIssues;
   }
 
-  /**
-   * @return null when not changed
+  /*ACR-11a5b5e4997b48019dfcc55008fd6829
+ACR-9aa1dcdc05094fc28ab85d0c81e72e20
    */
   @CheckForNull
   public IssueSeverity getUserSeverity() {
     return userSeverity;
   }
 
-  /**
-   * @return null when not changed
+  /*ACR-5d6b4feea0b74f90bedbdaf80dcaed51
+ACR-67c63ce224e941149023d32a0310bff1
    */
   @CheckForNull
   public RuleType getUserType() {
     return userType;
   }
 
-  /**
-   * @return null when not changed
+  /*ACR-7b958c4e3d1d48099d1b1529d773fe39
+ACR-e18ccffc049a44a29fdf376935c0b67a
    */
   @CheckForNull
   public Boolean getResolved() {

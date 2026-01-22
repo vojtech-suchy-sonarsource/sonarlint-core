@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d94d1d8bdcbd475dacba2564c148ced8
+ACR-7187f475c7bf4d64a04a8ab5b5b549e4
+ACR-86cabfca40d248b783b6acdfc6c45735
+ACR-aec4e1cd9011404caeb3523a1a389fd3
+ACR-a70fb5d68dc0486183973fe97ea0d133
+ACR-26d74894604848e3b221b3833193b3f5
+ACR-e1d6d5f65c214a94a6f2875944e47679
+ACR-80db3fb4d99945e988d2cd68ad5d6b90
+ACR-7b1f42b27db64a81a558c9b23d449445
+ACR-dd89d0a565c840b8a4dd1581d061fe79
+ACR-be209373f3054ad0afd172d66ff16891
+ACR-1006992036864c4389c50e0246ae2c05
+ACR-9da94ea12b7c41e7b633b6fe305a5c85
+ACR-58fc58e894de4927a36bae7cb56e3c0b
+ACR-8d85bf9a2414403db526bdc198e34746
+ACR-9ea93c0be3b740958b8af061db6c0a52
+ACR-2280b15a7c7c413eac1358a3a64212dc
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 
@@ -54,7 +54,7 @@ public class RulesDefinitionExtractorContainer extends SpringComponentContainer 
     var extensionInstaller = new ExtensionInstaller(sonarLintRuntime, new EmptyConfiguration());
     extensionInstaller.install(this, pluginInstancesByKeys, (key, ext) -> {
       if (ExtensionUtils.isType(ext, Sensor.class)) {
-        // Optimization, and allows to run with the Xoo plugin
+        //ACR-d36194ae6092432eac7c9eab78bf4322
         return false;
       }
       var annotation = AnnotationUtils.getAnnotation(ext, SonarLintSide.class);

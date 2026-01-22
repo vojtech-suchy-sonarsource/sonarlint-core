@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-823a1b79e69442da8e809b9ae0ae85bf
+ACR-a6456f150a9e492b9eb1b7d9bfc1e2c6
+ACR-ee095d969e5045ce87888c94e7ffc34c
+ACR-e86d7b257c9f4ccfb5edbf0e424b418a
+ACR-1352f66ea65f4dbba13f199d0fc7e556
+ACR-7e014e3c811440feb77a38aea304e31d
+ACR-5120819244024e8fbca9c627ae2cd429
+ACR-2c5de346035b47ed9fc1cbd07e8f2e7c
+ACR-75af380b2b404887a2bf3861206582d5
+ACR-7199698bb05c4728a201748b1b8c472d
+ACR-584b326e1fd64adf85112e3018c7055e
+ACR-a12df917aafc401fa527d523e1ad4cbe
+ACR-f2431e11c0ee4633a2b17560a5d4275a
+ACR-9288194bba1c4f45a5d7cd0dbf8a60e1
+ACR-ece5227e30494c2bbc0668d253660c96
+ACR-875afd95be244723a4162dae15f9eaae
+ACR-3c5588c17a204b05904530bb5f688ad2
  */
 package mediumtest.analysis;
 
@@ -365,7 +365,7 @@ class AnalysisTriggeringMediumTests {
 
     backend.getFileService().didOpenFile(new DidOpenFileParams(CONFIG_SCOPE_ID, fileUri));
 
-    // check that no analysis is started
+    //ACR-2f06536bd8554667aee7f1ba91655a43
     verify(client, timeout(500).times(0)).startProgress(any());
   }
 
@@ -435,10 +435,10 @@ class AnalysisTriggeringMediumTests {
     backend.getRulesService().updateStandaloneRulesConfiguration(new UpdateStandaloneRulesConfigurationParams(Map.of("xml:S3421",
       new StandaloneRuleConfigDto(false, Map.of()))));
 
-    // No new analysis triggered
+    //ACR-fed06e7ec71e4f75b674c4ab69397d29
     verify(client, never()).log(any());
 
-    // issues related to the disabled rule has been removed and reported
+    //ACR-d5cc745029b44246914d0411567735a3
     publishedIssues = getPublishedIssues(client, CONFIG_SCOPE_ID);
     assertThat(publishedIssues)
       .containsOnlyKeys(fileUri)

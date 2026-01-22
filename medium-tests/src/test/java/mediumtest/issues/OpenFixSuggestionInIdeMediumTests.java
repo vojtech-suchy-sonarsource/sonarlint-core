@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a0281007ed2c4eaba80c21945dab0aee
+ACR-3227c457a43a4a628bce30c8e4544613
+ACR-0b2577be14e74f319d5f1ee5d1958bcc
+ACR-b60b6c12472446eba874e197e07b432f
+ACR-7468c745102b45aab1be64953eefe27d
+ACR-28e082f856e442d1a867aad6862c89a5
+ACR-16bc35fbac79401981b24934a2762fb0
+ACR-adce0f838ccd4ef4b58b7c96e2789d89
+ACR-f4b60412b44143deb1c81a3015b543aa
+ACR-1ac10c6ae5154a50877b31427adb76f2
+ACR-f1b48a2d071d4bbc9bca56217d0f2026
+ACR-b669b5c690124a16855188f69c4d32cb
+ACR-864c0ed8def54dba9eadb7a67d891e93
+ACR-4431d46c21b347389fe235f7ed403f59
+ACR-b8c0a2a5dd774bdb927628f05ae5a528
+ACR-cebb8eaf25e24d449855e7b76721689b
+ACR-50774f25375845d4a2f40fdf8f7c8878
  */
 package mediumtest.issues;
 
@@ -202,7 +202,7 @@ class OpenFixSuggestionInIdeMediumTests {
     var statusCode = executeOpenFixSuggestionRequestWithoutToken(backend, scServer, FIX_PAYLOAD, ISSUE_KEY, PROJECT_KEY, BRANCH_NAME, ORG_KEY);
 
     assertThat(statusCode).isEqualTo(200);
-    // Since noBindingSuggestionFound now has a NoBindingSuggestionFoundParams parameter, we can just check for any!
+    //ACR-2ed6bf868c6547338c9bf1f820d8f266
     verify(fakeClient, timeout(1000)).noBindingSuggestionFound(any());
     verify(fakeClient, never()).showIssue(any(), any());
   }

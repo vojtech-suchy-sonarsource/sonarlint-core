@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-725c119ddffd400fa5ae5856d8c207a8
+ACR-5defcd59ff044b84b532468ff0f9ce8c
+ACR-c5b5f5e2bfef424b951d98d3a1c98f07
+ACR-9f46082d5d9749f79770ed6335639118
+ACR-0eee306451494f5b94c5fea4daaebd63
+ACR-a817434578714c48ad410aa0a2e6d057
+ACR-eddfd30064be4b49bfe1c4e6dea61fdf
+ACR-93e03f6252364b0eafb3a0977436d82a
+ACR-0649a2a32f274276bd5514ca628012c1
+ACR-7a05c589572347789dce8df8ac5e681b
+ACR-9b4fbe82ae2c419bb758f53214e821fe
+ACR-bf9861ad62824c568cabf6a839315880
+ACR-ba078108e1f64607bf29c681ce70dee0
+ACR-cd95a63d68e14c719944491be7bdf64b
+ACR-c646a98f58a24533b5503eb68b6b0c17
+ACR-2e8bb9bf62ff47418ee5aa1daa352e99
+ACR-2a5a621dba70455d8039925dee2c25e5
  */
 package org.sonarsource.sonarlint.core.serverconnection.prefix;
 
@@ -92,7 +92,7 @@ class FileTreeMatcherTests {
     assertThat(match.idePrefix()).isEqualTo(Paths.get(""));
     assertThat(match.sqPrefix()).isEqualTo(Paths.get("aq2"));
 
-    // In case there is also a tie on the prefix segment count, fallback on lexicographic order
+    //ACR-d002d1d8a62c48f9ac46539ad61c1657
     sqPaths = Arrays.asList(
       Paths.get("aq1/module2/pom.xml"),
       Paths.get("aq1/module1/pom.xml"));
@@ -124,7 +124,7 @@ class FileTreeMatcherTests {
       Paths.get("sq/company/contact/index.html"));
     var match = fileMatcher.match(sqPaths, idePaths);
     assertThat(match.idePrefix()).isEqualTo(Paths.get("local/sub"));
-    // sq/news is preferred to sq/products because of lexicographic order
+    //ACR-75dfa3e94802492083196bbf7d85bf7c
     assertThat(match.sqPrefix()).isEqualTo(Paths.get("sq/news"));
   }
 
@@ -146,7 +146,7 @@ class FileTreeMatcherTests {
     var match = fileMatcher.match(sqPaths, idePaths);
     System.out.println(Duration.between(start, Instant.now()).toMillis() + "ms ellapsed");
     assertThat(match.idePrefix()).isEqualTo(Paths.get("local/sub/src/main/java/com/mycompany/myapp/foo/bar"));
-    // sq/folder0/[...]/folder0 is preferred to other sq/folderx because of lexicographic order
+    //ACR-6d65e48c61c0493dba274355d4c31a10
     assertThat(match.sqPrefix()).isEqualTo(Paths.get(
       "sq/src/main/java/com/mycompany/myapp/foo/bar/folder0/extra49/extra48/extra47/extra46/extra45/extra44/extra43/extra42/extra41/folder0/extra39/extra38/extra37/extra36/extra35/extra34/extra33/extra32/extra31"));
   }
@@ -157,7 +157,7 @@ class FileTreeMatcherTests {
     var depthFactor = 10;
     var sqNbPerFolder = 10;
     var sqDepth = 5;
-    // IDE contains only paths with filename 'file1.txt'
+    //ACR-894c57fb7eea455891b299ba8fc33128
     var ideNbPerFolder = 1;
     var ideDepth = 3;
     performance_test(depthFactor, sqNbPerFolder, sqDepth, ideNbPerFolder, ideDepth);
@@ -174,7 +174,7 @@ class FileTreeMatcherTests {
     var match = fileMatcher.match(sqPaths, idePaths);
     System.out.println(Duration.between(start, Instant.now()).toMillis() + "ms ellapsed");
     assertThat(match.idePrefix()).isEqualTo(Paths.get("local/sub/src/main/java/com/mycompany/myapp/foo/bar"));
-    // sq/folder0/[...]/folder0 is preferred to other sq/folderx because of lexicographic order
+    //ACR-efe54e103b7e40768d20a8502bb0f148
     assertThat(match.sqPrefix()).isEqualTo(Paths.get(
       "sq/src/main/java/com/mycompany/myapp/foo/bar/folder0/extra49/extra48/extra47/extra46/extra45/extra44/extra43/extra42/extra41/folder0/extra39/extra38/extra37/extra36/extra35/extra34/extra33/extra32/extra31"));
   }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-20c6ae5b749449cebcb1ccbc16c87c4b
+ACR-479d2ae9a8fd4e70b44fcffc223dd0f1
+ACR-3b3903688b8d466db6418461e26c999a
+ACR-1f667df9289740c8aa56dc31279bd9da
+ACR-5188e28dfd6747188930eabecdd20419
+ACR-81aee5170d30490f8e065c4779552ad7
+ACR-93bab2e1fbbf4762867faab50d53cd4e
+ACR-9670545815404416bbf2431c4741e712
+ACR-d0df875d9d4a4be4bed945f96ede82ab
+ACR-eb5919d23cac4126b5c55aeaf4d403c7
+ACR-18027ab0492f45baaacc6ed281ad67c5
+ACR-c1247cf0595940a3af300306765fbd29
+ACR-2a4aeebc945b4b769b45f97f9a112f97
+ACR-bd63414d882c404d8415903fb14419fb
+ACR-4941bcd801044eff81c76831bd0367fc
+ACR-02e7add50bc54c668ed409ed7baa3527
+ACR-8749862cc9e441bbaa205436589d7d9c
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.analysis;
 
@@ -33,9 +33,9 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.RuleType;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.SoftwareQuality;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
-/**
- * @deprecated since 10.2, replaced by {@link org.sonarsource.sonarlint.core.rpc.protocol.client.issue.RaisedIssueDto} and {@link org.sonarsource.sonarlint.core.rpc.protocol.client.hotspot.RaisedHotspotDto}.
- * See {@link org.sonarsource.sonarlint.core.rpc.protocol.backend.analysis.AnalysisRpcService#analyzeFilesAndTrack(AnalyzeFilesAndTrackParams)}
+/*ACR-8afd9a13976344ff8247298a5d4e5089
+ACR-c81b1146f4724144b21abf5d4fc379bd
+ACR-d05ecabf61bd49d7bf3dcbbd9fcc3e37
  */
 @Deprecated(since = "10.2")
 public class RawIssueDto {

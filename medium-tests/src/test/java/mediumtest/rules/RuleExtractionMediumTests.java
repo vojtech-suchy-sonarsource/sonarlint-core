@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3975f4af35254c5dbf69f92b69265c8d
+ACR-21e610c0d7d647fe8050840822055172
+ACR-3e9db834a653475f9c33629a7ae5e38e
+ACR-4803fad232b347b08e68dfce45ebef44
+ACR-98614e601db34fa08b74fa28ea3c4de3
+ACR-f241c92070124e138e4f7a2510603f53
+ACR-4eafff0eefb842e98cee37bca93e02b2
+ACR-7899334173034e1284e6eaa0be039017
+ACR-0729c49494184e5ab6ff22ef76d86475
+ACR-672f805c66d84bc3a606bc73dd802867
+ACR-20dfb6b2ed15466195be2a1d9973708d
+ACR-73978fae6eda489c87d7ae73a6242cb5
+ACR-cc47c152f9354c1a8774ef0558006e33
+ACR-a2c85785d5c749dd917307cc80bade7c
+ACR-85efcff199e5438bac6764601c64c74f
+ACR-71448065d4a1440f87402ecb86ead96d
+ACR-47e280b7e5764f8bbc90b7a263cfdb9c
  */
 package mediumtest.rules;
 
@@ -36,14 +36,14 @@ public class RuleExtractionMediumTests {
     var client = harness.newFakeClient()
       .build();
 
-    // First plugin actually declares a PHP rule
+    //ACR-a92945ce530e41e185120c9ec9cf2d37
     var okPluginDir = baseDir.resolve("ok-plugin");
     okPluginDir.toFile().mkdirs();
     var okPluginPath = newSonarPlugin("ok-plugin")
       .withRulesDefinition(OkRulesDefinition.class)
       .generate(okPluginDir);
 
-    // Second plugin throws an IllegalStateException when defining rules
+    //ACR-33b8f888157e4692ba0bff3b8a025e98
     var throwingPluginDir = baseDir.resolve("throwing-plugin");
     throwingPluginDir.toFile().mkdirs();
     var throwingPluginPath = newSonarPlugin("throwing-plugin")

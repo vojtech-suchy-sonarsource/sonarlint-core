@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e13a240332b640d4b4bf63096dc3889b
+ACR-39bb6c33f0894f999747c3c1b36711d4
+ACR-d6462e301b3f44e88f625166bbaa14fd
+ACR-0fef8d686ca143c1b8ea3cf739172b98
+ACR-7364260af2564cbd8a147dfaabf330fa
+ACR-05bd8cb08fc9433b8dece0b275dc766c
+ACR-1db3d1569d55475ab9a8a37070456a43
+ACR-9f4a69991934480d8fb4e37cf12c0f4a
+ACR-66477fbfcbee488a8d086079d542b160
+ACR-932a10fda6bf4d16ad1e7eebf71282a3
+ACR-df1ca21e340f4831939ad133e0692243
+ACR-9e977e6f795d4548b0711bb8aa09e8b3
+ACR-b0989cc501cb455b9362f704805e3f50
+ACR-25cc2f352d694dcea2d43662a431696f
+ACR-c26365597c2741c188e86ebe2e973fec
+ACR-711318ab965d4419900adffd9a17be1f
+ACR-83329ff8408742909336ce2e9eb1521a
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -32,8 +32,8 @@ import org.sonarsource.sonarlint.core.commons.Version;
 
 import static java.util.Objects.requireNonNull;
 
-/**
- * This class loads Sonar plugin metadata from JAR manifest.
+/*ACR-a1539e161f4d408da0d7058d4efa76e5
+ACR-3f3618d80ec04d188084099de9490b4a
  */
 public class SonarPluginManifest {
 
@@ -89,8 +89,8 @@ public class SonarPluginManifest {
 
   }
 
-  /**
-   * Load the manifest from a JAR file.
+  /*ACR-9891ddb51023461baaf97a23e7d53e2c
+ACR-841ac16b56b945f1920dc4fbe9c8320b
    */
   public static SonarPluginManifest fromJar(Path jarPath) {
     try (var jar = new JarFile(jarPath.toFile())) {

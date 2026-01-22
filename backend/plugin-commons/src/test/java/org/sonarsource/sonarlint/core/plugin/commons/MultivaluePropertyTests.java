@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1377a1aaf07d46fb81a86c87fd61b438
+ACR-387e260cabe44e8fa55178c7332ef15e
+ACR-0d251ca3dbde4a75be20687d5c3b1441
+ACR-ecf6feeac6a748799722b01bd9d4d1cd
+ACR-f329150f42774d48bf9b2f3283890b79
+ACR-fa7e0fb47c20413794b59115c20ea335
+ACR-dabc01fe96a1436fbb760de57a830197
+ACR-cdcb071905b84a23849f7ec4ba45ca2c
+ACR-480f1488b9114668bda166e2e3b6d693
+ACR-10dff799af8e4368a2696f6a7816d616
+ACR-724c3ffed14b4f18af45fbc071178d35
+ACR-40ecb466a7924003a7c8485cf93afdfa
+ACR-5d2e29b7c3c241ed920a4576012f0363
+ACR-bca09d7a237746c98b586743413e23bb
+ACR-120c3c09dd7c467c83bd1dd661298305
+ACR-6f8d3d4eb944436faa3e20adccb40aec
+ACR-258407745d814883a1f067d2db36fc58
  */
 package org.sonarsource.sonarlint.core.plugin.commons;
 
@@ -67,7 +67,7 @@ class MultivaluePropertyTests {
       Arguments.of(" , \n ,, \t", EMPTY_STRING_ARRAY),
       Arguments.of("\" a\"", arrayOf(" a")),
       Arguments.of("\",\"", arrayOf(",")),
-      // escaped quote in quoted field
+      //ACR-054b7edc225a44288f6e73a088d36311
       Arguments.of("\"\"\"\"", arrayOf("\"")));
   }
 
@@ -242,10 +242,10 @@ class MultivaluePropertyTests {
     ' ', '\t', '\n', '\r'
   };
 
-  /**
-   * Result of randomTrimmedChars being used as arguments to JUnit test method through the DataProvider feature, they
-   * are printed to surefire report. Some of those chars breaks the parsing of the surefire report during sonar analysis.
-   * Therefor, we only use a subset of the trimmable chars.
+  /*ACR-e5cb055740f44dbfb38f70a9e5c78f2c
+ACR-eb644067e1e84158ab490079da432dc2
+ACR-9ca0338a4ae7479abf198c3065b2c897
+ACR-297c0a115b914cdfbb236bc7e7735beb
    */
   private static String randomTrimmedChars(int length, Random random) {
     char[] chars = new char[length];

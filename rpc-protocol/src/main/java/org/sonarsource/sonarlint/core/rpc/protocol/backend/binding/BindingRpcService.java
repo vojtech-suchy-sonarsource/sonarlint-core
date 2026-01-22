@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0ed15ac1a9f7410799889045eb51be35
+ACR-3342bdcc0ff148098547b341c1c49548
+ACR-ece4684d7eb0407b9850d3a0fb25f153
+ACR-2b0b1a5222f74140a53e63fd058ed495
+ACR-06e91f67cba143fca973999fc1708d31
+ACR-b3074e3eae954392a44a7814f28072ad
+ACR-da00f22164bb4cf9b4ac244dc434049d
+ACR-5da3860b6af2497db553cc157c82ae6a
+ACR-f6453de9d5ab4364b1103a332c584b69
+ACR-84dfd7674fb74d85be67182607a8e133
+ACR-c4db914244e248e7a8939e34483eb3aa
+ACR-11564bdb0e564c7a9942096b0a6c6637
+ACR-e6fc4f0a582d4f50b4a99cde20428b98
+ACR-6c4837cc66394cf39d12873a0280b7d0
+ACR-0b71cac1696048e4a769fd71224f1a9d
+ACR-199f8ecb79de475ba5eeb88749763499
+ACR-a8b5aa7b7431447baa330d9e08345ec2
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.binding;
 
@@ -27,27 +27,27 @@ import org.sonarsource.sonarlint.core.rpc.protocol.client.binding.GetBindingSugg
 @JsonSegment("binding")
 public interface BindingRpcService {
 
-  /**
-   * Calculates a suggested binding for a 'configScopeId' and 'connectionId' specified in the {@link GetBindingSuggestionParams}
-   * @return {@link GetBindingSuggestionsResponse} containing binding suggestions
+  /*ACR-d377f56ec77e4421a28bdbd3212ee3db
+ACR-25c9507c01604adb867b999a17defb26
+ACR-f71a92ef2b49487ca8c59ec85df5d626
    */
   @JsonRequest
   CompletableFuture<GetBindingSuggestionsResponse> getBindingSuggestions(GetBindingSuggestionParams params);
 
-  /**
-   * <p> It gets file contents for a shared Connected Mode configuration file.
-   * It returns file contents that look like either
-   <li>{
-   "sonarCloudOrganization": "$organization",
-   "projectKey": "$projectKey"
-   }</li>
-   OR
-   <li>   {
-   "sonarQubeUri": "$serverUrl",
-   "projectKey": "$projectKey"
-   }</li>
+  /*ACR-012a188943fe47e5a82ffc31ee398a6f
+ACR-0c7d5ed98f0f4a62b664092f67c33637
+ACR-79111b699a654cab9dccf3196c755573
+ACR-f5e8eb5638ee4c4a943a7d490d0cd29a
+ACR-c52d523c93344d08826e653ba075a34f
+ACR-8ee8abef4917427dbc59501471ba5463
+ACR-d9b1bd2c1f9544298168cabc01b134b0
+ACR-460b9176c8eb44fea7064c1d029ccb53
+ACR-daa61cad3edb4d609b59835ae888791d
+ACR-ce234a75da7349bbaf0ff497e5cf700f
+ACR-7bb9887e0cf648a09f7b2a27735c42f3
+ACR-c38dd13b24a345c2ba9f69593bb3a00e
 
-   <p>Fails if there is no binding found for the configScopeId</p>
+ACR-27c934a4d9f14499a6a7ea9cd4bfe6ea
    */
   @JsonRequest
   CompletableFuture<GetSharedConnectedModeConfigFileResponse> getSharedConnectedModeConfigFileContents(GetSharedConnectedModeConfigFileParams params);

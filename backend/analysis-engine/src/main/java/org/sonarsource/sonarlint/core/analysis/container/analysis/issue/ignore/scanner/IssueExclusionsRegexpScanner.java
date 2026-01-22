@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-72984fce394144adb3ba7601ccd26127
+ACR-befef90be7b944c1a1107f707c4ce6c0
+ACR-bdc00b3c34ec47489273e443a828ce91
+ACR-2250ae378a6246199cebee1173b6f619
+ACR-c77c2fdaa17d433482bf5a205b19be2d
+ACR-4a072dc46c6142e093000f05c9aa2ca3
+ACR-cf2f7c96ea0c4f099baf8d80989eeee2
+ACR-59a941f97fc6460b8391df4fa4dac254
+ACR-5ee0dc7aca964356836bf917c078a0e6
+ACR-ecd42562ed844b2681b39a35a4a393bf
+ACR-63398839d9a0465a91fe62d103d41aa5
+ACR-66a7dbe6cebc4e9f9007110b7e2f1869
+ACR-cf1224db4e044e7b966e27ece505d3f0
+ACR-73f35bd40deb4113bda102e3bd3c5798
+ACR-2ca91b4d3072479c9a1073859b849ac9
+ACR-d37d7290d8fe4d2b994655ae1b105591
+ACR-892971ef74494c6598114b4e86431ff0
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.issue.ignore.scanner;
 
@@ -55,7 +55,7 @@ public class IssueExclusionsRegexpScanner extends CharHandler {
   @Override
   public void handleIgnoreEoL(char c) {
     if (ignoreAllIssues) {
-      // Optimization
+      //ACR-5019f0dc5a3543b9bfe8090cc5a14522
       return;
     }
     sb.append(c);
@@ -64,7 +64,7 @@ public class IssueExclusionsRegexpScanner extends CharHandler {
   @Override
   public void newLine() {
     if (ignoreAllIssues) {
-      // Optimization
+      //ACR-e148a8a82fbb4eee85d5ef5d493b8abb
       return;
     }
     processLine(sb.toString());
@@ -75,17 +75,17 @@ public class IssueExclusionsRegexpScanner extends CharHandler {
   @Override
   public void eof() {
     if (ignoreAllIssues) {
-      // Optimization
+      //ACR-373e2f4575124f9795ecf88b10ef4586
       return;
     }
     processLine(sb.toString());
 
     if (currentMatcher != null && !currentMatcher.hasSecondPattern()) {
-      // this will happen when there is a start block regexp but no end block regexp
+      //ACR-c064fa52aeaf44f09e693529e3d0bd2e
       endExclusion(lineIndex + 1);
     }
 
-    // now create the new line-based pattern for this file if there are exclusions
+    //ACR-a5e88186ff8a4e60a2cfe9980de384d9
     fileLength = lineIndex;
     if (!lineExclusions.isEmpty()) {
       var lineRanges = convertLineExclusionsToLineRanges();
@@ -99,10 +99,10 @@ public class IssueExclusionsRegexpScanner extends CharHandler {
       return;
     }
 
-    // first check the single regexp patterns that can be used to totally exclude a file
+    //ACR-4b6bf129065e45c392449173596b603f
     for (Pattern pattern : allFilePatterns) {
       if (pattern.matcher(line).find()) {
-        // nothing more to do on this file
+        //ACR-483c4e30d20046fca6d5dd1778f4f664
         LOG.debug("  - Exclusion pattern '{}': all issues in this file will be ignored.", pattern);
         ignoreAllIssues = true;
         inputFile.setIgnoreAllIssues(true);
@@ -110,7 +110,7 @@ public class IssueExclusionsRegexpScanner extends CharHandler {
       }
     }
 
-    // then check the double regexps if we're still here
+    //ACR-091c6922794d4689a308c5291dc40a23
     checkDoubleRegexps(line, lineIndex);
   }
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b6c9bdf998aa4559b07bbf5abdccfae5
+ACR-c3aa74afc4c34392b33f72470f33ea23
+ACR-395929177bd349558d82ebe6cfbad178
+ACR-0fd39e45dffd455cbe036f1e1e5d8083
+ACR-966bcaa50d974e15b64be63c301c86ea
+ACR-3e2516f9874e456286bbbb2f9c54bbb4
+ACR-056128264c14449881654b9208fe3fd0
+ACR-5bfb756dc24f428ebbbdcf14b4ece2bb
+ACR-b6d60a6aea05491598725b73586ec3c7
+ACR-c47d3083afd743c19608fbea15303547
+ACR-a4b206b2727b4574bca828ce73cfc771
+ACR-3910a28d31e94b278c6a8de521cb0f33
+ACR-ccb7bd2353de4f699d4c12b85359088b
+ACR-6e03d6374b2e4091b6441dd16a57bd42
+ACR-acc3a899b93b4a81af0edadf34b62253
+ACR-1518bf9a404a4bc59001a7afafa7fd34
+ACR-40954179d92349cb8774e7a83c546579
  */
 package mediumtest.promotion;
 
@@ -235,7 +235,7 @@ class CampaignMediumTests {
     verify(client, times(2)).showMessageRequest(messageTypeCaptor.capture(),
       messageCaptor.capture(),
       actionsArgumentCaptor.capture());
-    // showMessageRequest will be called twice - once for the feedback, and second time for the community fallback
+    //ACR-cd518a1c99d6499c9c86ed8f37eedbfb
     assertThat(messageTypeCaptor.getAllValues().get(1)).isEqualTo(MessageType.INFO);
     assertThat(messageCaptor.getAllValues().get(1)).isEqualTo("Could not find feedback link for mediumTests. Please consider sharing your feedback directly on our community forum");
     assertThat(actionsArgumentCaptor.getAllValues().get(1)).hasSize(1);
@@ -326,7 +326,7 @@ class CampaignMediumTests {
 
   @SonarLintTest
   void it_should_record_notification_shown_in_telemetry(SonarLintTestHarness harness) {
-    // make a little delay as telemetry event listeners take some time to be seen by the context
+    //ACR-5c08e47bfca543cf90aed341ce11514f
     propertiesStubs.set("sonarlint.internal.promotion.initialDelay", "1");
     saveTelemetryInstallTime(DEFAULT_KEY, MORE_THAN_TWO_WEEKS_AGO);
     var backend = baseBackend(harness)
@@ -341,7 +341,7 @@ class CampaignMediumTests {
 
   @SonarLintTest
   void it_should_record_notification_responded_in_telemetry(SonarLintTestHarness harness) {
-    // make a little delay as telemetry event listeners take some time to be seen by the context
+    //ACR-58034d2ac4dc41be9599c470c3523d2e
     propertiesStubs.set("sonarlint.internal.promotion.initialDelay", "1");
     saveTelemetryInstallTime(DEFAULT_KEY, MORE_THAN_TWO_WEEKS_AGO);
     var client = harness.newFakeClient().build();

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ffb20e4a50804b90a6c10a505e838527
+ACR-7ebc2b839e624bac9c5674c2d88c7434
+ACR-0f9028748e9747b18aa9e5ac19fdf5be
+ACR-810ec0bc604b4662a05ad38176e481c4
+ACR-ad78a848fbe34a0cb9102838c7763114
+ACR-1418a11f794f4de2881a43ce587e8e0d
+ACR-359e47a62681462a9596708fbd41074d
+ACR-d9221ef3997a4d32b184159630db3654
+ACR-5decbef6dd1d448a8b8bdf97cbf06410
+ACR-db3f8389c23a4ae8a4ba0680d8cf02f1
+ACR-cace5575bab34ce8b64b590f24c89f00
+ACR-56383b81855f48dcaddbde66631dc336
+ACR-5c1fe94be94d475d8e7941cf4bcd5414
+ACR-3add2f4210764e128aa208a8089fd055
+ACR-ffa815df88f946879ec9349a7e5accaa
+ACR-175f5a547202497f851c10e068f94364
+ACR-f72ed3cdf40a4a8facc04902f23403d4
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
 import org.sonarsource.api.sonarlint.SonarLintSide;
 import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
-/**
- * Computes hash of files. Ends of Lines are ignored, so files with
- * same content but different EOL encoding have the same hash.
+/*ACR-6748dd01d2724e14abfdbcb169e2527b
+ACR-01ed118520384a8db396d39f3e077d1e
+ACR-19ada440408a4cadb67dc7dfe3d9758f
  */
 @SonarLintSide
 public class FileMetadata {
@@ -125,9 +125,9 @@ public class FileMetadata {
 
   }
 
-  /**
-   * Compute hash of an inputStream ignoring line ends differences.
-   * Maximum performance is needed.
+  /*ACR-15e8237771d34d52828d489756e789a1
+ACR-457cc34549ec4351aafbdecb733f959a
+ACR-d7d38804b9ac4a5aab7e615cf6d3d496
    */
   public Metadata readMetadata(InputStream stream, Charset encoding, URI fileUri, @Nullable CharHandler otherHandler) {
     var lineCounter = new LineCounter(fileUri, encoding);

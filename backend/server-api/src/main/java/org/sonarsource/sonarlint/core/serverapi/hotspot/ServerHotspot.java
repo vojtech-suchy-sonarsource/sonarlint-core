@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e340b19b974a461a82303570a52169ed
+ACR-2f1bbd919b6a4cdd948f403a59adc478
+ACR-842da954fb144967aa7441620ae04c20
+ACR-f3516827def64a46860f7c299fd67aca
+ACR-073217a6b3cb4cd6b268c0b23af694a2
+ACR-374851e0befd4d89a72b011b8018efa9
+ACR-c3829509225f4ed3a1c671f74150e186
+ACR-4aeee43abdd54c029bfc182fa486af82
+ACR-724bdd50550f46d6a67ad969c5a00c88
+ACR-67f89e6a31284a2989539fadf1088eb4
+ACR-9ae796151d2348e7a37be6cee39f2acc
+ACR-1dd3d5c977cf4bcabab1e8de0fcf9824
+ACR-cce8aabc8ec6416cb17dc5b4c3d82baf
+ACR-24fc744924b141af8d8b713124b952a6
+ACR-f562c60e3f7d4cd88fd5ff541ba5e16d
+ACR-5f95cb87cbb146e09ca0e23d25b76319
+ACR-fa3ff37ad99949a9a6579e3a2ff7a52e
  */
 package org.sonarsource.sonarlint.core.serverapi.hotspot;
 
@@ -62,9 +62,9 @@ public class ServerHotspot {
     this.assignee = assignee;
   }
 
-  /**
-   * constructor for backward compatibility, after finalization of migration from Xodus to H2 should not be used
-   * when using with H2 UUID should always be set
+  /*ACR-317e73b6081f479d9f3008f1107ea85c
+ACR-cfeae30a06ae415786a187094dc92bc6
+ACR-15b72d6800c94feda9be174c1fe34ec0
    */
   public ServerHotspot(String key,
     String ruleKey,

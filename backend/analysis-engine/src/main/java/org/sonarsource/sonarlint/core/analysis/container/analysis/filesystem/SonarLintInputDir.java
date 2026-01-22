@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7f73668291174591a2b2561cbecc2a08
+ACR-e9f910100ac8400fbeb8b276d46b299e
+ACR-0ceff3eff768402da1072495b38fa429
+ACR-a798ee9a81954abcb609cdf6f0d419f4
+ACR-7e92cfbc43204bab9c93b2254be4f918
+ACR-1a04e41ebca443a78a34c00f6d7a7a50
+ACR-1e653ec6f12a4ba79f28c8e924728577
+ACR-23639d9b94f3462282073f3ae29ca531
+ACR-1651f51af6444e50a20b78cb8981a8ca
+ACR-c1a36dbbd7d54350b3e6ab8ca88abbe3
+ACR-10d78d208e644fb995cf89bdcc3d9fe8
+ACR-9337390a9642419fa6475c4d9b95ec33
+ACR-44de9a26a7fd4c23a4d78c636d5556a3
+ACR-1431b444ebbe494e830de082dbe468a8
+ACR-a5c572578f534da18fd003b8281481b0
+ACR-085cb1896d524804a196e27ab5a73ce5
+ACR-caae971ed18145608d98d8bfbbf6bf3b
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -25,8 +25,8 @@ import java.nio.file.Path;
 import org.sonar.api.batch.fs.InputDir;
 import org.sonar.api.utils.PathUtils;
 
-/**
- * This is a simple placeholder. Issues on directories will be reported as project level issues.
+/*ACR-122ed7c581bd4a6580b479fc97899063
+ACR-7f8c5d2e9af54aa8ad3e0a8f648bd927
  */
 public class SonarLintInputDir implements InputDir {
 

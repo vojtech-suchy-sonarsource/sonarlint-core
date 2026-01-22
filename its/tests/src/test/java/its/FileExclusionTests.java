@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e389a9935a7a4376a366f10e7bdaea1a
+ACR-84bad02712cb47769ac43e374823c94c
+ACR-459c53d95da044f28b0865e13cbf7932
+ACR-61dd4a04f04248ed9ceb41d38960bfac
+ACR-e8300eec60e5440ea55f4be688cd4330
+ACR-03b913b886724a04a0233c92a0d5e0c9
+ACR-41fe05e65c4740c38c69df316375d922
+ACR-8578a04ce82e4e39b5bda25c24d5a728
+ACR-e760392429494c03854d261dcc26821f
+ACR-a0ec27a750274738afd71a39ee273d27
+ACR-04064c9a0cb0412883780f38af321226
+ACR-857b6fe0acd64de5bbc9a3b294e0d201
+ACR-40813cadf869429f83eb5457efbd6a56
+ACR-dbd52e69e21f46f08020420a0e2ccf47
+ACR-b950f7d95e6e46599f4b7025190fb812
+ACR-71e2efb6966b4f9fba302211436b2669
+ACR-d5b64e4d2c5f41a09a4f403fc6aa0f5e
  */
 package its;
 
@@ -158,12 +158,12 @@ class FileExclusionTests extends AbstractConnectedTests {
     var didUpdateFileSystemParams = new DidUpdateFileSystemParams(List.of(clientFileDto), List.of(), List.of());
     backend.getFileService().didUpdateFileSystem(didUpdateFileSystemParams);
 
-    // Firstly check file is included
+    //ACR-5f412d2689814e76aeb14fcbb7041a92
     var getFilesStatusParams = new GetFilesStatusParams(Map.of(configScopeId, List.of(filePath.toUri())));
     await().atMost(10, SECONDS)
       .untilAsserted(() -> assertThat(backend.getFileService().getFilesStatus(getFilesStatusParams).get().getFileStatuses().get(filePath.toUri()).isExcluded()).isFalse());
 
-    // Change file exclusion settings on SQ which should affect Foo.java
+    //ACR-b9828b7bc44b4b68aa6e6a495141cf60
     adminWsClient.settings().set(new SetRequest()
       .setKey("sonar.exclusions")
       .setValues(singletonList("**/*.java"))
@@ -171,11 +171,11 @@ class FileExclusionTests extends AbstractConnectedTests {
 
     forceBackendToPullSettings(configScopeId, projectKey);
 
-    // Check Foo.java is excluded
+    //ACR-35ee269365304574bf8ee330abb695b0
     await().atMost(30, SECONDS)
       .untilAsserted(() -> assertThat(backend.getFileService().getFilesStatus(getFilesStatusParams).get().getFileStatuses().get(filePath.toUri()).isExcluded()).isTrue());
 
-    // Change file exclusion settings on SQ which should not affect Foo.java
+    //ACR-e1d4de25d6f245a6bcaa46e989dbe433
     adminWsClient.settings().set(new SetRequest()
       .setKey("sonar.exclusions")
       .setValues(singletonList("**/*.js"))
@@ -183,11 +183,11 @@ class FileExclusionTests extends AbstractConnectedTests {
 
     forceBackendToPullSettings(configScopeId, projectKey);
 
-    // Check Foo.java is included
+    //ACR-39323744639b42c4adf9b31382ddf933
     await().atMost(30, SECONDS)
       .untilAsserted(() -> assertThat(backend.getFileService().getFilesStatus(getFilesStatusParams).get().getFileStatuses().get(filePath.toUri()).isExcluded()).isFalse());
 
-    // Change file inclusion settings on SQ to include only .js files
+    //ACR-3d45e8bd6f9044afbbf6e067aecf1edf
     adminWsClient.settings().set(new SetRequest()
       .setKey("sonar.inclusions")
       .setValues(singletonList("**/*.js"))
@@ -195,24 +195,24 @@ class FileExclusionTests extends AbstractConnectedTests {
 
     forceBackendToPullSettings(configScopeId, projectKey);
 
-    // Check Foo.java is excluded
+    //ACR-dd555ba1427b4a86b72379deb4099448
     await().atMost(30, SECONDS)
       .untilAsserted(() -> assertThat(backend.getFileService().getFilesStatus(getFilesStatusParams).get().getFileStatuses().get(filePath.toUri()).isExcluded()).isTrue());
 
-    // Reset file inclusions/exclusion settings on SQ
+    //ACR-5d1b1346962c47a494bf188d83eb3e46
     adminWsClient.settings().reset(new ResetRequest()
       .setKeys(List.of("sonar.exclusions", "sonar.inclusions"))
       .setComponent(projectKey));
 
     forceBackendToPullSettings(configScopeId, projectKey);
 
-    // Check Foo.java is included again
+    //ACR-680bc9b40cf6415f89bb37fada112272
     await().atMost(30, SECONDS)
       .untilAsserted(() -> assertThat(backend.getFileService().getFilesStatus(getFilesStatusParams).get().getFileStatuses().get(filePath.toUri()).isExcluded()).isFalse());
   }
 
   private static void forceBackendToPullSettings(String configScopeId, String projectKey) {
-    // The only way to force a sync of the storage is to unbind/rebind
+    //ACR-e2055de8b7b04a679b49bdaa5e18ce3e
     backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(configScopeId, new BindingConfigurationDto(null, null, true)));
     backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(configScopeId, new BindingConfigurationDto(CONNECTION_ID, projectKey, true)));
   }

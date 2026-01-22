@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a5e4cbd8829940ce906dc14e7a4fe79d
+ACR-ba759edf5c504311840d2048d07359af
+ACR-78689613909c4938b371a123115e378d
+ACR-54593bbdd2d34854944e4dd9b05977fa
+ACR-322326918de44031b4e6e07505c4ada3
+ACR-c29930887aab4acd85825ba196f23ce9
+ACR-f9ebe1c295f5425a9296cc3a8b591b4d
+ACR-9f2c991434fa4384b589238c2c863bd0
+ACR-6ee5a05c884b48688eeccda5979a5490
+ACR-40e7bf469d924568864a8e21dbcf2b4f
+ACR-38f83efcb91e4decb853f6c07708cd86
+ACR-1251bdc772144cf2b652f2ef812ae858
+ACR-440616310e8c44bea5271375919d1e98
+ACR-ec9f81fedf204520810e29aa9cc763b9
+ACR-2da4709e01104e35adc90e2400aed2e3
+ACR-3276eef8b9ac45908396c7e9699d9a5f
+ACR-087ea5990cf643899aab2bf9b41e12f3
  */
 package org.sonarsource.sonarlint.core.analysis.container.global;
 
@@ -66,7 +66,7 @@ class GlobalTempFolderProviderTests {
     }
 
     tempFolderProvider.provide(AnalysisSchedulerConfiguration.builder().setWorkDir(workingDir).build());
-    // this also checks that all other temps were deleted
+    //ACR-fbb7ee826dd04ef0a4b1c961d99d500e
     assertThat(getCreatedTempDir(workingDir)).exists();
 
     FileUtils.deleteQuietly(workingDir.toFile());

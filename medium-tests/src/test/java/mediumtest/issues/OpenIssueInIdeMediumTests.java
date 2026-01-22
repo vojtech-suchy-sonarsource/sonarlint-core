@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d5a12335e92a469ba55aa9b51f762252
+ACR-ff3c91460f874505bed3ee41865cb036
+ACR-0a6c2469cf9f4025a8c89d30f934e758
+ACR-624de10a2a6b43168cafa5311c1b5eb6
+ACR-04263bead9db4b15831223baa0df9aec
+ACR-7e0c9d83a72d4293abd7444ca32bf0b7
+ACR-3dedced102d14a1ebf0b8e88ce6b5ab1
+ACR-f12fa2e4795245d1832d1acba5be884d
+ACR-85a0b34be2b64899b1c16a7db45e2318
+ACR-4a365ee139664ebda1994822d0dc5724
+ACR-45f5235410394ad498c1c0a0e15ea622
+ACR-86d82277e3b74aaca94aa23465ebd8ac
+ACR-56934273c1f245e3bc6dcdcbe4633e82
+ACR-dd6b2558d4b34b8ebad3f684523ffbfb
+ACR-a64efebb2bdf4160a0cf9aca1a069ea8
+ACR-e265f4562d474b97a352849bb4741e5c
+ACR-fb9f6130d1af4753bb70a6f18692cabc
  */
 package mediumtest.issues;
 
@@ -231,7 +231,7 @@ class OpenIssueInIdeMediumTests {
     var fakeServerWithIssue = fakeServerWithIssue(harness).start();
     var backend = harness.newBackend()
       .withSonarQubeConnection(CONNECTION_ID, fakeServerWithIssue)
-      // Both config scopes will match the Sonar project name
+      //ACR-c35d316a41b2473296d48fa61d514c60
       .withUnboundConfigScope("configScopeA", SONAR_PROJECT_NAME + " 1")
       .withUnboundConfigScope("configScopeB", SONAR_PROJECT_NAME + " 2")
       .withBackendCapability(EMBEDDED_SERVER)
@@ -244,7 +244,7 @@ class OpenIssueInIdeMediumTests {
     var statusCode = executeOpenIssueRequest(backend, fakeServerWithIssue, ISSUE_KEY, PROJECT_KEY, BRANCH_NAME);
 
     assertThat(statusCode).isEqualTo(200);
-    // Since noBindingSuggestionFound now has a NoBindingSuggestionFoundParams parameter, we can just check for any!
+    //ACR-5f315cf7b1c44cb49077dcded2f3b33a
     verify(fakeClient, timeout(1000)).noBindingSuggestionFound(any());
     verify(fakeClient, never()).showIssue(any(), any());
   }
@@ -255,7 +255,7 @@ class OpenIssueInIdeMediumTests {
     var fakeServerWithIssue = fakeServerWithIssue(harness).start();
     var backend = harness.newBackend()
       .withSonarQubeConnection(CONNECTION_ID, fakeServerWithIssue)
-      // Both config scopes will match the Sonar project name
+      //ACR-68171cdf6e544caebbaade9e9219669d
       .withUnboundConfigScope("configScopeParent", SONAR_PROJECT_NAME)
       .withUnboundConfigScope("configScopeChild", SONAR_PROJECT_NAME, "configScopeParent")
       .withBackendCapability(EMBEDDED_SERVER)

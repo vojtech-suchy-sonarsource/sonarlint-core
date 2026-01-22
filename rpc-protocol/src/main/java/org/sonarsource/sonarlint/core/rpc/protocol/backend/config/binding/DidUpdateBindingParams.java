@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4a44736b27e94452890a28a9602cb585
+ACR-b2a4597e904541a68b7cdf6de0aa632e
+ACR-0d1d901e29294564bd9f1719fe534aa5
+ACR-4d20e4e35aec41f0bc9c59dd7f43ede5
+ACR-fcd7d3ddbe4b4443bc94264f30211d64
+ACR-aa9054412ef643f89de21c4f7e770fc1
+ACR-29d1881459da46e4a7de0a1c7e386094
+ACR-4137d154d0654c79a3720e1aae6a1e58
+ACR-a1d7f198e83d460d942c2f1ec5bd0444
+ACR-a862af3a1eb140f18868d87e5b5cf604
+ACR-465746610d33476e8bd367b756897ba9
+ACR-035c81c69d7f44b68cc3ac1db476044c
+ACR-7d8a6a36bd184ef89eb46f168d8f5c34
+ACR-7d065a2be3634af8ac3ffe9a21b01362
+ACR-96a3dc1a4e164310a55b4f5194ef2c28
+ACR-8950f5ba1e34419f8eb11f7a2d5b61f4
+ACR-0a7dd25d876d4ce99aff693c3a8567c9
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.config.binding;
 
@@ -26,25 +26,25 @@ public class DidUpdateBindingParams {
 
   private final String configScopeId;
   private final BindingConfigurationDto updatedBinding;
-  /**
-   * @deprecated As it's hard to obtain for some IDEs on this event.
+  /*ACR-6f8e0201df7b470c9fe3f8b0b7c05a70
+ACR-9330835545b5446cbb19f9c50ee402fd
    */
   @Deprecated(since = "10.37", forRemoval = true)
   @Nullable
   private final BindingMode bindingMode;
-  /**
-   * @deprecated As it's hard to obtain for some IDEs on this event.
+  /*ACR-45423bfd5f424149826e22b82d4f8f82
+ACR-d395ccd3414a44d19b5b28803a4d95ee
    */
   @Deprecated(since = "10.37", forRemoval = true)
   @Nullable
   private final BindingSuggestionOrigin origin;
 
 
-  /**
-   * @deprecated avoid calling this constructor if possible, since it will be removed once all the clients are migrated.
-   * Rely on the constructor without origin and bindingMode params instead as not IDEs can get this info at this point.
-   * For manual addition use {@link org.sonarsource.sonarlint.core.rpc.protocol.backend.telemetry.TelemetryRpcService#addedManualBindings()}
-   * For accepted suggestion use {@link org.sonarsource.sonarlint.core.rpc.protocol.backend.telemetry.TelemetryRpcService#acceptedBindingSuggestion(AcceptedBindingSuggestionParams)}
+  /*ACR-1f30e4e6277943ec9a8c97c06ae0c7cf
+ACR-4cb13207ce40489ebaae4221f99fa0a5
+ACR-756be2a61cf44481843ba76b09b763bc
+ACR-f016f7c94baa4303bb226d20d32f5679
+ACR-0ab970bd948d43edaec37b2f5f3a97e6
    */
   @Deprecated(since = "10.37", forRemoval = true)
   public DidUpdateBindingParams(String configScopeId, BindingConfigurationDto updatedBinding, BindingMode bindingMode, @Nullable BindingSuggestionOrigin origin) {

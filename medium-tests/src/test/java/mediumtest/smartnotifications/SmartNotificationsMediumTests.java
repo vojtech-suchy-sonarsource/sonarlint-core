@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3e7ef8f2c36349f5827de0864a0f2e43
+ACR-75ffd9a76f7349a686266af2a2a40a44
+ACR-66ca68013fc84bcba5bfec47b1f9e455
+ACR-cec8ba7e726048e98d988ffd7d4fcec8
+ACR-ca2507915b3047059f209b6a3476d30f
+ACR-e42e6f6d204940a884a953bd3ce36203
+ACR-5e756d8315854695be352af4193ec595
+ACR-bb763a5bd0cd4683b9c02d0bd2389a55
+ACR-0d28778373d8414bb00bdcb28422194e
+ACR-4db149a38a4c4aff9365265ace0227ce
+ACR-b8ecb46fcabe43ab8336ad22dab55b7c
+ACR-1539a17f9a4a4425b33fce2268961c76
+ACR-d465b896ba9c4e13a9a703339f9bb1e8
+ACR-b024b026282948938de0acd4b829f5a1
+ACR-ddb494e103a24b73a066eb56cc4f552e
+ACR-99ebbea5d45e493f8d4a1c4b5e108340
+ACR-97b23dddd1dd420186fb746785ecc588
  */
 package mediumtest.smartnotifications;
 
@@ -184,7 +184,7 @@ class SmartNotificationsMediumTests {
       .withBoundConfigScope("scopeId2", CONNECTION_ID, PROJECT_KEY)
       .withBoundConfigScope("scopeId3", CONNECTION_ID_2, PROJECT_KEY_2)
       .withBoundConfigScope("scopeId4", CONNECTION_ID, PROJECT_KEY_3)
-      // We have two bindings with the same project key, but on different connection, so it might be considered as different projects
+      //ACR-f22bf27b70b240c89556ccb13e57378b
       .withBoundConfigScope("scopeId5", CONNECTION_ID, PROJECT_KEY_4)
       .withBoundConfigScope("scopeId6", CONNECTION_ID_2, PROJECT_KEY_4)
       .withBackendCapability(SMART_NOTIFICATIONS)

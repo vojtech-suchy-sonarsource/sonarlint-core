@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-762372366cb1408f90349b7263b35c23
+ACR-327de24014304353a62f9e9cdc5bee13
+ACR-3ae918d7944a449f8a53483d3374892e
+ACR-0a940034553d4a4dad69e88a90b5780d
+ACR-e265f2a7ac8c46e6acc6739b6b353bf0
+ACR-5e1672e92ae14775a4bc7d5558c4989f
+ACR-6bac6fdb46914803846eb2ad84e169ec
+ACR-c676edd45adf4a0ead2417f85cb0b40e
+ACR-ce6f15d5d93141d2901757e7c51bd3d0
+ACR-46870cdf3cba4b478227cc6ea97ff7b3
+ACR-aa7057782c0449c1b9415b326c1edb67
+ACR-a5fcbb23e12b4725a62fa345e258b6af
+ACR-2b1a71d1f14c4a32bdfa289369bf98cc
+ACR-91bbed7acd9d4cd99ab183e1785b1b9e
+ACR-ea330ebfbcb442bb9ea8cedc4ddcffa4
+ACR-65bf7fe4844e49f7ba1667a33a20d794
+ACR-cf1f4dfef90c4f9587b8d23c22872bfd
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.analysis;
 
@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.rpc.protocol.backend.analysis.AnalyzeFilesAndTrackParams;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
-/**
- * @deprecated since 10.2, replaced by {@link org.sonarsource.sonarlint.core.rpc.protocol.client.issue.IssueLocationDto}
- * See {@link org.sonarsource.sonarlint.core.rpc.protocol.backend.analysis.AnalysisRpcService#analyzeFilesAndTrack(AnalyzeFilesAndTrackParams)}
+/*ACR-f0138a911e7a43398005020ad6b4f63f
+ACR-1720beb719314daca2cea670b62b3bd4
+ACR-dda04b53d787443698cea00faacbc8a4
  */
 @Deprecated(since = "10.2")
 public class RawIssueLocationDto {

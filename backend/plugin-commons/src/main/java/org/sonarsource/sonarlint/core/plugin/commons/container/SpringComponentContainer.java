@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ac2fc37f73294ad0af5f5e54188db6fa
+ACR-a4ccf0a87bbb4f9b88493a0df679a79e
+ACR-08a1dbaeeb684374a89aa8f9baed15e1
+ACR-8982bda6d3754064841a84578d5f9f1f
+ACR-f7a70d888a0242bda0e2242da36180b7
+ACR-4cd27e831c2e4367b32c785ac8332b2b
+ACR-7db56129e95e4f8d858bbd555c9ab515
+ACR-6269bb37c5974bccb892289a51eef250
+ACR-9d0e6e68e94d4500a268f9604e8843d9
+ACR-fd02037982b447349a3272549ef4928a
+ACR-3321648f7aba4123b2622944a7d9d0df
+ACR-3982ef8d325b4a7c9e3bf6f27b4e1cff
+ACR-4e306db8cd984dacac19cef3f4bae18f
+ACR-301ed0c0eacc46c7b574f6e40d24135f
+ACR-a8d8e52fe1da48df9f748a895ff01c1f
+ACR-f9af4853b0aa4b71944aa33b5d76bc83
+ACR-c73c41b032294793a44da4d2d60d2a35
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -82,12 +82,12 @@ public class SpringComponentContainer implements StartableContainer {
     add(propertyDefs);
   }
 
-  /**
-   * Beans need to have a unique name, otherwise they'll override each other.
-   * The strategy is:
-   * - For classes, use the classloader + fully qualified class name as the name of the bean
-   * - For instances, use the Classloader + FQCN + toString()
-   * - If the object is a collection, iterate through the elements and apply the same strategy for each of them
+  /*ACR-ef2e85f79c874a91bba201fbc088801c
+ACR-584b94b3e95f4bcc805c52e9ace5f1b2
+ACR-4e1f646c3c8a4412a959f0d3d8c700df
+ACR-bed5ebc137e4431daf066fa351c40183
+ACR-4b86f5ea3f9b4909b1823f305521e13b
+ACR-eaa052d4e3504cc5817101505a333e5b
    */
   @Override
   public Container add(Object... objects) {
@@ -111,10 +111,10 @@ public class SpringComponentContainer implements StartableContainer {
     context.registerBean(componentKeys.ofInstance(instance), clazz, supplier);
   }
 
-  /**
-   * Extensions are usually added by plugins and we assume they don't support any injection-related annotations.
-   * Spring contexts supporting annotations will fail if multiple constructors are present without any annotations indicating which one to use for injection.
-   * For that reason, we need to create the beans ourselves, using ClassDerivedBeanDefinition, which will declare that all constructors can be used for injection.
+  /*ACR-51fa486054434ae991fbfeb342ca9e98
+ACR-95fc8b50bae04134af4a81d38f42bdab
+ACR-70e45e8eb4e94a898383851f638d65ce
+ACR-b22fbcd987894a01a7e42515be6228d1
    */
   private void addExtension(Object o) {
     if (o instanceof Class<?> clazz) {
@@ -204,7 +204,7 @@ public class SpringComponentContainer implements StartableContainer {
   }
 
   private void stopChildren() {
-    // loop over a copy of list of children in reverse order
+    //ACR-3013a189828a43f392674fb5473cf013
     var childrenCopy = new ArrayList<>(this.children);
     Collections.reverse(childrenCopy);
     childrenCopy.forEach(SpringComponentContainer::stopComponents);
@@ -244,17 +244,17 @@ public class SpringComponentContainer implements StartableContainer {
     return this;
   }
 
-  /**
-   * This method aims to be overridden
+  /*ACR-d899d5258a2a42edb2fbf0a9d8061c4f
+ACR-eddff491e26f4005b43203300c8c9985
    */
   protected void doBeforeStart() {
-    // nothing
+    //ACR-941d8763c58149a480bc5a7f62a2aefc
   }
 
-  /**
-   * This method aims to be overridden
+  /*ACR-6b20d9da42a443e591c57b70e828e1a5
+ACR-975d867a5da946518e3b5e9a8d80ae56
    */
   protected void doAfterStart() {
-    // nothing
+    //ACR-7f949a4b14164de59a53f3ade5a9f90f
   }
 }

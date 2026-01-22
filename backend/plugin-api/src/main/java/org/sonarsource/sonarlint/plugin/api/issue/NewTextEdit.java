@@ -1,49 +1,49 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7cba71bf3ffd4ced97227243d798ab11
+ACR-1f75eb8e1a28498f9fa08be79c5cf3eb
+ACR-bccf019aa3fb45289545ba4b7aa12c50
+ACR-992fc89cd2bd44ca8dc02413c21ab4ac
+ACR-b5c5d097a97640138255a97452c975d9
+ACR-a1594a95c91948dab24eca6b82ba93b1
+ACR-06eae94a7d854b40a7dbd8ab34f1d605
+ACR-8503c15e4ada4a20a01e2e9619dd3478
+ACR-6ea40af79fe442cca37efc526744b888
+ACR-ff9dc939cabc4080b4226cec9701f2fc
+ACR-bc326c65c3d146b6b9663c08da42132b
+ACR-8903880645174beb87508ed2d5d8f89f
+ACR-b0352452d4244947a01afd1485a2eddb
+ACR-7c77ebab1bc84ddd8a7f53f47ae1fb71
+ACR-8e111121be76403493a4743f4354fec4
+ACR-84cd8d0718354188ad2e96e0f151f4bd
+ACR-4ca8ba458f694288a6faa48a4fa565ec
  */
 package org.sonarsource.sonarlint.plugin.api.issue;
 
 import org.sonar.api.batch.fs.TextRange;
 
-/**
- * Describe a text edit for a {@link NewInputFileEdit} as a replacement text for a given {@link TextRange}
- * @since 6.3
- * @deprecated use org.sonar.api.batch.sensor.issue.fix.NewTextEdit from the sonar-plugin-api instead
+/*ACR-9624695edaaa4f6d95095b92e6b59e82
+ACR-831c5def46954a5e87f1475707147c85
+ACR-704400ae5428451f90319915f469ba50
+ACR-2f195edeca70417fb906ad680f02bafe
  */
 @Deprecated(since = "8.12")
 public interface NewTextEdit {
 
-  /**
-   * @param range the range on which to apply this edit
-   * @return the modified edit
+  /*ACR-ddee19cb3c1d4405bddc91063b11e3a0
+ACR-2ed3ac3f4726488290c2c5dd7a537c2d
+ACR-3bdad91026844c22a2339cca13c4c500
    */
   NewTextEdit at(TextRange range);
 
-  /**
-   * Prior to 6.4, line returns had to be represented with the '\n' character.
-   * From 6.4 on, analyzers can use any EOL character they see fit, SonarLint takes care of adapting this to the one
-   * expected by the IDE.
-   * To remove code, use the empty string ("").
-   * When removing some code from the source file, make sure that no lines consisting only of whitespaces remain.
-   * If after the code is removed a non-whitespace character remains, place it at the same indentation level as the removed code.
-   * @param newText the replacement text.
-   * @return the modified edit
+  /*ACR-b08cb89e54ce4fcaab2fadc4d0df1c09
+ACR-f30876e930224200b2f074645b3bbb5a
+ACR-add6bd2c19fb46c0b8770620d6242ae3
+ACR-9603becef8a74a818bf2a06ebda29414
+ACR-8b723e01899044f5a7635933a9de3b68
+ACR-c85844394d724a74ba38dd82134f1177
+ACR-1ae917940c684eecbd1fbcb08ebcb360
+ACR-db3249490644405db0884fa5cd901d85
+ACR-277cce6ebaf44ded986f1e00d7932bc8
    */
   NewTextEdit withNewText(String newText);
 }

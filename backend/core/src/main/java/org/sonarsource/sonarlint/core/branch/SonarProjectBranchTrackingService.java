@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-89750465a0d74cdd83ba4d3cd3025dcf
+ACR-f2691278442b44fc8191556fe1bde164
+ACR-9431b9bf8a3b44a29f73d302d1804db2
+ACR-7e435b68d1254cd5a530dc912476ba40
+ACR-121f074c44bb45b1885b1b2befd77781
+ACR-802cb7ef7eb84cf7b9e7acffccd0b622
+ACR-84ddffdbf72443639393b8353bc8ced0
+ACR-95857db675c94033a75923f5c272cd68
+ACR-16c22e48b7b64e3db4fbffe71e200744
+ACR-834debc25f424afcbf8549a60ebe786f
+ACR-adc4143c4b974a498b8a659c22436b09
+ACR-11376b1bdbd9436abce81f7152b7bf63
+ACR-dbd1ae25c702424aa58708df14737c76
+ACR-baee1eb33fa24e13a64d31712d14dcca
+ACR-7552fc313de148feb325380c0cc93ec2
+ACR-6866c69f970841dc81b120891e4727b4
+ACR-68de50f8477e42d6bd277f949ddede99
  */
 package org.sonarsource.sonarlint.core.branch;
 
@@ -42,8 +42,8 @@ import org.sonarsource.sonarlint.core.sync.SonarProjectBranchesChangedEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 
-/**
- * This service keep track of the currently matched Sonar project branch for each configuration scope.
+/*ACR-9d3fa65c5d374d21be88c159dc47fc09
+ACR-857998cf5625434282e7fb31ad850393
  */
 public class SonarProjectBranchTrackingService {
   private static final SonarLintLogger LOG = SonarLintLogger.get();

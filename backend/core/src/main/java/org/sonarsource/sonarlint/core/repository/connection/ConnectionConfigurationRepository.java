@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-650dfbfa69fc41d2b24ecc9ab7619b66
+ACR-303fc713d85640c983ae3dadc5565e3b
+ACR-4ee771722bc343ccbd2201fc8aefa7ef
+ACR-6f9b17d072374904a2d9534868525f4b
+ACR-077e6b09c9af41e7b704e60796766772
+ACR-03309451871341a4ac280358900059fc
+ACR-6f90d5314b994eb0914bb0b16b938bec
+ACR-970baedd7f3e4cca9f14592473c8000f
+ACR-3f0bca103d7d4f949583bf041ccb9621
+ACR-b9342dd8ccdd459592f68a2fab27c37d
+ACR-a4eee4b66fa34a78b3033abbd76e24f8
+ACR-0174337d78374040a140f5d57edc623f
+ACR-4a7f8c3764d84aefb71021a29cf784b2
+ACR-c1d9961d25d140bea7143275e9d433af
+ACR-4a6088114fa94a4eac8a234b4e500dbb
+ACR-b2029622792d4e13a85be56252c777e8
+ACR-ef93ae21e46b45a49a01f11ea1b73849
  */
 package org.sonarsource.sonarlint.core.repository.connection;
 
@@ -31,18 +31,18 @@ public class ConnectionConfigurationRepository {
 
   private final Map<String, AbstractConnectionConfiguration> connectionsById = new ConcurrentHashMap<>();
 
-  /**
-   * Add or replace connection configuration.
-   * @return the previous configuration with the same id, if any
+  /*ACR-3d53b677098f4965969ac208de5a7aff
+ACR-0a19aca75f46478cbd1e0ba2deb4bcb8
+ACR-a8c117ce865d40a89039c6ff81480fde
    */
   @CheckForNull
   public AbstractConnectionConfiguration addOrReplace(AbstractConnectionConfiguration connectionConfiguration) {
     return connectionsById.put(connectionConfiguration.getConnectionId(), connectionConfiguration);
   }
 
-  /**
-   * Remove a connection configuration.
-   * @return the removed configuration, if any
+  /*ACR-4234954d747c4cc2b247843c66336157
+ACR-a5afe2d4f7c343b5b833dd50cc5c9e03
+ACR-fe0db131a9bf41dc912158f530929613
    */
   @CheckForNull
   public AbstractConnectionConfiguration remove(String idToRemove) {
@@ -63,10 +63,10 @@ public class ConnectionConfigurationRepository {
   }
 
   public boolean hasConnectionWithOrigin(String serverOrigin) {
-    // The Origin header has the following format: <scheme>://<host>(:<port>)
-    // Since servers can have an optional "context path" after this, we consider a valid match when the server's configured URL begins with the
-    // passed Origin
-    // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin
+    //ACR-7157029428634ec9b89ed7910eac39f0
+    //ACR-a4a22ad9c40e448386411a0570f02094
+    //ACR-c1c9a50835d74156836db7c59c35d325
+    //ACR-899c7f252a494f4399e616f18c33d7df
     return connectionsById.values().stream()
       .anyMatch(connection -> haveSameOrigin(connection.getUrl(), serverOrigin));
   }

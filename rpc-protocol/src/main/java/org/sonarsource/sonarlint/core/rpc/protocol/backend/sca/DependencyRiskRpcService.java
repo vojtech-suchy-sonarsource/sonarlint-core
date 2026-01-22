@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dc7e9bc8208a46e9bff8673818878cd5
+ACR-6e821281ac774284ab7b021109c81c3d
+ACR-6b38831ee5e2419598390becea451a10
+ACR-af172b773e4b4332b91dd244703f87b3
+ACR-dc1eec2b6a43457fb65c2ffde3d7ab2d
+ACR-547e2b7e66504e8bb1930caca66e187c
+ACR-570052f7de4e4f278225a6bbce4f9abe
+ACR-c99392d778794ab5afbf5c7427b60a72
+ACR-a99b245e85384517a18abe362c882c88
+ACR-068dab7917494b57b13b6c9f82b172c6
+ACR-a8764215497a46a1998cd48831ff5048
+ACR-17415c10f0464e778ea4961e69d7065d
+ACR-47a0db95ef564f14ba0c8da76e0df6c3
+ACR-a93f5c91937440f981a4dc53797fd38f
+ACR-244b5409aaa84569a2469d697146ed2d
+ACR-b4040ccac9d940c89ea6af2a5c386922
+ACR-dfb0955077d74702830dfd707aa71e35
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.sca;
 
@@ -27,30 +27,30 @@ import org.sonarsource.sonarlint.core.rpc.protocol.backend.tracking.ListAllParam
 @JsonSegment("dependencyRisk")
 public interface DependencyRiskRpcService {
 
-  /**
-   * Returns the list of dependency risks detected for the given configuration scopes.
+  /*ACR-27991bdf9ebd43258d00e821546a122a
+ACR-3172602e4d9c454e927529659836d19b
    */
   @JsonRequest
   CompletableFuture<ListAllDependencyRisksResponse> listAll(ListAllParams params);
 
-    /**
-   * <p> It changes a status of a Dependency Risk (SCA finding) that exists on the server. In detail, it is responsible for:
-   * <ul>
-   *   <li>Changes the status of a Dependency Risk (identified by {@link ChangeDependencyRiskStatusParams#getDependencyRiskKey()})</li>
-   *   <li>Updates the Dependency Risk status in the local storage</li>
-   *   <li>Calls the server to update the Dependency Risk status</li>
-   * </ul>
-   *</p>
-   * It returns a failed future if:
-   * <ul>
-   *   <li>the provided configuration scope (identified by {@link ChangeDependencyRiskStatusParams#getConfigurationScopeId()} is unknown</li>
-   *   <li>the connection bound to the configuration scope is unknown</li>
-   *   <li>the issueReleaseKey is not found in the local storage</li>
-   *   <li>the Dependency Risk is not found either on the server or in the local storage for issues</li>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   *   <li>the transition is ACCEPT, FIXED, or SAFE, but no comment is provided</li>
-   * </ul>
-   * </p>
+    /*ACR-100c3442746047e0b27cc252f5926e3f
+ACR-67abb25f53f1414ab4627dbba503f4d2
+ACR-e29ac905659e4c1ba5539bbd39d85bf8
+ACR-7edb0621ce404375949517332687ecd1
+ACR-c6859b27cc144f62b62f2e024ed1cf1e
+ACR-4342a222707f4cc7adafffd7c56a0cae
+ACR-095db74b8ec441bf8dbb39903f72933b
+ACR-2b143b0d8a144524bca4347fa9a1b95c
+ACR-a5b51c2ade6f41d7b75d33351b544789
+ACR-78020ea966ac4dcfb90a3da52bdcc952
+ACR-66d24f32f5964b23a9cedcd5def128ba
+ACR-b33e99fa343f4589a90f004b9b628b1b
+ACR-10af353cf95f4893864da7521c6f44ae
+ACR-de9d019973be424f8955acf8996d6e92
+ACR-88197453d23743f096e1bed56a758325
+ACR-003f6a6c6d97490d99ce240e011c2ea3
+ACR-5d60b6e1def54aedb334e08780675501
+ACR-35e961c064204d1e8068fa238df94817
    */  
   @JsonRequest
   CompletableFuture<Void> changeStatus(ChangeDependencyRiskStatusParams params);
@@ -58,15 +58,15 @@ public interface DependencyRiskRpcService {
   @JsonRequest
   CompletableFuture<Void> openDependencyRiskInBrowser(OpenDependencyRiskInBrowserParams params);
 
-  /**
-   * Checks if the dependency risk feature is supported for the given configuration scope.
-   * Reasons for not being supported include:
-   * <ul>
-   *   <li>Invalid connection or binding</li>
-   *   <li>Not using version 2025.4 or higher</li>
-   *   <li>Not using edition Enterprise or higher</li>
-   *   <li>Not using Advanced Security (SCA not enabled)</li>
-   * </ul>
+  /*ACR-a2a71a6781fb44e8afec2fad7d28b860
+ACR-586b3e7742924302937b0c8c836efb63
+ACR-ed72ed83cc5249f8be7ceb74cb2d96db
+ACR-9879924e657c40b88fe643fe005d5d61
+ACR-473f23bb626445dfa39f2246f8ba1893
+ACR-4d6108a483df4f9aacf459ef56be5aef
+ACR-dbb5796c2c75417a92a522388fc15e98
+ACR-86c40fb1d1544f449673cea11f371057
+ACR-f09318c3ae9f40daa26f6f7dbccd0761
    */
   @JsonRequest
   CompletableFuture<CheckDependencyRiskSupportedResponse> checkSupported(CheckDependencyRiskSupportedParams params);

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6d86646310cb491ebf6407b58bff9370
+ACR-53a2c8883dbc4b9fb2c32dc3c351e175
+ACR-3683b86348814d49a708bc656d474aa1
+ACR-14428074026749d98d05c12849d9a097
+ACR-43b71c4416764e43b37f9a43bc8867fe
+ACR-89849798a1f44c6e8d7e2a307c72eef1
+ACR-7e5b73e8d55e459a86a213fa88b162e8
+ACR-e1e4c7345e8f4de3971c3b166f818bd6
+ACR-540e82f1536c4816a49e3a5aee07458e
+ACR-c6e74a44540943b08ec935ff0a3886ca
+ACR-de2c42848fe34e8baa6f1cf7c1ed0325
+ACR-83471b3f05124c02a373c618cad833cd
+ACR-dc2d0e5d0c914c15a3cb4fc11f391146
+ACR-cfdcca1af6c54fdd98cf2e45a18a0fba
+ACR-bbaf001228e24f6cb791df0435c0c55a
+ACR-fa9d614743f147b7aab66ab30a269e12
+ACR-0f94783463ea46ca8977e95d15d07458
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -108,7 +108,7 @@ class TelemetryManagerTests {
 
     var reloaded = storageManager.tryRead();
 
-    // should reset performance after upload
+    //ACR-d62efd1d428f4e94bb603ab137f74aab
     assertThat(reloaded.analyzers()).isEmpty();
 
     var lastUploadTime = reloaded.lastUploadTime();
@@ -176,7 +176,7 @@ class TelemetryManagerTests {
     var data = storageManager.tryRead();
     assertThat(data.enabled()).isFalse();
 
-    // note: the manager hasn't seen the saved data
+    //ACR-7fb1ddec0c4f47d285993461ffc5f435
     telemetryManager.enable(telemetryLiveAttributes);
 
     var reloaded = storageManager.tryRead();
@@ -196,7 +196,7 @@ class TelemetryManagerTests {
     var data = storageManager.tryRead();
     assertThat(data.enabled()).isTrue();
 
-    // note: the manager hasn't seen the saved data
+    //ACR-7fa7901e4e3841ce9e955cf22fb39898
     telemetryManager.disable(telemetryPayload);
 
     var reloaded = storageManager.tryRead();

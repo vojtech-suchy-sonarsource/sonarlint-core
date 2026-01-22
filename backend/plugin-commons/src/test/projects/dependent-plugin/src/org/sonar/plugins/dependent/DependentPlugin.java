@@ -6,12 +6,12 @@ import org.sonar.plugins.base.api.BaseApi;
 
 public class DependentPlugin implements Plugin {
   public DependentPlugin() {
-    // uses a class that is exported by base-plugin
+    //ACR-957386bfa13f42e4a5d46f2a96595af0
     new BaseApi().doNothing();
   }
 
   @Override
   public void define(Context context) {
-    // no extensions
+    //ACR-e9c9ce7617ac4490918334dbd3ca62c8
   }
 }

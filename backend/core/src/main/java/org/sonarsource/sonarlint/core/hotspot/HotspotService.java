@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-27f44c358a5d48eab4b1a2f55874b5d1
+ACR-7db86a2ecdb24513a346f5acbc6651dd
+ACR-e6cd619eec4646a5bdbfb3326e9d926f
+ACR-031eaa857e174a7e8273c4716ad0d1e7
+ACR-9649986f4f9a49e88b369838ff2f2ee0
+ACR-b19d1d622f464f03b3e5dc3dfc761721
+ACR-c09253f22a814286a62c24afb36e7699
+ACR-6dc21232693549f38e05ff23136ba1eb
+ACR-b9da49c710bd4b73ba514f54241bffee
+ACR-1363eb2f83e84ce48c3da3a54ffac1bd
+ACR-c763113979e847a9a41a0e47a70868b7
+ACR-60114b6e73d6413f87fc81913146c0bd
+ACR-236f1af709ad42f59d652dccdb272c75
+ACR-adc7a2c664cd4ed8a1a93dd4b94cfc42
+ACR-e1188127ca9a44c28d1a6bb95362ca4e
+ACR-72935ed2bb6a4389ba6a7e88c571f508
+ACR-18d03a8350a24877bcfe58f61ab54198
  */
 package org.sonarsource.sonarlint.core.hotspot;
 
@@ -121,13 +121,13 @@ public class HotspotService {
   }
 
   public CheckStatusChangePermittedResponse checkStatusChangePermitted(String connectionId, String hotspotKey, SonarLintCancelMonitor cancelMonitor) {
-    // fixme add getConnectionByIdOrThrow
+    //ACR-88759afbe81d4cbd850a4f7fe7927dc8
     var connection = connectionRepository.getConnectionById(connectionId);
     var r = sonarQubeClientManager.getClientOrThrow(connectionId)
       .withClientApiAndReturn(serverApi -> serverApi.hotspot().show(hotspotKey, cancelMonitor));
     var allowedStatuses = HotspotReviewStatus.allowedStatusesOn(connection.getKind());
-    // canChangeStatus is false when the 'Administer Hotspots' permission is missing
-    // normally the 'Browse' permission is also required, but we assume it's present as the client knows the hotspot key
+    //ACR-7dbc23bc890e4ec183619d15d0d560e2
+    //ACR-b7dd7503410947ceb22159421c15df83
     return toResponse(r.canChangeStatus, allowedStatuses);
   }
 
@@ -135,7 +135,7 @@ public class HotspotService {
     return new CheckStatusChangePermittedResponse(canChangeStatus,
       canChangeStatus ? null : REVIEW_STATUS_UPDATE_PERMISSION_MISSING_REASON,
       coreStatuses.stream().map(s -> HotspotStatus.valueOf(s.name()))
-        // respect ordering of the client-api enum for the UI
+        //ACR-664c30266e38449ca09ae3ba18120a2c
         .sorted()
         .toList());
   }
@@ -181,7 +181,7 @@ public class HotspotService {
       updateStorage(connectionId, hotspotClosedEvent);
       republishPreviouslyRaisedHotspots(connectionId, hotspotClosedEvent);
     } else if (serverEvent instanceof SecurityHotspotRaisedEvent hotspotRaisedEvent) {
-      // We could try to match with an existing hotspot. But we don't do it because we don't invest in hotspots right now.
+      //ACR-a5b35e263a0c4f309989c30e3a024903
       updateStorage(connectionId, hotspotRaisedEvent);
     }
   }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-45521c289c37465988880c44eb22ed48
+ACR-badca0efa0354b4b8d13bbfef39b643c
+ACR-6f2fd9fc2d9d4a9797821c680bfbc189
+ACR-29f826589ac845aeb8d402daa78e40bb
+ACR-0c49df058d6e430996f3ba7d5382b625
+ACR-992311b4149a44fd8740b1119a37abf3
+ACR-8af52a6dc489464ab07452b614b9fd55
+ACR-81688731e66f4bc1a445850626f832b1
+ACR-e58e7b616b6a446fa5a144a4fab39001
+ACR-c8af35cef6f34ab29c42189437ebb87e
+ACR-094aea832a3d4230bb4a0f46b3db4fac
+ACR-ed738018e9fa4c4f916563c9c68cf71e
+ACR-aa284df5463147398d53b31f2e3ee410
+ACR-b3b1e85610cf4d0a89542450e041e9b4
+ACR-9c628e58e14f4f0f87220f4f24a21fae
+ACR-c94e10bcaf944c838151c75bbf511e78
+ACR-8e5343dc6b1247c3ba186ffa44e3d5e5
  */
 package org.sonarsource.sonarlint.core.plugin.commons.sonarapi;
 
@@ -45,7 +45,7 @@ public class MapSettings extends Settings {
   private final ConfigurationBridge configurationBridge;
   private final PropertyDefinitions definitions;
 
-  // For testing
+  //ACR-0eeba6cabc3341d9ae67ead0ac99e92a
   public MapSettings(Map<String, String> props) {
     this(new PropertyDefinitions(System2.INSTANCE), props);
   }
@@ -66,36 +66,36 @@ public class MapSettings extends Settings {
     return props;
   }
 
-  /**
-   * The value that overrides the default value. It
-   * may be encrypted with a secret key. Use {@link #getString(String)} to get
-   * the effective and decrypted value.
-   *
-   * @since 6.1
+  /*ACR-5a0e3ac02b1a4cfe92c80cff9e1038af
+ACR-6b514d1c780c434d95b7bd6eee19562c
+ACR-f2a1685ccca646e79a80866dff432252
+ACR-492ad8781fc34f44943647b5cff1db44
+ACR-6d16ddf53a26441fb89f7f39a8eaa108
+ACR-293fc46522634536aae895e5fbfb7d6b
    */
   public Optional<String> getRawString(String key) {
     return get(definitions.validKey(requireNonNull(key)));
   }
 
-  /**
-   * All the property definitions declared by core and plugins.
+  /*ACR-e4f5d5a8cc23444db8fe31688f6b804d
+ACR-1f27418a5fc4402ba173417f136df30e
    */
   public PropertyDefinitions getDefinitions() {
     return definitions;
   }
 
-  /**
-   * The definition related to the specified property. It may
-   * be empty.
-   *
-   * @since 6.1
+  /*ACR-4f41f1d44dd64d90b88ce9d481d8cd01
+ACR-0f58165279234707a880f7aaeac00b89
+ACR-baf227b98fec4d5d9ced498d5af2ff37
+ACR-5448c57d3efe4d2b9c40bc3649f4a83b
+ACR-3f123dd190494e31be5ecb66620ff764
    */
   public Optional<PropertyDefinition> getDefinition(String key) {
     return Optional.ofNullable(definitions.get(key));
   }
 
-  /**
-   * @return {@code true} if the property has a non-default value, else {@code false}.
+  /*ACR-d9736e8ce61e4e5e8b1d64e9b20a4699
+ACR-f17cd5fa75014d0596716c8c357eac2f
    */
   @Override
   public boolean hasKey(String key) {
@@ -111,31 +111,31 @@ public class MapSettings extends Settings {
     return StringUtils.isNotEmpty(getDefaultValue(key));
   }
 
-  /**
-   * The effective value of the specified property. Can return
-   * {@code null} if the property is not set and has no
-   * defined default value.
-   * <p>
-   * If the property is encrypted with a secret key,
-   * then the returned value is decrypted.
-   * </p>
-   *
-   * @throws IllegalStateException if value is encrypted but fails to be decrypted.
+  /*ACR-7310330cb021444dae4e0335b89a1b15
+ACR-6fc7572f08ae4426893a3b63dc02af78
+ACR-731e45f5dc854b6ca9bc13ea33ef4833
+ACR-6237bc3086aa45c3b6d4ad846f403b7f
+ACR-b2c458107a1d4c66af967950b6ea93a2
+ACR-89ea92772d494eea872bb1d867d39bdc
+ACR-2a598d9d52984265a77d793cbf55772f
+ACR-62c4b6f9e7d647998dc5bddc05f4d5ef
+ACR-b0a685b305db4623a32d49aa1eb3187a
+ACR-eee91f356b6240c8adf50aa412ac7133
    */
   @CheckForNull
   @Override
   public String getString(String key) {
     var effectiveKey = definitions.validKey(key);
-    // default values cannot be encrypted, so return value as-is.
+    //ACR-615535cae8a74bd88e48316ea8e9e45b
     return getRawString(effectiveKey)
       .orElseGet(() -> getDefaultValue(effectiveKey));
   }
 
-  /**
-   * Effective value as boolean. It is {@code false} if {@link #getString(String)}
-   * does not return {@code "true"}, even if it's not a boolean representation.
-   *
-   * @return {@code true} if the effective value is {@code "true"}, else {@code false}.
+  /*ACR-cf7690b48673416191833917983cb99a
+ACR-6b1468b46ec24bcc800a6b7a3872e8bd
+ACR-b2b8ddee6b6844d99779a3077d4b0ad4
+ACR-d476e7b4fc814aeb9598ae91ab5be036
+ACR-55c4381f0b374b119d76535c6120600b
    */
   @Override
   public boolean getBoolean(String key) {
@@ -143,11 +143,11 @@ public class MapSettings extends Settings {
     return StringUtils.isNotEmpty(value) && Boolean.parseBoolean(value);
   }
 
-  /**
-   * Effective value as {@code int}.
-   *
-   * @return the value as {@code int}. If the property does not have value nor default value, then {@code 0} is returned.
-   * @throws NumberFormatException if value is not empty and is not a parsable integer
+  /*ACR-f4e3c68da8c847539a2df91917d2a25a
+ACR-e3133a54202b46edad09580ca23dc644
+ACR-8c51b4bc8efa45d79701fa53e5b373ee
+ACR-5d5f6430b1ae4bda9ce3c1e466470c6f
+ACR-ae4303b387b04c4b9111449a1ecdb4c4
    */
   @Override
   public int getInt(String key) {
@@ -158,11 +158,11 @@ public class MapSettings extends Settings {
     return 0;
   }
 
-  /**
-   * Effective value as {@code long}.
-   *
-   * @return the value as {@code long}. If the property does not have value nor default value, then {@code 0L} is returned.
-   * @throws NumberFormatException if value is not empty and is not a parsable {@code long}
+  /*ACR-d220396fe8124e2493e77a1c11e4c938
+ACR-4ee99f70b47d4e70a417f3e01a9c1087
+ACR-ce43e33157464c88be90ae7d137437dc
+ACR-a21afcdcc45e402ea349224adc9216ab
+ACR-bca4d14692f8473c994e27fe9de00f68
    */
   @Override
   public long getLong(String key) {
@@ -173,11 +173,11 @@ public class MapSettings extends Settings {
     return 0L;
   }
 
-  /**
-   * Effective value as {@link Date}, without time fields. Format is {@link DateUtils#DATE_FORMAT}.
-   *
-   * @return the value as a {@link Date}. If the property does not have value nor default value, then {@code null} is returned.
-   * @throws RuntimeException if value is not empty and is not in accordance with {@link DateUtils#DATE_FORMAT}.
+  /*ACR-9a4f68d4bbc840d2a1bf13cecb4cd6ff
+ACR-3b72188c63ac45eebc724542e3251bab
+ACR-b9bb08f8742649b7a8be75237aa35bc9
+ACR-b38c46d385544210b97232e8d808008f
+ACR-47122f1f9dca438bb9df349d7776610c
    */
   @CheckForNull
   @Override
@@ -189,11 +189,11 @@ public class MapSettings extends Settings {
     return null;
   }
 
-  /**
-   * Effective value as {@link Date}, with time fields. Format is {@link DateUtils#DATETIME_FORMAT}.
-   *
-   * @return the value as a {@link Date}. If the property does not have value nor default value, then {@code null} is returned.
-   * @throws RuntimeException if value is not empty and is not in accordance with {@link DateUtils#DATETIME_FORMAT}.
+  /*ACR-896f4e136a3f41078fea551c0be5dd5b
+ACR-2ac706cd2a034abf86d80dea39afb072
+ACR-56d221a648064cfd944297d05f173227
+ACR-108e9fcc326140208d1232a3aad8bd81
+ACR-3ddef463561e4281812e1ee098dce48b
    */
   @CheckForNull
   @Override
@@ -205,11 +205,11 @@ public class MapSettings extends Settings {
     return null;
   }
 
-  /**
-   * Effective value as {@code Float}.
-   *
-   * @return the value as {@code Float}. If the property does not have value nor default value, then {@code null} is returned.
-   * @throws NumberFormatException if value is not empty and is not a parsable number
+  /*ACR-363a2a008f9f487685aac2203eb55f58
+ACR-d7f15250ffc541ca9722218008c68a18
+ACR-8120b2e9111946178d96c177b7516c9d
+ACR-cea6c6aab84c4cd49402f4e51fcded31
+ACR-d46c4452a46943a1b2f039644389bf1a
    */
   @CheckForNull
   @Override
@@ -225,11 +225,11 @@ public class MapSettings extends Settings {
     return null;
   }
 
-  /**
-   * Effective value as {@code Double}.
-   *
-   * @return the value as {@code Double}. If the property does not have value nor default value, then {@code null} is returned.
-   * @throws NumberFormatException if value is not empty and is not a parsable number
+  /*ACR-fc123baee7c24fc58c7b85bad74da575
+ACR-52d09eb403504a8c8f94229dc89c99cb
+ACR-c7bb480c2b624e4ea79f7dcaca5e3c9a
+ACR-250ec8c7cc4a4e09903acb59e6dd5842
+ACR-ce9637b24d8444dda1c033b8f4c137ae
    */
   @CheckForNull
   @Override
@@ -245,15 +245,15 @@ public class MapSettings extends Settings {
     return null;
   }
 
-  /**
-   * Value is split by comma and trimmed. Never returns null.
-   * <br>
-   * Examples :
-   * <ul>
-   * <li>"one,two,three " -&gt; ["one", "two", "three"]</li>
-   * <li>"  one, two, three " -&gt; ["one", "two", "three"]</li>
-   * <li>"one, , three" -&gt; ["one", "", "three"]</li>
-   * </ul>
+  /*ACR-aaa4014843dc480697d22c4d83884bc8
+ACR-5f517c661ec84b6ba1ab6481f76cf3dd
+ACR-afb2212a053a407ca14eff59e8b63884
+ACR-69ae81f638924637904ad5af438163ff
+ACR-8a7c094181884f7d99da36bbea00ea7a
+ACR-30e2040f18034b17bcf1537da4b0f1e0
+ACR-c2c81d95d9f24779a4b1ac9c1eb6fd19
+ACR-756cd5bfe4d349faad4fcb219991d0b4
+ACR-48d40029a40c415f88095a2d44eea9a8
    */
   @Override
   public String[] getStringArray(String key) {
@@ -271,11 +271,11 @@ public class MapSettings extends Settings {
     return getStringArrayBySeparator(key, ",");
   }
 
-  /**
-   * Value is split by carriage returns.
-   *
-   * @return non-null array of lines. The line termination characters are excluded.
-   * @since 3.2
+  /*ACR-2289787c317c4046817427570f948a31
+ACR-79007c3932784d51809834946ab7264f
+ACR-d624e630619f4d2395e56ea980d1aa1a
+ACR-c13a8a2ce1534d6dbd18c5b96889bac7
+ACR-84f60824e8d546509938751e5d350183
    */
   @Override
   public String[] getStringLines(String key) {
@@ -286,8 +286,8 @@ public class MapSettings extends Settings {
     return value.split("\r?\n|\r", -1);
   }
 
-  /**
-   * Value is split and trimmed.
+  /*ACR-f144c431f6bf4dc3add5bf4c8a61f602
+ACR-f7a70ae07a1346649c344a229995a6bc
    */
   @Override
   public String[] getStringArrayBySeparator(String key, String separator) {
@@ -310,9 +310,9 @@ public class MapSettings extends Settings {
       .toList();
   }
 
-  /**
-   * @return a {@link Configuration} proxy on top of this existing {@link Settings} implementation. Changes are reflected in the {@link Configuration} object.
-   * @since 6.5
+  /*ACR-2a7170d6b44241688b52c98701cf1d82
+ACR-105d30d92424440ea64e6b8e2b6cc30e
+ACR-3cff711fc50e4858a817fc2c3604633d
    */
   public Configuration asConfig() {
     return configurationBridge;

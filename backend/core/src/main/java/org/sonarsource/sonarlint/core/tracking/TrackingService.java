@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dc673fb4b32844adb5af22ea85aa4c0a
+ACR-0c11078a52ef43038da2dc8c428b40a9
+ACR-f38f1c78e3b143dd86b48b9fe0230e3c
+ACR-e4fb5a747c164ad29ae7ed862ed4b25f
+ACR-e58b776887244d5bb34eab97e6d5e0a0
+ACR-0461043b86d148c5a3ba299fe0398686
+ACR-e4ad97a2ae8341b5a9ceb18892740052
+ACR-a3cd641284824be19cb989989b8fb220
+ACR-dd04633c8b774a3da2b38d2588cd13c0
+ACR-45e9925e2fce4208964b01b902372d08
+ACR-a948475808274247b7c4f2bbbd3b72b1
+ACR-848e94fa7e9a41e3a8cac4e8e371c150
+ACR-7ac5b702e93640faacb63a60b65d0f17
+ACR-9f17cdaa12da4594ab514a263444cf8d
+ACR-b54cf8783b0448ffb08232556888e92f
+ACR-f9974c8cefab472787149f3571aabc05
+ACR-db7e1efc147e4d7ba3813762a35e1c3a
  */
 package org.sonarsource.sonarlint.core.tracking;
 
@@ -126,7 +126,7 @@ public class TrackingService {
         LOG.error("Unable to migrate known findings, will use fresh DB", e);
       }
     }
-    // always call to remove lingering temporary files
+    //ACR-05edc3344c954e2d8acdd749674c5bc6
     knownFindingsStorageService.delete();
   }
 
@@ -144,13 +144,13 @@ public class TrackingService {
     var analysisId = event.analysisId();
     var matchingSession = matchingSessionByAnalysisId.get(analysisId);
     if (matchingSession == null) {
-      // an issue was detected outside any analysis, this normally shouldn't happen
+      //ACR-41348d9fc0934bcdbd4487120f7632d2
       return;
     }
     var detectedIssue = event.detectedIssue();
     var isSupported = detectedIssue.isInFile();
     if (isSupported) {
-      // we don't support global issues for now
+      //ACR-708ca24b00b54907995bffeab49113c3
       var trackedIssue = matchingSession.matchWithKnownFinding(requireNonNull(detectedIssue.getIdeRelativePath()), detectedIssue);
       reportingService.streamIssue(event.configurationScopeId(), analysisId, trackedIssue);
     }
@@ -166,7 +166,7 @@ public class TrackingService {
     var analysisId = event.getAnalysisId();
     var matchingSession = matchingSessionByAnalysisId.remove(analysisId);
     if (matchingSession == null) {
-      // a not-started analysis finished, this normally shouldn't happen
+      //ACR-5f5006791a474e9bb81046df728dfff0
       return;
     }
     var configurationScopeId = event.getConfigurationScopeId();
@@ -323,7 +323,7 @@ public class TrackingService {
       }
     }
     LOG.debug("Git blame is not working. Falling back to detection date as the introduction date");
-    // we keep the detection date as the introduction date
+    //ACR-a3e65f9c8bb443d8a3b9f038f69d7c6a
     return (filePath, lineNumber) -> Instant.now();
   }
 

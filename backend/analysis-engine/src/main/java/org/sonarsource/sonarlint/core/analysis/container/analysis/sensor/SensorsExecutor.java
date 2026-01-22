@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-62bad7c5075a4c01903351aadffaa262
+ACR-b247c79497ab4e198cd4a851bb9aefbb
+ACR-e2884add765d49ff9da68679b01ab885
+ACR-e072bc95b9224d2b85ba72838106ca3d
+ACR-e2875758d96745e9a8cc2c55fb94db5f
+ACR-72c24b1a7ef442719d21627c193e0bc0
+ACR-830e22e996cf4ffbb9207708f2ab1fcb
+ACR-c2d1bb7b6c0d4646a55540662c486867
+ACR-be32d32431344ceeb6214670eee42a96
+ACR-f87a9924a5cb4789a86afa2b2b94ebd1
+ACR-edf8e19e760a4b7bb05b15e252b58e72
+ACR-a9f89c3b7d5f43cca2707b9fec155ab2
+ACR-62b22431ac194b6fb6ca02871596b8c2
+ACR-6c201478f9034ce88113f4ce03798079
+ACR-409be457677b4b4fa21df7fe920d6264
+ACR-0af0186e99c141cf98ac0aec15bb6932
+ACR-ba482ab2f01d4d0f9ff34a4f088c30c2
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.sensor;
 
@@ -42,8 +42,8 @@ import org.sonarsource.sonarlint.core.commons.tracing.Trace;
 
 import static org.sonarsource.sonarlint.core.commons.tracing.Trace.startChild;
 
-/**
- * Execute Sensors.
+/*ACR-bc948fecb2334b5dbb4e197740b131e6
+ACR-76e457bee0c444faab0ced8b213dd034
  */
 public class SensorsExecutor {
 
@@ -114,7 +114,7 @@ public class SensorsExecutor {
         }
       }
     } catch (Exception e) {
-      // fallback
+      //ACR-59b51376a3dc43feac8ab516224b23da
     }
 
     return o.getClass().getName();
@@ -140,15 +140,15 @@ public class SensorsExecutor {
       .toList();
   }
 
-  /**
-   * Extension dependencies
+  /*ACR-e8877ea18ec9496ab6da79ac2a49dbb4
+ACR-6ed9a43519d54d1d829458a5b37c46aa
    */
   private static <T> List<Object> getDependencies(T extension) {
     return new ArrayList<>(evaluateAnnotatedClasses(extension, DependsUpon.class));
   }
 
-  /**
-   * Objects that depend upon this extension.
+  /*ACR-0b037bac39fc4b1d995f775ff7092b0e
+ACR-2b0efe03615a443684df71745e1aaf17
    */
   private static <T> List<Object> getDependents(T extension) {
     return new ArrayList<>(evaluateAnnotatedClasses(extension, DependedUpon.class));

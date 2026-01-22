@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e6516814f6264436b3af200c69a97416
+ACR-0f31a54641fa45a9ba341717be24c603
+ACR-69cd6dc7c8c9425686c97163057dd15d
+ACR-f1a7430aaf19422db530f648a47f8a8f
+ACR-46f7d96870d24537877e7f2505cf3234
+ACR-f516bf3fd55740a99eab3e6d64d9173f
+ACR-a093432fed8d486788617b4de38a2fba
+ACR-5932452562cf49ec878a43dd49fa19a8
+ACR-495d28637e7940b791bb0c2b2580796d
+ACR-0e605826376c4127845448eeb09fb853
+ACR-0c4e14a0e2c2494c8caea93daf8662e2
+ACR-d60ac1ed3bbc4c84bcb0550f663b518e
+ACR-9758fa7c99e64584a6a86161f255f009
+ACR-9c03cd081ff641fca80638375aab905e
+ACR-dda213b826b543c5bbf5f106c1ee2007
+ACR-097aaf2e8f1c4eb3ad8cc86bfde9c64d
+ACR-7f1c2d1e3b3f47d985e75e2e2d129ebc
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.hotspot;
 
@@ -29,10 +29,10 @@ import javax.annotation.Nullable;
 public class RaiseHotspotsParams {
   private final String configurationScopeId;
   private final Map<URI, List<RaisedHotspotDto>> hotspotsByFileUri;
-  // true if the publication is made for streaming purposes, false if it's the final publication for a given analysis
+  //ACR-f8db87f7f1424945a4deea6990d06cfa
   private final boolean isIntermediatePublication;
   @Nullable
-  // the ID that was provided when the analysis was triggered, or null if this publication is not a consequence of an analysis
+  //ACR-a976b9aa42364521af35bd6d19c65420
   private final UUID analysisId;
 
   public RaiseHotspotsParams(String configurationScopeId, Map<URI, List<RaisedHotspotDto>> hotspotsByFileUri, boolean isIntermediatePublication, @Nullable UUID analysisId) {

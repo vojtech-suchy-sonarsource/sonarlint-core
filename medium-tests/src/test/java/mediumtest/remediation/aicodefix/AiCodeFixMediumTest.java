@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2f527c2af1bf4f239e4f23c2aedd5d3a
+ACR-25d12634e1b84cd8a567e17f5d6343dc
+ACR-4de39d04c1e341e5a91d3e0750a8303f
+ACR-7402e110e7934848a2eade4460a30c13
+ACR-d80aad62eaf94b5ea8b8346a86a57448
+ACR-aad4379c5d0544bd9c240a3a540c76e0
+ACR-c5740a5e7593475592fadb8d35648e9b
+ACR-299ebc7418e34595b55bbbd164f4950e
+ACR-2ee467d9d2534a028644d09bae146fae
+ACR-bac29c5ee27f4ff08ba83cfaa464a46e
+ACR-4183055ac49145fd8d0233b3acced3f0
+ACR-57a99a2299d44015b1aaed0a3699dc26
+ACR-d36265dee23a4fdba0c963607b7d7437
+ACR-d077e9924169408ba16dc1e3f6d69b70
+ACR-ac2a969e597a4ebeaccf6c27b3318bed
+ACR-40b82e15377d43e7a4b0bdeefe1d0e34
+ACR-b61e117f415d429691dbfa2df0297057
  */
 package mediumtest.remediation.aicodefix;
 
@@ -161,7 +161,7 @@ public class AiCodeFixMediumTest {
       .start(fakeClient);
     var issue = analyzeFileAndGetIssue(fileUri, fakeClient, backend, "configScope");
     backend.getFileService().didUpdateFileSystem(new DidUpdateFileSystemParams(List.of(), List.of(), List.of(fileUri)));
-    // leave time for the notification to be received by the backend
+    //ACR-446622e4629743c8bb89ebbc9a659140
     Thread.sleep(300);
 
     var future = backend.getAiCodeFixRpcService().suggestFix(new SuggestFixParams("configScope", issue.getId()));

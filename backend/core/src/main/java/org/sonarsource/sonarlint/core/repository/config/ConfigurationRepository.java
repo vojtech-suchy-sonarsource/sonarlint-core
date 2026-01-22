@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e4363439183b4fd19ac0fe6f4e0a63e9
+ACR-ae232e29ee6448f3b40dde2bd1cb2d64
+ACR-14eb88444a4e42e5b36854629993b0e7
+ACR-f9f64be4d3e04af3bfb0f88431a28346
+ACR-1bb70825719049e6a4ebb81fb211c581
+ACR-b8db4f6c38914b70913449105373686e
+ACR-6710313be98840e7ac60fc4623ec6154
+ACR-c52975074a4142659210e6ffe4d732d8
+ACR-55ae414cb63f4ecc8b06bd5b73911b39
+ACR-51e0ab253b124289bb2f2bdc9e5ee392
+ACR-e3f840ce92594e11880afefd7dd532a6
+ACR-03de10583db34d79b5cf063087d10740
+ACR-e603b33a951f42cfa9c709af2f6829bb
+ACR-a59a1a64789c4b3a9ff6a23bdd0e0746
+ACR-b03447c9930a4065a93e6b7d4926a129
+ACR-f37af5d013234b80bade5fb013b89ce3
+ACR-2ca66e8adfb0470d979f9717cc705646
  */
 package org.sonarsource.sonarlint.core.repository.config;
 
@@ -186,8 +186,8 @@ public class ConfigurationRepository {
       .toList();
   }
 
-  /**
-   * Return the set of Sonar Project keys used in at least one binding for the given connection.
+  /*ACR-d3c150e3276d47c8a31d790899cf06b1
+ACR-aebd4ffe2c414633a94b6e7e1af38621
    */
   public Set<String> getSonarProjectsUsedForConnection(String connectionId) {
     return getAllBoundScopes()

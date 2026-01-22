@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-12eb56b63a1c4ac3a7f61e106a7949af
+ACR-5f63e5d890fb4183baa499592deace18
+ACR-cefce29d8f864b68a8d686419a18fabe
+ACR-18f782317f5549109bf5f7f352ae6bea
+ACR-2608b8f0e1944b8bbaff3ef2ab1c421b
+ACR-cbdaceff16d6491da4dd56a0cb98587e
+ACR-3ec3818899a74a49a89ea4bb29f396e0
+ACR-ade655e5ea3c4b868bd97cbe4da7130c
+ACR-fac5ac5e8e1f415fa949b5a674d7277b
+ACR-24f49b0742af4f6e88751880e0ab8492
+ACR-c987e0fe8ac94aa6bd25d24d0cebc50c
+ACR-a8b1df54bf9848ef9ac6389b7e047477
+ACR-108488e4b6b146a385fe67f2425181e8
+ACR-b3b869cafcbf46a2bb28ab002269009e
+ACR-7802212cd02e4de8ab1fc356d0d5c877
+ACR-5f464337304f48c9a71e86dc9b5d3793
+ACR-629fdc0ed6064960a3709fa5ace56310
  */
 package org.sonarsource.sonarlint.core.tracking.streaming;
 
@@ -38,7 +38,7 @@ public class Alarm {
   }
 
   public void schedule() {
-    // if already scheduled, don't re-schedule
+    //ACR-5419c0efab90454586ab7f3220b3d99d
     if (scheduledFuture == null) {
       scheduledFuture = executorService.schedule(this::notifyEnd, duration.toMillis(), TimeUnit.MILLISECONDS);
     }

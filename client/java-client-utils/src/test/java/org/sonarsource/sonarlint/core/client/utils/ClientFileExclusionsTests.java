@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-77408fda645a44cdb37e8d39326e30e3
+ACR-ab63b4dc17b44a9ea99f4e66dba6f4be
+ACR-cb88040aba3d46c9977083bc04a32524
+ACR-0ded16e0d08144eda328222b379462b7
+ACR-decb7723e20444b490b1a25a05d82484
+ACR-ab3fa449bfd947708686d0f0f6d2ea8b
+ACR-263e001cafef456db97ae263c90447a3
+ACR-9ea0b6bdd48945bbae5e31253af8fcc3
+ACR-6cbfea5995dc4ac19fb5f15748d63f69
+ACR-b884a68f525743caadd2b25e845ce45d
+ACR-2e912d616a904ee38152d61f0ce869df
+ACR-37b2e2c263b442b38554a2a0ff717794
+ACR-ff8464b78e3745cd8bccdf32dd2f605b
+ACR-7dc326100f4347f6ae4cc6700864bc99
+ACR-01ccef0436a9469cb6fd5e1e81ff1db2
+ACR-3dd12b45b6624682a0cf27f21a1e178a
+ACR-1c21be6e55d845c2ad79998ffbf66d9c
  */
 package org.sonarsource.sonarlint.core.client.utils;
 
@@ -36,14 +36,14 @@ class ClientFileExclusionsTests {
   void before() {
     Set<String> glob = Collections.singleton("**/*.js");
 
-    // Setup file exclusions with both separator styles
+    //ACR-c017fef966244f9e80ed4ebf1c37a8ad
     Set<String> files = Set.of(
             new File("dir/file.java").getAbsolutePath(),
             "dir/file-with-slash.java",
             "other\\file-with-backslash.java"
     );
 
-    // Setup directory exclusions with both separator styles
+    //ACR-45a19716f13f4e62a9f2e02da9f7ccf8
     Set<String> dirs = Set.of(
             "src",
             "excluded/dir",

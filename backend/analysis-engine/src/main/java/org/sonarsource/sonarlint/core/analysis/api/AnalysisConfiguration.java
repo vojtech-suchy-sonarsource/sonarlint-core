@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-cbe19f882c3b44679b8aaa495f33dff1
+ACR-97921fd131984281970bb6a1f426182f
+ACR-a9494bd93a9b4293af1515da6f2727ba
+ACR-d459d352a82149aca0d505a3c44a44e2
+ACR-ed8e62444d364043b967f2aa791b0a6d
+ACR-6eb3a4b154854fc4acc17e83bb026356
+ACR-4d76143a8c61496a8f9b5a0c00717a70
+ACR-f5f6f940d94041288b3b91b6dc50cdd5
+ACR-a7b06afbb29c4248a4ac685e4d62407f
+ACR-ccdb09832b9d4c389401d2e5b45134b3
+ACR-0ff736a07d944e07bb8e67ec1e39553c
+ACR-ed7476756d794efb9e27b99fa37ce325
+ACR-6140132caf0f45cfadc5dd66082e51da
+ACR-a0cff621c53848c9a915302eab59216e
+ACR-fd3b4cb465904e6fa37568741ac579e2
+ACR-3efc1529083443b49cbb3fb38819a419
+ACR-99249fe0e0e7461b9b540dd354edf8f8
  */
 package org.sonarsource.sonarlint.core.analysis.api;
 
@@ -85,7 +85,7 @@ public class AnalysisConfiguration {
     if ("true".equals(System.getProperty("sonarlint.debug.active.rules"))) {
       sb.append("  activeRules: ").append(activeRules).append("\n");
     } else {
-      // Group active rules by language and count occurrences
+      //ACR-0cb57f3090314ca48e6410b7cbe4c032
       var languageCounts = new HashMap<String, Integer>();
       for (var rule : activeRules) {
         var languageKey = rule.ruleKey().toString().split(":")[0];
@@ -95,7 +95,7 @@ public class AnalysisConfiguration {
       sb.append("  activeRules: [");
       languageCounts.forEach((language, count) -> sb.append(count).append(" ").append(language).append(", "));
       if (!languageCounts.isEmpty()) {
-        // Remove the trailing comma and space
+        //ACR-5f3dca15f67b4cbca922c34f24de4ee2
         sb.setLength(sb.length() - 2);
       }
       sb.append("]\n");

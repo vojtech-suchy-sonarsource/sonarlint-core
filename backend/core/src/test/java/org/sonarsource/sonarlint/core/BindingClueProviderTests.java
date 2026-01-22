@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d7cd3417ce5f464f904638bb9ccbab8f
+ACR-832aca11757c4996ad650ee72e700d08
+ACR-727a02a528044e3e98b969c53d877460
+ACR-99a6fb7792c342799d44ce6dfca9a9d6
+ACR-59b4c665a4864bb4869e8a9a893ec7a7
+ACR-b66d4497e8da499296b162560b7b6519
+ACR-fef83af624a44508b8fe9bf6397446f8
+ACR-0ec26c0399e34622baeccdfee68bd974
+ACR-d6320ea090f24259908f8685e64f7646
+ACR-5e9d29fbc16e4409b5ec913cf2b96138
+ACR-abccfa6bfa3e46f894f8ebd1ae5edf68
+ACR-584c75a68aa3485684c5b19bf7b49aea
+ACR-6a6e2fafcd1b4512abbe161e63be1f90
+ACR-f95aaa1103dd494f80958283a2982f57
+ACR-c413999f7da44c3bb744143690507cf3
+ACR-7892d0873823499cae00e054167fb1ca
+ACR-cdb1524329fd4d52aae83e36d8d66135
  */
 package org.sonarsource.sonarlint.core;
 
@@ -281,7 +281,7 @@ class BindingClueProviderTests {
 
   @Test
   void should_set_origin_shared_configuration_when_clue_created_from_shared_config() {
-    // Simulate a shared configuration file
+    //ACR-15c31c54fa0146aea5b0191e835d6b7a
     var file = new ClientFile(URI.create("file:///path/to/.sonarlint/connectedMode.json"), CONFIG_SCOPE_ID, Paths.get("/path/to/.sonarlint/connectedMode.json"), false, null, null, null, true);
     file.setDirty("{\"projectKey\": \"" + PROJECT_KEY_1 + "\", \"sonarQubeUri\": \"http://mysonarqube.org\"}");
     mockFindSonarlintConfigurationFilesByScope(List.of(file));

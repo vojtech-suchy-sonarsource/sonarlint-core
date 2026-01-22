@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e40297a805764d0db240b51332c2caf0
+ACR-b32946ec7c824e27af4f2bc7ef36b3ec
+ACR-22f69da9c73943bb9ff3f786f6d3da83
+ACR-3ad3346db2e64379a78e738436e87b8b
+ACR-e8068c75440843efb08d9eed1fffb2ed
+ACR-d4275288b0784b53b30eb14ff88d17e6
+ACR-8115634ef669466889505f78645bcd17
+ACR-6519972f5b1344b3bdcf9a0607c05632
+ACR-c6d73f7f6408473686c340595b772bdd
+ACR-8cbc4d4ba0d9463fa146cbd636c24578
+ACR-14d827f7958a4e8b833f97b6123ba5d8
+ACR-743706621ea04c6288f70122a510575a
+ACR-3ba78beee61848f78d50913e8b5073b0
+ACR-537ae85ca7b348cfb26c1dd221ff1a80
+ACR-24424da5518a44bdb3583d2b33412b29
+ACR-1f8df16491674e5eb1328671bca85528
+ACR-deb2455777924ccfacdcc25dd68999fa
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -35,8 +35,8 @@ import org.sonarsource.sonarlint.core.analysis.api.ClientInputFile;
 import org.sonarsource.sonarlint.core.analysis.container.analysis.issue.ignore.scanner.IssueExclusionsLoader;
 import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
-/**
- * Index input files into {@link InputFileIndex}.
+/*ACR-daf10486e6144dfc8e540c31f0a0c0c9
+ACR-f0778efeb072458c9bb760b91c9e6c88
  */
 @SonarLintSide
 public class FileIndexer {
@@ -104,7 +104,7 @@ public class FileIndexer {
   }
 
   private boolean accept(InputFile indexedFile) {
-    // InputFileFilter extensions. Might trigger generation of metadata
+    //ACR-6ef1b0b5fd4e403d8aef57535a28a305
     for (InputFileFilter filter : filters) {
       if (!filter.accept(indexedFile)) {
         LOG.debug("'{}' excluded by {}", indexedFile, filter.getClass().getName());

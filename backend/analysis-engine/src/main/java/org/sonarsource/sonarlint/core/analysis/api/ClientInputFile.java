@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f594a24cc35545fab5daf9ce3560472c
+ACR-f1d8bd397d0f44e197a4dc06c4b9b62f
+ACR-5f964948b4f04062842d19d53a404559
+ACR-38c159b71df44ecd8efd7c7733214be1
+ACR-15d516f1f1554c83a8ad81c912471bf1
+ACR-d2ad726b26a5450686191af542db7595
+ACR-23cfe68e4d0942bcaf6c5c974d62a98d
+ACR-e969da8b9f6c4bdaa53dbba5ec9f6976
+ACR-dbad8b41f72e4a9cbe1e6a2db4211052
+ACR-f6cf95b16d704ebd9d86685419ee667f
+ACR-b9207a0c054e4b7f8e6933e2235686ff
+ACR-e88d3ea190b94bc487b57d8f05219b64
+ACR-91cdf500ff3741d8afa9449b4b937103
+ACR-2109804ee9364e9ead806596e4ae1689
+ACR-7f3f9b79b9ac4030881a97dadf82dbde
+ACR-ad4cf6184f3d402fa66ed3b1ac27a49d
+ACR-afeed387881045d5945d1804925a4a44
  */
 package org.sonarsource.sonarlint.core.analysis.api;
 
@@ -26,63 +26,63 @@ import java.nio.charset.Charset;
 import javax.annotation.CheckForNull;
 import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 
-/**
- * InputFile as provided by client
- * @since 1.1
+/*ACR-b7ab0dbe09724b35a0b6e480dbdfcef4
+ACR-ba334c7ffde449728be350361792a627
+ACR-c2ef144beeb2410083bf834c29560208
  */
 public interface ClientInputFile {
 
-  /**
-   * The absolute file path. It needs to correspond to a file in the filesystem because some plugins don't use {@link #contents} 
-   * or {@link inputStream} yet, and will attempt to access the file directly.
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
+  /*ACR-d06c7a19380e42fcb5e35d092c9a652e
+ACR-38e03f66b1fd442ab67294a528efefb2
+ACR-89e16dbf187d46669c4322f4ea0830cc
+ACR-dc1777fd393d4e1dbe7d4831e05a32ed
    */
   @Deprecated
   String getPath();
 
-  /**
-   * Flag an input file as test file. Analyzers may apply different rules on test files.
+  /*ACR-addc1ee89c8c44feb810ae70901557c5
+ACR-5b67bbbbcf3d476c832911e9cfb4178b
    */
   boolean isTest();
 
-  /**
-   * Charset to be used to read file content. If null it means the charset is unknown and analysis will likely use JVM default encoding to read the file.
+  /*ACR-a9f75aba193a4422a01fa27819bba19f
+ACR-117b996079d04fbbb029e672d6dd059e
    */
   @CheckForNull
   Charset getCharset();
 
-  /**
-   * Language key of the file. If not null, language detection based on the file name suffix is skipped. The file will be analyzed by an analyzer that can
-   * handle the language.
+  /*ACR-2c9e029105814cf6a96f24939e437b83
+ACR-f7b2193dfb7045278af17db0a3e2f299
+ACR-b2a351e91f474f0083ee84a987761cf7
    */
   @CheckForNull
   default SonarLanguage language() {
     return null;
   }
 
-  /**
-   * Allow clients to pass their own object to ease mapping back to IDE file.
+  /*ACR-a0cbd302e4be4b3c806aa574bb152a9d
+ACR-1681434d6fe64efda2b4eff17b82f932
    */
   <G> G getClientObject();
 
-  /**
-   *  Gets a stream of the contents of the file.
+  /*ACR-da389c3de18d455a93ff5c783e47df52
+ACR-1de1f6d659324dc7b7094f9d7737e231
    */
   InputStream inputStream() throws IOException;
 
-  /**
-   *  Gets the contents of the file. 
+  /*ACR-4df074a272534351b15ef218321f5d8e
+ACR-43be16f0a62849f7929caacbaa3fd976
    */
   String contents() throws IOException;
 
-  /**
-   * Logical relative path with '/' separators. Used to apply SonarLintPathPatterns and by some analyzers. Example: 'src/main/java/Foo.java'.
-   * Can be project relative path when it makes sense.
+  /*ACR-1f75a40059c2445183475e43b5885b8f
+ACR-ba63a4e4ed074265a6a0e2d617d738eb
+ACR-92a194ee21354ea28d1f79b6d5dbf63f
    */
   String relativePath();
 
-  /**
-   * URI to uniquely identify this file.
+  /*ACR-d60d98c2a7be465db6784bb354a2ef34
+ACR-2fc2d7868c8c4271b15ac888a00f765b
    */
   URI uri();
 

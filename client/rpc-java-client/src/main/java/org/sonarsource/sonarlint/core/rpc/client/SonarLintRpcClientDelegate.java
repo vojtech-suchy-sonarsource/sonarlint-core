@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Java Client
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7dfa427afff44bdb971b706a4d855425
+ACR-6284ff53310d4907b5dade29f515e037
+ACR-63ab1a8ff11a4d0096fcc9fec9a9e4bd
+ACR-47622d3edc504afd85a9c7465b7058bf
+ACR-70a0ae065512417995232f29206c0ba0
+ACR-b2d294a3492840af93d2231d1bf6bcc4
+ACR-dbccade2cab44748acfa36cf78aa201b
+ACR-343d2ad1b4db46c5843731117b5c356e
+ACR-6cffa42187c54edfac0248a650ea1735
+ACR-ed6c35e649cb43bc8337ed96089bb530
+ACR-f49fd8a2be40496c9d24c7cb4ef67cd6
+ACR-cd39a56cb7764298a66e6650e8015d55
+ACR-6d28953616c0489ca8f1d31c775b1518
+ACR-78a80debf10a40edad56c71f439871b1
+ACR-2077076cc74f45d2b8687a9ade29fbfc
+ACR-160d89649386462aac75931ae1030ba5
+ACR-4e1273c2d0cc4e538efcc28c96a109f0
  */
 package org.sonarsource.sonarlint.core.rpc.client;
 
@@ -67,17 +67,17 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.Language;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.TokenDto;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.UsernamePasswordDto;
 
-/**
- * This is the interface that should be implemented by Java clients. We are trying to decouple from the RPC framework as much as possible,
- * but most of those methods should be pretty similar to {@link org.sonarsource.sonarlint.core.rpc.protocol.SonarLintRpcClient}.
- * The "delegation" is made in {@link SonarLintRpcClientImpl}
+/*ACR-aafff23e587f43ba852efd12f7b0264d
+ACR-51c64516ef2b43528f0d8e8b6efe6983
+ACR-0cbd2dd51c2b4b68944bd2dc2c18a068
+ACR-a43fe9ffc5bb4b17943d99c5836cdc4e
  */
 public interface SonarLintRpcClientDelegate {
 
-  /**
-   * Suggest a list of binding suggestions for each eligible configuration scope,
-   * based on registered connections, config scope, binding clues, and git remote URL.
-   * Scopes without any available suggestions are automatically excluded from the results.
+  /*ACR-c3aa9698dfb445838d5893940b48d64e
+ACR-eb1d4779cd664a0e94fc58f8b9c4b87a
+ACR-f0f671779b2142fc98311ed6720291b2
+ACR-9fd61c4c614249b286619d54d8a279ad
    */
   void suggestBinding(Map<String, List<BindingSuggestionDto>> suggestionsByConfigScope);
 
@@ -85,18 +85,18 @@ public interface SonarLintRpcClientDelegate {
 
   void openUrlInBrowser(URL url);
 
-  /**
-   * Display a message to the user, usually in a small notification.
-   * The message is informative and does not imply applying an action.
+  /*ACR-5983170467214cddb911f042849b1574
+ACR-fdbfcb6e0dfb4aaf9ae643ec7926fd12
+ACR-672f1975d96f44fe964cf5feaa362a98
    */
   void showMessage(MessageType type, String text);
 
-  /**
-   * Display a message to the user, usually in a small notification.
-   * This message has options that the user can pick from. Once user clicked on option, its String key is returned.
-   * If the user explicitly dismisses/closes the notification without clicking option, then it returns null.
-   * IMPORTANT: As users might not react to the notification at all, the returned future might block for an indefinite amount of time.
-   * So the caller should not block waiting for the result, but provide a callback instead.
+  /*ACR-ff21401be041419f9ae62b15b9298e5f
+ACR-808c03b0548c4cf98d84a395ac0b1cc3
+ACR-581c6564e427492ab9165765c19970e4
+ACR-651734d7a94745d4a72687dc816e9952
+ACR-9079ab893f044253bd996ac7f0031f86
+ACR-26f4ffda28394c36a8be99f216053881
    */
   default ShowMessageRequestResponse showMessageRequest(MessageType type, String text, List<MessageActionItem> actions) {
     return null;
@@ -104,67 +104,67 @@ public interface SonarLintRpcClientDelegate {
 
   void log(LogParams params);
 
-  /**
-   * Display a one-time message to the user as a small notification.
-   * The message is informative and a link to the documentation should be available.
-   * The one-time mechanism should be handled on the client side (via a "Don't show again" button for example).
-   * There is an in-memory cache for the pair of connection ID + version that were already seen on the core side, but it is cleared after each restart.
+  /*ACR-4cd4931247574b29953b13a17bec82d1
+ACR-fbcbfdc471c44d34ab21424528592319
+ACR-6b4be80722004089869d7cbd7d2f320f
+ACR-2e4d51c2764745638d64246dfbf93ec6
+ACR-16d76890170e4a33915c28700c7906ec
    */
   void showSoonUnsupportedMessage(ShowSoonUnsupportedMessageParams params);
 
   void showSmartNotification(ShowSmartNotificationParams params);
 
-  /**
-   * Return the client dynamic description.
-   * @see SonarLintRpcClient#getClientLiveInfo()
+  /*ACR-9e3cd78ad6df4deea3ccf481cf4ca37d
+ACR-5fa66204d0194be4b83d8d8a03c00a3f
+ACR-99640d7c96af4643844349b4b10eec9d
    */
   String getClientLiveDescription();
 
   void showHotspot(String configurationScopeId, HotspotDetailsDto hotspotDetails);
 
-  /**
-   * Sends a notification to the client to show a specific issue in the IDE
+  /*ACR-aa32778723c5442fa903afd1111a0ad9
+ACR-7da4cd5ea29645ff9d6ef1e132404dd2
    */
   void showIssue(String configurationScopeId, IssueDetailsDto issueDetails);
 
-  /**
-   * Sends a notification to the client to show a fix suggestion for a specific issue in the IDE
-   * The fix is only on a single files, but it may contain different locations
+  /*ACR-19306dbdc172421caa7fd330b294cfb6
+ACR-d4cb3662942041d98e78b70dd33edadb
+ACR-1125c67af74142338167d108b91076ea
    */
   default void showFixSuggestion(String configurationScopeId, String issueKey, FixSuggestionDto fixSuggestion) {
 
   }
 
-  /**
-   * Can be triggered by the backend when trying to handle a feature that needs a connection, e.g. open hotspot.
-   * @return the response to this connection creation assist request, that contains the new connection. The client can cancel the request if the user stops the creation process.
-   * @throws java.util.concurrent.CancellationException if the client cancels the process
+  /*ACR-4ad7df90580443c7a48743350af4b05d
+ACR-6eb7b878201841309411f67417f6e27a
+ACR-acd1d39d8422408bad7a9c1a1de23ef6
+ACR-8db42ade88e64dd79bc6d2a21d8d209f
    */
   AssistCreatingConnectionResponse assistCreatingConnection(AssistCreatingConnectionParams params, SonarLintCancelChecker cancelChecker) throws CancellationException;
 
-  /**
-   * Can be triggered by the backend when trying to handle a feature that needs a bound project, e.g. open hotspot.
-   * @return the response to this binding assist request, that contains the bound project. The client can cancel the request if the user stops the binding process.
-   * @throws java.util.concurrent.CancellationException if the client cancels the process
+  /*ACR-075fb977fb1b4e34ab3019dbada82edd
+ACR-f39c5ee3de9d420a830d790ea5c089f5
+ACR-66b5a88c6471489d8a612699615f695a
+ACR-a3be9b9f74874ecf9e0577701c60ed11
    */
   AssistBindingResponse assistBinding(AssistBindingParams params, SonarLintCancelChecker cancelChecker) throws CancellationException;
 
-  /**
-   * Requests the client to start showing progress to users.
-   * @throws UnsupportedOperationException if there is an error while creating the corresponding UI
+  /*ACR-8e876e6bb40d46ff9f3cf3ac77959c7c
+ACR-68d6fa71528f43d09259fb3919ba2070
+ACR-92024be799204730bb4114d44a1c99b4
    */
   void startProgress(StartProgressParams params) throws UnsupportedOperationException;
 
-  /**
-   * Reports progress to the client.
+  /*ACR-ea0df7f873784b6ba955cbbf18cea24c
+ACR-212a1d7ddc02465bb978688085d9152f
    */
   void reportProgress(ReportProgressParams params);
 
   void didSynchronizeConfigurationScopes(Set<String> configurationScopeIds);
 
-  /**
-   * @throws ConnectionNotFoundException if the connection doesn't exist on the client side
-   * @return null if no credentials are available for this connection (backend may use unauthenticated HTTP requests)
+  /*ACR-3e5c34adfa7b4b93b123ff6846e14227
+ACR-9a9e938d7132474d8a7fbb5a298e4997
+ACR-cd07025ca0df4f5aab4efb516c4aa259
    */
   @CheckForNull
   Either<TokenDto, UsernamePasswordDto> getCredentials(String connectionId) throws ConnectionNotFoundException;
@@ -173,19 +173,19 @@ public interface SonarLintRpcClientDelegate {
 
   GetProxyPasswordAuthenticationResponse getProxyPasswordAuthentication(String host, int port, String protocol, String prompt, String scheme, URL targetHost);
 
-  /**
-   * @param chain the peer certificate chain
-   * @param authType the key exchange algorithm used
+  /*ACR-826160e4bf19426cbe753a43a41739bf
+ACR-2bd9fdf2bca945e889028fae8dd5289c
+ACR-ee3a963595fd4e2497d7f145db54adf8
    */
   boolean checkServerTrusted(List<X509CertificateDto> chain, String authType);
 
   @Deprecated(since = "10.3")
   default void didReceiveServerHotspotEvent(DidReceiveServerHotspotEvent params) {
-    // no-op
+    //ACR-872370b849ae4a50bdcd99378143d40f
   }
 
-  /**
-   * @return null if the client is unable to match the branch
+  /*ACR-062d809ceb0d4061932b30685377c59c
+ACR-3a0bde583e2749d3a8acc695cb1cb525
    */
   @CheckForNull
   String matchSonarProjectBranch(String configurationScopeId, String mainBranchName, Set<String> allBranchesNames,

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a65ef833ee194c79bc831a6a8ab03ca8
+ACR-0c8086f98681415d85965fbae0482bcc
+ACR-a85101ea67c9477aa349edc0eb24df5d
+ACR-1b86db0eb15c4e80896fdf68e39da15c
+ACR-384b7d4219a4439f97b0b8ff0e85f5bf
+ACR-da5b9b8a7cfd41c7af463e21bec9411b
+ACR-0c9299b8ce23491888ca17a7fe6469d1
+ACR-0887c461afd14f7d8593a47ab1602bae
+ACR-46304a5533214947bfd13c80e7044284
+ACR-444155753c4643848d3dee3b459d290b
+ACR-a282d0b9460048ebb0f9afe8a3a34c9a
+ACR-bc6d0a66e8d04ed8a08e1b22365618a6
+ACR-28f9f28a08934cbaabca09a041e2c072
+ACR-5230a8833e37474ab362a22394ce2801
+ACR-1c27251dbee344b4b090af8bbd2ce2de
+ACR-b16c74d25bda47b8b8f4a4064f3f6cc8
+ACR-68a374ad845e4702833611e783d08758
  */
 package org.sonarsource.sonarlint.core.serverconnection.issues;
 
@@ -31,8 +31,8 @@ import org.sonarsource.sonarlint.core.commons.RuleType;
 import org.sonarsource.sonarlint.core.commons.SoftwareQuality;
 import org.sonarsource.sonarlint.core.commons.api.TextRangeWithHash;
 
-/**
- * Issues with precise location (from api/issues/pull, SQ >= 9.6)
+/*ACR-1580081437a0443cbd020c7f4e5bb117
+ACR-6298659b4e4f4518b8994d16a3ae07b9
  */
 public class RangeLevelServerIssue extends ServerIssue<RangeLevelServerIssue> {
   private TextRangeWithHash textRange;
@@ -44,9 +44,9 @@ public class RangeLevelServerIssue extends ServerIssue<RangeLevelServerIssue> {
     this.textRange = textRange;
   }
 
-  /**
-   * constructor for backward compatibility, after finalization of migration from Xodus to H2 should not be used
-   * when using with H2 UUID should always be set
+  /*ACR-5441888598fa446394a278c11abebe2d
+ACR-d4c15cc769a644fe988a37550b5405e9
+ACR-ee8285d6149b4910bbb2b4637d490d8b
    */
   public RangeLevelServerIssue(String key, boolean resolved, @Nullable IssueStatus resolutionStatus, String ruleKey,
     String message, Path filePath, Instant creationDate,

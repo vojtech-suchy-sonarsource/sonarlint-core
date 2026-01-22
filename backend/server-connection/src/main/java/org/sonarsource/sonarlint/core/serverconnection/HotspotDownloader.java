@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ccd0ac54aa134f51af1f029e889205c4
+ACR-86264159053e411296d7ddc4fbe55247
+ACR-d12ec88f707c43c4997f1b3f54c2d9a7
+ACR-b3f32f361fd9449a880166b5602d52f1
+ACR-756f72e1930d424e8ac42c5b2e1fb573
+ACR-d0c8cb8a9d014cd5929aade086c04b60
+ACR-77ff66484f874ddb95a50015f67569c1
+ACR-7ab051c1ddae45f59baf35120abf9000
+ACR-de42c3ec6c4f46a2b091dd0175ca4bb6
+ACR-d212a2a2ba7b4b0e8b3a2360fed7c7f6
+ACR-6ff1b6f4e2804a709982e0356450101c
+ACR-0702236a42d2443cb1bf36fb8ca7c74c
+ACR-0c217f0994a9441684400afc69b71d7b
+ACR-1d56f2c72bfb4d21ac1e593d2c2aaaa5
+ACR-947c0be931614b4294119d619f8aa7b8
+ACR-ab9c2557c7ee4725bf3947fab28bec9f
+ACR-bdce64ddb0af42bdb11768253415c869
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -44,12 +44,12 @@ public class HotspotDownloader {
     this.enabledLanguages = enabledLanguages;
   }
 
-  /**
-   * Fetch all hotspots of the project with specified key, using new SQ 10.1 api/issues/pull
-   *
-   * @param projectKey project key
-   * @param branchName name of the branch.
-   * @return List of hotspots. It can be empty but never null.
+  /*ACR-b473f31188c14212a2bc840c4bd8d543
+ACR-f057508404734eb69756b537f12f7c95
+ACR-1a5b2e3de9b8429784940db4df81c303
+ACR-0d3a28dae79844909299531b66c752f9
+ACR-b88d581c3c074436ae0b5900bbced8dc
+ACR-c2f3a53e641846479a4a03a675e4a311
    */
   public PullResult downloadFromPull(HotspotApi hotspotApi, String projectKey, String branchName, Optional<Instant> lastSync, SonarLintCancelMonitor cancelMonitor) {
     var apiResult = hotspotApi.pullHotspots(projectKey, branchName, enabledLanguages, lastSync.map(Instant::toEpochMilli).orElse(null), cancelMonitor);

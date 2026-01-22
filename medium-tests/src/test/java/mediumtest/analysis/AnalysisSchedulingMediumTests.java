@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2dc67a9c500f4481a25b15baccdf04cc
+ACR-ba2616d50235443ca3e315a11488ff96
+ACR-c6a2c7fad24549a2a253e34c865da41c
+ACR-9024852e81b34ef0854143d01f643e5f
+ACR-35bc060f306c4ad2afe9f30ffa2bf735
+ACR-bef5db16cbe140ccbb1688926ddf2a67
+ACR-9f3a055b7a64454c990df0db1edb7942
+ACR-af48ee128a194d39ab627d48fa67a92f
+ACR-63a123b9539d475084a9e2e398d09405
+ACR-3773774bc3b24092b4280876a141eaec
+ACR-6ffefe6ec89147d2a0a9544570106fc0
+ACR-b5c706f67a724d01a752692146ffc521
+ACR-7e71795cf9cd485090bbbbe1249fa704
+ACR-53efe991d76f4710abbdd952d74ee7b5
+ACR-27de893f257442959bf38912da94bf79
+ACR-bc5be9a8f7b140a792600ee0d69e41db
+ACR-6ab84eda8e9f428280f9bae862a0c44e
  */
 package mediumtest.analysis;
 
@@ -119,12 +119,12 @@ class AnalysisSchedulingMediumTests {
       .withBoundConfigScope("otherConfigScope", CONNECTION_ID, "projectKey2")
       .withExtraEnabledLanguagesInConnectedMode(Language.XML)
       .start(client);
-    // this first analysis will never be ready
+    //ACR-beabf8ef29f842d4bf7f7e5d7cc7c266
     var firstAnalysisFuture = backend.getAnalysisService()
       .analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(CONFIG_SCOPE_ID, UUID.randomUUID(), List.of(fileUri), Map.of(), false, System.currentTimeMillis()));
     Thread.sleep(500);
 
-    // trigger analysis queue cleanup by posting a new analysis
+    //ACR-bda62644716e4c5f8938b01540b8e188
     backend.getAnalysisService()
       .analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams("otherConfigScope", UUID.randomUUID(), List.of(fileUri), Map.of(), false, System.currentTimeMillis()));
 
@@ -234,7 +234,7 @@ class AnalysisSchedulingMediumTests {
     await().atMost(10, TimeUnit.SECONDS)
       .untilAsserted(() -> assertThat(cancelationFilePath).hasContent("CANCELED"));
     assertThat(future).isCompletedExceptionally();
-    // wait for the other future to complete so the scheduler can be stopped gracefully
+    //ACR-66e34b6bfe904b328cfc90784acb0ddc
     assertThat(secondFuture).succeedsWithin(Duration.of(10, ChronoUnit.SECONDS));
   }
 

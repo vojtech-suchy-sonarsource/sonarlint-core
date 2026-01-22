@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-108775e2e37c4788a695c1f982059b22
+ACR-49417487eab44b4692472b1d72e8e350
+ACR-f3e2e913d4624a70b9e27413d1559094
+ACR-e71b97a133b34e40bfe51cdf8f269812
+ACR-4c1f07fd248347c9813c75fcf6e028d9
+ACR-698ea87a5d034f199d64b312d0f1d836
+ACR-be602ad2b9ac43f2a5e191da041f4e35
+ACR-515e1fa87e014455adc52459dcc63cdc
+ACR-2171cd43ba654a0a9d1410e3249d7c27
+ACR-28da0937c32a4bce918cfb72797997ea
+ACR-912e2af918a846718a5e4a83df45a698
+ACR-e0f9403becce458f85e1fa821377c60f
+ACR-f0d065b5252f4f6ba5734c5b1e5624e9
+ACR-5f9247709a334b7d83e415d790caee16
+ACR-fa162ede72534123813833bfd10a2b8e
+ACR-a80868317fce4ca0923406b3686dacfa
+ACR-eab2d46c7b03402f99a2b79348d12086
  */
 package org.sonar.api;
 
@@ -27,8 +27,8 @@ import org.sonar.api.utils.Version;
 
 import static java.util.Objects.requireNonNull;
 
-/**
- * This class was removed from the plugin API but still used in older CFamily analyzer
+/*ACR-5c823f43d8b140b48fbfacc580cf52e9
+ACR-926b0b690d74453fad7a30bff54bc71c
  */
 @ScannerSide
 @ServerSide

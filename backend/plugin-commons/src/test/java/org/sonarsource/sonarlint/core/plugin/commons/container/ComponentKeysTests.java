@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-aa869b423a78404fb4b7a90b9fb0dccd
+ACR-394df8f6d74543eda4588a4290820e7e
+ACR-15d840aa5ce3424eb416a375d6ea28be
+ACR-6b09cd95549e4498af6294ae4af95c8b
+ACR-c8e1bf676c874a9a94e0a1af53c24df1
+ACR-e332d058d1794606acbbe487b3473464
+ACR-04824cf3bdb84b1a81109a3da3932830
+ACR-950124269e9949b189024d4882592c6f
+ACR-4fab59f9581f4679bd83092b84518571
+ACR-71b89b86489c4e2ea171efcd618a784d
+ACR-13a724b17a2f40918d929f5c870f37cc
+ACR-ff102c613b564077b0fafacaacc33086
+ACR-a74cea0a86f74dc8a6c598743472dcbc
+ACR-e4d5afb742424a979e2cd756ec2f98f5
+ACR-81b8ca3e15814786b13e16b70bd08ab6
+ACR-3928aff660b143729c6188038520db6e
+ACR-162d9269cf254cfd8d6686f9e6d214a3
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -57,7 +57,7 @@ class ComponentKeysTests {
     keys.of(new Object(), log);
     verifyNoInteractions(log);
 
-    // only on non-first runs, to avoid false-positives on singletons
+    //ACR-dcfebd20af4549169f5a2627f241ba90
     keys.of(new Object(), log);
     verify(log).warn(startsWith("Bad component key"));
   }

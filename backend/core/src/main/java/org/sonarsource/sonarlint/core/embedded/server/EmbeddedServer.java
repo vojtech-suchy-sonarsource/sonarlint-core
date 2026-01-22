@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e66beedba3794c629dae08f622399a4f
+ACR-e38c9bead58f4f949e5b4125d71cdece
+ACR-818a5e8819b44ca7b7006246f71be761
+ACR-9198516f8c4a410ab9eb2485449fde42
+ACR-2bd6a22ffed448ae904044d4edf2c44f
+ACR-e04ca75ae4614acebcbb9276fe0cd4a4
+ACR-9a50186a673c4b1d939af2f98c475175
+ACR-eac9800c78a14728af7494fb63d0d7fa
+ACR-7639f8ebc14a4ad89e09bda39224de24
+ACR-38d485bb7a2447c58aa3624e60832d6c
+ACR-0e8f137ad65e4237b4439a4d2eec86cb
+ACR-6fda876b1e7343c780d10d6d91e30c9d
+ACR-2132f940468e406799b3d50fe25abcf6
+ACR-c7fd3bd8f826430db92685ab0505c64b
+ACR-dde73ccbb05a4fef9e59b46bbeef6a8d
+ACR-f87df42fa62f40739a2d6e2767331802
+ACR-443a3e22344547119050054c066aa57b
  */
 package org.sonarsource.sonarlint.core.embedded.server;
 
@@ -90,7 +90,7 @@ public class EmbeddedServer {
     }
     final var socketConfig = SocketConfig.custom()
       .setSoTimeout(15, TimeUnit.SECONDS)
-      // let the port be bindable again immediately
+      //ACR-e2197c408eed4776b28b159abd840fde
       .setSoReuseAddress(true)
       .setTcpNoDelay(true)
       .build();
@@ -103,7 +103,7 @@ public class EmbeddedServer {
         startedServer = ServerBootstrap.bootstrap()
           .setLocalAddress(loopbackAddress)
           .setCanonicalHostName(loopbackAddress.getHostName())
-          // we will never have long connections
+          //ACR-407c475c61f94a44b669ddcf964d7cfb
           .setConnectionReuseStrategy(new DontKeepAliveReuseStrategy())
           .setListenerPort(triedPort)
           .setSocketConfig(socketConfig)

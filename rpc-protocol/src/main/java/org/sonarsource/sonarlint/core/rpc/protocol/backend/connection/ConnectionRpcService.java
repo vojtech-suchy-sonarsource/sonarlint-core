@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-74384ac75f824d509c6893278b1e2f8d
+ACR-2afa3c9e80ba4e429d2a6490b131ecf1
+ACR-e30f7f10f45d40e3b39764dc0c5cacba
+ACR-d45329bc6ac24646ad170e36c4f35f5c
+ACR-86e715d8f7b0465faac2cf61f95bd262
+ACR-6656e92ffa9e4264b6e8b368a359798a
+ACR-40ba8359d4594ed291a181640ae8adb1
+ACR-21e253b465304aa59668f84a34660ab6
+ACR-f6f1a9a080104833b1845958bca42770
+ACR-1c9cd604412240328d3491173f5c2d35
+ACR-22232ba3a14f442ea7d5f3ce8c7e8c71
+ACR-5d34532a58884b609e24ff73c2b0de71
+ACR-597a710cd14c4ac8afc218d4acb4a214
+ACR-de3cd2c4982643718e76043e6956ceaf
+ACR-6f7d3b31017b4d919680760157bae459
+ACR-58ddd31f290e40fd8991472d7dccd261
+ACR-04f035bfc6fc492a999c93f33f7e8e85
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.connection;
 
@@ -47,48 +47,48 @@ import org.sonarsource.sonarlint.core.rpc.protocol.backend.initialize.Initialize
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.GetConnectionSuggestionsParams;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.GetCredentialsParams;
 
-/**
- * The client is the source of truth for connection configuration, but the backend also need to be kept in sync.
- * The client will use {@link SonarLintRpcServer#initialize(InitializeParams)} to register existing connection configurations at startup, and then
- * update the service as needed using {@link #didUpdateConnections(DidUpdateConnectionsParams)}, when a connection configuration is added/removed/updated.
- * <p>
- * One source of complexity for connection configuration is that some attributes (like credentials) should be stored in
- * the IDE secure storage. Accessing secure storage may be delayed after IDE startup, request manual user
- * actions, or even be prevented. So the backend should be able to handle "partial" connection configuration, where
- * credentials are missing.
+/*ACR-60f07131efe847d6a0bdb650c0faac83
+ACR-b50f8573c9ea4d9c9ce068fbe109d206
+ACR-04ee4d0a87f748d1805b0fbdb4f85d9e
+ACR-395b12e5772d4e189bbc17dc77dbd382
+ACR-11ba2077f8d34526aba50330c113a429
+ACR-b0d598b864234c0a8b81fa63f623ef64
+ACR-9ffaf57f87b14862b1114c5a0a4eed37
+ACR-f1b31595575346e190bc9149181bebb8
+ACR-74705c463b404fcba12eb99404093c27
  */
 @JsonSegment("connection")
 public interface ConnectionRpcService {
 
-  /**
-   * Called by the client when connection configurations have been changed.
+  /*ACR-6d087a8bec9d4e15b156a344dec4a268
+ACR-e4be653f207446dda5ccad248bfc243f
    */
   @JsonNotification
   void didUpdateConnections(DidUpdateConnectionsParams params);
 
-  /**
-   * Called by the client when connection credentials have been changed. The backend might later retrieve them with
-   * {@link SonarLintRpcClient#getCredentials(GetCredentialsParams)}.
+  /*ACR-88a1956e07a4418f8c0981b41f147d71
+ACR-4c71a4fdb8d548bab2b36411e71440d0
+ACR-0f0f19b3db054ed0935fdfbf2614da70
    */
   @JsonNotification
   void didChangeCredentials(DidChangeCredentialsParams params);
 
-  /**
-   * @param params url of the server on which to create the token
-   * @return For servers that support automatic token generation, will return the token in the response. Else no token will be returned.
-   * If the local server is not started or the server URL can not be reached, the future will fail
+  /*ACR-135cf67ef4254fce951a29be7b5d9acd
+ACR-1d4c221bc2ed4bbb9281b48586c20bb0
+ACR-a9747c810d9547b0875f3b87ea2b120b
+ACR-8fcae4504d4347bcaa01bdd1aa9feeaf
    */
   @JsonRequest
   CompletableFuture<HelpGenerateUserTokenResponse> helpGenerateUserToken(HelpGenerateUserTokenParams params);
 
-  /**
-   * Validate that connection is valid:
-   * <ul>
-   * <li>check that the server is reachable</li>
-   * <li>check that the server minimal version is satisfied</li>
-   * <li>check that the credentials are valid</li>
-   * <li>check that the organization exists (for SonarCloud)</li>
-   * </ul>
+  /*ACR-de6d666d41344263973ef4f7bf4a7ea3
+ACR-9abd1d9b4e1b4e42aeadc9a3a66e4834
+ACR-6b3118c7ad44442fbfed74636992ca33
+ACR-9a43e23aa7624f429a18cd606288b281
+ACR-9f6410979acb44c8a1eb7602b254cba8
+ACR-1e827d9d6ae94d4b96d09b14aae99fa0
+ACR-cea63a69cfac4b5cb7972268c4844144
+ACR-9fa2f594b0154491809b714cf222e129
    */
   @JsonRequest
   CompletableFuture<ValidateConnectionResponse> validateConnection(ValidateConnectionParams params);
@@ -96,46 +96,46 @@ public interface ConnectionRpcService {
   @JsonRequest
   CompletableFuture<ListUserOrganizationsResponse> listUserOrganizations(ListUserOrganizationsParams params);
 
-  /**
-   * Find an organization by key. If not found the response will contain null.
+  /*ACR-be2c46a3ec6f49cbba9d6c594198ea01
+ACR-012e319bbad344de94240598058eab29
    */
   @JsonRequest
   CompletableFuture<GetOrganizationResponse> getOrganization(GetOrganizationParams params);
 
-  /**
-   * Fuzzy search among SonarCloud user organizations.
+  /*ACR-f3078539ff6843d5be2b7b71cdb7d295
+ACR-373c06186ec84080a2e81c50b6a85217
    */
   @JsonRequest
   CompletableFuture<FuzzySearchUserOrganizationsResponse> fuzzySearchUserOrganizations(FuzzySearchUserOrganizationsParams params);
 
-  /**
-   * Get all Sonar projects existing on SonarQube or in a SonarCloud organization.
-   * As this data might be needed during connection creation, it accepts a transient connection.
-   * The number of returned projects is limited to 10000.
+  /*ACR-2b38b7d4ec24457c8282b468ac9dba14
+ACR-a316c00d510d46f587de5d4bb26ac11e
+ACR-4a63a10a4ff448fab811e62f107ba8e7
+ACR-37d42848f09f465496496d7c13670daa
    */
   @JsonRequest
   CompletableFuture<GetAllProjectsResponse> getAllProjects(GetAllProjectsParams params);
 
-  /**
-   * Fuzzy search among Sonar projects existing on SonarQube or in a SonarCloud organization.
+  /*ACR-0fee778c683b46318dc38be309cb7cd6
+ACR-3540094efe344e018ecace0c8c3e586e
    */
   @JsonRequest
   CompletableFuture<FuzzySearchProjectsResponse> fuzzySearchProjects(FuzzySearchProjectsParams params);
 
-  /**
-   * Returns a map of project names by project key; project name is null if it wasn't found
+  /*ACR-f560dfb68c4a490fb2336a588a17181e
+ACR-0856e40cac7640b9acdfab0aabd41dde
    */
   @JsonRequest
   CompletableFuture<GetProjectNamesByKeyResponse> getProjectNamesByKey(GetProjectNamesByKeyParams params);
 
   /*
-   * Returns a list of connection suggestions for the given configuration scope. To be used when neither connection nor binding exists.
+ACR-51e7445d00df42b29f73e609b68ef2a7
    */
   @JsonRequest
   CompletableFuture<GetConnectionSuggestionsResponse> getConnectionSuggestions(GetConnectionSuggestionsParams params);
 
-  /**
-   * Generate MCP server settings JSON based on the requested Connection ID.
+  /*ACR-3dfc284459974466af4f1bb80fbc89d7
+ACR-ef19c20114f8469b8e8958a667b3278b
    */
   @JsonRequest
   CompletableFuture<GetMCPServerConfigurationResponse> getMCPServerConfiguration(GetMCPServerConfigurationParams params);

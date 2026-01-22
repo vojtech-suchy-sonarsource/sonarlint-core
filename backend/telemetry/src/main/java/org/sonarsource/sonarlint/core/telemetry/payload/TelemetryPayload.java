@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8681998e5574452c96664357358de2e4
+ACR-af26af1b552f42e0a3abd7bd4ae18412
+ACR-a023768f7c67402ca861a32893dbddad
+ACR-dfaf4530c36d499890e7a618839c74c3
+ACR-d867098b6caa41479d1ed2e915f22bdb
+ACR-b35a539ab0894bd6b034b6ab170d627a
+ACR-5db58b03a44b4f7ca4985461636247ff
+ACR-66d82b381d1747ba9ca2b4d51391bbc7
+ACR-c8b9e53b266f481a9ab8b72f71c331da
+ACR-f46bc4df967b48d1a12349a11ffb0dae
+ACR-51d20f2eb9f94632b24b3532f0fa8610
+ACR-92dab8976d8d4843a35aa4809221ff8c
+ACR-1563eff5ac67457ba1ba2d0b9fe8b9b2
+ACR-5c356fd6cdaf49468e39db9af64581bd
+ACR-d64cd67758494e03bcd5ff972c64c9ed
+ACR-9c9e136efeb84ba7a00868b740728ba8
+ACR-99f1f4f078644135aa2df829e05c9f43
  */
 package org.sonarsource.sonarlint.core.telemetry.payload;
 
@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.commons.storage.adapter.OffsetDateTimeAdapter;
 import org.sonarsource.sonarlint.core.telemetry.payload.cayc.CleanAsYouCodePayload;
 
-/**
- * Models the usage data uploaded
+/*ACR-d9cdc2d8e50b4bc6887220538a9dce86
+ACR-0ac6b03926b84de3be5648f7ab89e406
  */
 public class TelemetryPayload {
   @SerializedName("days_since_installation")
@@ -282,14 +282,14 @@ public class TelemetryPayload {
     for (Entry<String, JsonElement> entry : source.entrySet()) {
       var value = entry.getValue();
       if (!target.has(entry.getKey())) {
-        // new value for "key":
+        //ACR-999a6b1907ee47f288c5658574f699b5
         target.add(entry.getKey(), value);
       } else if (value.isJsonObject()) {
-        // existing value for "key" - recursively deep merge:
+        //ACR-462a0d33dbdf472c9dda0363597d1fba
         var valueJson = (JsonObject) value;
         mergeObjects(valueJson, target.getAsJsonObject(entry.getKey()));
       }
-      // Don't override value if it already exists in the target
+      //ACR-43f6f92c0bcf4975b061ed9f940d961b
     }
     return target;
   }

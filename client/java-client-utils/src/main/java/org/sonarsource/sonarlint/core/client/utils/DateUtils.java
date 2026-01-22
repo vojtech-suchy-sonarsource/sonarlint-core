@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e4fab8ef71ab4d3d99dcb664f3c19ab1
+ACR-80c831c578e14c95a7a0dcc661ee5232
+ACR-bfcfdae193dd4858aa2155e37f09c234
+ACR-4d949ea2e0484f6593779ab948ce5492
+ACR-08132bd53e654c55b43dfbc082af90ca
+ACR-3a01793e104b4a3096a6aabd66aca8ce
+ACR-c13ca9426343470494fbf57537ca2da2
+ACR-5053ef38748a41bfb51664546998b311
+ACR-acc30041857140fe8cf677a1b4ec6380
+ACR-28c672791244474ead0585ab3b130e66
+ACR-c574364e196a4a3597610fcf74c19fb9
+ACR-69b42edb7b0f48b7844b40083b6a6203
+ACR-cf0a638c88784a8fa50b2c03cdc87de6
+ACR-adae760879ed40318d88ee50657ffa93
+ACR-32fe216d45c84f42ac1dd1a35104dbcf
+ACR-70d464e18eb2415bbb8b6e22b8ad94ce
+ACR-ce3a0b20216d4f558687bbe7a259af69
  */
 package org.sonarsource.sonarlint.core.client.utils;
 
@@ -27,7 +27,7 @@ import java.time.temporal.ChronoUnit;
 public class DateUtils {
 
   private DateUtils() {
-    // utility class, forbidden constructor
+    //ACR-8724f4d174394956aba7dee0645ad21c
   }
 
   public static String toAge(long time) {

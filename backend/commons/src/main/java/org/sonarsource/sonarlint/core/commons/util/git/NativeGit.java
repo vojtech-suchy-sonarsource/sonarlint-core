@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4b126eba7051482c98d29cff1e4273ea
+ACR-8632dadbede9472995a8935541c9f78e
+ACR-042c7c0253264249a323c9c85147d268
+ACR-7350d9ef5e03455d8c1e156390cdf1d7
+ACR-527e7de731694454a3d5308875811f6c
+ACR-d52203fceb994b9a8b63ee5ec7de2c02
+ACR-19ba69f053c041cbb4eb7647eebaeefd
+ACR-eb4cbd49994b4d90b0bcd83a2bcfbefe
+ACR-2eadcafb85ce4ee89b18d68eaefefea5
+ACR-615c11264fcb42cea152460f28abf835
+ACR-259c8a6729d448abbf8ae6d76799a7a4
+ACR-cd8dd49fff0c4dcab0d4e42e191e1f67
+ACR-4a11890874ca437bad1b21f098176f47
+ACR-618087d35a6a4ad69df563d3dffc9c3c
+ACR-2ce589e6ca9d402b9c6c874baf373c95
+ACR-6594ecb706ac4f14998266bb34571e16
+ACR-af5f1f8837004eff95486885c3e0ace0
  */
 package org.sonarsource.sonarlint.core.commons.util.git;
 
@@ -77,10 +77,10 @@ public class NativeGit {
 
   private static Optional<Version> tryCreateVersion(String[] versionParts) {
     try {
-      // keep only MAJOR and MINOR numbers, it's sufficient for checking support
+      //ACR-5e631c586a874605972f2a0572bb1ce1
       return Optional.of(Version.create(versionParts[0] + "." + versionParts[1]));
     } catch (Exception e) {
-      // error will be logged above
+      //ACR-a0a49df357f042f6a2586452f3618755
     }
     return Optional.empty();
   }

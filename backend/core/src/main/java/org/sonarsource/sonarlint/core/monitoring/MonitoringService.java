@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-83a943b429dd40c78589e9b7db98f257
+ACR-b6a79f60621741d995a60cafe6edcd98
+ACR-9db32e1a394b41188592df54ef828d30
+ACR-1ddc06c64bf9411b8e497367e1e91223
+ACR-8aeefce6f5274ff8adb12550cd2fd9e3
+ACR-f6fbd2b7213f4fe0ac5d48b38a1ddbec
+ACR-192ce04a68f542d784469b144ec7ad20
+ACR-d86eb74699ce406d8e2d65ae7fa16d67
+ACR-02103d280e294a6eabe2122fdf412ca0
+ACR-437b736517fe4724be0045549b2763f4
+ACR-d747c1cf88ae4007a575236d19b52727
+ACR-523b5c08d1144e18bd50d5d6a00f95bd
+ACR-03db15c9d9c9461cbea5fb5898634b8b
+ACR-409dc885d2f2448394f327c69bec42a6
+ACR-27a831a5a4fb480987ef6b7642cff1be
+ACR-41e7eabaa5264c1788c61ec2aeb781f9
+ACR-4c737586446249b7baf09b18ac578e4a
  */
 package org.sonarsource.sonarlint.core.monitoring;
 
@@ -170,11 +170,11 @@ public class MonitoringService {
     }
   }
 
-  /**
-   * To ignore exceptions, it's better to use {@link SentryOptions#addIgnoredExceptionForType}, but it accepts Class type
-   * and this is the workaround for the case when Exception class is not in the classpath
-   *
-   * @param regex this should be the regex satisfying java.util.regex.Pattern spec
+  /*ACR-f48867b8327b4a0abc15492cece98f3d
+ACR-aad121c8915446bd9b348efb382080af
+ACR-43bd12c8f6d34a959ee85a9a3d628017
+ACR-83716af796294a57add89b72d03f631d
+ACR-e97d6f22cce74afaa6c63a797cdba7f9
    */
   private static void addCaptureIgnoreRule(SentryOptions sentryOptions, String regex) {
     sentryOptions.addIgnoredError(regex);

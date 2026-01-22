@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bf65b8fb45c04b5199387a766669abaa
+ACR-a1d7665043f4484998bd58d96fcb1090
+ACR-1e67b47bf373461dbcf6332128251533
+ACR-0a395602d09a4efea0fd18f678586c15
+ACR-fb1607271da9408dbc5b29a5dd70f891
+ACR-b4e407a93ccc4def947179c535a5dbb9
+ACR-fc0f81f6995e4b97a2e0f3e850d97269
+ACR-1faa9e242ea4447a9793c2f93f6c8729
+ACR-3e934b24944c4b9988cff539a9b3f044
+ACR-e8b9de95a73c4e8f98a861a2d94122dc
+ACR-1ddb119fc3634d37879ed7a95a44c0b9
+ACR-8edce41e6b224f84a90f2dbd7c4d5101
+ACR-c8553eb379154500aaa43fd0237e0d43
+ACR-3a0ff9e08025440f8067d5166c4289f0
+ACR-6b817e732a1d469f9807c725b22e80e5
+ACR-d29700ddf410475d981a342a061556b4
+ACR-aeadccc11a8a45858b374a881a997c31
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -101,8 +101,8 @@ public class SonarLintInputFile implements InputFile {
     return type;
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
+  /*ACR-146141234dcc4c0b948bc18cf25faa6f
+ACR-35edcd4e826c451e930509e0a9e15f2b
    */
   @Deprecated
   @Override
@@ -110,8 +110,8 @@ public class SonarLintInputFile implements InputFile {
     return PathUtils.sanitize(clientInputFile.getPath());
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
+  /*ACR-ea2ab4136f9345668cf82061b8b90d0a
+ACR-970826fdbce84bb8a75704f3f71cc05c
    */
   @Deprecated
   @Override
@@ -119,8 +119,8 @@ public class SonarLintInputFile implements InputFile {
     return path().toFile();
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
+  /*ACR-06709322e5e34575aae4e481b624ea8f
+ACR-43f953e76898467e992f47329d2c2a78
    */
   @Deprecated
   @Override
@@ -143,8 +143,8 @@ public class SonarLintInputFile implements InputFile {
     return Status.ADDED;
   }
 
-  /**
-   * Component key.
+  /*ACR-400f8ac4ae2f46ff8c406e493d38d36b
+ACR-3b04c6d3a6f6438db074410da7b1104e
    */
   @Override
   public String key() {

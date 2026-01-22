@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e682879c04be4d279c21d918657100e4
+ACR-522bdf6d551b42dbb96734ea6c0f71fe
+ACR-856b1d90b8b942c181158a70a8a220ab
+ACR-5e1e09d2e1064d42a61a07c5039861d6
+ACR-e3f979100e85424888de0de70de8ea88
+ACR-53caa8a4bfa6482cbef2b97a8bce0100
+ACR-eaacfe9a7f354e07b23d8c7a0c24731a
+ACR-d2c1cbeb187f48d784dde12bd36892e1
+ACR-ffb2949c51a540f3895c2aabf4a74143
+ACR-8c45b4ebd19d4bcb9ca7e5fe2286e3c4
+ACR-127bd4e131a44d97af31490e352d0270
+ACR-bc04c471ae434403a76edad8d91a57d5
+ACR-1bd16060534342368b655ca64422af48
+ACR-9716c64039ef4472af909681aff2fcaf
+ACR-10428752b2da4d17893ae3988b53feec
+ACR-a7615b0d1dac4f088ac161883f947ead
+ACR-341ad8935ef343adafb5398966084fb3
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -88,12 +88,12 @@ public class TaintIssueDownloader {
     return result;
   }
 
-  /**
-   * Fetch all taint issues of the project with specified key, using new SQ 9.6 api/issues/pull_taint
-   *
-   * @param projectKey project key
-   * @param branchName name of the branch.
-   * @return List of issues. It can be empty but never null.
+  /*ACR-fb2706fd377f4e3cb2bb7451cd0a06eb
+ACR-fb0e77352c064822b1899f5ab989abb7
+ACR-2950f1c932ec4dbe8fe9e0fb55ed13d0
+ACR-d2702ce2aad54d158d452d4e69fea35d
+ACR-a0e4d421505b4f099c8bdc24fc8c1902
+ACR-b252554765fe43c4963bc9dd2b725d1f
    */
   public PullTaintResult downloadTaintFromPull(ServerApi serverApi, String projectKey, String branchName, Optional<Instant> lastSync, SonarLintCancelMonitor cancelMonitor) {
     var issueApi = serverApi.issue();
@@ -101,14 +101,14 @@ public class TaintIssueDownloader {
     var apiResult = issueApi.pullTaintIssues(projectKey, branchName, enabledLanguages, lastSync.map(Instant::toEpochMilli).orElse(null), cancelMonitor);
     var changedIssues = apiResult.getTaintIssues()
       .stream()
-      // Ignore project level issues
+      //ACR-732de5c60cf94ba2a176a9ee483a25b2
       .filter(i -> i.getMainLocation().hasFilePath())
       .filter(not(TaintVulnerabilityLite::getClosed))
       .map(TaintIssueDownloader::convertLiteTaintIssue)
       .toList();
     var closedIssueKeys = apiResult.getTaintIssues()
       .stream()
-      // Ignore project level issues
+      //ACR-f7904122be0448a59abf5673de54d221
       .filter(i -> i.getMainLocation().hasFilePath())
       .filter(TaintVulnerabilityLite::getClosed)
       .map(TaintVulnerabilityLite::getKey)
@@ -124,7 +124,7 @@ public class TaintIssueDownloader {
     var primaryLocation = convertPrimaryLocation(sourceApi, taintVulnerabilityFromWs, componentPathsByKey, sourceCodeByKey, cancelMonitor);
     var filePath = primaryLocation.filePath();
     if (filePath == null) {
-      // Ignore project level issues
+      //ACR-124234f1001046b49eb0ecf5a5487b62
       return null;
     }
     var ruleDescriptionContextKey = taintVulnerabilityFromWs.hasRuleDescriptionContextKey() ? taintVulnerabilityFromWs.getRuleDescriptionContextKey() : null;
@@ -179,7 +179,7 @@ public class TaintIssueDownloader {
           if (codeSnippet != null) {
             textRangeHash = hash(codeSnippet);
           } else {
-            // Use empty String, the client will detect a mismatch with real hash and apply UX for mismatched locations
+            //ACR-a14bccfa4afb46b89b4c27343c2f3ea7
             textRangeHash = "";
           }
           return new ServerTaintIssue.ServerIssueLocation(componentPath, convertTextRangeFromWs(locationFromWs.getTextRange(), textRangeHash), locationFromWs.getMsg());
@@ -195,7 +195,7 @@ public class TaintIssueDownloader {
 
   private static ServerTaintIssue convertLiteTaintIssue(TaintVulnerabilityLite liteTaintIssueFromWs) {
     var mainLocation = liteTaintIssueFromWs.getMainLocation();
-    // We have filtered out issues without file path earlier
+    //ACR-a4cac5efd6bc4ff88c788bb32146abb6
     var filePath = Path.of(mainLocation.getFilePath());
     var creationDate = Instant.ofEpochMilli(liteTaintIssueFromWs.getCreationDate());
     ServerTaintIssue taintIssue;
@@ -242,7 +242,7 @@ public class TaintIssueDownloader {
       if (codeSnippet != null) {
         textRangeHash = hash(codeSnippet);
       } else {
-        // Use empty String, the client will detect a mismatch with real hash and apply UX for mismatched locations
+        //ACR-6645e11fcc3640488c90de7320ff1dac
         textRangeHash = "";
       }
       return new ServerTaintIssue.ServerIssueLocation(componentPath, convertTextRangeFromWs(issueFromWs.getTextRange(), textRangeHash), issueFromWs.getMessage());

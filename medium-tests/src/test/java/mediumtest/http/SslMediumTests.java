@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-df62e794571e4a229e5cf9774eb31617
+ACR-cf08b041719b469fa56e226ac535a195
+ACR-f37c3bc50cb1418a822f11cfb61502d8
+ACR-b9383b96634b4a8aa28da7a3c76f73f2
+ACR-7e83320fc497482d82a30e7c417d9402
+ACR-7fc668eba5464903ade5038d081d072b
+ACR-b85063a2ebd7477588f66b0bb96c9641
+ACR-0ab2d9ec377e4f5ba4c2d79898439296
+ACR-db31562e897743f4a98b099e3f560017
+ACR-f5acc7ed38b04c319726f7290976bf0d
+ACR-392e8f92760444e4a1afffbabc49b870
+ACR-97fe9fc9e97f49339bf60bf253fcba3c
+ACR-32fcd11124d0414abaf688c01776270a
+ACR-ae524769fe624e99936056061feda906
+ACR-c82933adc6e14956a290cd14364d9ee1
+ACR-abd985f4d9a04b41a6cfd56ecccfc020
+ACR-495f5b83994d44e2aa736ce3f049aa0c
  */
 package mediumtest.http;
 
@@ -71,7 +71,7 @@ class SslMediumTests {
   SonarLintLogTester logTester = new SonarLintLogTester(true);
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing sonarcloudMock and mockSonarCloudUrl() to static
+  //ACR-fd6e640ef12f4cec8795c23e6864016a
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class ServerCertificate {
 
@@ -129,7 +129,7 @@ class SslMediumTests {
       when(fakeClient.checkServerTrusted(any(), any()))
         .thenReturn(true);
 
-      // Two concurrent requests should only trigger checkServerTrusted once
+      //ACR-c62398cb51a24fa782a0b5e4784849c7
       var future = backend.getConnectionService().getOrganization(new GetOrganizationParams(Either.forLeft(new TokenDto("token")), "myOrg", SonarCloudRegion.EU));
       var future2 = backend.getConnectionService().getOrganization(new GetOrganizationParams(Either.forLeft(new TokenDto("token")), "myOrg", SonarCloudRegion.EU));
 
@@ -154,7 +154,7 @@ class SslMediumTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing sonarcloudMock and mockSonarCloudUrl() to static
+  //ACR-18bdbac7ebf94296ba5a9cb92af36894
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class ClientCertificate {
     @RegisterExtension

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bf9bd0e4240d4c35b62d6956f6d612c0
+ACR-e2b13a387b8a4e6b8dc42b118cea5bf5
+ACR-5b0e86c70ee14527a84f6a98eecff3f2
+ACR-91d1e12077844b6fa909efbbfe205eaf
+ACR-691ec515327942f4ac8e73664e2ba55a
+ACR-dc25751919614d1f862df15fa2390233
+ACR-8db438eba1de443193711f4254956ece
+ACR-c48f7d5451684d748bd04982263a4a4f
+ACR-f3ef1b6fc29d4314a140d9bfcbae816c
+ACR-166a33b5ab554a89a2f08412c9272f24
+ACR-1520c063eebe4eaf8580f4dbbf081265
+ACR-605b4b01f9ac4b73b4af452329e688c8
+ACR-5f17d5088f9745a58023f32780500abb
+ACR-c3582d47880b432581fc569af8121076
+ACR-8246b500943f468491e72f61aa88999b
+ACR-372a5133136d41b780abef125ac9cc3d
+ACR-fbb2f130f3a84387bb004991576ba33a
  */
 package org.sonarsource.sonarlint.core.test.utils;
 
@@ -225,7 +225,7 @@ public class SonarLintTestRpcServer implements SonarLintRpcServer {
     try {
       return readTelemetryFile(telemetryFilePath());
     } catch (IOException e) {
-      // use this exception type to allow retries with awaitility's untilAsserted method
+      //ACR-e43a8b95e7e7470caa487bd1a470eada
       throw new AssertionError("Failed to read telemetry file", e);
     }
   }
@@ -327,8 +327,8 @@ public class SonarLintTestRpcServer implements SonarLintRpcServer {
         var bytes = mem.toString().getBytes(StandardCharsets.UTF_8);
         var relevantBytes = new byte[nextContentSize];
         System.arraycopy(bytes, 0, relevantBytes, 0, nextContentSize);
-        // Because of non-ASCII characters, a character might be longer than one byte, which makes Content-Length irrelevant
-        // As a workaround, we can directly extract the String from the byte array
+        //ACR-5febdfb92306496a8e11180b4831d7c7
+        //ACR-bef1c290e3bd479c9eea5d856f2df88a
         var relevantString = new String(relevantBytes, StandardCharsets.UTF_8);
 
         mem.replace(0, relevantString.length() + 2, "");

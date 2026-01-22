@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bdfb4bd710ae47049b5b0953ede17013
+ACR-b42ede4d6d3b4df98e525fa5ba850266
+ACR-0ac973a7747746a4b4cfe8302406eec1
+ACR-f76d7d24e5eb4a928a73b226cd530e95
+ACR-326738bacf6b447c95083399c1c318f1
+ACR-a05ce50e5e214c1794be2369f6e24523
+ACR-66af8ba1561a42d59f415fe66c6758a3
+ACR-3ffa53a4e763439baa46172ad2013ae9
+ACR-1e6c5a8aad814ae2a3e820adf15c2147
+ACR-d06a44ffe6a34d1c947cf967e97838ee
+ACR-0e2bd5daa24b47c7a5ff5d63ae1cbb5f
+ACR-8de8d53574e24a36a93262fd59fc985a
+ACR-42944a58068b4cbc8c8ef2422f50176c
+ACR-861da52bde5d4b3d88eeeae7f1cc3271
+ACR-bb17535b2d39483dae8295846dd7485b
+ACR-2ef999db1f3c4dab8c13c97008d9be6a
+ACR-c3e95b05d8de47c6ad35fd6ba2afeb18
  */
 package org.sonarsource.sonarlint.core.client.utils;
 
@@ -143,7 +143,7 @@ class GitUtilsTests {
 
   @Test
   void shouldFavorCurrentBranchIfMultipleCandidates(@TempDir File projectDir) throws IOException {
-    // Both main and same-as-master branches are pointing to HEAD, but same-as-master is the currently checked out branch
+    //ACR-1155408facb64bc9adf34d4efb7fab65
     javaUnzip("two-branches-for-head.zip", projectDir);
     Path path = Paths.get(projectDir.getPath(), "two-branches-for-head");
     try (Repository repo = GitUtils.getRepositoryForDir(path, fakeClientLogger)) {

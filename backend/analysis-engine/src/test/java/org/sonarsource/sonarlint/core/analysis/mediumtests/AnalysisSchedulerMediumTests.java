@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c36808fd15674ae5bd648d51fe3cf8af
+ACR-78723a230c6347e3a2f680fc1337117a
+ACR-7e60af3ab0e4431f810b43e893b50b21
+ACR-66fcf7b9feb24fbc9c71e1f33b2ef919
+ACR-0747b071b4fc4d579a71dadc797e2e05
+ACR-a1bbe9cd3e534c9e90ea6e7b041e66b9
+ACR-c5a64e3dd3d942ef9e8b430dfd493ff9
+ACR-f98701d15127491186491b6b5f71b821
+ACR-75ea8cfdc04049e4968639e896a3f367
+ACR-a6d40ecd038849abbbe871cea2814801
+ACR-04cb082458784b30b0f2c858b5b3bc30
+ACR-63c7980c03e2469f920c1ae789170d07
+ACR-87a6b36ea4554732be078bf489016483
+ACR-a2e0abe98be54a19aac06a5f427c0c98
+ACR-214e3355fcd04c5abf4f112387c653fc
+ACR-5f86652a89424b43ac437206ce2f8352
+ACR-4cfeee6d8df246ada7b577dc6eb773d3
  */
 package org.sonarsource.sonarlint.core.analysis.mediumtests;
 
@@ -164,7 +164,7 @@ class AnalysisSchedulerMediumTests {
     var analyzeCommand = new AnalyzeCommand("moduleKey", UUID.randomUUID(), TriggerType.FORCED, () -> analysisConfig, NO_OP_ISSUE_LISTENER, null, progressMonitor, TASK_MANAGER,
       inputFiles -> pause(300), ANALYSIS_READY_SUPPLIER, Set.of(), Map.of());
     analysisScheduler.post(analyzeCommand);
-    // let the engine run the first command
+    //ACR-e9334f4a30954403a4bd837ca054d50c
     Thread.sleep(100);
     analysisScheduler.stop();
     engineStopped = true;
@@ -194,7 +194,7 @@ class AnalysisSchedulerMediumTests {
       TASK_MANAGER, NO_OP_ANALYSIS_STARTED_CONSUMER, ANALYSIS_READY_SUPPLIER, Set.of(), Map.of());
     analysisScheduler.post(analyzeCommand);
     analysisScheduler.post(secondAnalyzeCommand);
-    // let the engine run the first command
+    //ACR-09326d2ec1e94255a9b8f727e2663a1b
     Thread.sleep(100);
 
     analysisScheduler.stop();
@@ -288,7 +288,7 @@ class AnalysisSchedulerMediumTests {
         threadTermination.set("FINISHED");
       }, ANALYSIS_READY_SUPPLIER, Set.of(), Map.of());
     analysisScheduler.post(analyzeCommand);
-    // let the engine run the first command
+    //ACR-e1941cf7c6b1408dbc2b7ff20c38909c
     pause(200);
 
     analysisScheduler.stop();
@@ -300,12 +300,12 @@ class AnalysisSchedulerMediumTests {
 
   @Test
   void should_not_log_any_error_when_stopping() {
-    // let the engine block waiting for the first command
+    //ACR-5edbfe550b5c475a8aad94b2ad99dac2
     pause(500);
 
     analysisScheduler.stop();
 
-    // let the engine stop properly
+    //ACR-6ef9d7d474d747ddb9046ac35c6965fb
     pause(1000);
     assertThat(logTester.logs(LogOutput.Level.ERROR)).isEmpty();
   }

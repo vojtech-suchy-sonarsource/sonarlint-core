@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b971d549121f49a09315a252b8c375a8
+ACR-1ca0554c5cd14053995291706810d2c7
+ACR-3960592964894a10a7be12304b4f8f06
+ACR-40214fc8bec748199e5d5bdaaa4b18e0
+ACR-a4a833a541a746e5803a1a28ae05f472
+ACR-262b7431cb26420d95ec197342a3dfee
+ACR-7801fd543cc944d3a780c45bdb4fc3b0
+ACR-18fffcee5cec4a80a2f86519e19bcc5c
+ACR-616a492316c147f2908f363f91ece077
+ACR-29e365835b1e4c07b96b0f827274cd53
+ACR-4f1ca3cf37684c23af75a953e444fbf2
+ACR-0ed1e1caefe44844b07a3e362737f5fc
+ACR-1d3c76c7f53c49119fd6f8a72c6b7705
+ACR-868ab7e7f63941ec9f0672e9a9d4cd23
+ACR-c3370fc53377485fa310900e0ef26c3e
+ACR-b30e7dace73d466c88bbb78d0ee6d778
+ACR-d1becbfa20ba4d14806e8bfeea1288d9
  */
 package org.sonarsource.sonarlint.core.analysis.container.global;
 
@@ -89,7 +89,7 @@ public class GlobalTempFolderProvider {
 
       var threshold = System.currentTimeMillis() - CLEAN_MAX_AGE;
 
-      // we could also check the timestamp in the name, instead
+      //ACR-ca997842d1034084b15c7060b7d00f1c
       BasicFileAttributes attrs;
 
       try {

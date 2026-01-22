@@ -1,28 +1,28 @@
 /*
- * Example Plugin for SonarQube
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3e0f07741a004031b8e1ce840763117c
+ACR-958007326a9e401f972da9a59ff505eb
+ACR-61c5c50254864d26981aac0c1e6ca041
+ACR-ec3f684e99e84f328731509b6c4fc266
+ACR-7cd79673fd6d4006bc9751b1a34b62cd
+ACR-15c7a93fae894419b83cdcb5fa5b45e5
+ACR-869533a3d5c447f08d4bb5ca98722874
+ACR-e789909102254a8ab961a5c21d7b2a52
+ACR-1d1e8c422acb45c7b916941722e28cd6
+ACR-77f8f64a665e444d80694f99112e390a
+ACR-678e43c1a7e04d9d844a64ce94f1d1c6
+ACR-e073b75711b540928aec84fa63464b45
+ACR-1bc362e39dad425c87eda2d0857148fe
+ACR-7bc935a7cff84df0922dd22b216a7de2
+ACR-8a8bca1294764604b2783dc349a81181
+ACR-048c0072b84949abb3094795b8e20ce2
+ACR-d2b17130d7e1453395df499f4a553162
  */
 package org.sonarsource.plugins.example;
 
 import org.sonar.api.Plugin;
 
-/**
- * This class is the entry point for all extensions. It is referenced in pom.xml.
+/*ACR-a064f031d42641f29e96b75ba5885687
+ACR-e9860848703b4aa593a87f930861f4b8
  */
 public class ExamplePlugin implements Plugin {
 

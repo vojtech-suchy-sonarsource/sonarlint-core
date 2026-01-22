@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-63a900ea31ac470ba75eaa0aa19784f0
+ACR-a137460d70c74cf285abea2d0cbba26b
+ACR-d11b4e039ecb46e38e25059b15fb505b
+ACR-49f861fc40b341f9ab1d2e94e9b175e0
+ACR-0cab22d2d3d84b3e986755699f231c22
+ACR-4eb2957083964f619de30a2b9a5562f1
+ACR-dabb2e9613764d1285b8dcc6a3648fdc
+ACR-a1938e87ae144bc69a5761cec68ae04c
+ACR-f01fd8ca4ad44cadb930c8af63dfe920
+ACR-da1fc96af500450fbb085ce04ec860a9
+ACR-6de3db31a287423b9a5f99db0c0202e6
+ACR-29578d1d5d5043afbb68986379514dd7
+ACR-f297c49f210242b79365c755d0e52fb2
+ACR-55fadc8ffae14e29b017a024731413ba
+ACR-7be61c9f5b8a4b01831957a767b32658
+ACR-cfb6d558a1d5433db7c5211eb77d0c14
+ACR-742c5f4dd41f451eb1e10d023aa3e3fd
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.issue.ignore.pattern;
 
@@ -55,7 +55,7 @@ public abstract class AbstractPatternInitializer {
   }
 
   protected final void initPatterns() {
-    // Patterns Multicriteria
+    //ACR-4411fb3c547244b1ae956c0c98acc9c1
     multicriteriaPatterns = new ArrayList<>();
     for (String id : config.getStringArray(getMulticriteriaConfigurationKey())) {
       var propPrefix = getMulticriteriaConfigurationKey() + "." + id + ".";

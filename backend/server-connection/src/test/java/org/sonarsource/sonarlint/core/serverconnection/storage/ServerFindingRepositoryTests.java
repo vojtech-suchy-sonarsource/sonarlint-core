@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dcce3a2e509849168e024da6586dca3f
+ACR-233c342c15964119a8280fca8ddbdfc1
+ACR-2a2cba9f89cc46658131e515c0dd19f1
+ACR-534284b580cb4dad9d461770ceed9784
+ACR-890b40eb3d50436cbb53578006842648
+ACR-a3cc2bbbbe8f4a8581f2d1d35a2ef3d8
+ACR-7a0aeb92bb504fe78b0923fb1d9fa6ed
+ACR-633ee8eb69034039a7fb500caca02241
+ACR-d2294331e47449b8a16b7f013cd1c3be
+ACR-cdb3fcd809fc421d8e364f45e3c6f2b9
+ACR-0d05f4468804473e8842cf50d25ab921
+ACR-6e7000d3930742f2b7c1e2ed17efffc2
+ACR-387f8b794745463b977b7626c5e5f23b
+ACR-5e864ec30d5c45cebd353ba3a48ea546
+ACR-e945dcf208114674b85959e31714a175
+ACR-8935f13bf3b5473c9404adf27fdbe232
+ACR-57a012f18b774852b83a0029756fb66b
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -102,7 +102,7 @@ class ServerFindingRepositoryTests {
       HotspotReviewStatus.SAFE, h1.getVulnerabilityProbability(), h1.getAssignee());
     assertHotspotEquals(expectedAfterStatus, afterStatus);
 
-    repo.updateHotspot("HOTSPOT_KEY_2", hs -> { /* no-op */ });
+    repo.updateHotspot("HOTSPOT_KEY_2", hs -> { /*ACR-d1e56a1619c448c681baf515f25e78ca*/ });
     var afterUpdate = repo.getHotspot("HOTSPOT_KEY_2");
     assertHotspotEquals(h2, afterUpdate);
 
@@ -134,7 +134,7 @@ class ServerFindingRepositoryTests {
       HotspotReviewStatus.SAFE, h1.getVulnerabilityProbability(), h1.getAssignee());
     assertHotspotEquals(expectedAfterStatus, afterStatus);
 
-    repo.updateHotspot("HOTSPOT_KEY_2", hs -> { /* no-op */ });
+    repo.updateHotspot("HOTSPOT_KEY_2", hs -> { /*ACR-69f648af9073408d8bf222dbdb8950df*/ });
     var afterUpdate = repo.getHotspot("HOTSPOT_KEY_2");
     assertHotspotEquals(h2, afterUpdate);
 
@@ -269,7 +269,7 @@ class ServerFindingRepositoryTests {
     assertThat(loaded).hasSize(1);
     assertTaintEquals(t1, loaded.get(0));
 
-    assertThat(repo.updateTaintIssueBySonarServerKey("TAINT_KEY_1", t -> { /* no-op */ })).isPresent();
+    assertThat(repo.updateTaintIssueBySonarServerKey("TAINT_KEY_1", t -> { /*ACR-e982a6559e084879bae0aed97cbe7333*/ })).isPresent();
     var afterUpdate = repo.loadTaint(branch).get(0);
     assertTaintEquals(t1, afterUpdate);
   }
@@ -308,7 +308,7 @@ class ServerFindingRepositoryTests {
 
   @Test
   void branch_metadata_is_stored_during_merges() {
-    // perform one merge for each type to set metadata
+    //ACR-86cad438dad5457eae4bf10fa5f370a3
     repo.mergeIssues(branch, List.of(lineIssue("ISSUE_KEY_X", filePath, 1)), Set.of(), Instant.now(), Set.of());
     repo.mergeTaintIssues(branch, List.of(taint("TAINT_KEY_X", filePath)), Set.of(), Instant.now(), Set.of());
     repo.mergeHotspots(branch, List.of(hotspot("HOTSPOT_KEY_X", filePath, 1, HotspotReviewStatus.TO_REVIEW, VulnerabilityProbability.LOW, null)), Set.of(), Instant.now(),
@@ -323,7 +323,7 @@ class ServerFindingRepositoryTests {
     assertThat(repo.getLastTaintEnabledLanguages(branch)).isEmpty();
   }
 
-  // Helpers
+  //ACR-7cb128d07a944735981221727e43efa8
   private static void assertInstantsClose(Instant expected, Instant actual) {
     long diff = Math.abs(expected.toEpochMilli() - actual.toEpochMilli());
     assertThat(diff).isLessThan(INSTANT_TOLERANCE_MS);

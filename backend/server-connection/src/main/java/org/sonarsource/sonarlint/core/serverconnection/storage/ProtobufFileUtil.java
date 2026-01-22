@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7adb7916554b4df9af2dab6f0375d199
+ACR-889eb82e15c44bbc9770977acc907009
+ACR-3a5abbc9534f4fd488f6bd26171baf64
+ACR-c9fb9695637a47a2b47898d7605c6aa1
+ACR-fbef01a7423e4633868ed9186089727e
+ACR-29c586a77e9a4d398a7ab89e03218429
+ACR-2ca265bb4c2c4424984916635abc1812
+ACR-67c9df66090044b0bb4e6425bcc319fd
+ACR-6f785760fd204ce2bc791f1d9293d283
+ACR-fab2c2f74ff7493eb031bc8d4199ef18
+ACR-58240ed726224591bed47f2c4252d37e
+ACR-cdf3894303a745a7b1c4f9499c961bcc
+ACR-2f7b73fbab194f089d0ec7804cb433e0
+ACR-c6bd10a5e22140eaa3842bc9a0294574
+ACR-9f0f06f645ce4c5cbec51d7ca80936cd
+ACR-4706b0a2fd544bffb62c76cb2560e71c
+ACR-2db64ca8343e471489e3e00240d9038b
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -27,7 +27,7 @@ import java.nio.file.Path;
 
 public class ProtobufFileUtil {
   private ProtobufFileUtil() {
-    // only static stuff
+    //ACR-79d758895c9441fda637a0b5a64e5063
   }
 
   public static <T extends Message> T readFile(Path file, Parser<T> parser) {

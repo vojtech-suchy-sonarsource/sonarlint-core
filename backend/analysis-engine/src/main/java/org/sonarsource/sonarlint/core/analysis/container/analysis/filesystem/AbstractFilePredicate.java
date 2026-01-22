@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8eaa502bf91c4183b12229628c3a2523
+ACR-03a4fc486dd54eecaef09e7605bde47c
+ACR-8f391734a5be411e82e0ec2deed8b447
+ACR-e7279d9d673d410e95cdeb881d83f4c6
+ACR-3f61cfbf8d594ef9a1a1e0014eebe5ea
+ACR-306939ceb8774dc89a4981c938c673f0
+ACR-11a68c7939b84724bbf8ee744cefbd46
+ACR-d6332a7146054ee8b4bb8a431b7f06c9
+ACR-7df8a539f4894d7bac892c5407ef8316
+ACR-dcbec2fcd4a244569ae78d73586f89d7
+ACR-d893b3d8a68640858f9712e69856c32b
+ACR-1c36ccdfff79425688158367564364aa
+ACR-78253ff5b3df437cbac11306640bba03
+ACR-a33b24ba674541a3af375dbb7672e1e8
+ACR-439af15cf6ae4fc99ea9f73b6b101cf5
+ACR-26eaf8e744d94500b4c4890ea1ca950d
+ACR-a569219d4a0543948a6f7222d3077106
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -24,9 +24,9 @@ import org.sonar.api.batch.fs.FilePredicate;
 import org.sonar.api.batch.fs.FileSystem.Index;
 import org.sonar.api.batch.fs.InputFile;
 
-/**
- * Partial implementation of {@link FilePredicate}.
- * @since 5.1
+/*ACR-9ad366a2975542078ae93a65909d0122
+ACR-20f18709256d45c490032035b157b4c4
+ACR-f3c73a998c1645ef907c6d80f6501f21
  */
 public abstract class AbstractFilePredicate implements OptimizedFilePredicate {
 

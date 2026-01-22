@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5e9ce689e06140ac9d6a2c969ebcf678
+ACR-e53f7099265d49e2a3c8073f30281efd
+ACR-0ca23426a22d40fa8c98cffc6896a6c4
+ACR-83597a8a7d3c4989877ba44212772cc4
+ACR-bfb90ed1422146bd871990b050743896
+ACR-ffefed0c3eb54cac9e02561d4b98e9ce
+ACR-64d8928a533a4725ae150b6bef114624
+ACR-ddf8cf90860747b08597cd14b218e504
+ACR-518dac4686b44a12b912554e5287ab9f
+ACR-129c384a5ef74d6d974443039d890ee4
+ACR-0ef2bd18542f4020a9335f7b8447019f
+ACR-0085084ca7a44af88230f94541447a19
+ACR-b3da18c92e3845968c52964902f25eea
+ACR-f9ad96a1c487434faaecbd1e4dc8b029
+ACR-6d58cc36554f43bbbc76c37b72f80105
+ACR-0369bcf9ac7b4bfea586cb977587895f
+ACR-15b6f620ab1e4c428d7e47e8e302a6b3
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -48,17 +48,17 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import static org.sonarsource.sonarlint.core.commons.IOExceptionUtils.throwFirstWithOtherSuppressed;
 import static org.sonarsource.sonarlint.core.commons.IOExceptionUtils.tryAndCollectIOException;
 
-/**
- * Loads the plugin JAR files by creating the appropriate classloaders and by instantiating
- * the entry point classes as defined in manifests. It assumes that JAR files are compatible with current
- * environment (minimal sonarqube version, compatibility between plugins, ...):
- * <ul>
- *   <li>server verifies compatibility of JARs before deploying them at startup (see ServerPluginRepository)</li>
- *   <li>batch loads only the plugins deployed on server (see BatchPluginRepository)</li>
- * </ul>
- * <p>
- * Plugins have their own isolated classloader, inheriting only from API classes.
- * Some plugins can extend a "base" plugin, sharing the same classloader.
+/*ACR-85f42fe9328c4d11bb585e096cbeef67
+ACR-a919702cedad41338d55d23c83795919
+ACR-16c21f7473b5411bb738567de90921f6
+ACR-74f120722eae4cbb8b3cc4c659f0241b
+ACR-f32af180a11b4236b5d764a731257176
+ACR-8df39066e1874dd5a56aa0146838a4aa
+ACR-709c722f5bac42e682dd677cff7b7425
+ACR-dc2045f69b6f4d149232d48ea7a7d93f
+ACR-e1ed8e7581a94d31b176db6da523be15
+ACR-e81b818bc57741b8970c43d417068db9
+ACR-8010e41fade14a298c84181714aadf7f
  */
 public class PluginInstancesLoader implements Closeable {
 
@@ -88,9 +88,9 @@ public class PluginInstancesLoader implements Closeable {
     return instantiatePluginClasses(classloaders);
   }
 
-  /**
-   * Defines the different classloaders to be created. Number of classloaders can be
-   * different than number of plugins.
+  /*ACR-4a00ff7f72184bc4906c693685d3b0dd
+ACR-0b4970d610b84033904b286db6ea01b7
+ACR-460fcab9db4745a49c24b4592e529e6f
    */
   Collection<PluginClassLoaderDef> defineClassloaders(Map<String, PluginInfo> pluginsByKey) {
     Map<String, PluginClassLoaderDef> classloadersByBasePlugin = new HashMap<>();
@@ -122,15 +122,15 @@ public class PluginInstancesLoader implements Closeable {
     return classloadersByBasePlugin.values();
   }
 
-  /**
-   * SLCORE-557 Because of bug <a href="https://bugs.java.com/bugdatabase/view_bug?bug_id=JDK-8315993">JDK-8315993</a> we have to somehow get access
-   * to the underlying cached JarFile that will be also opened by the URLClassloader, and close it ourselves.
+  /*ACR-859c2253553e4772bca982225347f29c
+ACR-af75c4aa08a04e40b629ebd843993959
+ACR-857c2fb694374661931bb14aef4e3e5a
    */
   private static Optional<JarFile> getJarFile(Path tmpDepFile) {
     try {
       return Optional.of(((JarURLConnection) new URL("jar:" + tmpDepFile.toUri().toURL() + "!/").openConnection()).getJarFile());
     } catch (ZipException ignore) {
-      // For tests, we are using fake JARs, so ignore ZipException: zip file is empty
+      //ACR-d06dcd555782453384b9cfc4c1b95aed
       return Optional.empty();
     } catch (IOException e) {
       throw new IllegalArgumentException(e);
@@ -167,20 +167,20 @@ public class PluginInstancesLoader implements Closeable {
     }
   }
 
-  /**
-   * Instantiates collection of {@link org.sonar.api.Plugin} according to given metadata and classloaders
-   *
-   * @return the instances grouped by plugin key
-   * @throws IllegalStateException if at least one plugin can't be correctly loaded
+  /*ACR-28b477d7e24b453b9d0565cf7cf3e05d
+ACR-a60d0419a6444d668007da975065a20d
+ACR-3f76295dddaa4ce6ae73aea1f3d978ff
+ACR-a2e9dffc0c164c7da30dbc24e42716c1
+ACR-755b6754d5a1473fa7c61068e2a58fc4
    */
   Map<String, Plugin> instantiatePluginClasses(Map<PluginClassLoaderDef, ClassLoader> classloaders) {
-    // instantiate plugins
+    //ACR-a50b2e47afc7444e952ce8957200472a
     Map<String, Plugin> instancesByPluginKey = new HashMap<>();
     for (var entry : classloaders.entrySet()) {
       var def = entry.getKey();
       var classLoader = entry.getValue();
 
-      // the same classloader can be used by multiple plugins
+      //ACR-1fd4285793124bd7a3b679e996508e7b
       for (var mainClassEntry : def.getMainClassesByPluginKey().entrySet()) {
         var pluginKey = mainClassEntry.getKey();
         var mainClass = mainClassEntry.getValue();
@@ -222,9 +222,9 @@ public class PluginInstancesLoader implements Closeable {
     throwFirstWithOtherSuppressed(exceptions);
   }
 
-  /**
-   * Get the root key of a tree of plugins. For example if plugin C depends on B, which depends on A, then
-   * B and C must be attached to the classloader of A. The method returns A in the three cases.
+  /*ACR-ba5d7ccdde4b4db499ae9ee0c257ee83
+ACR-296a370653084c509802973c901d8c2d
+ACR-efe6748bf84e4dd1a98e412b88173308
    */
   @CheckForNull
   static String basePluginKey(PluginInfo plugin, Map<String, PluginInfo> allPluginsPerKey) {

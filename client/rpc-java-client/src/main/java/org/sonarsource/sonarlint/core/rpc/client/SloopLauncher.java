@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Java Client
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-01372f880c4649799779cb70e72dff8a
+ACR-e9dfcdf584fb40b89f2d48ec8405d191
+ACR-7e0fed195fa34c839335e03f12d52cda
+ACR-80f3e10095cb4ad29f1fd803689703ff
+ACR-44828adaf6f44e1d82df08867b29c141
+ACR-4f1e2620ce664af0ab2c0f7d1739b93e
+ACR-1bbf3b7138f8490ea7c940ce1be6ffab
+ACR-270a521f2aac4a2298b3f223efb01831
+ACR-94826f35b24741b48edbb8e36e2bdfae
+ACR-3f7c22b9a2ac4fceb91cadf9b5ef66c3
+ACR-309ffe782b1a49bf9aabd308fa24f961
+ACR-a4038df7e47949098bb5800bed513af5
+ACR-b761706deec04a7593be431195d994ef
+ACR-a826b02449054c6b8506839b073a1d0a
+ACR-11cf2a7181fc4f5cb7d4c4423aab0186
+ACR-d7aa6f2a4fda49e4979acf58733eda7a
+ACR-2b237415e67f48e7941c7aec8ba4d6f3
  */
 package org.sonarsource.sonarlint.core.rpc.client;
 
@@ -63,8 +63,8 @@ public class SloopLauncher {
     return start(distPath, jrePath, null);
   }
 
-  /**
-   * @param jvmOpts Each argument should be separated by a space, such as '-XX:+UseG1GC -XX:MaxHeapFreeRatio=50'
+  /*ACR-bd70f404a16b464d96124cae17e121e3
+ACR-a98540e0ee4b40ed92b20094b0c54872
    */
   public Sloop start(Path distPath, @Nullable Path jrePath, @Nullable String jvmOpts) {
     try {
@@ -82,8 +82,8 @@ public class SloopLauncher {
     return stringWriter.toString();
   }
 
-  /**
-   * Inspired from Apache commons-lang3
+  /*ACR-55fed05170004571b866813b17592d19
+ACR-6844807d62db4afa92f8fbcab1285780
    */
   private boolean isWindows() {
     var osName = osNameSupplier.get();
@@ -109,11 +109,11 @@ public class SloopLauncher {
 
     var process = processBuilder.start();
 
-    // redirect process.getErrorStream() to the client logs
+    //ACR-b426dc6ee33c4f0d906106574a134886
     new StreamGobbler(process.getErrorStream(), stdErrLogConsumer()).start();
-    // use process.getInputStream() as an input for the client
+    //ACR-b6f0d7fd38424e0aaad530ed41ec900a
     var serverToClientInputStream = process.getInputStream();
-    // use process.getOutputStream() as the standard input of a subprocess that can be written to
+    //ACR-ce22eb89910241a5a234b842ad06e572
     var clientToServerOutputStream = process.getOutputStream();
     var clientLauncher = new ClientJsonRpcLauncher(serverToClientInputStream, clientToServerOutputStream, rpcClient);
     process.onExit().thenAccept(p -> clientLauncher.close());
@@ -134,7 +134,7 @@ public class SloopLauncher {
     if (clientJvmOpts != null) {
       commands.addAll(Arrays.asList(clientJvmOpts.split(" ")));
     }
-    // Avoid displaying the Java icon in the taskbar on Mac
+    //ACR-061015464a994a5087505c4cfd07168a
     commands.add("-Djava.awt.headless=true");
     commands.add("-classpath");
     commands.add(classpath);

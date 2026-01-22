@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-701af23f14954901a7702dc723e052e4
+ACR-8ac6074b085542579cb0037b801ab440
+ACR-45bb1380e80e4ac0817eb97994a4ac24
+ACR-4a687b27ab5547848de03d4eb9efce78
+ACR-b3c984883e984a75b41d583113d25077
+ACR-50494fae86074d459ea25af3eb7b8914
+ACR-baf9ae30c12c4867873d9034d125f623
+ACR-835720615b574d40b4bc40d2fd8413b0
+ACR-7b8534ef31bb43b4968acae14bbdb105
+ACR-8cf7e3503a394348a9322dba9ce09ba2
+ACR-0fc202e35a264a4bac5905f1dcea9497
+ACR-87fd49892968455e92b531f8a8312425
+ACR-e6398b6c6deb4ff18a731d51515e0d1a
+ACR-66d59fafea454e3fac6dfae65005deb9
+ACR-51397e1dd746491fb68521fd90545d05
+ACR-c1ed196969584dfdbfdaeb757d147ee8
+ACR-2fa5bba7dbc74405a572e97a30b5f7c1
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.connection;
 
@@ -52,9 +52,9 @@ public class ConnectionSuggestionDto {
     return connectionSuggestion;
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it will be removed once all the clients are migrated.
-   * Rely on {@link #getOrigin()}  instead.
+  /*ACR-a9b9ed8428cf416aa1889fd43a523f6f
+ACR-84c5a3925fa4492cb0ad58e9a33357f0
+ACR-6829243c0ecf4feca5b990fe29c82e7b
    */
   @Deprecated(forRemoval = true)
   public boolean isFromSharedConfiguration() {

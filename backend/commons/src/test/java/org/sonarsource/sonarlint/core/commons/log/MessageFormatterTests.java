@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-464a8dc8453b413d9d20f5319ab744ac
+ACR-034c6d8fc85547d093999516c8a4386a
+ACR-6953ffc519b044d8a05391f4543bf443
+ACR-4acfe2a41fc04ed0bbcd1f60c34b6369
+ACR-eb821be880c840148fae65119fc39f0e
+ACR-581b0e90d24c4d69a6352656d20bca19
+ACR-ca2cc7a98add46eba2f2ef2d512e63f7
+ACR-c4b909332f0e46bb81ef0f86f28aef87
+ACR-67949db83242473bb2d4d624a7e6efd3
+ACR-b9da99a2c4ff4896ba4b643c76535d73
+ACR-c9cdf6a5b896483eaf786cc01f0ac092
+ACR-b40b6d314680405bbf83df71c09a43d1
+ACR-b3fb82245d964bc491f11ae21b473ef6
+ACR-b91ae3256d0d4a8cbb4ba2b7016859bb
+ACR-19cf57dee77c48afb2f3d4237a99eab6
+ACR-927e63a1820641e4a48d15c3ba29a858
+ACR-059428de0c7b4ae98c2eba3dc4793e13
  */
 package org.sonarsource.sonarlint.core.commons.log;
 
@@ -24,8 +24,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-/**
- * @author Ceki Gulcu
+/*ACR-a5c5f7a5c2e84f00b54f09d083fd0b49
+ACR-36744d4f71d44cf6bb2d594bcac7c70d
  */
 class MessageFormatterTests {
 
@@ -108,7 +108,7 @@ class MessageFormatterTests {
     result = MessageFormatter.format("File name is {{}}.", "App folder.zip").getMessage();
     assertEquals("File name is {App folder.zip}.", result);
 
-    // escaping the escape character
+    //ACR-5f0bc508b3cb487486a370e7d45eb64a
     result = MessageFormatter.format("File name is C:\\\\{}.", "App folder.zip").getMessage();
     assertEquals("File name is C:\\App folder.zip.", result);
   }
@@ -178,7 +178,7 @@ class MessageFormatterTests {
     assertEquals(msg3, result);
   }
 
-  // tests the case when the parameters are supplied in a single array
+  //ACR-cefa458bd1a64317bb5860056b81e53a
   @Test
   void testArrayFormat() {
     result = MessageFormatter.arrayFormat("Value {} is smaller than {} and {}.", ia0).getMessage();
@@ -211,39 +211,39 @@ class MessageFormatterTests {
     result = MessageFormatter.format("{}{}", p0, p1).getMessage();
     assertEquals("1[2, 3]", result);
 
-    // Integer[]
+    //ACR-783b9d9a8ac648578012c961ba9280f1
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", p1}).getMessage();
     assertEquals("a[2, 3]", result);
 
-    // byte[]
+    //ACR-272cbecccbc64f4d8b7e515bce6b8a01
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new byte[] {1, 2}}).getMessage();
     assertEquals("a[1, 2]", result);
 
-    // int[]
+    //ACR-ba36239554d144f69935488936d5d59d
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new int[] {1, 2}}).getMessage();
     assertEquals("a[1, 2]", result);
 
-    // float[]
+    //ACR-e91e1adae48b4ace93f698746e903ca4
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new float[] {1, 2}}).getMessage();
     assertEquals("a[1.0, 2.0]", result);
 
-    // double[]
+    //ACR-b8a5282c0b354b68aa79063758abcd77
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new double[] {1, 2}}).getMessage();
     assertEquals("a[1.0, 2.0]", result);
 
-    // boolean[]
+    //ACR-d2726fd5e74548c2889247ce83268d78
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new boolean[] {true, false}}).getMessage();
     assertEquals("a[true, false]", result);
 
-    // short[]
+    //ACR-beda9913541a4c8b82dd508c2b7dfa65
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new short[] {1, 2}}).getMessage();
     assertEquals("a[1, 2]", result);
 
-    // char[]
+    //ACR-a9310fc500d843059b97732d23cdd934
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new char[] {'a', 'b'}}).getMessage();
     assertEquals("a[a, b]", result);
 
-    // long[]
+    //ACR-a541a44e066046ecb60c88213c6ff403
     result = MessageFormatter.arrayFormat("{}{}", new Object[] {"a", new long[] {1, 2}}).getMessage();
     assertEquals("a[1, 2]", result);
 

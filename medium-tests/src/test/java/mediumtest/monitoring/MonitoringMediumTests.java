@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b6950c8f506946cbb4f1762b708fc6e6
+ACR-23f287ce3cb142b0b6d206d67137c421
+ACR-31a13334849748efa6730f878e2cb995
+ACR-f5e4f57233c54c0b85d26ca389f04553
+ACR-fbabea22d2df47edbfcac61f4acaddf2
+ACR-4252163be1d64760a0ca8c9e63894c6b
+ACR-ce88e0685e7747a4aaa2bd25e3d41d45
+ACR-f0704e8c8d6d436796e4a8faac312e11
+ACR-ba419b8fd180412a9f2fa0b096a5a771
+ACR-4fd38beb1e6c44f6b7947909ed1211a9
+ACR-30fe18d2e64f4aea96b695794696e72b
+ACR-d379dea9375a4111bf965f640dc32d2c
+ACR-a342c68ab23b48899286a85434d0f7a9
+ACR-0fb8428674ac41a09108bf0a972f8148
+ACR-02969eb47a694c689bc26bfc168d66fd
+ACR-7c5ad7a7d22a4ecc8c4b99f9cc952868
+ACR-81c121293c0248cf86a8c19917ea4b68
  */
 package mediumtest.monitoring;
 
@@ -87,14 +87,14 @@ class MonitoringMediumTests {
   }
 
   private void setupSentryStubs() {
-    // Stub the Sentry project endpoint (where events are sent)
+    //ACR-71662c0ac90f4bb6a2875d2543a0ca3c
     sentryServer.stubFor(post(urlPathMatching("/api/\\d+/store/"))
       .willReturn(aResponse()
         .withStatus(200)
         .withHeader("Content-Type", "application/json")
         .withBody("{\"id\": \"event-id-12345\"}")));
 
-    // Stub the Sentry envelope endpoint (used for transactions, etc.)
+    //ACR-079e6569dbd7479ca0a3b6049519bcea
     sentryServer.stubFor(post(urlPathMatching("/api/\\d+/envelope/"))
       .willReturn(aResponse()
         .withStatus(200)));
@@ -126,7 +126,7 @@ class MonitoringMediumTests {
 
     assertThat(issues).extracting(RaisedIssueDto::getRuleKey, i -> i.getTextRange().getStartLine()).contains(tuple("php:S1172", 2));
 
-    // The mock Sentry server receives 1 event for the analysis trace
+    //ACR-cd4db05f47c7446a8368c038c7303562
     await().atMost(1, TimeUnit.SECONDS).untilAsserted(() ->  assertThat(sentryServer.getAllServeEvents()).hasSize(1));
   }
 
@@ -162,11 +162,11 @@ class MonitoringMediumTests {
       .join();
     assertThat(analysisResult.getFailedAnalysisFiles()).isEmpty();
     await().during(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getRaisedIssuesForScopeIdAsList(CONFIGURATION_SCOPE_ID)).isEmpty());
-    // The mock Sentry server receives 1 event: one for the trace
+    //ACR-7d66d4c216534ea883a36e3692081c6d
     await().atMost(1, TimeUnit.SECONDS).untilAsserted(() ->  assertThat(sentryServer.getAllServeEvents()).hasSize(1));
     assertThat(sentryServer.getAllServeEvents())
       .extracting(e -> e.getRequest().getBodyAsString())
-      // Server name should be removed from events
+      //ACR-9bb78c2014d54009841547c2d8e83d94
       .noneMatch(m -> m.contains("server_name"));
   }
 
@@ -223,14 +223,14 @@ class MonitoringMediumTests {
       .withStandaloneEmbeddedPluginAndEnabledLanguage(TestPlugin.PYTHON)
       .withBackendCapability(MONITORING)
       .start(client);
-    // analyze once to start the analysis scheduler
+    //ACR-a774991559c34077b8c3b8b90a36f18f
     backend.getAnalysisService().analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(CONFIGURATION_SCOPE_ID, UUID.randomUUID(), List.of(fileUri), Map.of(), false)).join();
 
     var updatedFile = new ClientFileDto(fileUri, baseDir.relativize(filePath), CONFIGURATION_SCOPE_ID, false, null, filePath, newContent, Language.PYTHON, true);
     backend.getFileService().didUpdateFileSystem(new DidUpdateFileSystemParams(List.of(), List.of(updatedFile), List.of()));
 
     await().untilAsserted(() -> assertThat(client.getLogMessages()).contains("Error processing file event"));
-    // only a single event for the analysis
+    //ACR-aaa1f8b0d37245de99d7c8c421a01f67
     await().atLeast(100, TimeUnit.MILLISECONDS).untilAsserted(() ->  assertThat(sentryServer.getAllServeEvents()).hasSize(1));
   }
 
@@ -613,11 +613,11 @@ class MonitoringMediumTests {
       .withTelemetryEnabled()
       .start(client);
 
-    // Disable telemetry to close Sentry
+    //ACR-c8f174d1576d44ee8064ce5716d0eaac
     backend.getTelemetryService().disableTelemetry();
     await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(Sentry.isEnabled()).isFalse());
 
-    // Clear any existing events
+    //ACR-95b80855c0e240cc937a2da8b63be459
     sentryServer.resetAll();
     setupSentryStubs();
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-15f11d5ca220474db1a3c9044dc9923d
+ACR-2ca3a2eb201b4efe81d01e06c4bb93cb
+ACR-f1e59f388bb04ed4893fb8d249d3ae92
+ACR-782b414e7d174933a8a518e885126147
+ACR-b2fc3e2003734589b8d95d103015c938
+ACR-02a421c2de9b4ef893138ae99c35a61c
+ACR-d13fc9c21f604e58aa199fd5ea3149c3
+ACR-8c7d59a86b3e4999a30bdd01fb5f3060
+ACR-dfb78bf312ac4dc896faaa2335ec6bb2
+ACR-8311b54368614686893ec1b3663331da
+ACR-7721c63789d74b4ea518b7153e23c360
+ACR-765c3ad12a09408390703f92f766d97b
+ACR-c87ff85275dd46b5918c65fb69a3aae0
+ACR-947706996e7a4224a0f40fa5aa00d1d0
+ACR-e81d78c22e57464cbb3d72735a8ad327
+ACR-52135e4ef331486e9ba997076a855707
+ACR-248c74a3310d45e49e9f1f792f30854b
  */
 package org.sonarsource.sonarlint.core.test.utils.server.sse;
 
@@ -50,9 +50,9 @@ public class SSEServlet implements Servlet {
     response.setStatus(HttpServletResponse.SC_OK);
     response.setCharacterEncoding(StandardCharsets.UTF_8.name());
     response.setContentType("text/event-stream");
-    // By adding this header, and not closing the connection,
-    // we disable HTTP chunking, and we can use write()+flush()
-    // to send data in the text/event-stream protocol
+    //ACR-ba49889669144b6c9717b8a4e0170f97
+    //ACR-2944cac1a735427fb0902ea866397b50
+    //ACR-3bcdbcdafee342f2901bacfb99b3b46c
     response.setHeader("Connection", "close");
     response.flushBuffer();
   }
@@ -85,7 +85,7 @@ public class SSEServlet implements Servlet {
 
   @Override
   public void init(ServletConfig config) {
-    // no-op
+    //ACR-2a563d31d85a4137af7e2cb5bd3bae82
   }
 
   @Override
@@ -100,6 +100,6 @@ public class SSEServlet implements Servlet {
 
   @Override
   public void destroy() {
-    // no-op
+    //ACR-3d77e29e790c4fd1b33407fc9f01f43a
   }
 }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f973026820e24d5ebe26f4517a78f168
+ACR-dfe58934b35c41f7bf481d5f500d7418
+ACR-4c4c579102ab488aa9b9c2bf99699641
+ACR-d41bfeb7273e4e2bb5076d369064dbea
+ACR-7bcbb5473e9a4373a1f9e53ed3b9fbe7
+ACR-eb94ed94cf1742219a24f3ba9c27c1fc
+ACR-70d9d84dd9244c9dbe5cba6039502bfd
+ACR-295322f05243486e88297ce1e499596a
+ACR-e3a363a0337f4c4fbfb2f51434d01805
+ACR-76f75a39a24149b29b524fbee750072c
+ACR-2068d9021e7b4e55b40507b2e93d4a16
+ACR-833202ab3a844a70afd9b0732676dcbf
+ACR-b3570b3ba7794c0e81722d8f532e08a2
+ACR-4f8d4eacd0a749e8ae4724f01fb37fd3
+ACR-b91c91337b6d4cdf9aa0dd419a206195
+ACR-8ec17897bcb14a0d985e205ee3efd0e1
+ACR-4c4106b36b3b43548db6ea9a318891f2
  */
 package mediumtest.ai.ide;
 
@@ -39,14 +39,14 @@ class AiHookMediumTests {
       .withClientName("ClientName")
       .start(fakeClient);
 
-    // Wait for embedded server to start
+    //ACR-4279a4111cd94cd0b6c0be96805e4a93
     await().atMost(Duration.ofSeconds(5)).untilAsserted(() -> assertThat(backend.getEmbeddedServerPort()).isGreaterThan(0));
 
     var response = backend.getAiAgentService()
       .getHookScriptContent(new GetHookScriptContentParams(AiAgent.WINDSURF))
       .join();
 
-    // Check script content
+    //ACR-1031b84926a04079b1b6b7793cc4a1fa
     assertThat(response.getScriptFileName()).matches("sonarqube_analysis_hook\\.(js|py|sh)");
     assertThat(response.getScriptContent())
       .contains("SonarQube for IDE Windsurf Hook")
@@ -56,11 +56,11 @@ class AiHookMediumTests {
       .contains("STARTING_PORT")
       .contains("ENDING_PORT")
       .containsAnyOf(
-        "EXPECTED_IDE_NAME = 'Windsurf'",  // JS/Python
-        "EXPECTED_IDE_NAME=\"Windsurf\""   // Bash
+        "EXPECTED_IDE_NAME = 'Windsurf'",  //ACR-4eae48dbc11344d3b40c43d665b2aa81
+        "EXPECTED_IDE_NAME=\"Windsurf\""   //ACR-80ab2681c3cf47dd8493725ca12dfaae
       );
 
-    // Check config content
+    //ACR-a16ed1d5287045f6bc578115a103638f
     assertThat(response.getConfigFileName()).isEqualTo("hooks.json");
     assertThat(response.getConfigContent()).contains("\"post_write_code\"");
     assertThat(response.getConfigContent()).contains("{{SCRIPT_PATH}}");
@@ -75,7 +75,7 @@ class AiHookMediumTests {
       .withClientName("ClientName")
       .start(fakeClient);
 
-    // Wait for embedded server to start
+    //ACR-c605226c1e0543399964c2717a92a270
     await().atMost(Duration.ofSeconds(5)).untilAsserted(() -> assertThat(backend.getEmbeddedServerPort()).isGreaterThan(0));
 
     var futureResponse = backend.getAiAgentService()

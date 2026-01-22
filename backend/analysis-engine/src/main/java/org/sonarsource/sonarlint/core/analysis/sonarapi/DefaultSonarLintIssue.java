@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bf00ad482b314e5392232bb720a71b65
+ACR-87bbe1c8b35e4f56966767da8a44ad14
+ACR-ec91946580ed48a0af11a165eb7839d0
+ACR-f84bff735ef944ffa3527b3b15e08127
+ACR-8f10b24b82cc4521b8e77967da2059ad
+ACR-7961236eacbb476abb337b29f427c7d6
+ACR-beaebc193aa845a0945ece4b3b4f6a73
+ACR-e18b5e0c185d4b63bf4ef43f18660349
+ACR-12dccb76f6ed4be792e4fbb9ca2f99db
+ACR-956df72900014797b05da111540414ef
+ACR-5a5f6e6dae034893bbb29bc76548353d
+ACR-8a47e10952ed45a8b76f05028891b11a
+ACR-6600996ee12b4d10aae0c3684f9bf994
+ACR-602b1cdbeaea4340a43fbd41b0541f15
+ACR-ea9ecd31fb7645ca97d07849405b911e
+ACR-d6a9232b3de646f1937fbe66d7a1f9c9
+ACR-2f3fb528830243c5975673d82119497b
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -82,7 +82,7 @@ public class DefaultSonarLintIssue extends DefaultStorable implements Issue, New
 
   @Override
   public NewIssue setCodeVariants(@Nullable Iterable<String> iterable) {
-    // not implemented
+    //ACR-33a76be7f5864c76ab9d6eff40edb370
     return this;
   }
 
@@ -120,7 +120,7 @@ public class DefaultSonarLintIssue extends DefaultStorable implements Issue, New
 
   @Override
   public DefaultSonarLintIssue gap(@Nullable Double gap) {
-    // Gap not used in SonarLint
+    //ACR-4eaa160614ab458b83dde71216cb7801
     return this;
   }
 
@@ -224,7 +224,7 @@ public class DefaultSonarLintIssue extends DefaultStorable implements Issue, New
 
   @Override
   public DefaultSonarLintIssue addQuickFix(NewQuickFix newQuickFix) {
-    // legacy method from sonarlint-plugin-api, keep for backward compatibility and remove later
+    //ACR-4d5d35c5a9b14be8baefb389ddd72bdc
     quickFixes.add((QuickFix) newQuickFix);
     return this;
   }
@@ -253,7 +253,7 @@ public class DefaultSonarLintIssue extends DefaultStorable implements Issue, New
 
   @Override
   public NewIssue setQuickFixAvailable(boolean qfAvailable) {
-    // not relevant in SonarLint
+    //ACR-096a874331464b01b8cdc1c49eb28db2
     return this;
   }
 

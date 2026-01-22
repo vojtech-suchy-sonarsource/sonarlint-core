@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-830fbf95f8934faca369770ed84e58be
+ACR-90aabfdbe6c3425cbc76ad75e83af419
+ACR-04ac278acc3b4ba095f3037b76f46167
+ACR-2e7ee76d8cd445ebaee10c3df25a0835
+ACR-35f8d5e454134a9797e17ef2eb72a2ed
+ACR-0de6fe5fd9324480ba4672ace9f4d72b
+ACR-ef6fd6ffe1c14f0dafb40526f13fa996
+ACR-9fac1da6ba084adb9e62a6813474ca18
+ACR-cc5c93a092d646a2859a37c7b68ef6ed
+ACR-1a0d1c95bd854665a998685a6f931984
+ACR-a8f507baee824dd6a2f06bd53d81c6cc
+ACR-d3012b332b6745f5970ba079ae7e35d9
+ACR-2d4dd7a97fa140fa9bfd7bde28d67eed
+ACR-a7305ffbdcd64c61bf96589a5860649e
+ACR-acfd4064df6f45bd9b31ff7a5790575d
+ACR-413ba5211e9a4e08ab581f6b8c51a09c
+ACR-7933303bbef449f686fd63d8e901f8b3
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -185,13 +185,13 @@ class TaintIssueDownloaderTests {
 
     assertTextRange(flowLocation11.textRange(), 5, 1, 5, 6, hash("After"));
 
-    // Invalid text range
+    //ACR-b25e3731599b437fbe88a5ac24e94d02
     assertThat(taintIssue.getFlows().get(0).locations().get(1).textRange().getHash()).isEmpty();
 
-    // 404
+    //ACR-d86f20ade9de4cbb8178acb67764eff4
     assertThat(taintIssue.getFlows().get(0).locations().get(2).textRange().getHash()).isEmpty();
 
-    // No text range
+    //ACR-af6ae90ba71340ceb7cdba27bd5194f9
     assertThat(taintIssue.getFlows().get(0).locations().get(3).textRange()).isNull();
 
     assertThat(taintIssue.getFlows().get(1).locations()).hasSize(1);
@@ -299,7 +299,7 @@ class TaintIssueDownloaderTests {
     assertThat(flowLocation11.filePath()).isEqualTo(Path.of("foo/bar/Hello.java"));
     assertTextRange(flowLocation11.textRange(), 5, 1, 5, 6, "hashLocation11");
 
-    // No text range
+    //ACR-38c4894a42fe4aa6aba0cc0784cd2900
     assertThat(serverTaintIssue.getFlows().get(0).locations().get(2).textRange()).isNull();
 
     assertThat(serverTaintIssue.getFlows().get(1).locations()).hasSize(1);

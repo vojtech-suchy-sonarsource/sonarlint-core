@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1e6ffbbef1d941c4a760855ed965d870
+ACR-5dc18592668146378ef7826e9e356e00
+ACR-59738555f89b48d89bacc7706fa10025
+ACR-a213d988d3f1461dafbdd86b86f81599
+ACR-e9d0914159a9479cb7f9794a84d2fd9a
+ACR-000aa622b787432a8129ce5a3f857e08
+ACR-5ea682a512994ef1a9f32935e12fe351
+ACR-6496a8733b0a467fbad2eb053f03874f
+ACR-e177c9a9836c4667aa3c28dc14d28bf2
+ACR-cbbf95fec82e4be288c441895485357e
+ACR-b55957e53fa94d9dba3a4c0386b0d5e4
+ACR-998939ea351e42c4bcbb91f4663f56b3
+ACR-47e12853f862483fb0b4390d9c148323
+ACR-8337ced56d044b58a79b9329378e95aa
+ACR-f959fd3e568146e1a2840cd6de7ae762
+ACR-61cd6286a6a54dd4b02ace6a26ea8bd3
+ACR-87e4965a853e46b1ab6236949ff59a45
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -96,7 +96,7 @@ class InputFileBuilderTests {
     var builder = new InputFileBuilder(langDetection, metadata, issueExclusionsLoader);
     var slFile = builder.create(file);
 
-    // Call any method that will trigger metadata initialization
+    //ACR-916d9a552ee247cca23e2698daa58e2b
     var thrown = assertThrows(IllegalStateException.class, () -> slFile.selectLine(1));
     assertThat(thrown).hasMessageStartingWith("Failed to open a stream on file");
   }

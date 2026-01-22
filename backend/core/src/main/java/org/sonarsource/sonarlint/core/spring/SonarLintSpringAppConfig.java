@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-31b43b9293f64eda858d369341524a4b
+ACR-7b479ee4167e427b92561d9f87d4b6d8
+ACR-5bf3e9926dbd42eabf5ad4de14c64525
+ACR-b24c6d6422f94845a93124e3ba4e6e7a
+ACR-cb1832506a9245259cf86d45c6856fb6
+ACR-d379d9c4ac934b2ab48deb4deae97d19
+ACR-871d02b625cf430ab9370122aaaa88da
+ACR-afb205d3c1dd4e5993bc22d3c7f4d4d7
+ACR-5c277af400e54cf5ad003ee3805f8e4b
+ACR-b1784a6166a84be2ab73021a9e2d8b41
+ACR-0d0d1ee5d14e423f880fcf4d8df073d8
+ACR-30e84b05effe42a8b6da20b97aa59108
+ACR-6f04a8c76451474fb55027c4bc81b2af
+ACR-37d4812f936e4d859acbdb4082a0c1fe
+ACR-41af2d93a0374fa59a61ba0abb56839e
+ACR-3d27f5dd15cd4bebb56e56237b2e5515
+ACR-da78b7a640f3424dbf38e6b21a13b45e
  */
 package org.sonarsource.sonarlint.core.spring;
 
@@ -141,8 +141,8 @@ import static org.sonarsource.sonarlint.core.rpc.protocol.backend.initialize.Bac
 import static org.sonarsource.sonarlint.core.rpc.protocol.backend.initialize.BackendCapability.TELEMETRY;
 
 @Configuration
-// Can't use classpath scanning in OSGi, so waiting to move out of process, we have to declare our beans manually
-// @ComponentScan(basePackages = "org.sonarsource.sonarlint.core")
+//ACR-c1f2f58c2f9047e6b2cbc1aeb309b535
+//ACR-e296e03908e94ec497eca9328f220c71
 @Import({
   AskClientCertificatePredicate.class,
   ClientProxySelector.class,
@@ -276,8 +276,8 @@ public class SonarLintSpringAppConfig {
       params.getTelemetryConstantAttributes().getIdeVersion());
   }
 
-  // disable automatic destroy call, shutdown is handled by SonarLintDatabaseService
-  // MonitoringService dependency ensures Sentry is initialized before database migrations run
+  //ACR-3f381a27154e42dcb348d32488b6a6ed
+  //ACR-6ac1f6f98ec245beac7a21a983d185f1
   @Bean(destroyMethod = "")
   SonarLintDatabase provideDatabase(UserPaths userPaths, MonitoringService monitoringService) {
     return new SonarLintDatabase(userPaths.getStorageRoot());

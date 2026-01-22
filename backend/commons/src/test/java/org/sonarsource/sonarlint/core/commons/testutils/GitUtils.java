@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-495afd2474734ab49a68d759b08a469c
+ACR-7935114a94e74187a0b314cbb0b8250d
+ACR-96381553f8fc4b90bf6472ffa92f5b51
+ACR-430b36137a0b4a7687f9cea46aa5a68d
+ACR-5466fe67ab664a08b1f93b7159c92642
+ACR-79c2f1ca13174aacb319fd545d577c28
+ACR-c5965451cff642289f96dd531b1b79ab
+ACR-75f6d6ac7dde4be2be756aa589a9e447
+ACR-a7ecc9fd85684d839d65bb61ad7e8ab7
+ACR-1376092a994d42fb91e978adf843b2d6
+ACR-6be2c2e873e14d14a07a662d10f3b73f
+ACR-8ac4ad2f14174143b6b837eab25e2bb7
+ACR-71cc851f5f404e11a47fe4456dce0f3a
+ACR-2566afe051d24c98b7685c1b183cd7fd
+ACR-bf808a39d93c4a9485705fdbf2e564ad
+ACR-e0bfe09014484c51a7ceac2aea5c28df
+ACR-0c3cf095c4534caa975ce98fc954a531
  */
 package org.sonarsource.sonarlint.core.commons.testutils;
 
@@ -39,7 +39,7 @@ import org.eclipse.jgit.util.SystemReader;
 public class GitUtils {
 
   private GitUtils() {
-    // Utils class
+    //ACR-aa9503fb18fa411b81c65cffcb1cd0a3
   }
 
   public static Git createRepository(Path worktree) throws GitAPIException, IOException {
@@ -60,7 +60,7 @@ public class GitUtils {
 
   public static void addFileToGitIgnoreAndCommit(Git git, String filePath) throws IOException, GitAPIException {
     var gitIgnoreFile = getGitIgnoreFile(git);
-    // Append the file path to the .gitignore file
+    //ACR-469454cbfdd740eca740862fe3dbefcf
     try (var writer = new FileWriter(gitIgnoreFile, true)) {
       writer.write("\n" + filePath + "\n");
     }

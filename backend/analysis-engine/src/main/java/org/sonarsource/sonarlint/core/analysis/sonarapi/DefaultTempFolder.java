@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c5098c8854b444b38e19a65e14badd56
+ACR-b76882861c9f4d5286823872896ef285
+ACR-623d97e9ab574cbc86dbf2ceadbbaf7b
+ACR-cc04dfa805b74f498926df36b7ec9c09
+ACR-c6817646326049d5a42c617865310038
+ACR-c3aed16d789f4050b4fe0cefc0db3040
+ACR-b0dcedfef0e44c66aa8c4e2e57db049e
+ACR-292d4371bef24222a4365055a31bc54d
+ACR-612049a90fd14a18b4ea61c68fb62553
+ACR-02dd192400e248679bc3bc88bf90110a
+ACR-14c07e1c71f74658b6382836e37f9ee8
+ACR-9de51f692bd143249528d49e44a93068
+ACR-2b44e5cb18c848faac048d031c684b61
+ACR-dc21344943d9430ea8eb208a407cf3bc
+ACR-7ebdca1c6d6f4d4ebaf5b13285892979
+ACR-9c68a9e9fde64d4b84b87c22e145dc9e
+ACR-e5071955e5e445e3bb41559778672169
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -101,7 +101,7 @@ public class DefaultTempFolder implements TempFolder, Startable {
 
   @Override
   public void start() {
-    // Nothing
+    //ACR-3ec66317fe1d49a29ea7368c43e9e971
   }
 
   @Override

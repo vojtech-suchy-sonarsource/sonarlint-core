@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Backend CLI
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-03094fe9905b4bdba84f35e629c0519c
+ACR-4dda4a324a3347cd8232d601517fa3f5
+ACR-03911618e21542e5a4094444e66b3d3e
+ACR-bd4ea39de52b402292fe3bf52d162132
+ACR-53ed3c1e08d34c56abc47e505b241814
+ACR-4278bf4fb17540f0b889fee68ee3dc3c
+ACR-ee7a40d4f58f4dda8eb3a83cb9822978
+ACR-4fcfc126b514405bad36281b1aada480
+ACR-92091a098d5540368fca9ca6ffdae463
+ACR-c1fe9afdb67e4326afe90647800cc6d7
+ACR-bf75d43bca4540a6bc6f50ba070bbf73
+ACR-766d00f538ac42a198fd26fa135258f1
+ACR-0ad364d317914d41a3cb230eb5fb45a0
+ACR-8b93e2f5fb374683b52d42127fc9eeaf
+ACR-313369defe99400681f585aac455ac61
+ACR-9ebf5ad4414d4fa4bd2733d781b644c5
+ACR-346ec51867b14389a399e91efd1327fd
  */
 package org.sonarsource.sonarlint.core.backend.cli;
 
@@ -38,7 +38,7 @@ public class SonarLintServerCli implements Callable<Integer> {
   int run(InputStream originalStdIn, PrintStream originalStdOut) {
     var inputStream = new EndOfStreamAwareInputStream(originalStdIn);
     System.setIn(new ByteArrayInputStream(new byte[0]));
-    // Redirect all logs to stderr for now, would be better to go to a file later
+    //ACR-8c9c7f2815b44c09b4ec612f85fbb76c
     System.setOut(System.err);
 
     try {

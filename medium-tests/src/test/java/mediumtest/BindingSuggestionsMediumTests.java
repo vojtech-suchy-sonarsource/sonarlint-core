@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8373908f21d94881961410b56dce4b47
+ACR-bb68eea06b4f4f9d898cd267d7d3d7b5
+ACR-fb9a03a99df9453b9ba2641fe72f29de
+ACR-ad5cdb0964734c2f83ebaaee7e5b6960
+ACR-923f4a36fc074baa8c60e9c49d1834d8
+ACR-00b3d421e172400b9a48fef597aca6f0
+ACR-4d1f49be33e84cafa99a02cb1105927b
+ACR-2173f5352a0641ae9b84356ff52e7637
+ACR-7edea1246ee04687b04dffc59957ca3a
+ACR-f9fa72f39f434a18b71ac61f15c79d6f
+ACR-75b68f98db044c048d902da3f9c34a14
+ACR-4284d91948f14473bc44b2088514f78e
+ACR-e88224130a6f4a2ca640875d99704ee9
+ACR-6051c29758cd40669edd3a75a3246011
+ACR-72d8bf855b4942f4a2468b0552ce9b23
+ACR-ac9e36ac171e4f318085742474035d59
+ACR-40e8a53c49844f5cbfa3902f42cdacff
  */
 package mediumtest;
 
@@ -226,11 +226,11 @@ class BindingSuggestionsMediumTests {
           new ConfigurationScopeDto(CONFIG_SCOPE_ID, null, true, "sonarlint-core",
             new BindingConfigurationDto(null, null, false)))));
 
-    // Without binding clue, there is no matching connection/project, so the list of suggestion is empty
+    //ACR-e4d10709db16430cb38cbc7a6541d7f8
     await().untilAsserted(() -> assertThat(fakeClient.getLogMessages()).contains("Found 0 suggestions for configuration scope '" + CONFIG_SCOPE_ID + "'"));
     verify(fakeClient, never()).suggestBinding(any());
 
-    // Now add a binding clue to the FS
+    //ACR-fdb8544f54ab409fa270b6cec0913650
     var clue = tmp.resolve("sonar-project.properties");
     Files.writeString(clue, "sonar.projectKey=" + SLCORE_PROJECT_KEY + "\nsonar.projectName=" + SLCORE_PROJECT_NAME, StandardCharsets.UTF_8);
 
@@ -274,7 +274,7 @@ class BindingSuggestionsMediumTests {
           new ConfigurationScopeDto(CONFIG_SCOPE_ID, null, true, "sonarlint-core",
             new BindingConfigurationDto(null, null, false)))));
 
-    // Ignore the automatic binding suggestions
+    //ACR-b3535569e4ec4b10bafeda58e9707f37
     verify(fakeClient, timeout(5000)).suggestBinding(any());
 
     var bindingParamsCompletableFuture = backend.getBindingService().getBindingSuggestions(new GetBindingSuggestionParams(CONFIG_SCOPE_ID, MYSONAR));
@@ -309,11 +309,11 @@ class BindingSuggestionsMediumTests {
           new ConfigurationScopeDto(CONFIG_SCOPE_ID, null, true, "sonarlint-core",
             new BindingConfigurationDto(null, null, false)))));
 
-    // Without binding clue, there is no matching connection/project, so the list of suggestion is empty
+    //ACR-b58f2fc8dae84834a05cfdeee5ac6051
     await().untilAsserted(() -> assertThat(fakeClient.getLogMessages()).contains("Found 0 suggestions for configuration scope '" + CONFIG_SCOPE_ID + "'"));
     verify(fakeClient, never()).suggestBinding(any());
 
-    // Now add a binding clue to the FS
+    //ACR-5d0cd56b5a274211a69e4985d924b477
     var sonarlintDir = tmp.resolve(".sonarlint/");
     Files.createDirectory(sonarlintDir);
     var clue = tmp.resolve(".sonarlint/connectedMode.json");

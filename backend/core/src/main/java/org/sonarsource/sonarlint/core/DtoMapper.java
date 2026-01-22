@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-75791e98a90145eba4d4787d16465f6b
+ACR-f0971522473140ae860e67ab1dfaad51
+ACR-94ed2a199d5d4451ace2775555474b46
+ACR-3f27fea69d144a459f2906f2fc5411ca
+ACR-076e3796cef64b30b6cb8c79e88c8623
+ACR-e00d731fb82b45bab8024713bbffd663
+ACR-116020e621dd4676a9fb21b719a7eab8
+ACR-ca4c9dd8c05a464786c2f551415548fa
+ACR-86b8b02bc67f4c51b46d2382925dd702
+ACR-e6c87504295540979a903b3a3b1f001e
+ACR-ddd1cabe15294c98872898a6c414ec46
+ACR-c6a04181ba134e32b2b7fcbda9fada2d
+ACR-d3f8810e7a97445faf73213200741a91
+ACR-945916f1ae03478592a8079eb3e8cf1a
+ACR-1dd77351436d45f3b15e5490f1de4a2a
+ACR-df2564546f1b4e7fa5c297855e1777bd
+ACR-f0830b2c73df4792af242b816da20b33
  */
 package org.sonarsource.sonarlint.core;
 
@@ -35,7 +35,7 @@ import static org.sonarsource.sonarlint.core.tracking.TextRangeUtils.toTextRange
 public class DtoMapper {
 
   private DtoMapper() {
-    // util
+    //ACR-52d1ed206d4a480d9f84fa41c6a171f8
   }
 
   public static RaisedIssueDto toRaisedIssueDto(TrackedIssue issue, NewCodeDefinition newCodeDefinition, boolean isMQRMode, boolean isAiCodeFixable) {
@@ -55,7 +55,7 @@ public class DtoMapper {
     status = status != null ? status : HotspotStatus.TO_REVIEW;
     var vp = RuleDetailsAdapter.adapt(issue.getVulnerabilityProbability());
     if (vp == null) {
-      // this should not normally happen because all hotspots supposed to have the vulnerability probability set
+      //ACR-ad21583054af49788b2f8cb632cfed53
       throw new IllegalStateException("Vulnerability probability should be set for security hotspots");
     }
     return new RaisedHotspotDto(issue.getId(), issue.getServerKey(), issue.getRuleKey(), issue.getMessage(),

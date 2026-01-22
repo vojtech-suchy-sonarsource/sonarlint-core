@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d952cbbd599249078aa180125853b1e7
+ACR-d79953990ffd45059dff1c48b02b0e26
+ACR-c5a014b0a6074fb4b511d2eec932c24f
+ACR-2333911a46774ebe996167a85746238f
+ACR-17d6979dcdaf4fdebef3978cfc5157b0
+ACR-0921be7fd6004aa7a7b08ee7efd790cb
+ACR-c9e38ed99ac04b4f956602f5b42de68a
+ACR-aaa6779f918c4a52855f481de5d75481
+ACR-e0c3a069eb8e48fc81e752d5b4aa0e73
+ACR-02d0644f142447079f9211f146ea3a8f
+ACR-f1c9765472d74a218ca529d06de9d347
+ACR-3648ca42a98d44c28d86873a0467ead4
+ACR-8ade546808544841a38fabea5afae1b4
+ACR-e7b932382b07488c8444b5992242ccdc
+ACR-0417e845b74f462ea58bd31395b228bb
+ACR-75b3a23d668b49208c929e6dfe8edfb2
+ACR-73180eb9575048f8b7f9295118001c99
  */
 package org.sonarsource.sonarlint.core.flight.recorder;
 

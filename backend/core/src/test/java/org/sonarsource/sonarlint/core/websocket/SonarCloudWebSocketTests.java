@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7dc20b342f014651bdf179767f646b80
+ACR-08e612423d9246cfaf19799ee3ca40d4
+ACR-4b247e19a6c04a86b5da734baceb4009
+ACR-1e049640607247b9b8ddd812405302a2
+ACR-a2081d87f8944752810130676d895a0c
+ACR-aa10cd576d0d45daa3d5f5cc0651935f
+ACR-d020234117504d2b938ef6eeb22b6a43
+ACR-586dd372dac44011b71a806a1f6e760d
+ACR-a0895069c0f4454fa746df32d3c89105
+ACR-92cebb343704467f9c48935987767425
+ACR-1e5206eba94f446b9b23a9a239e43664
+ACR-ee95aee01730439696a7f2266351778d
+ACR-9cf56e43f95748db9527a8af52e284e4
+ACR-64da173419184713a15e3c18225b71a3
+ACR-87a81f344b3e4df1835acb5d968b154f
+ACR-5d2e7cb0038d4eddb907ce4f490454d0
+ACR-969bf77f2b124b29afeb994b1d1bff19
  */
 package org.sonarsource.sonarlint.core.websocket;
 
@@ -102,9 +102,9 @@ class SonarCloudWebSocketTests {
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
 
-    // Simulate the WebSocket input being closed by the server BEFORE calling close
+    //ACR-3362fc34f5e244ba81bea5001646df24
     onClosedCaptor.getValue().run();
-    // Now call close - it should complete immediately since webSocketInputClosed is already completed
+    //ACR-2d6434a21d004e44be5c7bce582cd825
     sonarCloudWebSocket.close("Test reason");
 
     verify(mockWebSocket).sendClose(WebSocket.NORMAL_CLOSURE, "");
@@ -139,7 +139,7 @@ class SonarCloudWebSocketTests {
     sonarCloudWebSocket = SonarCloudWebSocket.create(testUri, webSocketClient, serverEventConsumer, connectionEndedRunnable);
     wsFuture.complete(mockWebSocket);
 
-    // Capture the onClosedRunnable callback and complete it to avoid timeout
+    //ACR-14addfbb7be8404996f7b3237a595eff
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
     onClosedCaptor.getValue().run();
@@ -160,7 +160,7 @@ class SonarCloudWebSocketTests {
     sonarCloudWebSocket = SonarCloudWebSocket.create(testUri, webSocketClient, serverEventConsumer, connectionEndedRunnable);
     wsFuture.complete(mockWebSocket);
 
-    // Capture the onClosedRunnable callback and complete it to avoid timeout
+    //ACR-159e7d783b8848c88954fd504ef7dcc1
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
     onClosedCaptor.getValue().run();
@@ -181,7 +181,7 @@ class SonarCloudWebSocketTests {
     sonarCloudWebSocket = SonarCloudWebSocket.create(testUri, webSocketClient, serverEventConsumer, connectionEndedRunnable);
     wsFuture.complete(mockWebSocket);
 
-    // Capture the onClosedRunnable callback and complete it to avoid timeout
+    //ACR-c512940484f44551af52bcb3f2849df3
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
     onClosedCaptor.getValue().run();
@@ -202,7 +202,7 @@ class SonarCloudWebSocketTests {
     sonarCloudWebSocket = SonarCloudWebSocket.create(testUri, webSocketClient, serverEventConsumer, connectionEndedRunnable);
     wsFuture.complete(mockWebSocket);
 
-    // Capture the onClosedRunnable callback and complete it to avoid timeout
+    //ACR-e7983ce3a46e4b4fb1e5b4c8377d624a
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
     onClosedCaptor.getValue().run();
@@ -317,7 +317,7 @@ class SonarCloudWebSocketTests {
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
 
-    // Simulate connection ended
+    //ACR-0eff315d4eaa418e8cbd88a71f8017ad
     onClosedCaptor.getValue().run();
 
     verify(connectionEndedRunnable).run();
@@ -331,16 +331,16 @@ class SonarCloudWebSocketTests {
     sonarCloudWebSocket = SonarCloudWebSocket.create(testUri, webSocketClient, serverEventConsumer, connectionEndedRunnable);
     wsFuture.complete(mockWebSocket);
 
-    // Close the connection first
+    //ACR-25bdfe3f4544411e997d7d29500184cc
     sonarCloudWebSocket.close("Test reason");
 
     var onClosedCaptor = ArgumentCaptor.forClass(Runnable.class);
     verify(webSocketClient).createWebSocketConnection(any(URI.class), any(Consumer.class), onClosedCaptor.capture());
 
-    // Simulate connection ended after closing was initiated
+    //ACR-6003fa20364f464da998f2aed22ba98d
     onClosedCaptor.getValue().run();
 
-    // Should not call the callback since closing was initiated
+    //ACR-56a4169293624a26ba91cc4f59b98f1b
     verify(connectionEndedRunnable, never()).run();
   }
 

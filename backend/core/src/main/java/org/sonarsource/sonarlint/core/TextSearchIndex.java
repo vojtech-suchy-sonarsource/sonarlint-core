@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dd08f69a613b4e42bc8ddbb176721e5d
+ACR-595a30e565a844fbbdae8235c495894d
+ACR-035033edc93749ac8989b9609b5019d7
+ACR-f355dd506c554b6795b9a309f568d960
+ACR-15f93d0dae6f4c2092715d9e47e550ab
+ACR-913f3c7420e4409aa7dacb352792bb6d
+ACR-c8adf0029a1741a2bc05e38e40315b70
+ACR-f4b860534ac04cb0837875d02ef1405e
+ACR-288ed689666f4889b9bf785a8afb78be
+ACR-113a564f547a4ba693a154fba4060fe8
+ACR-136c6313e5f448c587c61cca2b1e23d8
+ACR-e513a78d99c146cf9f820f68405fc96f
+ACR-8c93f1999abc4f01aa5e0605ca8a44a2
+ACR-3324a97af7ae40e1b8f8c66599c43f2e
+ACR-cadaa0f6ffb24c23aebaf0cecf34470c
+ACR-df3f0cb428b348ac84da97394c67766e
+ACR-8ae7da6d737742bfa6cbfe8c2f53ad5c
  */
 package org.sonarsource.sonarlint.core;
 
@@ -32,22 +32,22 @@ import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Indexes text associated to objects, and performs full text search to find matching objects.
- * It is a positional index, so it supports queries consisted of multiple terms, in which case it will find partial term matches in sequence (distance = 1).
- * The result is sorted by score. The score of each term matches is the ratio of the term matches (1 for exact match),
- * and the global score is the sum of the term's scores in the object divided by the total term frequency in the object.
- * <br/><br/>
- * The generic type should properly implement equals and hashCode.
- * <b>An object cannot be indexed twice</b>.
- * <br/><br/>
- * Performance of indexing: O(N)
- * Performance of search: O(log N) on the number of indexed terms + O(N) on the number of results
+/*ACR-1e048d25c77e4fb0abf34d1c0eb5a175
+ACR-f96b2dec1e8c48929131564eebdfe35f
+ACR-c0e9aca298de480dbec5d2a9b054c041
+ACR-903c29ebd0424c2893cf0eebce766bf3
+ACR-525d79f67edc47b6aa3bebee93793e96
+ACR-341427bfe6854987af2d97788857d83c
+ACR-40c65899e9a1471f9569526be94bc256
+ACR-ba4db5a8cc30456abff58794ef4e5e1e
+ACR-7a0a498f50b94484b62dc10b164bf4b6
+ACR-a6c02ea230aa49b8a405a074eab7317a
+ACR-17b32af25b8b4a4bb74d68aea0431f4a
  */
 public class TextSearchIndex<T> {
 
-  /**
-   * Any non-letter, non-digit symbols in a row. Unlike [\W]+ dos include underscore as many relevant strings use it as a separator.
+  /*ACR-9f8e0807908f4d3eae6c1b89abcc8277
+ACR-b249fef5151141e7a73e859329d06093
    */
   private static final String DEFAULT_SPLIT_PATTERN = "[^a-zA-Z0-9]+";
   private final Pattern splitPattern = Pattern.compile(DEFAULT_SPLIT_PATTERN);
@@ -81,11 +81,11 @@ public class TextSearchIndex<T> {
     }
   }
 
-  /**
-   * Search for indexed objects based on a query. Results will be sorted by score (highest first).
-   * Score is in the interval [0,1].
-   *
-   * @return A map of results reverse-sorted by value (score). Can be empty, but never null
+  /*ACR-6175c79ecade431fb5151339fe766ab9
+ACR-02e5821e2ef9404b8f065e1873d9bc4e
+ACR-2a38399f7fcd4df1891d9af29894ff0b
+ACR-6f6459ec130d49b6a3e52aa90bb0367f
+ACR-8227fbf9c0fa43cdabcdfa7e2f464256
    */
   public Map<T, Double> search(String query) {
     var terms = tokenize(query);
@@ -96,7 +96,7 @@ public class TextSearchIndex<T> {
 
     List<SearchResult> matched;
 
-    // positional search
+    //ACR-4f17f55e1ac043a09c19f667fafea276
     var it = terms.iterator();
     matched = searchTerm(it.next());
 
@@ -109,7 +109,7 @@ public class TextSearchIndex<T> {
       }
     }
 
-    // convert results and calc score
+    //ACR-1edb02baa75741f6b85079c4b8b0f966
     return prepareResult(matched);
   }
 
@@ -149,8 +149,8 @@ public class TextSearchIndex<T> {
       .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
   }
 
-  /**
-   * Returns any term prefixed by the given text
+  /*ACR-deb90333f7b74f95b97d1101b8d0d176
+ACR-1dd03075eb174eaab38e72694ea15f6e
    */
   private List<SearchResult> searchTerm(String termPrefix) {
     List<SearchResult> entries = new LinkedList<>();

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-03d71dc7026c49c5b40d637c71c92002
+ACR-ed651a3f40914be987b0667aed495682
+ACR-c071fe32230842f1afb35728f7d5a720
+ACR-39245f3301f44cb1b6e940568cddefbb
+ACR-b922e8fac52c4f71b0698be517bfc92f
+ACR-6184eecd64c545f8b6de72b8a0d26d55
+ACR-2ee3d7dcda92446ab7dcb400859f7074
+ACR-ee23ded1e67f4130b7f19b5c9bb163bd
+ACR-ca52930ccca5410d8c2a1e1120176b23
+ACR-642dea89be5a47b7a5075e3f9930f558
+ACR-d42432e65a2a4914ad140959348d40f8
+ACR-ac55d9389b8e493db85a5d35479a1b66
+ACR-4a992187476f4c38869fc7717541e5dd
+ACR-a418b09e94504fc187a68639f98165c4
+ACR-f3eaa936a8f641fcbf73bfb389f0e822
+ACR-c7bf47ca01824d38a74dacd51e519654
+ACR-935fab6ba61d42d0bb6fd43d00e1d7f5
  */
 package its;
 
@@ -95,7 +95,7 @@ class StandaloneTests {
     var clientLauncher = new ClientJsonRpcLauncher(serverToClientInputStream, clientToServerOutputStream, client);
     backend = clientLauncher.getServerProxy();
     try {
-      // The global-extension-plugin reuses the cobol plugin key to be whitelisted
+      //ACR-eb68fc2daef14bd084212d051a75bafa
       var languages = Set.of(COBOL);
       System.out.println("Before backend initialize");
       backend.initialize(
@@ -193,7 +193,7 @@ class StandaloneTests {
     ).join();
 
     assertThat(analyzeResponse.getFailedAnalysisFiles()).isEmpty();
-    // it could happen that the notification is not yet received while the analysis request is finished.
+    //ACR-3d27a98044e9415b94828f07eba2b764
     await().atMost(Duration.ofMillis(200)).untilAsserted(() -> assertThat(((MockSonarLintRpcClientDelegate) client).getRaisedIssues(configScopeId)).isNotEmpty());
     var raisedIssues = ((MockSonarLintRpcClientDelegate) client).getRaisedIssues(configScopeId);
     ((MockSonarLintRpcClientDelegate) client).getRaisedIssues().clear();

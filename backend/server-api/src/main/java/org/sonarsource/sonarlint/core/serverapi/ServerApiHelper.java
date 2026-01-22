@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-74a60988e06543579b636c9074c00f8b
+ACR-ca9694d4f8124ef9b3c6c8b178b032f4
+ACR-f118f5f3c48a46fa95bfb7f5797f47da
+ACR-b30540e9754f4f439aea87ea7218b35b
+ACR-00d3df56de854346b5e7407223a0d485
+ACR-761426528c5a4f74b28bea7e779ab392
+ACR-f3352410d2094619bcf86e838c190a1d
+ACR-ee30a41896604dba9f7840ac611e8efe
+ACR-8db8e0b940f049499fde710585543eab
+ACR-13eb82d97b0f4f8290faebb7beb6cc6c
+ACR-c1c0adb443b74e8b8c604d01b089ea4a
+ACR-7a1eb1f4666b451fb55516d45e8f7cfb
+ACR-1ecc69ee0aa74b808326b5b59275c855
+ACR-fe0cbb9b2df04464a8b2da0823e3ac91
+ACR-fd2594f5620d4d43a39fbd7860ccb268
+ACR-2ecf0f19235a4a5ebbbe3cab5d4516f3
+ACR-cf400d2408fc4e808746a8f4cbedd597
  */
 package org.sonarsource.sonarlint.core.serverapi;
 
@@ -53,8 +53,8 @@ import org.sonarsource.sonarlint.core.serverapi.exception.UnauthorizedException;
 
 import static java.util.Objects.requireNonNull;
 
-/**
- * Wrapper around HttpClient to avoid repetitive code, like support of pagination, and log timing of requests
+/*ACR-312865f355714c4d8a807ce57597cb38
+ACR-804435822c9244439391e20d6dafc68c
  */
 public class ServerApiHelper {
 
@@ -116,15 +116,15 @@ public class ServerApiHelper {
     return response;
   }
 
-  /**
-   * Execute GET without credentials and don't check response
+  /*ACR-e3028485abeb4e2aa4772deeae1be68d
+ACR-54f6ad3d685b48b59e216a0d2a124970
    */
   public HttpClient.Response rawGetAnonymous(String relativePath, SonarLintCancelMonitor cancelMonitor) {
     return rawGetUrlAnonymous(buildEndpointUrl(relativePath), cancelMonitor);
   }
 
-  /**
-   * Execute GET and don't check response
+  /*ACR-69b3f72c818d4e12b7a49b957bfe8f74
+ACR-dc1bbcac96aa42e787bab1e4e57005db
    */
   public HttpClient.Response rawGet(String relativePath, SonarLintCancelMonitor cancelMonitor) {
     return rawGetUrl(buildEndpointUrl(relativePath), cancelMonitor);
@@ -190,7 +190,7 @@ public class ServerApiHelper {
         return new UnauthorizedException("Not authorized. Please check server credentials.");
       }
       if (failedResponse.code() == HttpURLConnection.HTTP_FORBIDDEN) {
-        // Details are in the response content
+        //ACR-d677d3c956f346d79d2e8fa722965706
         var error = tryParseAsJsonError(failedResponse);
         if (error == null) {
           error = "Access denied";
@@ -299,7 +299,7 @@ public class ServerApiHelper {
     }
     var isEmpty = items.isEmpty();
     var pagingTotal = getPagingTotal.apply(protoBufResponse).longValue();
-    // SONAR-9150 Some WS used to miss the paging information, so iterate until response is empty
+    //ACR-5049972c6dda4ebeae7a80ba501cf05e
     stop.set(isEmpty || (pagingTotal > 0 && (long) page.get() * PAGE_SIZE >= pagingTotal));
     if (!stop.get() && limitToTwentyPages && page.get() >= MAX_PAGES) {
       stop.set(true);

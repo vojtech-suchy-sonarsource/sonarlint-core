@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-32ec02d9bb554e9990ca1fc1bdd58d2a
+ACR-b614fa1df84945fbb313752492a3302a
+ACR-2392ddecdb9a4d3a8cd28da15415107b
+ACR-924dad5bff9d4d65b27c0f91b9d1607b
+ACR-2bf46b309a854f06aad57cf70d0b9847
+ACR-07031f1985aa419e85130bc0e03f907c
+ACR-2a182c90efb54aa1b9a610c807f9be9a
+ACR-a0921177baf246a4bcbe596c1e349889
+ACR-eabcb19754d44d699b910b44db3189a6
+ACR-15e62846839e48ca9cca3f489684d7a9
+ACR-8f16ad9864f44055936bb67513731a49
+ACR-85fb33d91585434dab2b7a8cf4a9476f
+ACR-82846f2bd02a41a5b9932f724268c7ee
+ACR-66e685294b8042e1ba9c3bd4d031b349
+ACR-a82d57f23d3a4d81bea3a2db036fa2bc
+ACR-9437c67609344d8eaf15f543e3e31a12
+ACR-d9c760564efb48219777151c1fa91b5c
  */
 package mediumtest.gessie;
 
@@ -128,7 +128,7 @@ class GessieIntegrationMediumTests {
       .start();
 
     var fileContent = getTestJson("GessieRequest");
-    // Wait for timeframe enough for more than 2 retries.
+    //ACR-277b26fd87fb499f8c009a82b0368006
     await().timeout(5, TimeUnit.SECONDS)
       .pollDelay(2, TimeUnit.SECONDS)
       .untilAsserted(() -> gessieEndpointMock.verify(3, postRequestedFor(urlEqualTo(IDE_ENDPOINT))

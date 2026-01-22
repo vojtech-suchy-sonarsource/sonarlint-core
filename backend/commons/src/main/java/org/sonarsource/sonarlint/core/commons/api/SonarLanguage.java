@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0789a9054a3a4e2e8c0b44206f402180
+ACR-c9d5517d0d924ff58dedbfdbc46e4e77
+ACR-85f141e09d05445f918c9093837407bc
+ACR-5c2d217069c540b1b7646f2ccafd98e8
+ACR-93ee021629a24c17adf8a4df25c3c6cc
+ACR-4a37251876f14a549bbbfa663e11286a
+ACR-de827474e1774b01a0010efcf6e2a1d4
+ACR-fa198d95142a495c9a8f780803172a30
+ACR-0543cd1af42f42638d43a35a28a8bcb7
+ACR-43c8c4fb527a49bd9ddf6641a121a5fa
+ACR-74838a581f444bd4ae83b5d3693651eb
+ACR-c7ba8dbd175a413bbc516b6dcf3214f4
+ACR-e5a4f414e9b04f8888815e043ab2ee28
+ACR-18a0d798698548258440e831e22e5285
+ACR-4eeee776f2714137bccb9e811189c7e8
+ACR-8dacee0a507f459f839743da99a1ee0d
+ACR-a502b7d0c9c1414392d7b3bfe180df42
  */
 package org.sonarsource.sonarlint.core.commons.api;
 
@@ -73,8 +73,8 @@ public enum SonarLanguage {
   GITHUBACTIONS("githubactions", "iacenterprise", new String[0], Constants.NO_PUBLIC_PROPERTY_PROVIDED_FOR_THIS_LANGUAGE);
   private final String sonarLanguageKey;
 
-  /**
-   * The Sonar Plugin declaring this language
+  /*ACR-c8b4b08027f64d9aa0969faea951548c
+ACR-e40ca78804484949bc79744894d506ea
    */
   private final String pluginKey;
   private final String[] defaultFileSuffixes;

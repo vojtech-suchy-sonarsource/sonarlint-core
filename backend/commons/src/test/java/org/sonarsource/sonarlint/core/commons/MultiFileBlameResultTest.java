@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b2004d6ca60a40009789e3d6fd3b6de9
+ACR-bfa5c40e14c945a2a2f5bd4816891495
+ACR-4470782de5274198be5a94da602360d5
+ACR-46d0c0442b304805ba42cc1d00d4b6d7
+ACR-3a2c8760cd1241269b8e1153c68bfdb3
+ACR-10a707d21a994361ac98c5a208df1b48
+ACR-f6ffb81f2c95416da0c913751e208844
+ACR-650242ef4a764f9ab52ba1e509b28f4a
+ACR-5dcd8e3b81ff449e9aee102cc2bfc121
+ACR-340df4b0c3cb43b79957ab5d7ddee00d
+ACR-eb93066549c644ee8d538cdb72634ade
+ACR-1fb2ade9ee2c419693dd508183c32737
+ACR-b124cd15060e4bf8b0d1de60b084f46f
+ACR-a218db2eea5747e88b24b49c0428fe00
+ACR-4c3ec848cf3e41f58bd71fdb024fa4b5
+ACR-40d81ec3233246bfb82e48d3bdc095f9
+ACR-7129203c078646d8b83c8b81707acac7
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -71,12 +71,12 @@ class MultiFileBlameResultTest {
     createFile(projectDir, "fileA", "line1", "line2", "line3");
     var c1 = commit(git, "fileA");
 
-    // Wait for one second to achieve different commit time
+    //ACR-f3abf8f83c2e468a876983c7b793568e
     TimeUnit.MILLISECONDS.sleep(10);
     appendFile(projectDir.resolve("fileA"), "new line 4");
     var c2 = commit(git, "fileA");
 
-    // Wait for one second to achieve different commit time
+    //ACR-a8e2b3124d044d9a9de8f0a5c6419e40
     TimeUnit.MILLISECONDS.sleep(10);
     createFile(projectDir, "fileB", "line1", "line2", "line3");
     var c3 = commit(git, "fileB");

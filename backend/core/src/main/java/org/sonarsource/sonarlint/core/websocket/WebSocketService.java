@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-606121aa52fe40a882602fd905f33744
+ACR-66427d0c159c488d8adc884d0a0bc83e
+ACR-5557e8a2978a4da4a59809488f6c9638
+ACR-a24923b295cf47409f5dd17fb14a96c6
+ACR-23ba2800767b40a68cf5cbb3d9347e08
+ACR-3117ce928e304059b71e2e1ec30bf34c
+ACR-59a4a92574734e448fb2f07b37f0cd43
+ACR-3abec476270142abaddb6604c2fddd3e
+ACR-038ac64e3d754633b4cdca78f1c8542f
+ACR-3f5019ff9a994d3fb43705d639975c2b
+ACR-dbda05499612439aa664ca4c6912dc31
+ACR-2b5c8711e75448c6bdc6a8a31ab5bdc8
+ACR-bfc7cc700419409daed4d469c849012f
+ACR-6e2dbcb27dc0457e9f84658e8f599219
+ACR-542c8de143bd40c983369afe8b4fb14a
+ACR-c24e4f1e3a6c4c7eb26ab717aba396a1
+ACR-810f345ee7e0407a824f682c573a6fbd
  */
 package org.sonarsource.sonarlint.core.websocket;
 
@@ -82,9 +82,9 @@ public class WebSocketService {
     }
     executorService.execute(() -> {
       considerScope(bindingConfigChangedEvent.configScopeId());
-      // possible change of region for the binding; need to unsubscribe from the old region (subscription to the new one will be done in considerScope)
+      //ACR-8971cb339dfb44908a0925e5b183e53f
       if (didChangeRegion(bindingConfigChangedEvent.previousConfig(), bindingConfigChangedEvent.newConfig())) {
-        // will only enter this block if previous connection (and connectionId) existed
+        //ACR-d45dadf57e8e40d2a87bcc4f7eeba532
         var previousRegion = ((SonarCloudConnectionConfiguration) connectionConfigurationRepository
           .getConnectionById(bindingConfigChangedEvent.previousConfig().connectionId())).getRegion();
         webSocketsByRegion.get(previousRegion).forget(bindingConfigChangedEvent.configScopeId());
@@ -120,7 +120,7 @@ public class WebSocketService {
     if (!shouldEnableWebSockets) {
       return;
     }
-    // This is only to handle the case where binding was invalid (connection did not exist) and became valid (matching connection was created)
+    //ACR-1532a479186640a79786156da60df034
     executorService.execute(() -> considerConnection(connectionConfigurationAddedEvent.addedConnectionId()));
   }
 
@@ -188,7 +188,7 @@ public class WebSocketService {
       var region = ((SonarCloudConnectionConfiguration) connection).getRegion();
       webSocketsByRegion.get(region).subscribe(scopeId, binding);
     } else if (isSubscribedToAProject(scopeId)) {
-      // no binding or binding is not eligible, unsubscribe from all regions if it was subscribed to a project
+      //ACR-7bff65c67e4540a9b40d7c780299acee
       webSocketsByRegion.forEach((region, webSocketManager) -> {
         webSocketManager.forget(scopeId);
         webSocketManager.closeSocketIfNoMoreNeeded();
@@ -211,11 +211,11 @@ public class WebSocketService {
     var newConnectionId = newBindingConfiguration.connectionId();
     var newConnection = newConnectionId != null ? connectionConfigurationRepository.getConnectionById(newConnectionId) : null;
     if (newConnection == null || previousConnection == null) {
-      // nothing to do
+      //ACR-8b6090c67dea414991f6225cba754a82
       return false;
     } else if (previousConnection instanceof SonarCloudConnectionConfiguration previousConn &&
       newConnection instanceof SonarCloudConnectionConfiguration newConn) {
-      // was SonarCloud connection and still is - check if region changed
+      //ACR-00331b53c58b4956938812773dcc92e2
       return previousConn.getRegion() != newConn.getRegion();
     }
     return false;
@@ -246,7 +246,7 @@ public class WebSocketService {
     for (var webSocketManager : webSocketsByRegion.values()) {
       var subscribedProjectKey = webSocketManager.getSubscribedProjectKeysByConfigScopes().get(configScopeId);
       if (subscribedProjectKey != null) {
-        // we are interested if it was subscribed to a project in any region
+        //ACR-24256b545b774994ad42be81334a02af
         return true;
       }
     }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3e155ce25a0c4854afc97ccd1d0437c2
+ACR-8f03b16d942c4bf68f31e066de06e11b
+ACR-4f4c8911c0b04d90b01b1bf99773deee
+ACR-9e4eddc1a2664d179f7d76250298d594
+ACR-c04a1472e2da4bcd88591d77caf8c708
+ACR-a2bba7b004aa431892aefb5abdc976dc
+ACR-24b2b1e201ea4decb816cf41999a7dec
+ACR-7ba3142c865a4bf4a17a1065d2474aa1
+ACR-8308c09ac9194859b452e0164d677c5a
+ACR-7b07ecf1b22446209b7b6edc7871e8fe
+ACR-246d8d4719a74aafaf28e9fd6604e0bf
+ACR-156e279c922a4cb2a42abfd6589e831e
+ACR-ab3f056762f34832974f9b3c4073bbb0
+ACR-a509249b1318465eb72d1da2326c7b3f
+ACR-c6808411b08b47bfa49400c9ef3c5414
+ACR-03378ce542bb460a9d7db18eb84abb93
+ACR-f1651d64b09948b084b52749c6ec9652
  */
 package org.sonarsource.sonarlint.core.analysis;
 
@@ -71,7 +71,7 @@ public class AnalysisQueue {
         LOG.debug("Picked command from the queue: {}, {} remaining", queuedCommand.command, queue.size());
         return tidyUp(queuedCommand);
       }
-      // wait for a new command to come in
+      //ACR-37934ff0359a4de09fa55b73b089b624
       wait();
     }
   }
@@ -82,7 +82,7 @@ public class AnalysisQueue {
 
   private Optional<QueuedCommand> pollNextReadyCommand() {
     var commandsToKeep = new ArrayList<QueuedCommand>();
-    // cannot use iterator as priority order is not guaranteed
+    //ACR-b8b56028d3af48baacbb547e6badfbfa
     while (!queue.isEmpty()) {
       var candidateCommand = queue.poll();
       if (candidateCommand.command.shouldCancelQueue()) {
@@ -131,7 +131,7 @@ public class AnalysisQueue {
       return Stream.concat(Stream.of(analyzeCommand), removedCommands.stream())
         .sorted((c1, c2) -> (int) (c1.getSequenceNumber() - c2.getSequenceNumber()))
         .reduce(AnalyzeCommand::mergeWith)
-        // this last clause should never occur
+        //ACR-cd7c1a0511ec41bfa1f6405c54a76857
         .orElse(analyzeCommand);
     }
     return nextCommand;
@@ -175,13 +175,13 @@ public class AnalysisQueue {
 
   private static class CommandComparator implements Comparator<QueuedCommand> {
     private static final Map<Class<?>, Integer> COMMAND_TYPES_ORDERED = Map.ofEntries(
-      // reset commands should be pulled first from the queue, they cancel unregister and file event commands and make use of more up-to-date plugins for subsequent analyses
+      //ACR-dabff8ad80084c6aa7f2e597b816a4bb
       entry(ResetPluginsCommand.class, 0),
-      // then unregister commands might make file events and analyses irrelevant
+      //ACR-897e91ca956e46f3b8dcbd17496f310d
       entry(UnregisterModuleCommand.class, 1),
-      // then forwarding file events takes priority over analyses, to make sure they give more accurate results
+      //ACR-e101350559aa4d22b9ca5361d93b8cb4
       entry(NotifyModuleEventCommand.class, 2),
-      // then analyses have the lowest priority
+      //ACR-a166143373f34cf48e63e32b1aa2a7b4
       entry(AnalyzeCommand.class, 3));
 
     @Override
@@ -191,7 +191,7 @@ public class AnalysisQueue {
       var commandRank = COMMAND_TYPES_ORDERED.get(command.getClass());
       var otherCommandRank = COMMAND_TYPES_ORDERED.get(otherCommand.getClass());
       return !Objects.equals(commandRank, otherCommandRank) ? (commandRank - otherCommandRank) :
-      // for same command types, respect insertion order
+      //ACR-c772599d115442ad81e3e0ceedcfd210
         (int) (command.getSequenceNumber() - otherCommand.getSequenceNumber());
     }
   }

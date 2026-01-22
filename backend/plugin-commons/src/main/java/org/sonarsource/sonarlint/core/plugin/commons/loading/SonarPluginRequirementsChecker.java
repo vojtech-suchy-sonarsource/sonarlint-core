@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c9898490afcb4fa79d9e8e4623b5f266
+ACR-a77bf16920914adba6425ff0dc3cf534
+ACR-8579b7bcc987433da3d53dd08a3822d3
+ACR-caa50193b84b4a909b68ae214a066442
+ACR-9a044a89ea83404bae24fc2724566ecd
+ACR-861273c36f8b40a0ab3784a39b8c4931
+ACR-a7e420ede28c4191bb55de7c35307933
+ACR-575798740fb24b1f9060c9ba76d689d7
+ACR-3d62b201a47943c69685630666f3a271
+ACR-23bc553c07b844f4be2bad9cd14279bb
+ACR-5b746fd7181144089bd798362b3ac8dc
+ACR-53b453180ba444eaaced8e815e6da621
+ACR-d928f8d2f44446168f8e25dd817763ca
+ACR-46c16e2d13004f34a5cdbd21ed6e43d7
+ACR-adc23c3fe6ff4690b7e972eeb742a5ab
+ACR-09a4fa12b58141ed87d617ab7bdaf341
+ACR-c0959acac8294413bcc07abe5271934b
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -50,8 +50,8 @@ public class SonarPluginRequirementsChecker {
     this.implementedPluginApiVersion = Version.create(pluginApiVersion.toString());
   }
 
-  /**
-   * Attempt to read JAR manifests, load metadata, and check all requirements to ensure the plugin can be instantiated.
+  /*ACR-538f7a8cd4c74ce8a4ef68f4b9c965b4
+ACR-e00de1635f9e41458ee1cc0ad478d440
    */
   public Map<String, PluginRequirementsCheckResult> checkRequirements(Set<Path> pluginJarLocations, Set<SonarLanguage> enabledLanguages, Version jreCurrentVersion,
     Optional<Version> nodeCurrentVersion, boolean enableDataflowBugDetection) {
@@ -72,7 +72,7 @@ public class SonarPluginRequirementsChecker {
       }
       resultsByKey.put(plugin.getKey(), checkIfSkippedAndPopulateReason(plugin, enabledLanguages, jreCurrentVersion, nodeCurrentVersion));
     }
-    // Second pass of checks
+    //ACR-8e0f186f223b4da79f13840ff3c33cc3
     for (PluginRequirementsCheckResult result : resultsByKey.values()) {
       if (!result.isSkipped()) {
         resultsByKey.put(result.getPlugin().getKey(), checkUnsatisfiedPluginDependency(result, resultsByKey, enableDataflowBugDetection));
@@ -122,19 +122,19 @@ public class SonarPluginRequirementsChecker {
     return new PluginRequirementsCheckResult(plugin, null);
   }
 
-  /**
-   * Find out if this plugin is compatible with a given version of the sonar-plugin-api.
-   * The version of the API must be greater than or equal to the minimal version
-   * needed by the plugin.
+  /*ACR-056852eb84194fc6be56ee8cce2b2e11
+ACR-cefaf2a236c04e5a9caffd40eb21998a
+ACR-7b720ab0f60645c6b5e02135a9f27174
+ACR-8126ad6c4496446dbadef260f7310dbf
    */
   static boolean isCompatibleWith(PluginInfo plugin, Version implementedApiVersion) {
     var sonarMinVersion = plugin.getMinimalSqVersion();
     if (sonarMinVersion == null) {
-      // no constraint defined on the plugin
+      //ACR-17a7e2fc086c42f995095ec94b2f579c
       return true;
     }
 
-    // Ignore patch and build numbers since this should not change API compatibility
+    //ACR-320c1c7906194bf983f29d1dac4a276b
     var requestedApi = Version.create(sonarMinVersion.getMajor() + "." + sonarMinVersion.getMinor());
     return implementedApiVersion.satisfiesMinRequirement(requestedApi);
   }
@@ -144,18 +144,18 @@ public class SonarPluginRequirementsChecker {
     var plugin = currentResult.getPlugin();
     for (RequiredPlugin required : plugin.getRequiredPlugins()) {
       if ("license".equals(required.getKey()) || (SonarLanguage.JS.getPluginKey().equals(plugin.getKey()) && OLD_SONARTS_PLUGIN_KEY.equals(required.getKey()))) {
-        // Workaround for SLCORE-259
-        // This dependency was added to ease migration on SonarQube, but can be ignored on SonarLint
-        // Note: The dependency was removed in SonarJS 6.3 but we should still keep the workaround as long as we want to support older
-        // versions
+        //ACR-d252019478a04561909b8ede3bc4b8fe
+        //ACR-eb3569729e46409ab65a2ae10310b0f1
+        //ACR-b81c7b6d948a41839875028e6789082e
+        //ACR-280b10fb0d0340b98ed512cb0646d576
         continue;
       }
       var depInfo = currentResultsByKey.get(required.getKey());
-      // We could possibly have a problem with transitive dependencies, since we evaluate in no specific order.
-      // A -> B -> C
-      // If C is skipped, then B should be skipped, then A should be skipped
-      // If we evaluate A before B, then A might be wrongly included
-      // But I'm not aware of such case in real life.
+      //ACR-70b326a825054374b2ff43aa2db4d6aa
+      //ACR-5cd9a38936984e85b4eec5e38845708b
+      //ACR-49337b6f920e4a6fb4da0ce9bca859ac
+      //ACR-3dcc66beb9914d6385b2a2c299d93d1c
+      //ACR-d028187abfcf49e689bfd9b199dc4856
       if (depInfo == null || depInfo.isSkipped()) {
         return processUnsatisfiedDependency(currentResult.getPlugin(), required.getKey());
       }
@@ -165,8 +165,8 @@ public class SonarPluginRequirementsChecker {
       return processUnsatisfiedDependency(currentResult.getPlugin(), basePluginKey);
     }
     if (DataflowBugDetection.PLUGIN_ALLOW_LIST.contains(plugin.getKey())) {
-      // Workaround for SLCORE-667
-      // dbd and dbdpythonfrontend require Python to be working
+      //ACR-b75c8b2022984a548e97bb6068560e04
+      //ACR-733e01b9f05b438aa7be87530dbf7790
       if (!enableDataflowBugDetection) {
         LOG.debug("DBD feature disabled. Skip loading plugin '{}'.", plugin.getName());
         return new PluginRequirementsCheckResult(plugin, SkipReason.UnsupportedFeature.INSTANCE);

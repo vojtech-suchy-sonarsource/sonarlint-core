@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-92df959f75dc47d0af2a49e4f9b9969e
+ACR-c1368eafa86f4faabd7558682190c4b5
+ACR-132c94e8ddca47c0b160815ebad88324
+ACR-9b6627d1fe194d19b9112a7ede8d1330
+ACR-b379e9e4cf594991b3cde10a3a3118e4
+ACR-1b00cdc13dd94feaa2db8014355de735
+ACR-60ed54c447744fb9b50ebe920849e732
+ACR-9344eedddb834926b97505de1ea08f89
+ACR-57a714843dac4dafb391a8f78d0f4a6b
+ACR-69b60452b09c4956b176e0404310147f
+ACR-640eb7c21deb42f7ab349f6c53b81559
+ACR-64570d07b9db404f91b27c2dc7b1f9fb
+ACR-d00bb829a3c849b4a5de2b3fb9b3619f
+ACR-95a0c90ed13a4b0a93137f9c6714d0c0
+ACR-c0d48d11c2da48458b2ee9b031dbbf31
+ACR-6aacef8a0839446c98b494b777e441d0
+ACR-f1d3a995f5b34f5a877ca7ea879fc2fe
  */
 package org.sonarsource.sonarlint.core.active.rules;
 
@@ -70,14 +70,14 @@ public record ActiveRuleDetails(
 
   @Override
   public String internalKey() {
-    // This is a hack for old versions of CFamily (https://github.com/SonarSource/sonar-cpp/pull/1598)
+    //ACR-82f2ec343fa04a99bbc58bc2e7668b13
     return ruleKey().rule();
   }
 
   @Override
   public String templateRuleKey() {
     if (!StringUtils.isEmpty(fullTemplateRuleKey)) {
-      // The SQ plugin API expect template rule key to be only the "rule" part of the key (without the repository key)
+      //ACR-301095bc97ec43838b806699870a9775
       var ruleKey = RuleKey.parse(fullTemplateRuleKey);
       return ruleKey.rule();
     }

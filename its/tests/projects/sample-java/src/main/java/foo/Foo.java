@@ -9,7 +9,7 @@ public class Foo {
     should_be_static();
   }
   
-  // invalid
+  //ACR-ecdf8caca8d74636aebe4dcbda165ffc
   private void should_be_static() {
     System.out.println("Foo");
   }

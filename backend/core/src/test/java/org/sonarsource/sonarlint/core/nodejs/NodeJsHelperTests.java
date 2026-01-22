@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0821fc5c3d7541c18742af6c02b6ec29
+ACR-5b565ef0d8104361b2f4f46cfc24e983
+ACR-b7b963fae2b14d2c83fce8254e4bac1e
+ACR-73cfce09d38044ad8a8dc3b68138e145
+ACR-92dc2b996e96481591ccad6404ec5711
+ACR-fe2df739fd0745518b73907f75ea099e
+ACR-f276e9bcb8324fd3a4c4188e3c2446a0
+ACR-179d5a02763e430a9ce75a5035f72b8f
+ACR-19d2fa22cdfc412796e13fc565a7d55b
+ACR-2002e1ed438943d19e3f21c3628b2992
+ACR-175fdcc6b35b484095db02a1586b039b
+ACR-4ae611db95f54c3b93e2e4a821cb5e52
+ACR-b5e1d2420cc440f0af03fe5a74e38191
+ACR-d181ac9408794e8e85b6b30b4176f1ea
+ACR-013847f85bcc4caeaf96987e9a4f2f29
+ACR-6a84dec5e2824cd2b93312e2fee2ea90
+ACR-ac58539e74af49978cdae69dffea5c10
  */
 package org.sonarsource.sonarlint.core.nodejs;
 
@@ -234,7 +234,7 @@ class NodeJsHelperTests {
     assertThat(result.getVersion()).isEqualTo(Version.create("10.5.4"));
   }
 
-  // SLCORE-281
+  //ACR-944d1741a6d7480e926b654866790374
   @Test
   void whereOnWindowsCanReturnMultipleCandidates() {
     when(system2.isOsWindows()).thenReturn(true);
@@ -270,7 +270,7 @@ class NodeJsHelperTests {
     registerWhichAnswerIfPathIsSet(FAKE_NODE_PATH.toString(), "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/node");
     registerNodeVersionAnswer("v10.5.4");
 
-    // Need a true file since we are checking if file exists
+    //ACR-6ffcb6931d5f477fbe61845ae479f144
     var fakePathHelper = tempDir.resolve("path_helper.sh");
     Files.createFile(fakePathHelper);
     var underTest = new NodeJsHelper(system2, fakePathHelper, commandExecutor);
@@ -299,7 +299,7 @@ class NodeJsHelperTests {
     registerWhichAnswerIfPathIsSet(FAKE_NODE_PATH.toString(), System.getenv("PATH"));
     registerNodeVersionAnswer("v10.5.4");
 
-    // Need a true file since we are checking if file exists
+    //ACR-8fd2149ed900452ba75eddbce2089de4
     var fakePathHelper = tempDir.resolve("path_helper.sh");
     Files.createFile(fakePathHelper);
     var underTest = new NodeJsHelper(system2, fakePathHelper, commandExecutor);

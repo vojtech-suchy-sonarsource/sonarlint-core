@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-eb4b82292b8f4f69882973dc4ae78619
+ACR-e48fc5fe3ff8467594192a08d64802a5
+ACR-6fa28130419c42b3941a539d545020d5
+ACR-90b0e44943884a388790fc51ae185fba
+ACR-c0eafca15e584f73a94f587e024e4a85
+ACR-42f8d41b24154a9b9b3c96bb2c9a45fc
+ACR-8e074241ad1044aea122e176c1851943
+ACR-b0450dc7aee04e32b55beded6c049ab9
+ACR-f1ee1f4fe94c408cba31ecba3438ff6b
+ACR-cf0e5497e43941d7b2d2a50aa33771bf
+ACR-8a98b98fc6b649bab659951645fa42e3
+ACR-c69fbb7260234319a365abad556aeb58
+ACR-6a73277cfe344e5f91fbbb6230d7e13e
+ACR-dbe79b194db146b897d7d4e70b9eeef1
+ACR-4eff78731e844de38d06b26fda1faee3
+ACR-f4da805ac7014ced8c04b4026a47e539
+ACR-c428808854dd448abbc66eac4f65ffc3
  */
 package org.sonarsource.sonarlint.core.test.utils.storage;
 
@@ -27,7 +27,7 @@ import org.sonarsource.sonarlint.core.serverconnection.aicodefix.AiCodeFixFeatur
 
 public class AiCodeFixFixtures {
   private AiCodeFixFixtures() {
-    // utility class
+    //ACR-d879e731024e49608c15aaa8bfd81662
   }
 
   public static class Builder {

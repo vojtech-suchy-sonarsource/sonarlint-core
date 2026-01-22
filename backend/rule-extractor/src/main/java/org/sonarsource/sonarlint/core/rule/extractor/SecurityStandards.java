@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ad56ab64bb47454b9519b24d3b1e1ecc
+ACR-7faa200a5bf644a9a77ca2b047933313
+ACR-ca90ac0275764ae38b3e0cb27a26795c
+ACR-67f5ca1e63dc46aeb1b11e4df41b3a4f
+ACR-b6cf1c12b64f40f7876f08d9f1c275ca
+ACR-237478374b9c48d899d62b113ad92bb3
+ACR-ac7aeb13e21c4c608148547fce45b9c3
+ACR-793ed423de2343d0b9b013bfc9890439
+ACR-22c5031448b54a0c85d174b8ee607c47
+ACR-ee33b26f6a2f4dc080c67969397ffd7d
+ACR-f98cfcc6bfe74321934c06a41a15961a
+ACR-2bd5840769364058a064b4952a04ad71
+ACR-2a0c2112eede4ad390fd6ff01e565029
+ACR-b16772624d9744bdbb7dd64dc06b7afc
+ACR-d7cf6447a38048e280a1084f5641964c
+ACR-347227c385cf4f48b3867377dc1ee4dd
+ACR-f81ff14a19644ddf9ec21ff425310898
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 
@@ -124,8 +124,8 @@ public final class SecurityStandards {
     return sLCategory;
   }
 
-  /**
-   * If CWEs mapped to multiple {@link SLCategory}, those which are not taken into account are listed here.
+  /*ACR-ef6bdb2ac5544983b45b1186ad5c78c8
+ACR-3ca64fdfc5b1445bb41359086de3e43a
    */
   public Set<SLCategory> getIgnoredSLCategories() {
     return ignoredSLCategories;
@@ -139,8 +139,8 @@ public final class SecurityStandards {
     return cwe;
   }
 
-  /**
-   * @throws IllegalStateException if {@code securityStandards} maps to multiple {@link SLCategory SLCategories}
+  /*ACR-6bb466e9bdb34d3f93475f2f21bd68cc
+ACR-f3544301712d4b02825f8ac2e6dffeb3
    */
   public static SecurityStandards fromSecurityStandards(Set<String> securityStandards) {
     Set<String> standards = securityStandards.stream().filter(Objects::nonNull).collect(toSet());

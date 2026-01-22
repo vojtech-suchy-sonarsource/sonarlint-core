@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2c5d24294134497fbdd4aec03a65d714
+ACR-bcd3c39f072045b69eb88d243626a567
+ACR-e8e5708d11834b738d38566af4e56641
+ACR-f7c0de4b233846f6a13ea3a8096ddab9
+ACR-27a1274d9ba844ef92038f3940a232fe
+ACR-1d48f59feeda4fe7a60551b590986aa3
+ACR-3753ec5122134e07b1699cc44d62e64c
+ACR-b950a19d9da54d52ad48a447b43a81b0
+ACR-edf2c494877c41ea820e02cc4ab8639b
+ACR-8a5612b6b62a4659aa12ebc4207a07ac
+ACR-d19acd379fa84f6cbd65d0253100a920
+ACR-4087110cdf00493c838ed53de7dcaf7e
+ACR-25b23183f44c459da2be372776e0f407
+ACR-e87aac3f6cee45a9b665c947a3496234
+ACR-d6789c52ec604212911b8e15da8d3e27
+ACR-f23dbbe03286419aacb0b2f13e2038cc
+ACR-643fa2789b2f40238911c07b36cfab57
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -29,7 +29,7 @@ public class OrganizationSynchronizer {
     this.storage = storage;
   }
 
-  // should be called only in the context of SonarQube Cloud
+  //ACR-4ff3fa09d76545c5828b158b063cfd96
   public Organization readOrSynchronizeOrganization(ServerApi serverApi, SonarLintCancelMonitor cancelMonitor) {
     return storage.organization().read()
       .orElseGet(() -> synchronize(serverApi, cancelMonitor));

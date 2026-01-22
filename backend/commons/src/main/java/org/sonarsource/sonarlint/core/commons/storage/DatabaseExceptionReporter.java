@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-9d1dc72b03024b21881495588e5bb2d3
+ACR-9a5bcc11f90d481d9357e5aba6e03010
+ACR-040c49ef66c2435b88071576375cd1dd
+ACR-8b12e85d99cf40dc88c70719c6788476
+ACR-b2d8eefe1d6d4a3f928cd9a231a8d2cc
+ACR-8f7e470a3a76440c9e858b5c46c10b24
+ACR-ba5b471cf64341fa97bfefd01c5b04f4
+ACR-7f6c817c399a44b785611bf89b1e185e
+ACR-e5049eb23af546c8ae5c4e93fd5e4e03
+ACR-920a975fffe2428b95fea72bac99e7a9
+ACR-6586336649f9423da503ca1d9445978a
+ACR-3502bcd43fca40908ba50316cce0cc67
+ACR-638ca0abc0124d40bd7ced3e18cd0ea1
+ACR-621a9154ded04abf9ee251482201e18b
+ACR-ca0059757d7440889dd6e493d81a42f7
+ACR-753d90ad2cdb45679e85d0b574f7657d
+ACR-e30ca36107fc4d97b6e89f8b722cd3ac
  */
 package org.sonarsource.sonarlint.core.commons.storage;
 
@@ -26,29 +26,29 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
-/**
- * Central utility for reporting database exceptions to Sentry with relevant context.
- * Includes simple message-hash deduplication (60 min window) to avoid flooding Sentry.
+/*ACR-a0a23a9a588c421d9ad44f3351bfae7e
+ACR-95eea2ab35744868a778e9e6c4f87f5b
+ACR-0f2635271ac74d599d251e2c41de93ed
  */
 public final class DatabaseExceptionReporter {
 
   private static final SonarLintLogger LOG = SonarLintLogger.get();
 
   static final String DEDUP_WINDOW_PROPERTY = "sonarlint.internal.db.dedupWindowMs";
-  private static final long DEFAULT_DEDUP_WINDOW_MS = 60 * 60 * 1000L; // 60 minutes
+  private static final long DEFAULT_DEDUP_WINDOW_MS = 60 * 60 * 1000L; //ACR-fa23afd45b854214976f86f94eb8c167
 
   private static final Map<Integer, Long> recentMessageHashes = new ConcurrentHashMap<>();
 
   private DatabaseExceptionReporter() {
   }
 
-  /**
-   * Captures a database exception and reports it to Sentry with contextual tags.
-   *
-   * @param exception the exception to report
-   * @param phase     the phase where the exception occurred (e.g., "startup", "runtime", "shutdown")
-   * @param operation the specific operation (e.g., "h2.pool.create", "flyway.migrate", "jooq.execute")
-   * @param sql       optional SQL statement that caused the exception
+  /*ACR-4ace8b75b6f84e68bd23f30b7fb0b814
+ACR-62630448f2fe4c3e876919d80ddecf82
+ACR-06440aa9e9e64183bcfac830268c38bf
+ACR-6a715b0427ed4e7aa2d7c89ab220ee66
+ACR-1e57fccd85914852965ce8086e9f2129
+ACR-f30a675bcd0a4b228ae889d8d089cbae
+ACR-ac55b007731a49e5afc7a580dfbb7826
    */
   public static void capture(Throwable exception, String phase, String operation, @Nullable String sql) {
     var message = exception.getMessage();
@@ -109,7 +109,7 @@ public final class DatabaseExceptionReporter {
       try {
         return Long.parseLong(property);
       } catch (NumberFormatException e) {
-        // ignore, use default
+        //ACR-80fa003e7b6e41beb095f0dce60daaf8
       }
     }
     return DEFAULT_DEDUP_WINDOW_MS;
@@ -123,12 +123,12 @@ public final class DatabaseExceptionReporter {
     return sql.substring(0, maxLength) + "... [truncated]";
   }
 
-  // Visible for testing
+  //ACR-760dca9f98974712b2bb3142e84817d8
   static void clearRecentExceptions() {
     recentMessageHashes.clear();
   }
 
-  // Visible for testing
+  //ACR-45da818883b14b56b0d363032d9af082
   static int getRecentExceptionsCount() {
     return recentMessageHashes.size();
   }

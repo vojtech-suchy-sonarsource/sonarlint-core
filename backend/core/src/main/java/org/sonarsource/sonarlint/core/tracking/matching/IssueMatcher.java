@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-55b6cb77847a4190a5004c7b5d4017e6
+ACR-eebab1c0c1aa409eb4599afa6ec9d636
+ACR-520e53732da04f3195b56085ea70fe67
+ACR-d5ae1093f17a4563a22607b8a6054c33
+ACR-c9e4120c0d5245dcb7579fb792c66466
+ACR-08c343eea6194fb9b23d1de03732f12d
+ACR-4fa76aab8bde4d1eac25060e6b23633c
+ACR-0b1a3c1ec5684518905571ff0d04e258
+ACR-9a0b9d7c3bb74fd286833c2985413f2e
+ACR-6813e7eaa5924457b9be5421d9b0dd59
+ACR-624f32341e1d4b81867ace4908f5aaa7
+ACR-ddf3ab5a5b6a4c1b9219864c1ef8f53f
+ACR-0b32b0e273204204a3ed64eeb2704397
+ACR-55479e68b1524ad4bd569cf83e513f27
+ACR-1396af5b3b0a436aa9c11d06b12d2890
+ACR-310cb6d3ea70496692cb26c11297bedd
+ACR-001f6423dab0491cbbf035ab2fb23e81
  */
 package org.sonarsource.sonarlint.core.tracking.matching;
 
@@ -27,29 +27,29 @@ import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-/**
- * Match a collection of issues.
- *
- * @param <LEFT>  type of the issues that are in the first collection
- * @param <RIGHT> type of the issues that are in the second collection
+/*ACR-4ce5ab0eb81c4df5b0fb559744127ccd
+ACR-a639ad6cc0c0434f8c9ef19aa6cf2fa8
+ACR-7f96df94e0a641e4a6922641b4ab701b
+ACR-831676a7dfd84b968e5c30371e27bb99
+ACR-a53d15c4c3084c92ac4de28102377f82
  */
 public class IssueMatcher<LEFT, RIGHT> {
 
   private static final List<MatchingCriterionFactory> MATCHING_CRITERIA = List.of(
-    // 1. match issues with same server issue key
+    //ACR-40952f81bedc4b43b96851ce7e58283f
     ServerIssueMatchingCriterion::new,
-    // 2. match issues with same rule, same line and same text range hash, but not necessarily with same message
+    //ACR-64f3c31d639146bfb693737f89c9ecb0
     LineAndTextRangeHashMatchingCriterion::new,
-    // 3. match issues with same rule, same message and same text range hash
+    //ACR-86f87f6244ce497e87613e6b601552e9
     TextRangeHashAndMessageMatchingCriterion::new,
-    // 4. match issues with same rule, same line and same message
+    //ACR-fae25265947b4c1c9d15997edccc1131
     LineAndMessageMatchingCriterion::new,
-    // 5. match issues with same rule and same text range hash but different line and different message.
-    // See SONAR-2812
+    //ACR-353e94d7098d488fb4ec93df8c782a55
+    //ACR-da11dc57793a4314b38016c1762c2425
     TextRangeHashMatchingCriterion::new,
-    // 6. match issues with same rule, same line and same line hash
+    //ACR-b80012ca8994414cbdfb9007b6c9cbe9
     LineAndLineHashMatchingCriterion::new,
-    // 7. match issues with same rule and same line hash
+    //ACR-86111dfc48544bd7a9da7f154edd211c
     LineHashMatchingCriterion::new);
 
   private final Map<MatchingCriterionFactory, Map<MatchingCriterion, List<RIGHT>>> rightIssuesByCriterion = new HashMap<>();
@@ -88,8 +88,8 @@ public class IssueMatcher<LEFT, RIGHT> {
       var leftKey = criterionFactory.build(left, leftMapper);
       var rightCandidates = rightIssuesByCriterion.get(criterionFactory).get(leftKey);
       if (rightCandidates != null && !rightCandidates.isEmpty()) {
-        // TODO taking the first one. Could be improved if there are more than 2 issues on the same line.
-        // Message could be checked to take the best one.
+        //ACR-6d8da092f53146de8bccde987f88e351
+        //ACR-ab90e9316cfc43d5816310ca84fd0e2f
         var match = rightCandidates.iterator().next();
         result.recordMatch(left, match);
         removeRight(match);
@@ -131,11 +131,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.textRangeHash = mapper.getTextRangeHash(issue).orElse(null);
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-43e8b32e54ba491c91fd51f088cf1066
     @Override
     public boolean equals(Object o) {
       var that = (LineAndTextRangeHashMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-ac0ee17fa32046528655efbb8220846b
       return Objects.equals(line, that.line)
         && Objects.equals(textRangeHash, that.textRangeHash)
         && ruleKey.equals(that.ruleKey);
@@ -162,11 +162,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.lineHash = mapper.getLineHash(issue).orElse("");
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-59be1be1989a4c96ac2470ffb0753256
     @Override
     public boolean equals(Object o) {
       var that = (LineAndLineHashMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-37a72a0a1f0644679d4303554ce3757b
       return Objects.equals(line, that.line)
         && Objects.equals(lineHash, that.lineHash)
         && ruleKey.equals(that.ruleKey);
@@ -190,11 +190,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.lineHash = mapper.getLineHash(issue).orElse("");
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-70edc3c28014458cab98f3fbec5b66e9
     @Override
     public boolean equals(Object o) {
       var that = (LineHashMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-b32377fd92c547078e36216f5030f113
       return Objects.equals(lineHash, that.lineHash)
         && ruleKey.equals(that.ruleKey);
     }
@@ -218,11 +218,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.textRangeHash = mapper.getTextRangeHash(issue).orElse(null);
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-1521261c012a4a0dbe914ded1a4d265a
     @Override
     public boolean equals(Object o) {
       var that = (TextRangeHashAndMessageMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-d6538b996d8b490eab4bcc8f85c66104
       return Objects.equals(textRangeHash, that.textRangeHash)
         && message.equals(that.message)
         && ruleKey.equals(that.ruleKey);
@@ -249,11 +249,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.line = mapper.getLine(issue).orElse(null);
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-2550c77abeba41ccb931a173a59bf395
     @Override
     public boolean equals(Object o) {
       var that = (LineAndMessageMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-3a05a4b3161245a18a6b9dc496eabc33
       return Objects.equals(line, that.line)
         && message.equals(that.message)
         && ruleKey.equals(that.ruleKey);
@@ -277,11 +277,11 @@ public class IssueMatcher<LEFT, RIGHT> {
       this.textRangeHash = mapper.getTextRangeHash(issue).orElse("");
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-9810e7a1b3444a26ab5488c23ada4715
     @Override
     public boolean equals(Object o) {
       var that = (TextRangeHashMatchingCriterion) o;
-      // start with most discriminant field
+      //ACR-0b0312b58b5149ffa55f859727863c2a
       return Objects.equals(textRangeHash, that.textRangeHash)
         && ruleKey.equals(that.ruleKey);
     }
@@ -302,7 +302,7 @@ public class IssueMatcher<LEFT, RIGHT> {
       serverIssueKey = mapper.getServerIssueKey(issue).orElse(null);
     }
 
-    // note: the design of the enclosing caller ensures that 'o' is of the correct class and not null
+    //ACR-b98996e6a04e4fb0b4c238fba98cc1be
     @Override
     public boolean equals(Object o) {
       var that = (ServerIssueMatchingCriterion) o;

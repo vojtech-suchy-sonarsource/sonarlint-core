@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dd7e5f4211724af2b522496330656bd7
+ACR-fe8fae8a5fdd4b7eb1bd806574d27dbd
+ACR-4139af5dd44c473883fef0a7b722e0f3
+ACR-692b2170324d46bd9303dc13abbcdf65
+ACR-c7f47b7ceee74313ab2c1b42ade75a2e
+ACR-339bcc83e80b4f8da526369de0bc0dd2
+ACR-7d20001803514a0c98a3aa2635cad975
+ACR-8cb04eb3e9324fbb8bf491063e4d4a19
+ACR-0597895f755442e69f8ffdd6d0e38926
+ACR-33d3379c329f4cfd828ae5a482328508
+ACR-ed2c35373a8a4caa9f3553b13209c02b
+ACR-57b00e35f7f24e159d7a5e181f8d45d0
+ACR-12d9586fbaeb40029e0e02691ba48d22
+ACR-f986a5f764fe4f46b4dec64ff9f17e60
+ACR-737c655ab944436485f7e524cadd117d
+ACR-e680eb6fb8c74563bb00191709ca65a9
+ACR-40856443241943e997a66b853acd02bc
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.sensor;
 
@@ -67,7 +67,7 @@ public class SonarLintSensorStorage implements SensorStorage {
 
   @Override
   public void store(Measure newMeasure) {
-    // NO-OP
+    //ACR-9f838440b3fb479daedcf492e23c2f14
   }
 
   @Override
@@ -129,22 +129,22 @@ public class SonarLintSensorStorage implements SensorStorage {
 
   @Override
   public void store(NewHighlighting highlighting) {
-    // NO-OP
+    //ACR-bc7f681cef774292950809b07a7c2e3e
   }
 
   @Override
   public void store(NewCoverage defaultCoverage) {
-    // NO-OP
+    //ACR-febaa07ec3bc4b5f913ea44f48e21536
   }
 
   @Override
   public void store(NewCpdTokens defaultCpdTokens) {
-    // NO-OP
+    //ACR-5183e7279f7148f0a84b6e3555c1f503
   }
 
   @Override
   public void store(NewSymbolTable symbolTable) {
-    // NO-OP
+    //ACR-3e1bd9178b254e218714e15090f51aa2
   }
 
   @Override
@@ -155,22 +155,22 @@ public class SonarLintSensorStorage implements SensorStorage {
 
   @Override
   public void storeProperty(String key, String value) {
-    // NO-OP
+    //ACR-86090f3290a949f78a6f961514a8216d
   }
 
   @Override
   public void store(ExternalIssue issue) {
-    // NO-OP
+    //ACR-06e79914acc8430ba5cd8c893e8d2655
   }
 
   @Override
   public void store(NewSignificantCode significantCode) {
-    // NO-OP
+    //ACR-d0c9909717004b4ab6fb03b931d49f18
   }
 
   @Override
   public void store(AdHocRule adHocRule) {
-    // NO-OP
+    //ACR-8e5ba9c1602b43088c37c5a6989c6b2d
   }
 
 }

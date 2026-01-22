@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f2198a233b96439493b8a5a5dab13ff2
+ACR-dbfa6934d34246f49b8009eb5d9df7a6
+ACR-5d52f199c9dc49a29fca01b57e591e62
+ACR-a872792dc8724db9800650d54ae839bd
+ACR-297315ca011f441b9f338b422a1d0fc3
+ACR-12f9c5dd890343bbbab4a88a7f71fb0c
+ACR-13e2b13d2ebd42cdbe51c73a7bb9282f
+ACR-9f54eeabe1e24d9fac371c4729aaa44c
+ACR-9b2aed72a0aa4c5bb6d5075d2262dafb
+ACR-6ab673dc1e5e4eb180f5c7b6a29210e4
+ACR-343ae75099fa44a59291ae14b8912e92
+ACR-87063d1198b74e4297497e58731c7c2a
+ACR-bbea34b757614064852ef5dd7f9d6ac0
+ACR-2b780617a4da4342b739728d15c00ea0
+ACR-742cf88706a14009835cce896b493725
+ACR-9cf0130edcbb4a289dd21f474e2cd645
+ACR-c8c6fdd16e094768b56527d11e7cd6e3
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -41,7 +41,7 @@ class VersionUtilsTests {
 
   @Test
   void grace_period_should_be_true_if_connected_during_grace_period() {
-    // read isVersionSupportedDuringGracePeriod javadoc
+    //ACR-d762cc165a4a41a998c8124709a603a6
     assertThat(VersionUtils.isVersionSupportedDuringGracePeriod(getMinimalSupportedVersion())).isFalse();
     assertThat(VersionUtils.isVersionSupportedDuringGracePeriod(Version.create(getMinimalSupportedVersion().getName() + ".1"))).isFalse();
   }

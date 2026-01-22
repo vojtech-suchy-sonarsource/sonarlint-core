@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-058cdc9d56b34965ae05cef94d48af38
+ACR-68d0a27345ed480cb5bb350f9135faa4
+ACR-78eed701a8d648c2b937126864652609
+ACR-a79b1a67191c4d31a99008781499bee9
+ACR-f0b467f8a2e1434388ca5d78ab70a7cd
+ACR-433d589c512d41cebf15d03994271adc
+ACR-a6fdfe022ea24fcdbdb1caa550a2c3ab
+ACR-f6b6020e9a614c2d9f1be11231f16005
+ACR-67ea59598cd240e3a7ce179432624242
+ACR-09dfc181249d40ada70ef749af26d1f7
+ACR-3d766dc1ba574e7f9c048ddfd3100d9a
+ACR-391727176489434bb02a21973a6b6be7
+ACR-bd092707bdff4b11b0f53990d3fad699
+ACR-4c457590fb4e40f799c862bee710c4a6
+ACR-f93429f35c4a4bd388c780c1c479a8ab
+ACR-693ac2c12ea74c8f9840c38548b8c44c
+ACR-c828cc94662c49cba9bc2bc8a383dd87
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.labs;
 
@@ -25,14 +25,14 @@ import org.eclipse.lsp4j.jsonrpc.services.JsonSegment;
 
 @JsonSegment("labs")
 public interface IdeLabsRpcService {
-  /**
-   * Allows a user to join the IDE Labs program.
-   *
-   * @param params the parameters containing the user's email address and requesting IDE name
-   * @return a CompletableFuture that resolves to a JoinIdeLabsProgramResponse
-   * <p>
-   * <p>JoinIdeLabsProgramResponse.isSuccess() will be false if email validation failed on the server side, or if an unexpected error occurred.
-   * If isSuccess() is false, JoinIdeLabsProgramResponse.getMessage() contains a human-readable explanation.</p>
+  /*ACR-e3c4660a73054098b6e1bfd86b8002fe
+ACR-0a29445025164f78a6481bd898793b4a
+ACR-8eb9e30854434942953cef4814db472d
+ACR-d7bf1d470239458fb00f3e4e8da610bf
+ACR-b803fd1e1db94449b734714d742669a2
+ACR-4f93c55eaf134279869bef328b3cd177
+ACR-d9da45a5e2bc4390a9ca1aaf13df1421
+ACR-83b166f276344bebb21cdfacadcbbe47
    */
   @JsonRequest
   CompletableFuture<JoinIdeLabsProgramResponse> joinIdeLabsProgram(JoinIdeLabsProgramParams params);

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d4a2baeaf7654737a7574bd164682b22
+ACR-86c4a973f78847bda79bb30988e0e986
+ACR-77824bfd1c414debb1c5e983562c587a
+ACR-5afd86cad6e946238cb4cefd9e587bce
+ACR-0e705503ae004757b30e65f13cd59c0a
+ACR-053aa069487f465aa084102093aa5be8
+ACR-8d443a0556d54373aa3889b7b5939979
+ACR-2daca89108a44558aab96474db5969d1
+ACR-d735e688390a4d47a356863b943ce18c
+ACR-28f309650e6743099c586e7a91cb6a65
+ACR-b214dd4a8cfa49e19c018929cf25c53e
+ACR-579f40b77040412cbb915f5dbd7b427e
+ACR-61fa29d03c1a433db7da14c0e20c077b
+ACR-a7ba395879f94c1fa9881f48e52a2d34
+ACR-0dda8948953747ae805eadb5017583c2
+ACR-7418957fd3314cbe98c3f54a6ba4074f
+ACR-cb7f64d35e4b451ca5d40e070025f402
  */
 package org.sonarsource.sonarlint.core;
 
@@ -61,8 +61,8 @@ import static org.sonarsource.sonarlint.core.rpc.protocol.SonarLintRpcErrorCode.
 public class ConnectionService {
 
   private static final SonarLintLogger LOG = SonarLintLogger.get();
-  /**
-   * Validator for strings containing small letters, numbers and "-" symbols.
+  /*ACR-73e778062710429aad44ec603422d610
+ACR-b899293e8f88480aac6450bab5076742
    */
   private static final RegexpValidator REGEXP_VALIDATOR = new RegexpValidator("[a-z0-9\\-]+");
 

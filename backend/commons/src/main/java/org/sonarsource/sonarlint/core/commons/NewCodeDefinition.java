@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b483e18a9f334e1c95a35557e45e5f7f
+ACR-e067f3b492a640649bff70ffa5f7a37d
+ACR-4fac79cf4b39418db41d1368bb189450
+ACR-e56a14a807a54f5eb1d3817d63a2abc0
+ACR-34404915495145cf94f2a64b4568f0b8
+ACR-918f33096bd0448aa297549280afbaae
+ACR-aa0123be11a1426d987bffa99efe8604
+ACR-65a7d4082abc4458ab21bc10d7f627e1
+ACR-216e4a09b3204190909bd51c68ad36f7
+ACR-f6e66cda434243d58bcafc92c81caa2f
+ACR-fd6823170ec74d27b22030b66b6c7ffc
+ACR-ece5e74d1b404164ba8bb607afddfac0
+ACR-ef4c2790c5ed4c23a27dcc94a0269284
+ACR-77ee4cb66cd1467eb8970c0a26c27015
+ACR-36688aaadeb14a59bf88806b2462a53b
+ACR-8994cecfd54b4482b9a374114cb44bdf
+ACR-c29cfe34be7b409fb94229d87b83969d
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -54,9 +54,9 @@ public interface NewCodeDefinition {
     return new NewCodeExactNumberOfDays(days);
   }
 
-  /**
-   * @param days the theoretical number of days
-   * @param thresholdDate the actual date in the past that serves for the comparison. Can be different from the number of days as it is updated after analysis on the server side
+  /*ACR-2bea37f19390433f984af44b7583b03a
+ACR-e5be59ea2d2b49fdb3d5760c3aae632f
+ACR-509874d064e1438d87077fcba937d74d
    */
   static NewCodeDefinition withNumberOfDaysWithDate(int days, long thresholdDate) {
     return new NewCodeNumberOfDaysWithDate(days, thresholdDate);
@@ -123,7 +123,7 @@ public interface NewCodeDefinition {
       return Instant.now().minus(days, ChronoUnit.DAYS);
     }
 
-    // Text used by IDEs in the UI. Communicate changes to IDE squad prior to changing the wording.
+    //ACR-a0e9735fa4fc44b981a714e7222130b8
     @Override
     public String toString() {
       return String.format("From last %s days", days);
@@ -138,7 +138,7 @@ public interface NewCodeDefinition {
       this.days = days;
     }
 
-    // Text used by IDEs in the UI. Communicate changes to IDE squad prior to changing the wording.
+    //ACR-85d7123d82dd4abeab3bb09677788b5e
     @Override
     public String toString() {
       return String.format("From last %s days", days);
@@ -162,7 +162,7 @@ public interface NewCodeDefinition {
       this.version = version;
     }
 
-    // Text used by IDEs in the UI. Communicate changes to IDE squad prior to changing the wording.
+    //ACR-03c8a19806c64207b8200e77f21e2b90
     @Override
     public String toString() {
       var versionQualifier = (version == null) ? formatEpochToDate(this.thresholdDate) : ("version " + version);
@@ -185,7 +185,7 @@ public interface NewCodeDefinition {
       super(thresholdDate);
     }
 
-    // Text used by IDEs in the UI. Communicate changes to IDE squad prior to changing the wording.
+    //ACR-c46adb2715b64499b662df753999aa2b
     @Override
     public String toString() {
       return String.format("Since analysis from %s", formatEpochToDate(this.thresholdDate));
@@ -225,11 +225,11 @@ public interface NewCodeDefinition {
 
     @Override
     public Instant getThresholdDate() {
-      // instead of Long.MAX_VALUE it's set for Instant.now() in case it will be used for git blame limit
+      //ACR-8639d9486563492ab78dd1d3d36fd106
       return Instant.now();
     }
 
-    // Text used by IDEs in the UI. Communicate changes to IDE squad prior to changing the wording.
+    //ACR-eb87053f4668449090660c3cd0b43b9a
     @Override
     public String toString() {
       return "Current new code definition (reference branch) is not supported";
@@ -239,7 +239,7 @@ public interface NewCodeDefinition {
   class NewCodeAlwaysNew implements NewCodeDefinition {
 
     private NewCodeAlwaysNew() {
-      // NOP
+      //ACR-fdf0e01a36044486a21bd62443996584
     }
 
     @Override
@@ -254,7 +254,7 @@ public interface NewCodeDefinition {
 
     @Override
     public Instant getThresholdDate() {
-      // instead of 0L it's set for Instant.now() in case it will be used for git blame limit (which shouldn't normally happen)
+      //ACR-f030e1254d2c47abbcf1c28e716f4c94
       return Instant.now();
     }
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-cc9d2ccd53444a7bb96af7eccbab3ef3
+ACR-0e2dd6674f8145d8b3d10afecbbb4b98
+ACR-83af6f36d3a5442aad68e004783e0ad1
+ACR-1be55c7ccbe24517b28bc982f4cebb79
+ACR-713e3cea405a4c3c902f00c2c58caadc
+ACR-a5017e78a98146f2bde07d5df080acd2
+ACR-0fcdbff8b66d4c3ebadb02ec2aa8327e
+ACR-17f40787890a4453900ae9e08789523e
+ACR-9dcafe1f35b44c78be2306b700f081d0
+ACR-7432fcd746dc40b08e42adfccfb367d1
+ACR-162af15a8b3e4e6eb880aa563e8f5ffc
+ACR-87fe51078ec447e68088739e5f6ccff7
+ACR-d73d62e877d4456ea1143869e82ba43e
+ACR-b26003f9c81f4c6faf5d03c674c24137
+ACR-5f4e796bf84f4dc9bafe4c83930b21ac
+ACR-fe1a2e356a3b47a48596cb0f9a51ac4a
+ACR-86e699cca71a4a499f89faea74f81a9b
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -41,9 +41,9 @@ class PriorityBeanFactoryTests {
 
   @BeforeEach
   public void setUp() {
-    // needed to support autowiring with @Inject
+    //ACR-2898ceffc6a442c9816f335b2888eb98
     beanFactory.addBeanPostProcessor(new AutowiredAnnotationBeanPostProcessor());
-    // needed to read @Priority
+    //ACR-7361433673664a8f9d65d398fd2e4836
     beanFactory.setDependencyComparator(new AnnotationAwareOrderComparator());
     beanFactory.setParentBeanFactory(parentBeanFactory);
   }

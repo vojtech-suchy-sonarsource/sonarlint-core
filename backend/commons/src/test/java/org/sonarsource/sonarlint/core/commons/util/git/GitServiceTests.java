@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bb92c629ee3640f289808b651e607b3c
+ACR-c24e97c6dd3a4c73b3a1eb4b8550bfd9
+ACR-9fd1e6aa2cda4c46a9559dae622384b2
+ACR-18f3fe4e013147e29f911a64e86b89c2
+ACR-f5855a5adaf646bb964d030ec4a5559f
+ACR-fa3d3054de364f9f8d6fc2621c3dbbe1
+ACR-166145d016074ebeb7d26ea147f943d9
+ACR-78e54de40bdf4cadb5b6bc70103c67ba
+ACR-2c4d646e760e4ad5bc69716dc733b210
+ACR-ed8b5147a0e0426798bbeb387571e9f4
+ACR-3ef7a86ba20b4bdb8f7620e8df056e0a
+ACR-db99eb0e598840028a049e08f76222bf
+ACR-f3b8b3ff18564570ad1a2b71e43b8896
+ACR-23db3ec7d6b547868a39f127f96d29dd
+ACR-8877a602970143ecb780b3826f6e068d
+ACR-0289996d116849229dcf02cd2967b27c
+ACR-d0390de7d7ee44cba05278f1d4610874
  */
 package org.sonarsource.sonarlint.core.commons.util.git;
 
@@ -92,28 +92,28 @@ class GitServiceTests {
       FileUtils.forceDelete(bareRepoPath.toFile());
       FileUtils.forceDelete(workingRepoPath.toFile());
     } catch (Exception ignored) {
-      //It throws an exception in windows
+      //ACR-5d97e14847a44ddf8f58fd01a66a9c89
     }
   }
 
   private static void setUpBareRepo(Map<String, String> filePathContentMap) throws IOException, GitAPIException {
     bareRepoPath = Files.createTempDirectory("bare-repo");
     workingRepoPath = Files.createTempDirectory("working-repo");
-    // Initialize a bare repository
+    //ACR-c271b08e631d456d85783ec11c33a6e3
     try (var ignored = Git.init().setBare(true).setDirectory(bareRepoPath.toFile()).call()) {
-      // Initialize a working directory repository
+      //ACR-e42653308cda4c2cba0faacb61f433b0
       try (var workingGit = Git.init().setDirectory(workingRepoPath.toFile()).call()) {
-        // Create a .gitignore file in the working directory
+        //ACR-f3c7b5eda083463892929f662471e2e9
         for (var filePath : filePathContentMap.keySet()) {
           var gitignoreFile = new File(workingRepoPath.toFile(), filePath);
           Files.writeString(gitignoreFile.toPath(), filePathContentMap.get(filePath));
 
-          // Stage and commit the .gitignore file
+          //ACR-edd1546483534ce5a6ae77060ac2c5b1
           workingGit.add().addFilepattern(filePath).call();
           workingGit.commit().setMessage("Add " + filePath).call();
         }
 
-        // Add the bare repository as a remote and push the commit
+        //ACR-ffdf3ba14e804ec384cdb474586a19d3
         workingGit.remoteAdd()
           .setName("origin")
           .setUri(new URIish(bareRepoPath.toUri().toString()))
@@ -428,7 +428,7 @@ class GitServiceTests {
 
   @Test
   void it_should_only_return_files_under_baseDir() throws IOException, GitAPIException {
-    // Create files in root and in a subfolder
+    //ACR-5cdd7223f18b463e85a1ce6ea40bd32a
     var rootFile = "rootFile.txt";
     var subDir = projectDirPath.resolve("subdir");
     Files.createDirectories(subDir);
@@ -436,17 +436,17 @@ class GitServiceTests {
     createFile(projectDirPath, rootFile, "root");
     createFile(subDir, "subFile.txt", "sub");
 
-    // Add and commit both files
+    //ACR-e22c3cc7dd4343a68593032dc2f53d6c
     git.add().addFilepattern(rootFile).call();
     git.add().addFilepattern("subdir/subFile.txt").call();
     commit(git, rootFile);
     commit(git, "subdir/subFile.txt");
 
-    // Modify both files (so they appear as changed)
+    //ACR-6395a4b466754c5b985b9dc5962e84c4
     modifyFile(projectDirPath.resolve(rootFile), "root", "changed");
     modifyFile(subFile, "sub", "changed");
 
-    // getVCSChangedFiles for subdir should only return subFile
+    //ACR-88171315014546abb79fc60755ad8823
     var changedFiles = getVCSChangedFiles(subDir);
 
     assertThat(changedFiles)
@@ -456,7 +456,7 @@ class GitServiceTests {
 
   @Test
   void it_should_get_remote_url() throws GitAPIException, URISyntaxException {
-    // Set up a remote URL for the test repository
+    //ACR-1f3535dadd1b49c78ba3281a1dcd8824
     var remoteUrl = "https://github.com/org/project.git";
     git.remoteAdd()
       .setName("origin")

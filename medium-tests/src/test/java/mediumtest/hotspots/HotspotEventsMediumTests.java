@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-aae2c6034db24fd08cf4ba6c5560fcf3
+ACR-2aab0033be284e2090ee11de0badb950
+ACR-65d95a7338824b558558d5ec332b77ae
+ACR-aeb7bdb53c0d4423b786f29fb29d3f6e
+ACR-c99ae5cc366049b2ab9ccf0b5d08c4e9
+ACR-9f2e761c48e84a40ad0530434f565e18
+ACR-82f05dc0371e4a829f07bc02e5aefd11
+ACR-d70b3d559d6a4eeaab906fda06fe9f58
+ACR-bfd3c9a5a9ef4be28f47881c24d8642c
+ACR-a20e759ccb174d8ba9e5fcee9f1e088a
+ACR-90705aa59d6d4d2e913e586637233dfe
+ACR-52dfb6fb404b4cf6a30389094552c843
+ACR-4b5472c90c2f4acab1aa6e6893f98a88
+ACR-9f3725f4530e4c2c997335db7d68781b
+ACR-44ee8e5cc92a4d5087c3e72612ba48c2
+ACR-4150bb3de6d94cb08fd0b78d8700edf1
+ACR-011e538fa887433da2b0e89656bcbaba
  */
 package mediumtest.hotspots;
 
@@ -313,7 +313,7 @@ class HotspotEventsMediumTests {
 
     @SonarLintTest
     void it_should_update_known_findings_store_when_changing_status(SonarLintTestHarness harness, @TempDir Path baseDir) {
-      // create a file with hotspot in it
+      //ACR-a737eb0eee124a52b01437372bd4b15b
       var filePath = createFile(baseDir, "Foo.java", """
         public class Foo {
           String ip = "192.168.12.42"; // Sensitive
@@ -340,7 +340,7 @@ class HotspotEventsMediumTests {
         .withServerSentEventsEnabled()
         .start();
 
-      // initialize backend with pre-filled storage with matching hotspot and active rule
+      //ACR-719bc0e7b7c343c48cc07c1596d25d91
       var backend = harness.newBackend()
         .withExtraEnabledLanguagesInConnectedMode(JAVA)
         .withBackendCapability(SERVER_SENT_EVENTS, SECURITY_HOTSPOTS)
@@ -361,10 +361,10 @@ class HotspotEventsMediumTests {
         .withBoundConfigScope(CONFIG_SCOPE_ID, connectionId, projectKey)
         .start(client);
 
-      // run analysis in order to populate known findings repository
+      //ACR-d344c2f9c51e4f28b5efb02165879d23
       analyzeFileAndGetHotspots(fileUri, client, backend, CONFIG_SCOPE_ID);
 
-      // trigger an SSE
+      //ACR-55d357ee32b54903aea5083238d1598c
       server.pushEvent(String.format("""
         event: SecurityHotspotChanged
         data: {\
@@ -379,12 +379,12 @@ class HotspotEventsMediumTests {
         
         """, serverHotspotKey, projectKey, baseDir.relativize(filePath)));
 
-      // assert that the backend has updated the hotspot status
+      //ACR-b8d386de5a924b05a7e7794e89b8b639
       await().atMost(Duration.ofSeconds(2)).untilAsserted(() -> assertThat(readHotspots(backend, connectionId, projectKey, branchName, baseDir.relativize(filePath).toString()))
         .extracting(ServerHotspot::getKey, ServerHotspot::getStatus)
         .containsOnly(tuple(serverHotspotKey, HotspotReviewStatus.SAFE)));
 
-      // assert that the client has updated the known findings store
+      //ACR-79f6372f74754e7bbc0cd14a35dca22a
       await().atMost(Duration.ofMinutes(1)).untilAsserted(() -> assertThat(client.getRaisedHotspotsForScopeId(CONFIG_SCOPE_ID)).isNotEmpty());
       var raisedHotspots = client.getRaisedHotspotsForScopeId(CONFIG_SCOPE_ID).get(fileUri);
 

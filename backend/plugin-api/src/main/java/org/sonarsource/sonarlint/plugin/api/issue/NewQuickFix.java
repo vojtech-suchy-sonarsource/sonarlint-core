@@ -1,62 +1,62 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3014dbe12c744dc2b5f1c5f2fa5f70f3
+ACR-fa44ad6af1f845be8edd82448e5dd83c
+ACR-fef965b6da0e4a8ba92227406dc83144
+ACR-9534f1eb8e5444a483f7f390dee76974
+ACR-4c10c491ae4f4647a2b9273f5f89680c
+ACR-61055219445a40a7b4bbb3f134b7bf5b
+ACR-51b2fa80c8a247dc8c0542fbc625b2e1
+ACR-abbc149b96ff412ea1147f0b14391e53
+ACR-a94395e346e44f64b9b2b859791c7fba
+ACR-99bf2c256ded4a0b92208ae4b22be4fd
+ACR-dccb3434466247c9827c33a34a652494
+ACR-81670219621f43cca9dce2a8b3ac1c2f
+ACR-5e7b2b2d958e4aeb97cf928017e49e27
+ACR-d9978bf4df3d483688e8d3ab5185846b
+ACR-cc0370a75f4f49b88ef284cff9b19069
+ACR-5e2bb259aedf403b9c0fa89fcfbbd7ab
+ACR-116d0e2219df419c89c791c9b9e6e4dc
  */
 package org.sonarsource.sonarlint.plugin.api.issue;
 
-/**
- * Describe a quick fix for a {@link NewSonarLintIssue}, with a description and a collection of {@link NewInputFileEdit}.
- * Input file edits will be applied in the order they are added, insofar that they are compatible with one another.
- * @since 6.3
- * @deprecated use org.sonar.api.batch.sensor.issue.fix.NewQuickFix from the sonar-plugin-api instead
+/*ACR-ab8760a96bfc4e5ca8b06b56f31a19f6
+ACR-12758af0c3d0466aa311dff4dfb294d9
+ACR-045661378017408bbe10196087c61971
+ACR-f65d7d4c9f9f4c83b3cbdaa8d42479e2
+ACR-85b40e05224c426eb01eac7e4b0c70f6
  */
 @Deprecated(since = "8.12")
 public interface NewQuickFix {
 
-  /**
-   * Define the message for this quick fix, which will be shown to the user as an action item.
-   * The fix message may be inspired by the issue message, but the context into which they appear is different,
-   * so it might be better to adapt it. A good message should:
-   * <ul>
-   *   <li>Be short (ideally, not more than 50 characters)</li>
-   *   <li>Use sentence capitalization</li>
-   *   <li><em>Not</em> end with a full stop (<code>.</code>)</li>
-   *   <li>Describe the expected outcome of the change, e.g. <i>Make the constructor explicit</i> instead of <i>Add the "explicit" keyword</i>.
-   *   It tells the user how to fix the issue</li>
-   *   <li>Focus on the target more than the current situation. For instance, <i>Replace "AAA" with "BBB"</i> would be better phrased <i>Replace with "BBB"</i></li>
-   *   <li>Avoid the use of a demonstrative, e.g. <i>this</i>. Prefer the more neutral <i>the</i>.
-   *   The message may be used in several contexts, some of which would not work very well with a demonstrative</li>
-   * </ul>
-   * @param message a description for this quick fix
-   * @return the updated quickfix
+  /*ACR-20f1af52a58a4320b1849e92cbfe30a4
+ACR-1d7e693dd43246ea8ee54dbb41a82b35
+ACR-c761d2a6f2ce4b20af895fe2ba4a9487
+ACR-5d4ad0b0eb57409ead63441ddece9499
+ACR-0cb1e10a5f874169a25e9089ef0b16d6
+ACR-7115942a97484da38a950d417bef94f9
+ACR-b5c8900dbd7f4ccda08e9a2204fece1e
+ACR-b55ffb0948e6488da6ebbb04f3a6a992
+ACR-2d9c3c333f194f4d8ec61818efd0094a
+ACR-1f8569e6b3e548c7ba9bf9737dea7d0d
+ACR-38a7d24e104a47ee8d0e0fef442e2dab
+ACR-2e4bfb0d50f84156947bf0d163f8e3b0
+ACR-8833784c617844238f2a4bba9d904431
+ACR-c92dc68cfe8745339922239e445fa414
+ACR-ed5d962a17e74207bdf58c89eaadd60d
+ACR-ae5960274ee54412bf378f85ce96f318
    */
   NewQuickFix message(String message);
 
-  /**
-   * Create a new input file edit
-   * @return a new uninitialized instance of a file edit for a given fix
+  /*ACR-3d94c86486fe4303b6e1e1218895172e
+ACR-2f6f917034af4319b52f34b902a28721
+ACR-c72d3a76587548028a9112735eb0dfaf
    */
   NewInputFileEdit newInputFileEdit();
 
-  /**
-   * Add a new input file edit to this quick fix
-   * @param newInputFileEdit the input file edit to add
-   * @return this instance
+  /*ACR-da55920b5dcc4b1f9dc3302be0aba0b4
+ACR-72441618c35c44d6bfe6cbd8602f0a5c
+ACR-95bc4996cc024f33833e77695fbfcb2d
+ACR-a0d691cfe941434da5fc2af7ae8543b6
    */
   NewQuickFix addInputFileEdit(NewInputFileEdit newInputFileEdit);
 }

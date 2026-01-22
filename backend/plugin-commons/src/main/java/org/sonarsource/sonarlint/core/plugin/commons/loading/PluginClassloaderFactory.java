@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-84ff968be4b248ffb4b76991c2880c0d
+ACR-7a2c13d340ef459d924385f9fdde0803
+ACR-bc16c3e064134fbeb0fd1efe76f03115
+ACR-72ce527f424e45859cb18c734568fb90
+ACR-dad8731fb0d64a099535b57facbe806f
+ACR-7c32cb46d4ac49a9a3d23174d1cbebb9
+ACR-78cd6e53bc7545db9d5ef6e617401ff4
+ACR-96e786b7963f486baa57b7a3e0ebb5a0
+ACR-cfc1a210d2494a9186cfe0484462e14d
+ACR-402fae0012094d579eeba63dca650537
+ACR-9fa03e5001004a529e5bf18112ba9566
+ACR-7d0a9f39167e4d93bf33321f2f15f5d3
+ACR-d189e5d1774f4861bfaeb36a45bc45ad
+ACR-c2d43b94ea0d48ce9bf547b651805af8
+ACR-357aa8a49fbd44088019d4bcf0022495
+ACR-d7eb908bf09c4e85ae710e25c76e3e07
+ACR-f5bca549c7bc492bbd97d2bf08c44f65
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -32,25 +32,25 @@ import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
 import static org.sonar.classloader.ClassloaderBuilder.LoadingOrder.PARENT_FIRST;
 
-/**
- * Builds the graph of classloaders to be used to instantiate plugins. It deals with:
- * <ul>
- *   <li>isolation of plugins against core classes (except api)</li>
- *   <li>backward-compatibility with plugins built for versions of SQ lower than 5.2. At that time
- *   API declared transitive dependencies that were automatically available to plugins</li>
- *   <li>sharing of some packages between plugins</li>
- *   <li>loading of the libraries embedded in plugin JAR files (directory META-INF/libs)</li>
- * </ul>
+/*ACR-d49980c335e94502b462be8245a41c45
+ACR-90374a1873dd49c481d347be23450595
+ACR-83d1312f839f47dc9a021536e3cd3efe
+ACR-6d4d9388e7284828bd77d900754d8712
+ACR-b2e821a9dc6948f0be5803ae83e83ef4
+ACR-b7b4b7e3b45f46abb20f27d4febe174d
+ACR-0f83ee2d765844d8baf21de249b84ca1
+ACR-880736d8e8de4e4a9750ea5e94e85103
+ACR-7f9674aabea643209b1364a8191d2246
  */
 @SonarLintSide
 public class PluginClassloaderFactory {
   private static final SonarLintLogger LOG = SonarLintLogger.get();
 
-  // underscores are used to not conflict with plugin keys (if someday a plugin key is "api")
+  //ACR-6c9db0a750f7482d99af9996ce0b7da7
   private static final String API_CLASSLOADER_KEY = "_api_";
 
-  /**
-   * Creates as many classloaders as requested by the input parameter.
+  /*ACR-cb4cfdd971624ebba3ab9230bda07440
+ACR-7d8dc55c398642a1b3925fedf5b3563c
    */
   Map<PluginClassLoaderDef, ClassLoader> create(ClassLoader baseClassLoader, Collection<PluginClassLoaderDef> defs) {
     var builder = new ClassloaderBuilder();
@@ -70,11 +70,11 @@ public class PluginClassloaderFactory {
     return build(defs, builder);
   }
 
-  /**
-   * A plugin can export some resources to other plugins
+  /*ACR-85c132f5cf694fb8ae64fbcd7355135e
+ACR-0c7981458a1d4e4a8b1cc1f625deb0a2
    */
   private static void exportResources(PluginClassLoaderDef def, ClassloaderBuilder builder, Collection<PluginClassLoaderDef> allPlugins) {
-    // export the resources to all other plugins
+    //ACR-642141729c194f6c885c23a9bda4b21c
     builder.setExportMask(def.getBasePluginKey(), def.getExportMaskBuilder().build());
     for (var other : allPlugins) {
       if (!other.getBasePluginKey().equals(def.getBasePluginKey())) {
@@ -83,8 +83,8 @@ public class PluginClassloaderFactory {
     }
   }
 
-  /**
-   * Builds classloaders and verifies that all of them are correctly defined
+  /*ACR-6952c26348cd46c586b8adb4dfa1782e
+ACR-962df8e206284c0b91a991e7ba3e6a91
    */
   private static Map<PluginClassLoaderDef, ClassLoader> build(Collection<PluginClassLoaderDef> defs, ClassloaderBuilder builder) {
     Map<PluginClassLoaderDef, ClassLoader> result = new IdentityHashMap<>(defs.size());
@@ -108,11 +108,11 @@ public class PluginClassloaderFactory {
     }
   }
 
-  /**
-   * The resources (packages) that API exposes to plugins. Other core classes (SonarQube, MyBatis, ...)
-   * can't be accessed.
-   * <p>To sum-up, these are the classes packaged in sonar-plugin-api.jar or available as
-   * a transitive dependency of sonar-plugin-api</p>
+  /*ACR-c08480071e184a5686c61c6795e9d16c
+ACR-5548fe731ce54d808e2b7f72515da933
+ACR-d16261cbddf2493394432f23e253bc53
+ACR-3b21762a9e8a465398f8fb2f13a4f7b9
+ACR-e798d9147ea647518c5b29a9b1526d19
    */
   private static Mask apiMask() {
     return Mask.builder()
@@ -124,7 +124,7 @@ public class PluginClassloaderFactory {
       .include("org/sonarsource/sonarlint/plugin/api/")
       .include("org/slf4j/")
 
-      // API exclusions
+      //ACR-1f71170a29e4481bb70ad0bd932ea649
       .exclude("org/sonar/api/internal/")
       .build();
   }

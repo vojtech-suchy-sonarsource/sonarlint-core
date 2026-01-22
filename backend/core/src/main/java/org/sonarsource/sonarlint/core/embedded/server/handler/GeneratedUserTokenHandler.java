@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5ba5f2769ff04ecba0d1e07596bf5d51
+ACR-faa9e70536bb44ee98d6c4db5b3523b8
+ACR-7750a68b7b2142809e81efe68bdd8c7f
+ACR-a1f5b22cbe754672960b47f97a2407f9
+ACR-128d0ea81f0642aaa816167c461b155b
+ACR-9c6828e3f47a40bc962716f514b4100f
+ACR-3c6e41ea0b8c46869176997798db3b6f
+ACR-18c1f73684bf42d2a410e8d33aa6f22f
+ACR-3d9c1ad08c28447c9f276adff8374b72
+ACR-efb3ccc5a04949e78abc7f1ed5af9b64
+ACR-1067fcb21a4e4825913e299c53de0f80
+ACR-0739a228a34a4fa7bc85f97c0508dcc8
+ACR-bd1a736c18d64282b2260705d4e0c81a
+ACR-f19fd5576a1748db954090803f7ab215
+ACR-a7afbeb078d94655b64f9f4bb392bd8e
+ACR-e2fc957482c647ba9a9458f926f7965e
+ACR-5c98266a69194cabbf7f7d9e1d57ce77
  */
 package org.sonarsource.sonarlint.core.embedded.server.handler;
 
@@ -78,7 +78,7 @@ public class GeneratedUserTokenHandler implements HttpRequestHandler {
     try {
       token = new Gson().fromJson(requestEntityString, TokenPayload.class).token;
     } catch (Exception e) {
-      // will be converted to HTTP response later
+      //ACR-ca44e8739961409eb624f22fef46db71
       LOG.error("Could not deserialize user token", e);
     }
     return token;

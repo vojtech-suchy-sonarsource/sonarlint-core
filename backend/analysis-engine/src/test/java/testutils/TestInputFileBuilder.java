@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1c3d4b3f2e7f419d94421a7fed27e594
+ACR-544e8f6857db4bc7994973772beac811
+ACR-3882c59d961d4c15a493a5ed95d686ec
+ACR-b19bbcababef43029788e34bf7b109e8
+ACR-438bebf94b294cbd90a45b4576fe9860
+ACR-694d8f10f92d406dba02a1c27a2d0ee0
+ACR-9c2fa842cbfa447db5cb9ef864b442a9
+ACR-534b899f42324b18877e4a1ffd5192ee
+ACR-b52b617042d64a32836f439aebe4c5ea
+ACR-2221ace8cf4c4e24ba0a142ec696706f
+ACR-71597af59fec42dcab580d7d15f496d7
+ACR-8ee03c359be6460f94e2e58ae4114eac
+ACR-8679c836070e435fbb18b5f08289e247
+ACR-ccfe72969023460598ca3bed0e40238d
+ACR-2f0be1dd71d343c7951495e15f65f230
+ACR-25781938312244bd8ec9d62299efe2fc
+ACR-9f655538f0004c77aa4c682919492523
  */
 package testutils;
 
@@ -34,21 +34,21 @@ import org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem.Fil
 import org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem.SonarLintInputFile;
 import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 
-/**
- * Intended to be used in unit tests that need to create {@link InputFile}s.
- * An InputFile is unambiguously identified by a <b>module key</b> and a <b>relative path</b>, so these parameters are mandatory.
- * <p>
- * A module base directory is only needed to construct absolute paths.
- * <p>
- * Examples of usage of the constructors:
- *
- * <pre>
- * InputFile file1 = TestInputFileBuilder.create("module1", "myfile.java").build();
- * InputFile file2 = TestInputFileBuilder.create("", fs.baseDir(), myfile).build();
- * </pre>
- * <p>
- * file1 will have the "module1" as both module key and module base directory.
- * file2 has an empty string as module key, and a relative path which is the path from the filesystem base directory to myfile.
+/*ACR-35e999e109ea40da894a0425c4c8a4e5
+ACR-aceeee78eeed4fd6bb16e7cef7da91dc
+ACR-97f59f1257994da1a8602e2429653c9f
+ACR-bd08a85c413e4e46ab87d2eae66aaaf5
+ACR-09017ce1eb594b45a724ee28ade85a67
+ACR-42ca1f20a2124ec1896ada238d9e4d85
+ACR-ee7eb1fe89e04f5ea9350519ae9a430c
+ACR-4eb9d90f98c34eaabc8fe18ebeb593d8
+ACR-165bc0bdb7ae449e837d7556e5809a63
+ACR-db48780e2d604ea1b76c19a1a4b6c5e7
+ACR-4849a5722a524eb29b8317071457f6fa
+ACR-de9f624881334f719d61a574f574998d
+ACR-a190e83261654d9b93e3c8aaf544ad56
+ACR-125b1929f97e4cb8b5dedcf0fc347887
+ACR-7b52258dc2e84883afd802b1b26a910e
  */
 public class TestInputFileBuilder {
   private final String relativePath;
@@ -61,10 +61,10 @@ public class TestInputFileBuilder {
   private int lastValidOffset = -1;
   private String contents;
 
-  /**
-   * Create a InputFile with a given module key and module base directory.
-   * The relative path is generated comparing the file path to the module base directory.
-   * filePath must point to a file that is within the module base directory.
+  /*ACR-5331bcfe2f8c4a5884757ab782108500
+ACR-3b9732ca69d248ecae1d2e1e3c271beb
+ACR-910138d977b845cb856d017cb3a896a6
+ACR-39311176d05547c58341c018d389d26e
    */
   public TestInputFileBuilder(File baseDir, File filePath) {
     var relativePathStr = baseDir.toPath().relativize(filePath.toPath()).toString();
@@ -104,10 +104,10 @@ public class TestInputFileBuilder {
     return this;
   }
 
-  /**
-   * Set contents of the file and calculates metadata from it.
-   * The contents will be returned by {@link InputFile#contents()} and {@link InputFile#inputStream()} and can be
-   * inconsistent with the actual physical file pointed by {@link InputFile#path()}, {@link InputFile#absolutePath()}, etc.
+  /*ACR-a55881c7646047198dcecac40be953f6
+ACR-f44265f8ef164bdd83d9d83693662d51
+ACR-672891e8050044bcbeff245d3c9d5497
+ACR-377a03007a4d4180b1960484ec0ee023
    */
   public TestInputFileBuilder setContents(String content) {
     this.contents = content;

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4179152429f74dfdaf986e8761827837
+ACR-ad1e301746b34780a7f4d55f06ef1eff
+ACR-996db975112d43029117804536535fbe
+ACR-bdd1eac68a274fe094b1b6993b58ca76
+ACR-ffe09b59e52445f193711fe0e1a3e1b7
+ACR-d0f2b031afa74e2e91e4f9f34a8e01e2
+ACR-cbcef4650c3548ab800db939f6c71bf7
+ACR-4fc35b62b3c141e1a20b04fc00134910
+ACR-da3ea2a2e4e44d77b1fc9f06a3925b28
+ACR-679abb6c4b7141768b79c5cbb8e3904a
+ACR-fdf767b66927475d865a990f34ae901a
+ACR-39b6774c0c9f4d26970c6ed32fe41e32
+ACR-b7299460cde94a19918115932ca3509e
+ACR-1260cd74633f439eb30ac6934156c0ab
+ACR-0bd25ed47ca94a9496e1e91070bdfd86
+ACR-311a3916b280427ca2fe80f68d60db3e
+ACR-68252debeddb48248bc3cfbe52b3d6ad
  */
 package org.sonarsource.sonarlint.core.test.utils.server.websockets;
 
@@ -52,7 +52,7 @@ public class WebSocketServer {
       context.getServletContext().setAttribute(CONNECTION_REPOSITORY_ATTRIBUTE_KEY, connectionRepository);
       context.addApplicationListener(ContextListener.class.getName());
       Tomcat.addServlet(context, "dummy", new DefaultServlet()).addMapping("/");
-      // needed to start the endpoint
+      //ACR-37f62637cf514cbf960b1f8d787559be
       tomcat.getConnector();
       tomcat.start();
     } catch (LifecycleException e) {

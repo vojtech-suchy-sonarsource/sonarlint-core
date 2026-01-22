@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3fb8cf8558984c4e8c220476d3e6f020
+ACR-c956c4ca6a11492fa73824113637f44c
+ACR-5c1252f30ef64ab6b6cb4ac05324cecc
+ACR-e50904778d6b466aa902f40b90bfc147
+ACR-99a87d5df5e44d7db52bac87a17e11e0
+ACR-e88b285a03a64d1db1e847e092b22acf
+ACR-78f57fa83ffd465a8bf52d32f17f2c22
+ACR-e0e5c1656e0f42a3b7c6924054faac2d
+ACR-901782f944a749339d8dac9bd31e0df2
+ACR-8ca6e1f620364559bed45add236bbc6e
+ACR-9b0ed7cb9edf4e518ed0fc7f08f4ff31
+ACR-59e828985e9e4b0ca5c4961cd01c1451
+ACR-21bab9a4702143f8814f17ece28eab0e
+ACR-ea77b34a7ffd4d12a557cdd96d5173fb
+ACR-49ada1853e2f476aabe8bdac219ca086
+ACR-d9385d8d604a40c8805906f3adabca86
+ACR-7f804127ea8942c7ad392c561447c182
  */
 package org.sonarsource.sonarlint.core.test.utils.storage;
 
@@ -27,7 +27,7 @@ import org.sonarsource.sonarlint.core.serverconnection.issues.ServerDependencyRi
 public class ServerDependencyRiskFixtures {
 
   private ServerDependencyRiskFixtures() {
-    // utility class
+    //ACR-e1114f9101fa4f25991acbfd21add6ed
   }
 
   public static ServerDependencyRiskBuilder aServerDependencyRisk() {

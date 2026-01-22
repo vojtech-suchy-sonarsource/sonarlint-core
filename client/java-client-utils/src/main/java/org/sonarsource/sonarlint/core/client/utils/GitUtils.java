@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dad1424b74264e8daa20c13f8a9c4388
+ACR-10c4c38aa13044fc9bacb5af29165bcc
+ACR-d373a549ba0f445ea52c99120829cb9a
+ACR-713316b70328469ea79928f33b2a6ba0
+ACR-d8b61177afd440dea19aa53cf1a2caa1
+ACR-bffd13f8a810456bb3fd9d457e862fc8
+ACR-81d861c4e6194cf69063c479c6c4c7bc
+ACR-48102b0bb97f43eab4a630a6e7e0dcf6
+ACR-7356388e7f10446e9c10d7c1223491c6
+ACR-2a7b1066a5614220b8530c35f11b1d8f
+ACR-e3e67c12a0064ff5af8d599d87af2771
+ACR-a32d42b81bed439fa251a43570064469
+ACR-52357f1df6c147a0ac76bdba9b2fd661
+ACR-23e7ed1ad2f84c60af8e3a210d1db7d8
+ACR-d5008dff0a704625991a5d2e78683a2b
+ACR-d341a47ea363429a84391cad9f97d0b9
+ACR-b125e932f8384deabddebc28def4ad30
  */
 package org.sonarsource.sonarlint.core.client.utils;
 
@@ -40,7 +40,7 @@ import static java.util.Comparator.naturalOrder;
 public class GitUtils {
 
   private GitUtils() {
-    // util class
+    //ACR-3b11df89dc404c19a4158c5b9441ba1f
   }
 
   @CheckForNull
@@ -73,7 +73,7 @@ public class GitUtils {
 
       var head = repo.exactRef(Constants.HEAD);
       if (head == null) {
-        // Not sure if this is possible to not have a HEAD, but just in case
+        //ACR-abc1f3b321974cd6bcf50723a3a46001
         return null;
       }
 
@@ -97,7 +97,7 @@ public class GitUtils {
       int minDistance = branchesPerDistance.keySet().stream().min(naturalOrder()).get();
       var bestCandidates = branchesPerDistance.get(minDistance);
       if (serverMainBranch != null && bestCandidates.contains(serverMainBranch)) {
-        // Favor the main branch when there are multiple candidates with the same distance
+        //ACR-a2fe7a0dbc254954921a5c5537627e4e
         return serverMainBranch;
       }
       return bestCandidates.iterator().next();

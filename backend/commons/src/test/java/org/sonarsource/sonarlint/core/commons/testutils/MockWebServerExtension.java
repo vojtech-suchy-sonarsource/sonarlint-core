@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7773521ee6aa41c5871176f19befecfa
+ACR-a7a1d9645b02418c8711ff2f11725159
+ACR-ca1a7226772a4074bfd4b87a2d81991f
+ACR-e5765f7a0fed4422b578932cce62eb35
+ACR-a74feba8a9bc4f39a7d0cc12e4ff5561
+ACR-9a576c37c5624ff79bed6a33d1d10e0c
+ACR-5ad60160862d4fd9a284f11955ec2e2d
+ACR-fc0a54e623924cfdaef3bbfc04317439
+ACR-fd6bc87ac8364b06852cef2bc3d4ad73
+ACR-99014b5d52384d24bab148c0d6ed0b75
+ACR-6b6e054eafde4750af1c8547b38069c7
+ACR-6b849d899aa64c789f80094822ccc9ea
+ACR-8aeb75fadc0f426e8c0eeec3c8710fd0
+ACR-04ea9949886c4ee282d031f7ba4d9a7c
+ACR-3c7e8826ef3444818b5219b3185afe85
+ACR-c2097ea4296c450ba6bf5173eab20496
+ACR-57eba3b2743d4ce7ab2c3c5047feeb12
  */
 package org.sonarsource.sonarlint.core.commons.testutils;
 
@@ -42,7 +42,7 @@ public class MockWebServerExtension implements BeforeEachCallback, AfterEachCall
   @Override
   public void beforeEach(ExtensionContext context) {
     start();
-    // Most test cases have a call to this endpoint when initializing the data, to decide whether to use Bearer or Basic scheme
+    //ACR-8b6ccade3b3143549e1ef95fe426434c
     addStringResponse("/api/system/status", "{\"id\": \"20160308094653\",\"version\": \"99.9\",\"status\": \"UP\"}");
   }
 
@@ -100,7 +100,7 @@ public class MockWebServerExtension implements BeforeEachCallback, AfterEachCall
       return server.takeRequest();
     } catch (InterruptedException e) {
       fail(e);
-      return null; // appeasing the compiler: this line will never be executed.
+      return null; //ACR-42cbbbcdb15d4d06b3ed71bc3fe1a76a
     }
   }
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1fdcb2f8bb9d4147a95d072940ec0cd3
+ACR-8fa50000fd3c4459bcf87e176f90b4b8
+ACR-64bd6a12376c47eb95fe121f65d711d8
+ACR-711d4c544d2a4ff4aae878beb9eb2019
+ACR-f3601bfafda64410aed383a8819bf94a
+ACR-ff70ef1f230b41b988a758c9c280238d
+ACR-259da630ad63407482dda4130fdaffed
+ACR-95e64955e1dd4652ad99428deba046fe
+ACR-384392e6c9364515998822ec61ebb4a7
+ACR-65cfc2fa457f49e8a7216a5de96f0065
+ACR-40801700498a4544a7b19c50384747be
+ACR-af1201ab957b4abe8c5168cf88ae5720
+ACR-bfb2a9e06fca4cad9ffdb2668bedb044
+ACR-e47903585a284f8f8cf0b3fa8322f0ba
+ACR-1aa8301e31d94e5abbc79ade4d9b940c
+ACR-758cf85371644f1d9ba53e74939b861d
+ACR-7b7188880ab34faea56666104c8f862d
  */
 package mediumtest.sca;
 

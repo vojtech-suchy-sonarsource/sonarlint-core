@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-262b433f4ad342599008870e8262ae8d
+ACR-a5f13f4144594f2a852d1f2f226cbb17
+ACR-085ac4a7f91145a894a7711cb23452ac
+ACR-02396f33220a48e8afe1667d833656e1
+ACR-ecc9749175ad4c4ead3d582600632597
+ACR-a5507c0fb7a14a759cc27ef2735dc9f1
+ACR-941222a9d8d9479fa26aacfaf68f1f0d
+ACR-091a6a9d3af145f78faaf2c27ef90c6c
+ACR-538c46bb657a403eac59dc96459c6402
+ACR-e285d50a94724da9b58654511e3d3782
+ACR-d5c8dae8f50d47599a14b8b53b4dd902
+ACR-b3e0a7d2e1f645989c52842bb4b0b909
+ACR-4caccb373ba441fdb687dfda4fac1480
+ACR-fb80b0e413a34bbe9b827b0738a233ef
+ACR-f2291d1f0e3e46399707aa18edb263cd
+ACR-6fcb011fbb784e609f8bec45d55b78bb
+ACR-247e7c4cff5647fe966086252fc02ad8
  */
 package mediumtest;
 
@@ -195,7 +195,7 @@ class TelemetryMediumTests {
     assertThat(backend.getTelemetryService().getStatus().get().isEnabled()).isTrue();
     await().untilAsserted(() -> assertThat(backend.telemetryFileContent().enabled()).isTrue());
 
-    // Emulate another process has disabled telemetry
+    //ACR-cfca72724da646e9beb13d1fed860354
     var telemetryLocalStorageManager = new TelemetryLocalStorageManager(backend.telemetryFilePath(), mock(InitializeParams.class));
     telemetryLocalStorageManager.tryUpdateAtomically(data -> data.setEnabled(false));
 

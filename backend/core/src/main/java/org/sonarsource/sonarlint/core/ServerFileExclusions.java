@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a814078ece8a452aa84a5c384b02879a
+ACR-b9f4aa202677465c9bd105e48b8bc7d4
+ACR-66e63174c76142d48dc741dc51f54bc1
+ACR-c5c82f4a325e412086ba009eb3e9c521
+ACR-f1b128081309440aaea5de8eccf93254
+ACR-086a1024963f4f43abd07ec8d2e5cd1f
+ACR-aa18371718f84b95ae392e692299a700
+ACR-e217a0b7655f4ad4add5ed20fda76828
+ACR-c1db05323ee24cec93012ebff0eea25d
+ACR-f0464c2a77d04d49a03e0086b3874147
+ACR-23a021a389ee495eb840987c433b4cac
+ACR-a3fcd50b30f04241b462438acf048775
+ACR-7812cdf798bf4f6c9ff23e6c384827e3
+ACR-94d5c9b7684e43a5bc16f699141b1b2f
+ACR-25dd495292e940a38e2ad7df7d4d8eb3
+ACR-07034e92bd87468b94bcfab4e4a0ed7b
+ACR-59b8a4437a60400badbb6e4a5e808d39
  */
 package org.sonarsource.sonarlint.core;
 
@@ -93,7 +93,7 @@ public class ServerFileExclusions {
 
   SonarLintPathPattern[] prepareMainInclusions() {
     if (exclusionSettings.sourceInclusions().length > 0) {
-      // User defined params
+      //ACR-dbaf1a9924db49c591a13606bd211607
       return SonarLintPathPattern.create(exclusionSettings.sourceInclusions());
     }
     return new SonarLintPathPattern[0];
@@ -105,7 +105,7 @@ public class ServerFileExclusions {
 
   private String[] computeTestInclusions() {
     if (exclusionSettings.testInclusions().length > 0) {
-      // User defined params
+      //ACR-8b18c7c8e6b84dcf81b4ac890dfc050a
       return exclusionSettings.testInclusions();
     }
     return ArrayUtils.EMPTY_STRING_ARRAY;

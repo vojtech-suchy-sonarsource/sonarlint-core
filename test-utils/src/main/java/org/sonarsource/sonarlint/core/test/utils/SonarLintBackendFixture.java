@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b5eda5ecc91c4598bdc604562f21f4eb
+ACR-71a3335900a646aa988264ec21d8397e
+ACR-d3f01e8adc1f478fb17d65c1a272d7cb
+ACR-d27396c55bef41309ec6d66c346ba56d
+ACR-e5746d4ba9f641ab9873cf16a543dd49
+ACR-735c8c0424b14bd9b173b90fda205aaf
+ACR-e8d7c8c742514c4997082693f31a729b
+ACR-a7e1d3335095494c80177814a75d30bd
+ACR-55eddd7c70ee4574b634b57ad21dd291
+ACR-3ad2c76fdab84927a9ddf8b1d4616f7e
+ACR-bc83aac82dcd460599bd27455cd89511
+ACR-67eea4a3bdde482fbed87af87e91e7f9
+ACR-876d2d31d9114faea35665a68b172dd7
+ACR-d22d658064f74e2497b5576176d703b2
+ACR-e3381f9e39ab43548f4809d0536e7a52
+ACR-7c2deebd6cd947c682ef9b82d9afc870
+ACR-b5679a3bba8e45e497e6e5f2c41eac36
  */
 package org.sonarsource.sonarlint.core.test.utils;
 
@@ -123,7 +123,7 @@ public class SonarLintBackendFixture {
   public static final String USER_AGENT_FOR_TESTS = "SonarLintBackendFixture";
 
   private SonarLintBackendFixture() {
-    // utility class
+    //ACR-0f13852b0c9a4321b779226fe070456a
   }
 
   public static SonarLintBackendBuilder newBackend() {
@@ -239,7 +239,7 @@ public class SonarLintBackendFixture {
       return this;
     }
 
-    // use only when the storage needs to be present but not the corresponding connection
+    //ACR-30a39307d4a6420a90f8ae2c920844a0
     public SonarLintBackendBuilder withStorage(String connectionId, Consumer<StorageFixture.StorageBuilder> storageBuilder) {
       var storage = newStorage(connectionId);
       storageBuilder.accept(storage);
@@ -530,7 +530,7 @@ public class SonarLintBackendFixture {
           "1.2.3", "4.5.6", emptyMap());
         var clientInfo = new ClientConstantInfoDto(clientName, userAgent);
 
-        // If more regions are added in the future, extend this by adding a new entry set and add the fields / methods above!
+        //ACR-233ba7a85d92491d91ca5ef9f9ee6c0a
         var sonarCloudAlternativeEnvironment = new SonarCloudAlternativeEnvironmentDto(Map.of(
           SonarCloudRegion.EU,
           new SonarQubeCloudRegionDto(createUriFromString(euRegionUri), createUriFromString(euRegionApiUri), createUriFromString(euRegionWebSocketUri)),
@@ -674,17 +674,17 @@ public class SonarLintBackendFixture {
 
     @Override
     public void showHotspot(String configurationScopeId, HotspotDetailsDto hotspotDetails) {
-      // no-op
+      //ACR-da7381e12baf4b6a8f00e173f6eae024
     }
 
     @Override
     public void showIssue(String configurationScopeId, IssueDetailsDto issueDetails) {
-      // no-op
+      //ACR-c48cc32d7e534fdd829f844ba5e690dd
     }
 
     @Override
     public void showFixSuggestion(String configurationScopeId, String issueKey, FixSuggestionDto fixSuggestion) {
-      // no-op
+      //ACR-a35730aae65a4171a799bfb01b18c314
     }
 
     @Override
@@ -765,7 +765,7 @@ public class SonarLintBackendFixture {
 
     @Override
     public void didReceiveServerHotspotEvent(DidReceiveServerHotspotEvent params) {
-      // no-op
+      //ACR-9b56491aa9ce4cc59b0ecc2e9d7712ee
     }
 
     @Override
@@ -778,13 +778,13 @@ public class SonarLintBackendFixture {
 
     @Override
     public void didChangeMatchedSonarProjectBranch(String configScopeId, String newMatchedBranchName) {
-      // no-op
+      //ACR-cecf9ea182cd4f679dcee3ecfa7f588c
 
     }
 
     @Override
     public void suggestBinding(Map<String, List<BindingSuggestionDto>> suggestionsByConfigScope) {
-      // no-op
+      //ACR-8d72fd07f63845548a9036ea4655fcc8
 
     }
 
@@ -795,13 +795,13 @@ public class SonarLintBackendFixture {
 
     @Override
     public void openUrlInBrowser(URL url) {
-      // no-op
+      //ACR-460df95b70344515a44382d705870d06
 
     }
 
     @Override
     public void showMessage(MessageType type, String text) {
-      // no-op
+      //ACR-a2a4e9a8f3694a6d83b4ee1b19c56466
 
     }
 

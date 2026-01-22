@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ea1f5e184afd495aa0033c30758a8e4f
+ACR-103fd6614aad41048f260e4847280c1e
+ACR-c1293f52589b43c0b7af6506c511022c
+ACR-9c44d80d78d94912ac477282e6315be4
+ACR-36796c0cbb924dad8626b514e8858bbd
+ACR-0b87bc763bd24ca5a6413239f474304b
+ACR-d7be8187122b4a49ade7c6db5d0a70e9
+ACR-9160f3aa8d0440f99254be1270602ec3
+ACR-4f788bf1d023446bafe0e1edf0a8f2ed
+ACR-51b2a08c654944c4b3bac64d3d5ff5f8
+ACR-a3b35bb1593c4323a236a25f3821e8ba
+ACR-13e6128eb7a64e47aa0ca720da6988b4
+ACR-dda777b5667341c6bf0ebf91ac50dffd
+ACR-c92c29803f7545ee8d29c056180c0f89
+ACR-e877ce23fe494bda88af41f4a07f262a
+ACR-65c7cd5755c645539946747f8797a876
+ACR-058f9553856b4852b9ead752201cd6f6
  */
 package org.sonarsource.sonarlint.core.client.utils;
 
@@ -29,8 +29,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-/**
- * Exclusions configured on client side
+/*ACR-6a68f2245a0846e2babf9047d30f4d4e
+ACR-24b1ba3271fe493e9297212a99f0e3b9
  */
 public class ClientFileExclusions implements Predicate<String> {
   private static final String SYNTAX = "glob";
@@ -53,7 +53,7 @@ public class ClientFileExclusions implements Predicate<String> {
       try {
         parsedMatchers.add(fs.getPathMatcher(SYNTAX + ":" + pattern));
       } catch (Exception e) {
-        // ignore invalid patterns, simply skip them
+        //ACR-e08e79ed3ba44da59f43baff41dc2d67
       }
     }
     return parsedMatchers;

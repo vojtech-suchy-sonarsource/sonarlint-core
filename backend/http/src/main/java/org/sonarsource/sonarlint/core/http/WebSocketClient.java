@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - HTTP
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-930f84f1e91b4c09b28985702b83c7bb
+ACR-6721f245853c49c8b0364968e2dde21f
+ACR-28dc060c7d3e46d795a4580ce599001b
+ACR-8ab2c7e8e03b473686dc895975bcc506
+ACR-ce30937a21c04f34bf770cc9c8488115
+ACR-14e5f014310d4f19b1e0f72e64860e1e
+ACR-94f89db1ff5b433aa7e42daec8ac5c06
+ACR-bf20c0c07cd944acaf5d5f634ee7c1d2
+ACR-02b3223efb854c369576117d0f9d24f6
+ACR-568f2ef657ee48c9b33d2dd583099f9a
+ACR-a2cdbf1ebea44bf887a670cccf7f4080
+ACR-26f0a3627b344b4f967939dde38d99fe
+ACR-7b306476327f476eb6e1ada719249b75
+ACR-7f4efbd8c2284068983bdad2546b7c32
+ACR-872f5a47cbb949eca12859b910cb4c34
+ACR-01480c773e9344989783a91122298b3a
+ACR-3fd14ec1b4984d51814c845bd5b5e61d
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -46,21 +46,21 @@ public class WebSocketClient {
     this.token = token;
     this.httpClient = HttpClient
       .newBuilder()
-      // Don't use the default thread pool as it won't allow inheriting thread local variables
+      //ACR-86a3c1ad81bf4947953e67835984c402
       .executor(executor)
       .build();
   }
 
   public CompletableFuture<WebSocket> createWebSocketConnection(@Nullable URI uri, Consumer<String> messageConsumer,
     Runnable onClosedRunnable) {
-    // Validate URI before attempting connection
+    //ACR-dc026595857949ac907505311708e86d
     if (uri == null || (!"ws".equals(uri.getScheme()) && !"wss".equals(uri.getScheme()))) {
       var future = new CompletableFuture<WebSocket>();
       future.completeExceptionally(new IllegalArgumentException("WebSocket URI must use 'ws' or 'wss' scheme: " + uri));
       return future;
     }
 
-    // TODO handle handshake or other errors
+    //ACR-d4a235b3f61f443692748716eafe250d
     var currentThreadOutput = SonarLintLogger.get().getTargetForCopy();
     return httpClient
       .newWebSocketBuilder()
@@ -74,10 +74,10 @@ public class WebSocketClient {
 
     @Override
     public void onOpen(WebSocket webSocket) {
-      // HttpClient is calling downstream completablefutures on the CF common pool so the thread local variables are
-      // not necessarily inherited
-      // See
-      // https://github.com/openjdk/jdk/blob/744e0893100d402b2b51762d57bcc2e99ab7fdcc/src/java.net.http/share/classes/jdk/internal/net/http/HttpClientImpl.java#L1069
+      //ACR-ff406d01699e47d79c63bd20ffe6a59d
+      //ACR-93cc1fd4771d470d92dc306784b14e54
+      //ACR-653d187a2db94b2496bcd9c8aa39dc5a
+      //ACR-c9caf602fafc4ddd9a8760866ad66084
       SonarLintLogger.get().setTarget(currentThreadOutput);
       LOG.debug("WebSocket opened");
       WebSocket.Listener.super.onOpen(webSocket);

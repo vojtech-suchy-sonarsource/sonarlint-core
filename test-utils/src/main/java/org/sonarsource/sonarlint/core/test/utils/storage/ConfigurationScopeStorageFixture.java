@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-24558c87b6cd48b88918278696ffb6d1
+ACR-367cfc4a77f64e02b372a02aa78668a2
+ACR-b3d0b1051dcf4908b72e7e2f55ee4b4d
+ACR-c06de2331c194b24a447500c532dc468
+ACR-0df4099cc4c64e6381abde68173a6494
+ACR-bba1e8cad3654274ae47cab108bbbd12
+ACR-4b41a521c2af41b8aebe7f216d46d3d3
+ACR-d53f550f97bd4b2ab59564fb540c03cd
+ACR-482f31c812ba4ad79bd64eb895b4ef2c
+ACR-db7abc4537b9481c90d2f6db16c0d00d
+ACR-70defd485c2f424f9817ce1ad7c97ff1
+ACR-cf58b03e752645c9922013a3ca37896d
+ACR-5f673691c0e340988826d94dd9ecb881
+ACR-56de1a0526454934b565344ac3e973e1
+ACR-b73f9b0f0d154ff0affc765eb557fe9e
+ACR-88b79d49e3ff4855836caee883f4a738
+ACR-3e5c1003802647ac93d75e5c7e2998f5
  */
 package org.sonarsource.sonarlint.core.test.utils.storage;
 
@@ -136,6 +136,6 @@ public class ConfigurationScopeStorageFixture {
   }
 
   private ConfigurationScopeStorageFixture() {
-    // utility class
+    //ACR-f6f97fc5a71f46379ef8fb93596d689a
   }
 }

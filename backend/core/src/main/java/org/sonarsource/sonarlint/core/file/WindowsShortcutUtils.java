@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-392803c469274afa8c85328b80fcbe8e
+ACR-7ee1b1d63e864269914dca2691dfa83d
+ACR-eeeec0fed8144d5cb8370a21a17b8762
+ACR-7b5c8799359e44589955e196c5b1e86a
+ACR-4781111475a840ebb50d11073acb295b
+ACR-464c3f43afb544d48c86b4a7d886f7f6
+ACR-c4c0be82332f4fee8d17c52c3bc3e3e3
+ACR-06766bef4479467580fc599967a8c39e
+ACR-b807365b7e0544e4ba63e0f04860b3bf
+ACR-c342a58f8e8c45d3b5fbcd0e072a6a99
+ACR-34b7f7e8d4cc417390155e7ee4879a52
+ACR-299bec1cae714e00aa79f139658863e2
+ACR-1bae6f150a644ddc9bc8c3b051be4223
+ACR-17b4ca98449b45d0a4224801605e5d46
+ACR-994a6c5d85cf43c4a285e4dd36c90801
+ACR-a544a094ccf24d03b9ea71c64227b7f2
+ACR-d5774b1d858d4c2d8984637f0264c2a6
  */
 package org.sonarsource.sonarlint.core.file;
 
@@ -29,44 +29,44 @@ import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 import static org.apache.commons.lang3.ArrayUtils.reverse;
 
 public class WindowsShortcutUtils {
-  // Based on Windows specification the magic number is 0x0000004C that must be tested with both big and little endian
-  // as it might differ based on the architecture / OS.
+  //ACR-b675ccf8998243c9b3161d631a898d3d
+  //ACR-ede11abf82464e1096a2ad5c35ec48a3
   private static final byte[] WINDOWS_SHORTCUT_MAGIC_NUMBER = new byte[] {0, 0, 0, 76};
   
   private WindowsShortcutUtils() {
-    // utility class
+    //ACR-04d52b16160843349c8b29adf67d72fb
   }
 
-  /**
-   *  Checks whether a file provided by URI is a Windows shortcut or not. These differ from actual (sym)links on
-   *  Windows as they are like an object containing the pointer to the other resource instead of pointing to the
-   *  resource directly.
+  /*ACR-d267e742e1c54850b0a1567c833057c6
+ACR-fa3bb0ed048b461685aa113c2351054b
+ACR-46d0b761a5094858a05f4d24d6b1fc1a
+ACR-e9024d78657b41b39bc9b3f201eab21f
    */
   public static boolean isWindowsShortcut(URI uri) {
-    // Based on the Windows specification the shortcuts have this file suffix, when changing the file suffix they won't
-    // work anymore. So if users would create a shortcut, then rename it and have it in the scope of SonarLint this
-    // would fail but that is fine.
+    //ACR-1026697307f645e8b6fec97d7c2927fd
+    //ACR-da653262052c45beae11baac6d9de957
+    //ACR-6c60beb75fff49bd8dfe64b0291944ec
     if (!uri.toString().contains(".lnk")) {
       return false;
     }
     
-    // If the filename ends with ".lnk" we check the magic number in order to determine it to actually be a windows
-    // shortcut. This is expensive and therefore will actually only do it on files that match this filter!
+    //ACR-6971484e80744ba0a69422598c20101a
+    //ACR-ba1601f6c5204a35938ead088810aa3b
     var magicNumber = new byte[4];
     try (var is = new FileInputStream(new File(uri))) {
       if (is.read(magicNumber) != magicNumber.length) {
-        // We can only read 0-3 bytes, therefore it cannot be a Windows shortcut. No idea what kind of file this might
-        // be (e.g. a text file with 3 characters?) but hey, they gave it a ".lnk" suffix and mimicked a shortcut so
-        // they probably know better.
+        //ACR-9943e855eee9480d95aa5e3dd392aa4c
+        //ACR-a366a419707d4495ba84fd8c23ad0e66
+        //ACR-4b21a731f6e24c56a9bb8996c117de64
         return false;
       }
       
-      // Check big endian
+      //ACR-db93111778f8411fa6f21f7fb4e54971
       if (Arrays.equals(WINDOWS_SHORTCUT_MAGIC_NUMBER, magicNumber)) {
         return true;
       }
 
-      // Check little endian
+      //ACR-d12734f15b6142248c1892d9f4d48d86
       reverse(magicNumber);
       return Arrays.equals(WINDOWS_SHORTCUT_MAGIC_NUMBER, magicNumber);
     } catch (IOException err) {

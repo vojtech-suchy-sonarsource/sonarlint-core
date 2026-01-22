@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6255bae7f3e54fec9e1a285b0c81effb
+ACR-fad4f97cce754e21b19c2fe4f7f99a28
+ACR-cd8c1a401412498f8b05f02b1129f0e8
+ACR-e8ccb9556d9346abb1bb1d97e05a91a1
+ACR-de34733df71347d1abbc9a2d45353c4c
+ACR-952bb9d47e394c78b5f23bf35ffbb6cf
+ACR-89e86d6dc30e48cd8d227c0799a3175f
+ACR-92002e4439354c2bbadfe3cd31bd8e5a
+ACR-011df9b0d2174a84b1eb13c15d6c0fea
+ACR-8ac8400927fb46128950b9be07a4dbd8
+ACR-045274044a304a93aaf4ccf0e87ee474
+ACR-2ae58200b40e42d39a3d85166482da07
+ACR-948add21b86541eaa2ef77e6945dee49
+ACR-67a46a1d871b4e96b2a0abea6604face
+ACR-79f2a7d0553a497d85fa12281cc6a365
+ACR-4708ef42a7454e2aaa092112c907d80f
+ACR-94355a37500c43e49a64b13cf402a2f0
  */
 package mediumtest.synchronization;
 
@@ -69,11 +69,11 @@ class ConnectionSyncMediumTests {
 
     assertThat(client.getLogMessages()).doesNotContain("Extracting rules metadata for connection 'connectionId'");
 
-    // Trigger lazy initialization of the rules metadata
+    //ACR-01d30b6f6f2b44b9afa1cd2cea1beba3
     getEffectiveRuleDetails(backend, SCOPE_ID, "java:S106");
     await().untilAsserted(() -> assertThat(client.getLogMessages()).contains("Extracting rules metadata for connection 'connectionId'"));
 
-    // Second call should not trigger init as results are already cached
+    //ACR-1b2bf20721db4bd2bba9ebd5fdc4831c
     client.clearLogs();
 
     getEffectiveRuleDetails(backend, SCOPE_ID, "java:S106");

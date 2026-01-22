@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-791876ae529646648c724ba57eb54bcd
+ACR-1cf1283aabaf45aa8f43041f537daba7
+ACR-94f18cd94cef40d4862e1b77798a4e3d
+ACR-a28ecdbfc32347fbb57d8c8ff9857b54
+ACR-0a9fabf687b54af9b888e1b262346592
+ACR-6e83285e531d44f2aec17db6e494621d
+ACR-3e11a192d9754f3e9d27414f98d89920
+ACR-5aaf922197f1426796c2c1d23f0e8424
+ACR-7fa2ccc5984e44b6b154e2a3df44f58b
+ACR-60d3e49368c24c1187752745c6a10031
+ACR-0f0535bd9bb74e6fb1110afd7e2d2c90
+ACR-541dabc12f8f447aa54b624634a0d2d5
+ACR-4f75698edc5c401f995cdbd4ed307b3d
+ACR-5f11e238cea249e7997232605f23e900
+ACR-45489b5836d94ee6b8ae385ce9d6789f
+ACR-079be9d2246c4f6f95b92777802354d4
+ACR-e1ccefa2c7b64f1ab884e412fc91bba9
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.remediation.aicodefix;
 
@@ -23,14 +23,14 @@ import java.util.concurrent.CompletableFuture;
 import org.eclipse.lsp4j.jsonrpc.services.JsonRequest;
 
 public interface AiCodeFixRpcService {
-  /**
-   * Throws an exception if the issue is not fixable:
-   * <ul>
-   *   <li>the configuration scope is not bound</li>
-   *   <li>the configuration scope is bound to SonarQube Server</li>
-   *   <li>the issue is a file-level issue</li>
-   *   <li>the issue rule is not supported</li>
-   * </ul>
+  /*ACR-377647e4104f4f639cb5db72f0f5ff7c
+ACR-9b64f01c953d4878bc00ec50e8c7dd89
+ACR-f8c40b6ed27c42c09d030a544d06c35c
+ACR-21a548c61d894dc7a84ed6289a8e1bb5
+ACR-ffd10b836f59423db2f21eeb59528f31
+ACR-a755622745d14204a89513ab266b054f
+ACR-b0b37284a36d4574be019be1764619d9
+ACR-995521eaca164c4883afcdf02ef6976f
    */
   @JsonRequest
   CompletableFuture<SuggestFixResponse> suggestFix(SuggestFixParams params);

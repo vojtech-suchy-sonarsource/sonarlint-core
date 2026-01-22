@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-00aed105fa574433bb3957c4ab5458c6
+ACR-c23e486b7bd846f1849d4a87fa3b26ae
+ACR-fc9179266c9d49138ad5137d53f1ae84
+ACR-0459b1fea019470f95df205e8c849f93
+ACR-5d68559015b34a629ece1018b4124af7
+ACR-576eb0ab28a145b99e1df8f494959f28
+ACR-228cde8d7ae747e1a5ac9da667fb3ba4
+ACR-d6d75f8cbd384951a31acd971c8fbf50
+ACR-8805c81351b54b818326a6f45f0206e9
+ACR-454534f7219a4ea29ca35dc9957e6943
+ACR-5769d3b98f634a5bba5cbd3a09acd1ea
+ACR-aa39dfe40a2b4d28b666e1f7f008bfff
+ACR-9f165cd5bfe24bc39361b7c496ca2cd7
+ACR-3ebf17feb69448c688a67a242075cdca
+ACR-a73118acd4d8474282a70bf0a69ce343
+ACR-f0a7e837db684f18a2652bfa5e4733fb
+ACR-a3e3ccda1c614f748f39e034d8e65d80
  */
 package utils;
 
@@ -38,9 +38,9 @@ public class ThreadLeakDetector implements BeforeAllCallback, AfterAllCallback {
   public void afterAll(ExtensionContext context) {
     var afterThreadSet = Thread.getAllStackTraces().keySet();
     afterThreadSet.removeAll(beforeThreadSet);
-    // There is no way to stop the Xodus threadJobProcessorPoolSpawner, but this is a deamon thread, so we can ignore it
+    //ACR-7ae386a83d834e12aee37e636f88e6f3
     removeThread(afterThreadSet, "threadJobProcessorPoolSpawner");
-    // This seems to be a JVM thread https://stackoverflow.com/questions/8224844/understanding-jvms-attach-listener-thread
+    //ACR-e6cc4063bd8640388f75f18c21bb0567
     removeThread(afterThreadSet, "Attach Listener");
     assertThat(afterThreadSet).isEmpty();
   }

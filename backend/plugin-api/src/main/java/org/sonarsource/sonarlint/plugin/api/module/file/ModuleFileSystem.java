@@ -1,48 +1,48 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-9798bdbce42a49f1b9fea2794dc6aa60
+ACR-3b2f897416884e0b936a4c549926f251
+ACR-bb2b966ee45b440cb03a77b440423a66
+ACR-7a92531599a04b049865e1eab446ff4c
+ACR-5ec6da37305a434d8fd628408971db9e
+ACR-c47ec908f68848b0b4d226c2f49ffdc2
+ACR-ed3188cf3bae4842841b3639b1c5d63a
+ACR-208201f1d44a4cddb20d9cbf1602594c
+ACR-7e3c06bbdb8945aaa784da06ac66667f
+ACR-9ec3da26cccf4d4b9f17e9e3d52a5768
+ACR-396c3e8e7cf044e4a1f1f9418753984c
+ACR-52adcf9b236143c5bdd94f05217906a4
+ACR-4f656a9ce4af45819279eaab0b44b7c0
+ACR-ccb99b5a60b74524a081e23cb270df62
+ACR-9b5dbc5562e14195aa129425357933f6
+ACR-684daec154774b6eabd2e83b64c24403
+ACR-7ec32a40972940de8336957609855ba7
  */
 package org.sonarsource.sonarlint.plugin.api.module.file;
 
 import java.util.stream.Stream;
 import org.sonar.api.batch.fs.InputFile;
 
-/**
- * This class is made available to components annotated with {@code @SonarLintSide(MODULE)}.
- * @since 6.0
+/*ACR-7ca81d078a18440abbd5c83df5fa1623
+ACR-a631d6a9049949f59d06836b22379ec2
+ACR-dc833910712947f68a61980537072e9f
  */
 public interface ModuleFileSystem {
-  /**
-   * Returns all the files within the module that end with {@code suffix} and match {@code type}.
-   *
-   * @param suffix a suffix to filter the files
-   * @param type   the type of file
-   * @return a stream of files that match the given suffix and type in the module
-   * @since 6.0
+  /*ACR-42f186e0d54e4c4fa56edfa3f20304d0
+ACR-29ea73c2c025492196525a023a947d84
+ACR-7f4a0161d51c4f50a96314ae93fe62f5
+ACR-e7b4b0b2bd664179b743868b8f495bb4
+ACR-558527c2ba944dfebc899f3a6ddcd322
+ACR-cf221815916a4d00ae3c063046c7b999
+ACR-db47f7a5e630442aad224d7f66697b99
    */
   Stream<InputFile> files(String suffix, InputFile.Type type);
 
 
-  /**
-   * Returns all the files within the module.
-   *
-   * @return a stream of module files
-   * @since 6.0
+  /*ACR-4f18a06c0a444116b7e916ec31aa6166
+ACR-499a2e2925c74dc38ae70390a0024517
+ACR-dfac696b581543b89c3c4218bac976ad
+ACR-3f70caf81a0a4d048dfef736c3fc1d4f
+ACR-efe2b27b06e347db833d2a478a5cd2e5
    */
   Stream<InputFile> files();
 }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f8abe91542144b89b356f866bfa7ae7f
+ACR-42b58d11bec04011ae0f1be584aaaf99
+ACR-9811044dac214bb1b20a00185f119a3c
+ACR-6b2f00a7131e4f5289fadaaecdc54c8f
+ACR-8839b75bc5c04ab6b04addbaf79208e1
+ACR-632a38a243364ddcb8cb5520de8da88a
+ACR-d2d2ab48bf844a299a5227c9a51de080
+ACR-45baf65f8f6e4a2b895f0411aade209d
+ACR-869cec578a3141f7b41f3d06482458ed
+ACR-87d106e7741c4cf89e052d536aeacc6f
+ACR-207b8c0b45a148b6b84d1b61c4eb4d52
+ACR-a40d957caa0d47ce92eb578afc518ee2
+ACR-6182915c818949fe9c0a103d35de7433
+ACR-00cfa628fe474b3888633a0432f9024b
+ACR-6e2cdedd7984431396b1ba8387ef8989
+ACR-2d4812c83d3e4e2889b9e477480b8fe4
+ACR-f049580af54e408eb6684f2f585e9e97
  */
 package mediumtest.sca;
 
@@ -321,7 +321,7 @@ class DependencyRiskStatusChangeMediumTests {
       .withCvssScore("7.5")
       .withTransitions(List.of(
         ServerDependencyRisk.Transition.CONFIRM
-        // ACCEPT is not in the allowed transitions
+        //ACR-6b0f63ca5f954f66b66fbcb1eb90a456
       ));
 
     var server = harness.newFakeSonarQubeServer()
@@ -587,12 +587,12 @@ class DependencyRiskStatusChangeMediumTests {
 
     var scaService = backend.getDependencyRiskService();
 
-    // Test first issue with CONFIRM transition
+    //ACR-4c4ed69d1364465b8830f561d587fe1d
     var params1 = new ChangeDependencyRiskStatusParams(CONFIGURATION_SCOPE_ID, dependencyRiskKey1, DependencyRiskTransition.CONFIRM, null);
     var response1 = scaService.changeStatus(params1);
     assertThat(response1).succeedsWithin(Duration.ofSeconds(2));
 
-    // Test second issue with ACCEPT transition and comment
+    //ACR-44f12a98578343edaac76213e020f132
     var params2 = new ChangeDependencyRiskStatusParams(CONFIGURATION_SCOPE_ID, dependencyRiskKey2, DependencyRiskTransition.ACCEPT, "License is acceptable");
     var response2 = scaService.changeStatus(params2);
     assertThat(response2).succeedsWithin(Duration.ofSeconds(2));
@@ -904,7 +904,7 @@ class DependencyRiskStatusChangeMediumTests {
       .withPackageVersion("1.0.0")
       .withVulnerabilityId("CVE-1234")
       .withCvssScore("7.5")
-      .withTransitions(List.of()); // No transitions available
+      .withTransitions(List.of()); //ACR-39fdb226add54a30870834e3019ff93e
 
     var server = harness.newFakeSonarQubeServer()
       .withProject(PROJECT_KEY, project -> project.withBranch(BRANCH_NAME))

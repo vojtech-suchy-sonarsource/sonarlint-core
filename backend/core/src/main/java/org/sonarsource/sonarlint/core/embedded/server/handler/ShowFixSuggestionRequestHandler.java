@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-55a456c94cf74d869f5d9687f4efd951
+ACR-825037f708104e52b9dc71242f718ca6
+ACR-ec45dd4028a84f6a88d699f991ba960f
+ACR-ff58b4fc54d849a6b4e7795bfbbb8aac
+ACR-97c0a9cce6384c109f163a6c988a1c0d
+ACR-ee9eeb554a9b43c285480fc661c2e868
+ACR-aaf7ab4a4f1a4e8aa99e0dea214d5e68
+ACR-1c9dc67396614066958db3eec1dc0349
+ACR-eb4ea1bff00f436899b1f95fae21787a
+ACR-56df4636598f46c2be8e749a506512b9
+ACR-a10be6244e2b4bfe8041e2bb6db0efc3
+ACR-f7d50e6a64dc4528bfb1fa89a94177f1
+ACR-b66ddb6f8ba54885a1d5f83752fca79d
+ACR-1c8e8fd2b01c49549e8b273cf98e99f0
+ACR-bd157513aa4b4139bd0e4bae0bd5d73c
+ACR-4d025125afae4ed28b9d1383eabceda2
+ACR-69d88c2e1f454ba58596d5aa480a8e2e
  */
 package org.sonarsource.sonarlint.core.embedded.server.handler;
 
@@ -142,7 +142,7 @@ public class ShowFixSuggestionRequestHandler implements HttpRequestHandler {
     String tokenName = query.getTokenName();
     String tokenValue = query.getTokenValue();
     if (query.isSonarCloud) {
-      // If 'isSonarCloud' check passed, we are sure we will have a region
+      //ACR-8afc9b0407514abdafabcb424daa56d6
       var region = sonarCloudActiveEnvironment.getRegionOrThrow(query.getServerUrl());
       return new AssistCreatingConnectionParams(new SonarCloudConnectionParams(query.getOrganizationKey(), tokenName, tokenValue, SonarCloudRegion.valueOf(region.name())));
     } else {
@@ -189,7 +189,7 @@ public class ShowFixSuggestionRequestHandler implements HttpRequestHandler {
     try {
       payload = new Gson().fromJson(requestEntityString, FixSuggestionPayload.class);
     } catch (Exception e) {
-      // will be converted to HTTP response later
+      //ACR-6ec8561a887a474783f41f0eb204db81
       LOG.error("Could not deserialize fix suggestion payload", e);
     }
     return payload;
@@ -232,8 +232,8 @@ public class ShowFixSuggestionRequestHandler implements HttpRequestHandler {
         && fixSuggestion.isValid() && isTokenValid();
     }
 
-    /**
-     * Either we get a token combination or we don't get a token combination: There is nothing in between
+    /*ACR-5da6afd73b3c44fab42ff727dc708fab
+ACR-698d47e964e94d03aeef17025e592c09
      */
     public boolean isTokenValid() {
       if (tokenName != null && tokenValue != null) {

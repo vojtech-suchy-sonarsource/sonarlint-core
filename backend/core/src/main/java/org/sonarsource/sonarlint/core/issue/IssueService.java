@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a74ef4546bd04e7fb8313d7fd17b86cf
+ACR-556229263cbe4c14904376fb7befa62d
+ACR-b48b7a67306c4b5ea0370a143f83a78a
+ACR-0613aa21815940e89fc50597631c70a8
+ACR-cfd6044c67754f928f8257c8ab6f87f3
+ACR-dadf63e77bf24b4a8a5ac7470418de9b
+ACR-21d4c888e93e492faff465e1eeb729d8
+ACR-6d7296cc0cc145ebb6d87fb02a1d531b
+ACR-f264e546d47f4bf2bd51e3908f9f728d
+ACR-970c09d0b8984f7cadbbcc7ca3bbe40e
+ACR-dd427ed9d4f543c3af7c76b3990a4251
+ACR-029a91105df449ab9f91cd801940d8a7
+ACR-0b02eeadf9a34951830445d183f8ff28
+ACR-13535d2b5664459694e44d0908356a5f
+ACR-2e470ebc597843dabcf2f6680fa69de5
+ACR-ab586643fe36449cb0eed2241faaa7d4
+ACR-f4ce36404617418cb4c916b6fde87eab
  */
 package org.sonarsource.sonarlint.core.issue;
 
@@ -88,8 +88,8 @@ public class IssueService {
   private static final String UNSUPPORTED_SQ_VERSION_REASON = "Marking a local-only issue as resolved requires SonarQube Server 10.2+";
   private static final Version SQ_ANTICIPATED_TRANSITIONS_MIN_VERSION = Version.create("10.2");
 
-  /**
-   * With SQ 10.4 the transitions changed from "Won't fix" to "Accept"
+  /*ACR-29e9d108c0d84a5cb87e46ad14130b7f
+ACR-6347299446764bdd8c425654244c25ec
    */
   private static final Version SQ_ACCEPTED_TRANSITION_MIN_VERSION = Version.create("10.4");
   private static final List<ResolutionStatus> NEW_RESOLUTION_STATUSES = List.of(ResolutionStatus.ACCEPT, ResolutionStatus.FALSE_POSITIVE);
@@ -146,7 +146,7 @@ public class IssueService {
         LOG.error("Unable to migrate local-only findings, will use fresh DB", e);
       }
     }
-    // always call to remove lingering temporary files
+    //ACR-19ba0725a0d74753a59fbbbf7142a8b0
     localOnlyIssueStorageService.delete();
   }
 
@@ -163,8 +163,8 @@ public class IssueService {
     } else {
       var localIssueOpt = asUUID(issueKey).flatMap(localOnlyIssueRepository::findByKey);
       if (localIssueOpt.isEmpty()) {
-        // this happens in case if VS client trying to change status of the issue for Roslyn analysed language
-        // since analysis was executed outside the backend on the client side we trust client to provide valid issue key
+        //ACR-50c1f2e105fc4d93b4953600ce9e66a4
+        //ACR-3d0a07976d0448d98efaf29162a419f6
         try {
           serverConnection.withClientApi(serverApi -> serverApi.issue().changeStatus(issueKey, reviewStatus, cancelMonitor));
           return;
@@ -200,12 +200,12 @@ public class IssueService {
       .withClientApiAndReturn(serverApi -> checkAnticipatedStatusChangeSupported(serverApi, connectionId));
   }
 
-  /**
-   * Check if the anticipated transitions are supported on the server side (requires SonarQube 10.2+)
-   *
-   * @param api          used for checking if server is a SonarQube instance
-   * @param connectionId required to get the version information from the server
-   * @return whether server is SonarQube instance and matches version requirement
+  /*ACR-611a4af970fb48e58764063097737fca
+ACR-c659412af32349dfb477ff9c6e4fecd5
+ACR-f531647cdeba4d3288715801fa876e93
+ACR-af36f6cd608b4606b27dcad8985a215c
+ACR-5fbc6b26861848ccb7e2dd981b596096
+ACR-328ae79dae444dc2a5e5a4cbc48bd9e4
    */
   private boolean checkAnticipatedStatusChangeSupported(ServerApi api, String connectionId) {
     return !api.isSonarCloud() && storageService.connection(connectionId).serverInfo().read()
@@ -217,9 +217,9 @@ public class IssueService {
     return sonarQubeClientManager.getClientOrThrow(connectionId).withClientApiAndReturn(serverApi -> asUUID(issueKey)
       .flatMap(localOnlyIssueRepository::findByKey)
       .map(r -> {
-        // For anticipated issues we currently don't get the information from SonarQube (as there is no web API
-        // endpoint) regarding the available transitions. SonarCloud doesn't provide it currently anyway. That's why we
-        // have to rely on the version check for SonarQube (>= 10.2 / >=10.4)
+        //ACR-aa757a2d22ac46969974d825bba32007
+        //ACR-fbe56d05b89040448e2b35f1f7a03be9
+        //ACR-f90840b085fb41029ba1f69fac82b82b
         List<ResolutionStatus> statuses = List.of();
         if (checkAnticipatedStatusChangeSupported(serverApi, connectionId)) {
           var is104orNewer = !serverApi.isSonarCloud() && is104orNewer(connectionId, serverApi, cancelMonitor);
@@ -234,8 +234,8 @@ public class IssueService {
       }));
   }
 
-  /**
-   * For checking whether SonarQube is already on 10.4 or not. NEVER apply to SonarCloud as their version differs!
+  /*ACR-1debd6e14461497095648dd07850bcb9
+ACR-3336747474004e1f8258d68ccef24a5c
    */
   private boolean is104orNewer(String connectionId, ServerApi serverApi, SonarLintCancelMonitor cancelMonitor) {
     var serverVersionSynchronizer = new ServerInfoSynchronizer(storageService.connection(connectionId));
@@ -246,20 +246,20 @@ public class IssueService {
   private static CheckStatusChangePermittedResponse toResponse(List<ResolutionStatus> statuses, String reason) {
     var permitted = !statuses.isEmpty();
 
-    // No status available means it is not permitted or not supported (e.g. SonarCloud for anticipated issues)
+    //ACR-98a5bd92fbc04ab8bab777e64dfdc299
     return new CheckStatusChangePermittedResponse(permitted, permitted ? null : reason, statuses);
   }
 
   private static List<ResolutionStatus> getAdministerIssueTransitions(Issues.Issue issue) {
-    // the 2 required transitions are not available when the 'Administer Issues' permission is missing
-    // normally the 'Browse' permission is also required, but we assume it's present as the client knows the issue key
+    //ACR-6f644fe4efee4e8b86a1288441f06069
+    //ACR-7c57d31786db4246a71c4d8ae2505e38
     var possibleTransitions = new HashSet<>(issue.getTransitions().getTransitionsList());
 
     if (possibleTransitions.containsAll(toTransitionStatus(NEW_RESOLUTION_STATUSES))) {
       return NEW_RESOLUTION_STATUSES;
     }
 
-    // No transitions meaning you're not allowed. That's it.
+    //ACR-536cfb488d574504b9b1e4e5bab474ab
     return possibleTransitions.containsAll(toTransitionStatus(OLD_RESOLUTION_STATUSES))
       ? OLD_RESOLUTION_STATUSES
       : List.of();
@@ -282,8 +282,8 @@ public class IssueService {
       if (optionalId.isPresent()) {
         setCommentOnLocalOnlyIssue(configurationScopeId, optionalId.get(), text, cancelMonitor);
       } else {
-        // this happens in case if VS client trying to add comment of the issue for Roslyn analysed language
-        // since analysis was executed outside the backend on the client side we trust client to provide valid issue key
+        //ACR-bf38e0e804934fbdbd54c178d9ef9c6b
+        //ACR-c55a434496794f609c7388e463b19545
         try {
           addCommentOnServerIssue(configurationScopeId, issueKey, text, cancelMonitor);
         } catch (NotFoundException ex) {
@@ -404,7 +404,7 @@ public class IssueService {
     var ruleDetailsEnrichedWithActualIssueSeverity = RuleDetails.merging(ruleDetails, finding);
     var effectiveRuleDetails = RuleDetailsAdapter.transform(ruleDetailsEnrichedWithActualIssueSeverity, finding.getRuleDescriptionContextKey());
     return new EffectiveIssueDetailsDto(ruleKey, effectiveRuleDetails.getName(), effectiveRuleDetails.getLanguage(),
-      // users cannot customize vulnerability probability
+      //ACR-17e9c835ce254301bcc4e63cd4599c12
       effectiveRuleDetails.getVulnerabilityProbability(),
       effectiveRuleDetails.getDescription(), effectiveRuleDetails.getParams(), finding.getSeverityMode(), finding.getRuleDescriptionContextKey());
   }
@@ -453,8 +453,8 @@ public class IssueService {
       updatedIssue = updateIssue(updatedIssue, impactedIssueKeys, issueUpdater);
     }
     if (updatedIssue.getSeverityMode().isLeft()) {
-      // if the event does not match the local severity mode, we skip updating as we would only have partial information
-      // the data will be updated at the next sync
+      //ACR-c33690ffdd874861b49feb329b26f648
+      //ACR-cee425bde5bc4cd6af0dd275ec99adb1
       var standardModeDetails = updatedIssue.getSeverityMode().getLeft();
       if (userSeverity != null) {
         UnaryOperator<RaisedIssueDto> issueUpdater = it -> it.builder().withStandardModeDetails(IssueSeverity.valueOf(userSeverity.name()), standardModeDetails.getType())

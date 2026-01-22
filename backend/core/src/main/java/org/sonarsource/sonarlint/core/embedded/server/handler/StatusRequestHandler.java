@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-eacd943fb0a746aebe18d4c1c64af51d
+ACR-21c41ab79039493e834a4ce1427309bb
+ACR-179f12f5209f40e3bea6b7c4a4b86531
+ACR-368978b042dc4f7ebcc1034217fa406e
+ACR-89789301ee8242729b95bdd093caad55
+ACR-0a7260e76cf2458c872279f01566f4b1
+ACR-c17f2fe57e9b4e97beba5d1e099448aa
+ACR-7dcda5e4079b4f83a9108edd8b081ad9
+ACR-2212554cd9e9462683f90647420f0e63
+ACR-e559b6807d644fa4af9c8bd4278e4777
+ACR-6aed35bf0e5741d38616314a7698c00a
+ACR-1aa7a7eddcb14f9ea40acfc98fe07ee0
+ACR-816b22050d6246809e3d5ef8fed6c498
+ACR-6c7749f1000c4074b496e1e36b5463f4
+ACR-6be60319147849d08ae2342e72f9705c
+ACR-4b5313d385d0471fb54aa68e1065da31
+ACR-c478f0a281ea4b71990b8e8adf03b389
  */
 package org.sonarsource.sonarlint.core.embedded.server.handler;
 
@@ -60,7 +60,7 @@ public class StatusRequestHandler implements HttpRequestHandler {
 
     var description = getDescription(trustedServer);
     var capabilities = new CapabilitiesResponse(true);
-    // We need a token when the requesting server is not a trusted one (in order to automatically create a connection).
+    //ACR-d8febed0daf44b959a541597847a1358
     response.setEntity(new StringEntity(new Gson().toJson(new StatusResponse(clientInfo.getName(), description, !trustedServer, capabilities)), ContentType.APPLICATION_JSON));
 
   }

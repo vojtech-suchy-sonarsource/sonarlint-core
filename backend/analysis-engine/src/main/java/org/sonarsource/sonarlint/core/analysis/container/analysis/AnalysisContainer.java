@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ba084777ec66422382b0dce63545c4a2
+ACR-34a8c479d3b34699aa0220c17ab88658
+ACR-91983d1cde2b4a82aaee3f35bb2d1f32
+ACR-fc2ea8bfa9054bb9a323d3aee6b29124
+ACR-6d4df95bb3084e1698890b42fa6bc564
+ACR-81aa6dc4bee84c1bb31ac022c381b043
+ACR-44c1bc1c01b949778e47e4839e6197f2
+ACR-2786e5349cac4acea7da216637ebc073
+ACR-a55b323416e149dba4573d821f555935
+ACR-457f9c4c467e474cbe9b1df4869bdaf1
+ACR-63b4281ab6224b9d847c9cc1d9fac704
+ACR-7e4f43b9587844998b4649401282e6dd
+ACR-a82aa75e55034615a7466210c771538a
+ACR-f9a033dc28e74aafaf1cc7835132f3ec
+ACR-33ee8526d3a34d36853363e8898dffcc
+ACR-361cc9d64c914fe1a2a227dada2ea355
+ACR-600961215b4a42d49c57c3cb79f5a92d
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis;
 
@@ -69,19 +69,19 @@ public class AnalysisContainer extends SpringComponentContainer {
       SonarLintInputProject.class,
       NoOpFileLinesContextFactory.class,
 
-      // temp
+      //ACR-7fc1050530e941a8a2e6172820edd280
       new AnalysisTempFolderProvider(),
 
-      // file system
+      //ACR-feb6d9e9410f4b3eb4db5fff25d2757b
       PathResolver.class,
 
-      // lang
+      //ACR-72d6ea9ec9824747ba129e7f8b906d3a
       Languages.class,
 
       AnalysisSettings.class,
       new AnalysisConfigurationProvider(),
 
-      // file system
+      //ACR-89e644c581554a3981e6d76c3b15da53
       InputFileIndex.class,
       InputFileBuilder.class,
       FileMetadata.class,
@@ -89,7 +89,7 @@ public class AnalysisContainer extends SpringComponentContainer {
       FileIndexer.class,
       SonarLintFileSystem.class,
 
-      // Exclusions using SonarQube properties
+      //ACR-db02b3cc8ac84d668a72820699a93c00
       EnforceIssuesFilter.class,
       IgnoreIssuesFilter.class,
       IssueExclusionPatternInitializer.class,
@@ -103,10 +103,10 @@ public class AnalysisContainer extends SpringComponentContainer {
       SonarLintSensorStorage.class,
       IssueFilters.class,
 
-      // rules
+      //ACR-7e9dfeaba7e549d0a964578dbadae044
       CheckFactory.class,
 
-      // issues
+      //ACR-e3b728f08f804b2d92848f4af634ada8
       SonarLintNoSonarFilter.class);
   }
 
@@ -117,7 +117,7 @@ public class AnalysisContainer extends SpringComponentContainer {
   @Override
   protected void doAfterStart() {
     LOG.debug("Start analysis");
-    // Don't initialize Sensors before the FS is indexed
+    //ACR-07c4808478644d568798bcdc060cbb92
     getComponentByType(FileIndexer.class).index();
     getComponentByType(SensorsExecutor.class).execute();
   }

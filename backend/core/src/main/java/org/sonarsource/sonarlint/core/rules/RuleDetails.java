@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a71f60e577c944708b3faf39eb099f5d
+ACR-ff33871ad8c64c48a801f42d0680be9e
+ACR-7abce452a4c9452892bc6dd8f42d5ae4
+ACR-1748cbb957444e8d9043e3bf845ba038
+ACR-bead88c1f1ea47ec8a33558bfa877b99
+ACR-e26d6ab7fab74123aeb74374ec0fc6c9
+ACR-bf6576ff3aa042229273d053965c1363
+ACR-5ea4658826e44c3ca862decc9570a3eb
+ACR-9126b38824304b9c9fd9fc13084f446c
+ACR-02d85d5bbd3f4c97a26f2efb71d54c0c
+ACR-aa8de5349acc4398ab9af1a61a43f751
+ACR-608d6c1927a64e0d8a7c79a95fa4611f
+ACR-dca3cbe564f1434994ffbc955e0fc5a6
+ACR-1692b4b04794447ba11da7a005d786a1
+ACR-e248027f8be043208b67f98f442194db
+ACR-9773e1871b6a43d286702fdce5bed743
+ACR-352fe39e04dd43629034bacd3db0d455
  */
 package org.sonarsource.sonarlint.core.rules;
 
@@ -120,7 +120,7 @@ public class RuleDetails {
       serverRule.getCleanCodeAttribute(),
       serverRule.getHtmlNote(), Collections.emptyList(),
       serverRule.getEducationPrincipleKeys(),
-      // TODO get vulnerability probability from storage?
+      //ACR-d5d525f484f145d69cd39aa498e7c365
       null);
   }
 

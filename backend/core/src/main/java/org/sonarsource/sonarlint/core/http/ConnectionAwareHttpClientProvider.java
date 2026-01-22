@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ae0b79420938423ca8f65b0b86e0bd21
+ACR-367246c7a63e4f18875c1f680fa3d75e
+ACR-272f4b1ed2ec40a597b2d4b5c162269d
+ACR-c8e81eafb77342e4bd23ae9aae068f22
+ACR-030598aa6f3a49e8b6d0bdaa5ebc7e68
+ACR-c1141ce4b9da43e89e7d67eb1833b2e5
+ACR-f5fb9f31d8984dd68c1e4a469cfebc86
+ACR-c5feb3a62a134c5594baa36b97e5fbb7
+ACR-631a669d03d0419da9d61735f8aceae1
+ACR-4b8a6c3eaa0f4f7f99a528e0728aa724
+ACR-9bd217ac2060463497212133e1d93e04
+ACR-8a7617e83a414012b608a5ea9ed11d51
+ACR-09392a7ef882439da115f98a46d9fa48
+ACR-549ee320ad8d454c837ce19b4e50f897
+ACR-ad7e4fe2e72a4a34b5dbe3129f56f59b
+ACR-aaee71f6980e4a9f87bf915c03864323
+ACR-d728c97bb4174a4da31a240fe178b093
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -55,7 +55,7 @@ public class ConnectionAwareHttpClientProvider {
   public WebSocketClient getWebSocketClient(String connectionId) {
     var credentials = queryClientForConnectionCredentials(connectionId);
     if (credentials.isRight()) {
-      // We are normally only supporting tokens for SonarCloud connections
+      //ACR-c1d6b957738e4a6a8f9ec9e7e5216ec5
       throw new IllegalStateException("Expected token for connection " + connectionId);
     }
     return httpClientProvider.getWebSocketClient(credentials.getLeft().getToken());

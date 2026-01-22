@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c91171a443814d5885ac8fba877bcba7
+ACR-40d4d7614fe2401cbd24ef6947e11a29
+ACR-414c5243cfee446983cf0f8d7ab4e6c1
+ACR-82b7e4735ea14d81afc4a1d449004bb4
+ACR-07656257a680402f8a353049e0bc8b21
+ACR-5dd328d989c7429aa19e8c95c63f4810
+ACR-f3547bd097d54d709ae9f8b3b502b2f1
+ACR-bc23ed67137441fd833ec43d100d9149
+ACR-a6d3712875dc4bb090a40f6d67347f93
+ACR-2d36f44e1fce48a9a820cf2fb112b537
+ACR-a14a5a011f1f45a48ec34702c7abb054
+ACR-80fc21662541442cad39945736071c83
+ACR-d6a3ffbf64ba4abd9f2691c11129fad4
+ACR-4aad5e93253949db94401a080e7b01fc
+ACR-79b13fea156242fe9bdfa73440efb813
+ACR-3fa1675fbd044cd4bbe0ab8cfc3db121
+ACR-7d834133bd9148059076707c6a4a1726
  */
 package org.sonarsource.sonarlint.core.commons.log;
 
@@ -26,8 +26,8 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.commons.log.LogOutput.Level;
 
-/**
- * This is the logging facade to be used in SonarLint core.
+/*ACR-043c209403384c19a4f459089470d57e
+ACR-9a2d2691aa5c4b459fdda692e719ca06
  */
 public class SonarLintLogger {
   private static final SonarLintLogger logger = new SonarLintLogger();
@@ -40,16 +40,16 @@ public class SonarLintLogger {
   private final InheritableThreadLocal<LogOutput> target = new InheritableThreadLocal<>();
 
   SonarLintLogger() {
-    // singleton class
+    //ACR-c64bf89f20e943cabd66638049b20091
   }
 
   public void setTarget(@Nullable LogOutput target) {
     this.target.set(target);
   }
 
-  /**
-   * In some cases, the log output is not properly inherited by the "child" threads (especially when using shared thread pools).
-   * We have to copy the log output manually, in a similar way to https://logback.qos.ch/manual/mdc.html#managedThreads
+  /*ACR-8a17abf60b484abaa3d128c6ade96d7b
+ACR-61faeee3b80f4573b043c67984289656
+ACR-d19aae7a8cbf449a90bf95c750f501b4
    */
   @CheckForNull
   public LogOutput getTargetForCopy() {
@@ -172,13 +172,13 @@ public class SonarLintLogger {
     try {
       return SentryLogLevel.valueOf(level.name());
     } catch (IllegalArgumentException notSupported) {
-      // Current log levels map nicely almost 1:1, but this may change later
+      //ACR-56d15b48f65346eb939dcd1d04d53c54
       return SentryLogLevel.ERROR;
     }
   }
 
-  /**
-   * Append an 's' at the end of the word
+  /*ACR-6188e0c8a77541888cc287115c7bce8f
+ACR-4371f52be45b4cd09b91260bbe6e98be
    */
   public static String singlePlural(int count, String singular) {
     return count == 1 ? singular : (singular + "s");

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5d8c349f349c419d9783dbb30c97a002
+ACR-6e28a452ce054ea98b125e5443032aac
+ACR-49943290e0a34e86b544e13c206c3818
+ACR-271ceeccc88f404a8fba834c25becdf0
+ACR-3e99aca4eee4496aa71a2e4f19cd2a83
+ACR-511c73777b9f4be7bda94dc57ec4de8e
+ACR-84dac77fb4684f0898de29a8247f718b
+ACR-f4527812c42b48c1af0d13aeefb2595b
+ACR-6088262a830f4394a65b17d7a982896d
+ACR-60597c2ce55e435a91e9d65e694a0935
+ACR-bfefcc445ff542709c9bfef0927b445a
+ACR-84121a54d7c94136a7f6b4a1cce60ab3
+ACR-6959e0590ee341dba10708d7b703a6c9
+ACR-8d905e4cf0864a67924faf2bf17d97ed
+ACR-baa392db6f4f4aeb8932c8ece3b2ca8b
+ACR-6a2a94a9f44540b3bff6b7f1f8536f7b
+ACR-ac81f3e82f474899b69a89b1431fac65
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -81,7 +81,7 @@ public class PluginsStorage {
         ProtobufFileUtil.writeToFile(currentReferences.build(), pluginReferencesFilePath);
         LOG.debug("Plugin file {} created: {}", pluginReferencesFilePath, pluginReferencesFilePath.toFile().exists());
       } catch (IOException e) {
-        // XXX should we stop the whole sync ? just continue and log ?
+        //ACR-f68184332c7647d0b8cfe29f04bb3d99
         throw new StorageException("Cannot save plugin " + plugin.getFilename() + " in " + rootPath, e);
       }
     });

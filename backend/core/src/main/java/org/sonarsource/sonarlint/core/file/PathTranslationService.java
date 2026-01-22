@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-73976cd1dfad43f98b09fc69b96d0e50
+ACR-34126693c11f46e3b624ea59c673685d
+ACR-2e74228be5024a6cb3db74d0bcf1fa30
+ACR-90ee53fc81fc4cd8a6ad54d51aa5dd05
+ACR-5c08f8d79ae742168a75a4edb71fda2c
+ACR-7bfd1bca3ef7479a9b5a0ca8cb514649
+ACR-68ec7c92095e4ff0a7714d08f9f5672e
+ACR-00fd47fa44cd4d4c95886ba9739c5244
+ACR-97c67f5b61f74f58bc5251e36ef03591
+ACR-d18d90acc2d5486a8ec00e286fdadd32
+ACR-e7c66a013ad849599cd3169b29310b78
+ACR-e3ee0406f9ab4dcf951a2d2d21d99e7a
+ACR-710a69eadf91494491388067084270d6
+ACR-39c9b02b19f349f5bb4c190590a7f547
+ACR-79bbb70cab8d444296bbd67f08c42e37
+ACR-6ecdc03498c7412590c361ba71a3d5be
+ACR-bb11e6991b6847dc96f6f648c34f5123
  */
 package org.sonarsource.sonarlint.core.file;
 
@@ -38,10 +38,10 @@ import org.sonarsource.sonarlint.core.repository.config.ConfigurationRepository;
 import org.sonarsource.sonarlint.core.serverconnection.prefix.FileTreeMatcher;
 import org.springframework.context.event.EventListener;
 
-/**
- * The path translation service is responsible for matching the files on the server with the files on the client.
- * This is only used in connected mode.
- * A debounce mechanism is used to avoid too many requests to the server.
+/*ACR-c281fed0bb414311939b12391b760e4e
+ACR-f8da3065f4744cf5b380c5e648f1d48a
+ACR-86525a88f88f49b9827adaf99deaabfa
+ACR-8f4e44b40d684a389688ba7454cc20ed
  */
 public class PathTranslationService {
   private static final SonarLintLogger LOG = SonarLintLogger.get();
@@ -78,7 +78,7 @@ public class PathTranslationService {
     var localFilePaths = clientFs.getFiles(configScopeId);
     if (localFilePaths.isEmpty()) {
       LOG.debug("No client files for config scope '{}'. Skipping path matching.", configScopeId);
-      // Maybe a config scope without files, or the filesystem has not been initialized yet
+      //ACR-25eb8d44f81d43339dac40fe5e63f6fb
       return new FilePathTranslation(Paths.get(""), Paths.get(""));
     }
     var match = fileMatcher.match(serverFilePaths, localFilePaths.stream().map(ClientFile::getClientRelativePath).toList());

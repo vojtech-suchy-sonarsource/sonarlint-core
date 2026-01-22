@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-955cf55ba80340f7a8d23341a3a5e67a
+ACR-fda642cec1c0471bb9bf9f294151077a
+ACR-b9e1b92e90a546f989460f0716a919ef
+ACR-a16f4604caa9489ca0bacb987883d502
+ACR-7ec31839d5b64591a1f4acf44ce76e76
+ACR-d80f29d90c664f82b81cabf16cfdf532
+ACR-7051e80915444a5095af5f452b636a26
+ACR-2d17f59766f940c99764336f9bc88582
+ACR-82c79caeda6d412bb4d22999d4453a59
+ACR-7917d2ac32f74e4383c25dfe0d55243e
+ACR-2e6a089a3260446a92d6834f120c5e24
+ACR-7d794bb7c771459395ce0a1e07a39324
+ACR-010f245caca14e7e80d65dc0c8812cf3
+ACR-991fb6ad2f494d40a1fbd97beac3d6c3
+ACR-1e1c6aae352e456fa22871a85ad31a21
+ACR-edf490dd1d32426fb83507549dd23c87
+ACR-6b85d852a90b4093b054e9b3ed65f3e8
  */
 package org.sonarsource.sonarlint.core.rpc.protocol;
 
@@ -46,8 +46,8 @@ import org.sonarsource.sonarlint.core.rpc.protocol.backend.tracking.TaintVulnera
 
 public interface SonarLintRpcServer {
 
-  /**
-   * Called by client once at startup, in order to initialize the backend
+  /*ACR-05c0578e76da4e0f87d64024f20e6cba
+ACR-685fd6c828b04d748ea27b1b2c84af14
    */
   @JsonRequest
   CompletableFuture<Void> initialize(InitializeParams params);

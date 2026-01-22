@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-265c226ef34842229a11a40f0da76fcf
+ACR-57a241e7a6a2481db386d674bb39f284
+ACR-c4c6d78314c34b008e7c4aa5785cd6c0
+ACR-58cc8b58e3d948e39acc2d921ea4be66
+ACR-4bd8806f8954491c9e4daf15c10cc285
+ACR-9868f6883b514e679103aa78548acc8c
+ACR-15735051d4a74ba6a1e2cb8fd7ab2f93
+ACR-78aa651314cb4fb1bdd8cba001ed5a24
+ACR-385bdf0afffe4508bd9167db6ff64900
+ACR-dbbe543315af40cf99b6b7e6967c0e5d
+ACR-e9593582fd424c7e98342eff9407091d
+ACR-56bb0daee2a0471b9d3579c842276028
+ACR-2483e0e53dd14d5a8283cae2cd2a8348
+ACR-aafd923a85534165960ccd942295013e
+ACR-3019cbfd71484b9dbe8cf955c66adef0
+ACR-925f711fb5454f60b51a79fc94e2d98e
+ACR-98eb0932d31949248c1db47d937fd89e
  */
 package mediumtest.connection;
 
@@ -185,7 +185,7 @@ class OrganizationMediumTests {
       .containsExactly(
         Assertions.tuple("org-bar", "My Company Org Bar"));
 
-    // Verify that the cache is used
+    //ACR-1ef6f1af184c4a96b13d80e063698d4c
     sonarcloudMock.verify(exactly(1), getRequestedFor(urlEqualTo("/api/organizations/search.protobuf?member=true&ps=500&p=1")));
   }
 

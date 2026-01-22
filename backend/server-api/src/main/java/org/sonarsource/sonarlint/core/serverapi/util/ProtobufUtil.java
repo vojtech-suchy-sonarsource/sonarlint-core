@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-14df46c4b41346238e2c0f43644c8bae
+ACR-cdf1b60ef28f42fe9f10e27de1d6fbdf
+ACR-277a05b7bd8747bcb67f692087e7c9dd
+ACR-dbb34ca0eee640a2a842d5c58710ba53
+ACR-03a6084371674792ba89bf2d089aa3f9
+ACR-6866b385c98e483ebf548a03cccaad02
+ACR-c2b3eeb339da44f9b91ab4f747cee05d
+ACR-84253fb490fc46889af1691163694f53
+ACR-220e449105284a7cb3b9d7fa42ffa7aa
+ACR-426d7aed2ced462dbd61128013095b5f
+ACR-bc857a33dd1445e99dbc4244731e432d
+ACR-24d37423d04f48ada1c327636d6290be
+ACR-6d220fb164994564bd30b3d1bbf5c1d9
+ACR-f726963cf9a44931b97fc27bc62b7f1c
+ACR-dbf1b4adbcf945c889bd894bca9dd219
+ACR-5ab727edd2354bf998594f7a3ec01591
+ACR-f404f2faa8d44bc7a3e554a232799dc5
  */
 package org.sonarsource.sonarlint.core.serverapi.util;
 
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ProtobufUtil {
   private ProtobufUtil() {
-    // only static stuff
+    //ACR-a03c1ae3130f46b48d9d2e78fa466722
   }
 
   public static <T extends Message> List<T> readMessages(InputStream input, Parser<T> parser) {

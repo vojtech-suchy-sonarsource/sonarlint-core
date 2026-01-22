@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4af88931dbc7405085e404676a9334eb
+ACR-cbb16c2c1a0448128bfb954b3ac3c48a
+ACR-127f2cfc3ab04f24a364bf670af15e58
+ACR-4a79f29c20384edb880af83ade396ad3
+ACR-be02a26ef3fb47ce960cafe4b0cd0ca4
+ACR-b4c7fa1f44ae447b8783e69e889e1400
+ACR-b412ba15140a49baae4c023c26bd8344
+ACR-ae20e8b2439345919fa74817e34de6a4
+ACR-9aa306febbbf4c77a9f8b6f32d100f66
+ACR-b0383e7344bf4768b712d7498b5f836c
+ACR-47d1602d3cb7445790cb44ebb53be6f1
+ACR-109bc2642fea4c7d9c5b1efc6c97972d
+ACR-302a245d9ffb49eebda95106baf59114
+ACR-31e7a90b5cfb4796be75c8433e9ae51b
+ACR-dd4e4a0d75064d26bb956dbb4178dd06
+ACR-4022252512af4f2e8ff5f4999b4dd7ce
+ACR-59303d409c314f22aaad9304d290cf90
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.issue;
 
@@ -26,101 +26,101 @@ import org.eclipse.lsp4j.jsonrpc.services.JsonSegment;
 @JsonSegment("issue")
 public interface IssueRpcService {
 
-  /**
-   * <p> It changes a status of an issue that is existing on the server or local-only. In detail, it is responsible for:
-   * <ul>
-   *   <li>Changes the status of an issue (identified by {@link ChangeIssueStatusParams#getIssueKey()} )}</li>
-   *   <li>Updates the issue status in the local storage</li>
-   *   <li>In case of a local-only issue, it stores the issue in the xodus database for local-only issues</li>
-   *   <li>Increments the 'issue.status_changed_count' counter for telemetry when issue exists in the server</li>
-   * </ul>
-   *</p>
-   * It silently deals with the following conditions:
-   * <ul>
-   *   <li>the provided configuration scope (identified by {@link ChangeIssueStatusParams#getConfigurationScopeId()} is unknown</li>
-   *   <li>the connection bound to the configuration scope is unknown</li>
-   *   <li>the issueKey is not found in the local storage</li>
-   * </ul>
-   * In those cases a completed future will be returned.
-   * </p>
-   * <p>
-   * It returns a failed future if:
-   * <ul>
-   *   <li>the issue is not found either on the server or in the local-only storage for issues</li>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   * </ul>
-   * </p>
+  /*ACR-55315414aacc4acda70d3b4bc39b4568
+ACR-020974b4f21349969c7e40e545a3b2ee
+ACR-461ecccf91d4403eadbdfb22f6822cde
+ACR-d30e2dd872244ad7bc120ca095cd4622
+ACR-c3b1dbda6f4d454f81a7896f34951ed2
+ACR-96a8e4de2bd7458aa2d277416b726eab
+ACR-4705144d3a7346098fe40d5d20ac0650
+ACR-b4cc6b8f0cc743fc9a6723e588256066
+ACR-f19a015b29cf4491be211ff5a46eb2cc
+ACR-b035748300e94e0189fbcdc8eb4dd3d3
+ACR-b0631b5ae6674cc09c9459fffc48119e
+ACR-7d22ab500fa040ebbd7a76e16498f904
+ACR-6e6662d7046e437e8411ef7bcc2d4bc6
+ACR-640f693bd77d469fadde3c5f9ad4996e
+ACR-3c664f096e4641ad902e1c1ece915f07
+ACR-62fb53f0947e4291bac991994352146c
+ACR-d2d38d4e99314ddaacbfc8ec85671a3e
+ACR-2411ddcc2fb04d9cba09ca4198554782
+ACR-71ae5d54cb8d4951a487cdccecd26056
+ACR-98f2b7e0a8fd4ae8aa35b63cf599c46c
+ACR-6dbd635271654db6a0335264a94e996e
+ACR-5a53178dcbc9453d9044d447f36255b4
+ACR-552e1864064042f9a4bd4f3b56560332
+ACR-b3f0ef79c127409aa9cb4efcfa232831
    */
   @JsonRequest
   CompletableFuture<Void> changeStatus(ChangeIssueStatusParams params);
 
-  /**
-   * <p>
-   * Adds a new comment to an existing issue (identified by {@link AddIssueCommentParams#getIssueKey()})
-   * </p>
-   * <p>
-   * If no binding is found for the provided configuration scope (identified by {@link AddIssueCommentParams#getConfigurationScopeId()})
-   * then returns a future completed with <code>null</code>
-   * </p>
-   * <p>
-   * It returns a failed future if:
-   * <ul>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   * </ul>
-   * </p>
+  /*ACR-c509f0ff3824457ba1e63f5159dadc05
+ACR-613fcd25581045268a2a64f98188f20e
+ACR-93923e04b01d4657905f925b0c6eadd9
+ACR-102d703772aa46ce956e5e567f763370
+ACR-ba43c4cea44b4e09a8f9b2678292658e
+ACR-9156436ec2df4e31a538902ce4915fd1
+ACR-6fda5d813f2245d1936a2a2679bbd154
+ACR-f43de7c5a02d4f9eaa418ec12dd9dad9
+ACR-06cc2369112e46f9985c4f046a4bf598
+ACR-bedbc88a6a6f4e088c922c3ba74c547b
+ACR-bab0d3d8ce6e4b589900449723d026c4
+ACR-a225b5a54d0848839df9f1c3dc242af7
+ACR-d4aefaed20464630bec036ba1e1c3e93
+ACR-26cd3389f5cf4c58945a9833c5a64d32
    */
   @JsonRequest
   CompletableFuture<Void> addComment(AddIssueCommentParams params);
 
-  /**
-   * Checks if the anticipated transitions are supported. They are allowed in one case:
-   * <ul>
-   *   <li>If the configScopeId is bound, its connection should link to a SonarQube 10.2+ instance</li>
-   * <p>
-   * This method will fail if:
-   * <ul>
-   *   <li>the configScopeId provided as a parameter has no binding</li>
-   *   <li>the configScopeId provided loses its binding in the middle of the function call</li>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   * </ul>
-   * In those cases, a failed future will be returned.
-   * </p>
+  /*ACR-669a146ec04f4cad94f859b475a79ea5
+ACR-35280326a3f84653bdd5963974719f9e
+ACR-0f65cffc4fa84adfaa3f8770a3b50655
+ACR-7fc92613b2bc4ac5b81430d56299e4ee
+ACR-5774c6d909d0408fbbaec12ef96a7c4f
+ACR-607d963c981142cd878b2e6487849b7e
+ACR-285857e6676b470b93144c0b1f5666d6
+ACR-01a95f617f7f4b878cebdcb0133dbf86
+ACR-2b6bd58e167e4cff980bc1e6f2deba0e
+ACR-52a6e70405a14f839801037c2544a199
+ACR-f847e58530764ab1ae69002e82c99326
+ACR-62fb04a06ade4ae49ac8b06e25154c0c
+ACR-713ed63174a0479a8c65d00e3daa4b2f
    */
   @JsonRequest
   CompletableFuture<CheckAnticipatedStatusChangeSupportedResponse> checkAnticipatedStatusChangeSupported(CheckAnticipatedStatusChangeSupportedParams params);
 
-  /**
-   * Checks if the user can change the issue status. They are allowed in two cases:
-   * <ul>
-   *   <li>If it is a server-matched issue, users need the 'Administer Issues' permission</li>
-   *   <li>If it is a local-only issue, the provided connection should link to a SonarQube 10.2+ instance</li>
-   * </ul>Also returns the list of allowed statuses.
-   * <p>
-   * This method will fail if:
-   * <ul>
-   *   <li>the connectionId provided as a parameter is unknown</li>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   * </ul>
-   * In those cases, a failed future will be returned.
-   * </p>
+  /*ACR-cae3e37b33e44f07a91ffe3d557bd342
+ACR-7854915491fd441f898e14b95a9c6404
+ACR-522f22e9e3de499cbdf9a4df3230ac5a
+ACR-f8db9e66dd034af9b5c8b286df3a1196
+ACR-6b19375065df4429808971660ada1902
+ACR-66e0ae1e124c49f0a4cb1070c5f02e28
+ACR-cc3cff26be844ad7b21d96fd7290ecd3
+ACR-8657ee6af7394ee9b758fa2414592dfe
+ACR-f7359f12da4e45e1ba56a771ce7ce6ee
+ACR-8a9afbcdd24040eab334767d606a22af
+ACR-983a38bbfe0e41438541b31302c16310
+ACR-8ffbb46c90874e3facd86a73d8e15ad4
+ACR-ed9758aa3711472594aefa6394911d47
+ACR-1b6f267f496f44ee87dc01f83d5ee530
    */
   @JsonRequest
   CompletableFuture<CheckStatusChangePermittedResponse> checkStatusChangePermitted(CheckStatusChangePermittedParams params);
 
-  /**
-   * Reopens the issue, two cases are possible:
-   * <ul>
-   *   <li>If it is a server-matched issue, it is reopened on the server</li>
-   *   <li>If it is a local-only issue, it is deleted from the local storage</li>
-   * </ul>
-   * @return true if issue was found and actually reopened on the server or deleted locally, false otherwise
+  /*ACR-f5739347960942c19ac869aa37d353fa
+ACR-e25aecad7593433d9b709615152fd844
+ACR-bf3c5acbafd74955b8f5699c31d94ddc
+ACR-c6bc43f23927408b9017b354099973fc
+ACR-edb1e045bef74b5fb767fe42a625b75e
+ACR-190e72d05c194ff9913aff5f072cd8a0
+ACR-6979a1daa8b74db0940293a1cffe9e4b
    */
   @JsonRequest
   CompletableFuture<ReopenIssueResponse> reopenIssue(ReopenIssueParams params);
 
-  /**
-   * Notifying server that anticipated issues for given file should be removed and removes them from local storage
-   * @return true if entity for file was found and actually deleted and false otherwise
+  /*ACR-c7440c16b83b48128974643b0b08fb98
+ACR-29515bd47a7e45dc9612a4d35791d29d
+ACR-10118563e45846198b60dae00b2e32b1
    */
   @JsonRequest
   CompletableFuture<ReopenAllIssuesForFileResponse> reopenAllIssuesForFile(ReopenAllIssuesForFileParams params);

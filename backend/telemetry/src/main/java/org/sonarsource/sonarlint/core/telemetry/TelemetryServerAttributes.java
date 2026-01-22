@@ -1,40 +1,40 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-24694c6186e346c591104fdba8332388
+ACR-8cbf6375cfb84b9d8e9e34b95baefc78
+ACR-5d96816134da483aba773a4d3a0be4b6
+ACR-cf25ab947f6d42c5bbb5442764ddd3b6
+ACR-ff9876d06332436baa88c3d4071a3063
+ACR-91a5862e0ca149af9c2e1e460d1dbc3d
+ACR-67b6fecc41474d57a0289afa55449882
+ACR-c46d1277277e4353a4c7f9c3c241a5e0
+ACR-0573ee47fb4140e5bcc04a2a1d3db544
+ACR-485d96f66c7847a899a5d9f4f5c67923
+ACR-d13edfd37d744b5b8e9349e8dd0e8e3f
+ACR-f654df1bca804da1bc3f1e4811824fe8
+ACR-99e7c9ab8f764940b9021f1d23fd1c83
+ACR-29d0ecf4cb3345a88075aa6ed9a9f7bf
+ACR-4b2ab9b22ded4612afbb07fce120bb97
+ACR-4b48c934aaf34a73a547044f79a49927
+ACR-712f4ee024a0492fa93397d8fb66b756
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * @param usesConnectedMode             At least one project in the IDE is bound to a SQ server or SC
- * @param usesSonarCloud                At least one project in the IDE is bound to SC
- * @param childBindingCount             Number of bindings for a child configuration scope
- * @param sonarQubeServerBindingCount   Number of bindings with SonarQube Server
- * @param sonarQubeCloudEUBindingCount  Number of bindings with SonarQube Cloud EU
- * @param sonarQubeCloudUSBindingCount  Number of bindings with SonarQube Cloud US
- * @param devNotificationsDisabled      Are dev notifications disabled (if multiple connections are configured, return true if feature is disabled for at least one connection)
- * @param nonDefaultEnabledRules        Rule keys for rules that disabled by default, but was enabled by user in settings.
- * @param defaultDisabledRules          Rule keys for rules that enabled by default, but was disabled by user in settings.
- * @param nodeVersion                   Node.js version used by analyzers (detected or configured by the user).
- *                                      Empty if no node present/detected/configured
- * @param connectionsAttributes         Information about the connections configured in the IDE
+/*ACR-6d5dd59fc2cc46c1b3ee0991cde48ab7
+ACR-f5cb1d16b25a4b65a476953c2f167eb5
+ACR-76867a443dfd49f4a533f98752a0b49d
+ACR-4cc118732d16475c9ff5ae7083dc071d
+ACR-aa95075ccb414063ab95df86771ed487
+ACR-6eba7020da454e82b9721e1d6a6a9ea3
+ACR-2dfbbbf6d67e42ccba68c5b8eab5346b
+ACR-655006598c1445bb8081718692a2f160
+ACR-eac1206fe8c94baa8282a83ad0d0a714
+ACR-03a99e5971714246a1a04e5dcd4e9240
+ACR-414bfa6b7d984af3ac079672938cac6e
+ACR-90ec2cc8e4d346758aba9fe06a431360
+ACR-9b7d26f3560e4d5aaf6eb5e09df38286
  */
 public record TelemetryServerAttributes(boolean usesConnectedMode, boolean usesSonarCloud, int childBindingCount, int sonarQubeServerBindingCount,
                                         int sonarQubeCloudEUBindingCount, int sonarQubeCloudUSBindingCount, boolean devNotificationsDisabled,
