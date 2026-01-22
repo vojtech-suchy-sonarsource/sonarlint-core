@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f089be77d73a48e09b5226b7687c620b
+ACR-77fd0af0c4144759876172d2aaee2032
+ACR-19786ad7c73c46ceab8769fe15da43a5
+ACR-19ea0effd1ac43c992f7b7f261051695
+ACR-95dd00180b104a8c86c99a33bd838370
+ACR-2fbd23a9b4414cc288ba1e37a4329700
+ACR-378609ecccf348eb85da763381c14797
+ACR-36e7ef31d3d74b07a9af1a3cf5824a67
+ACR-4707fe77170a4313a7ae6728a92ebbd8
+ACR-156faa7322c741e78e13a05a68370fc3
+ACR-f835337ad24347028aa22755a557edd7
+ACR-3a9a4b20d9e54bf2a3a476ddc90abb8f
+ACR-87a15e82468246929fec19252a765ef8
+ACR-ddaa5d020fe7461c83d0bdb0af3616d2
+ACR-51720bcbdce344bba49fcbe46a199b6f
+ACR-9f4d61b1231840618037361960b7141e
+ACR-cd5b151570bb416087ca0d38dccac4d7
  */
 package org.sonarsource.sonarlint.core.serverapi.fixsuggestions;
 
@@ -40,7 +40,7 @@ public class FixSuggestionsApi {
   }
 
   public AiSuggestionResponseBodyDto getAiSuggestion(AiSuggestionRequestBodyDto dto, SonarLintCancelMonitor cancelMonitor) {
-    // avoid Gson replacing characters like < > or = with Unicode representation
+    //ACR-92ccb0087e0a4868a7cdaa3ebfc80005
     var gson = new GsonBuilder().disableHtmlEscaping().create();
     try (var response = helper.isSonarCloud() ? helper.apiPost("/fix-suggestions/ai-suggestions", JSON_CONTENT_TYPE, gson.toJson(dto), cancelMonitor)
       : helper.post("/api/v2/fix-suggestions/ai-suggestions", JSON_CONTENT_TYPE, gson.toJson(dto), cancelMonitor)) {

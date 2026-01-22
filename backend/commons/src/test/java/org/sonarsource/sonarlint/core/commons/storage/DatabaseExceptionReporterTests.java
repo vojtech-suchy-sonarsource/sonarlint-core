@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-35aabec79f1f4f9ea3ae27ba1d8b031b
+ACR-f4dd3e5f35a34c919abfe577ef63a5cb
+ACR-df3ba3e65cb741c5928d99d719cb633e
+ACR-1cbef65196ab46768a05f8d3acc40775
+ACR-d64346ac91b644559c1063ea76ea2919
+ACR-2f41e47489e14969b6b707c7355ef999
+ACR-de3ad04a89f0456dac8d3cd7e23d5953
+ACR-15f49117b9b44b90b1ce086c69d56cba
+ACR-f1fd53606846415db35330a523eb4fc0
+ACR-d76d79689a52420c9a863e9ce8a890fd
+ACR-d14b59cd6eb448398e98b76d1f0983ad
+ACR-aa71cea6b66f4d4dbc5924d3e6d0a7ca
+ACR-406ae4efdeea410cb6524672240d36f0
+ACR-de2a3ce1bd6b4529b604290373a4be81
+ACR-3714433c1bb24a62acf84e570ffa407d
+ACR-dd26bbd51c194c14adf07e0eb652aed5
+ACR-ca2de4b32bea46adbea39c4c38778ff4
  */
 package org.sonarsource.sonarlint.core.commons.storage;
 
@@ -292,7 +292,7 @@ class DatabaseExceptionReporterTests {
     DatabaseExceptionReporter.capture(exception1, "runtime", "op1");
     DatabaseExceptionReporter.capture(exception2, "runtime", "op2");
 
-    // Should still deduplicate using default window (not crash)
+    //ACR-dc323c4d00524789bcd4c20d0c2e3287
     sentryMock.verify(() -> Sentry.captureException(any(Throwable.class), any(ScopeCallback.class)), times(1));
   }
 }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-27fdfc3e27cb4e24be65f709430fb1c2
+ACR-d3a4ea60bfac4a62977bdb95c332b842
+ACR-c49a43bdd1ce408da448bd6ed97944e7
+ACR-056e69d78c794c0ab56c818c1cb2eaef
+ACR-a8d398d31bc548a8a6a21f02c747424f
+ACR-e24ec44b1e9d4715a039367529e504eb
+ACR-088cfe77d7784b18aa5a3d1d0a3ad9a5
+ACR-46245abe91cd46c4868bd059e02ccf37
+ACR-41c5bf5516b14fce95108b5668dd54aa
+ACR-ecbab69bbbb24f9c82704035301baa96
+ACR-044b8a0904d3494ebf9f5806f1bb38ac
+ACR-881f6eb657d14d6897a15a7830d0eed8
+ACR-69a89cd5648049bf9db4a5c9c5ea75e3
+ACR-fb239a7ba8444ee9a3ff13acffaf7b2a
+ACR-55a871c76800482788b7f0ceb201c1cd
+ACR-337ac96bac694c959f03bbd5aa1cd905
+ACR-955a6dd6528c42daa41d4b29ac1b5041
  */
 package org.sonarsource.sonarlint.core.remediation.aicodefix;
 
@@ -42,9 +42,9 @@ import org.springframework.context.ApplicationEventPublisher;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-/**
- * This test verifies that AiCodeFixService.getFeature() reads settings
- * from the H2-backed AiCodeFixRepository (and does not rely on file-based StorageService).
+/*ACR-306bc7b84252470e8f4f5bf018f84608
+ACR-be5d451c33ec4735956c9d1155df59ad
+ACR-438edf1f43dd4c2eab858b43a4b6bea8
  */
 class AiCodeFixServiceTest {
 

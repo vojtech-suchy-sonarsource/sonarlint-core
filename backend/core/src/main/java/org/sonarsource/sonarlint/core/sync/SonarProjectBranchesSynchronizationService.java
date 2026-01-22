@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-61a2e99486594c2599c8fba3cdd1e2ef
+ACR-35489be5d65f4ba191faee621f9d5e04
+ACR-e4640b74bd7e49ffb31a93e6f0d5cfcf
+ACR-0ae6122bafbb40389ae0e4a6993ab713
+ACR-196e2f98a0a84c60b3083f72aec02220
+ACR-59902b482cdf40ebaaa8a38c4ef90592
+ACR-d834285bb98c472dbdc1fb5b8cbc25f3
+ACR-48f4acdb081145b4a7e6fdc7cf775a04
+ACR-37fb460633a1438d8b2fc4c50d523028
+ACR-72939994b3644feb9f5682bc4f4be371
+ACR-87565fee498e402ba99330b3e59c7173
+ACR-af9ea12e59bd4d98b9bb1a7828b7f00b
+ACR-63ace5e69441453da8a2b84649d0ecd7
+ACR-63e247462a224bcfa0efbe4dcebb3a59
+ACR-2e9cd2cb639048b78f111bacea255fe2
+ACR-1c9cbd81b67d429fa351568435eb59b2
+ACR-f71af63429ae45a29b96bdefee1ac013
  */
 package org.sonarsource.sonarlint.core.sync;
 
@@ -32,8 +32,8 @@ import org.springframework.context.ApplicationEventPublisher;
 
 import static java.util.stream.Collectors.toSet;
 
-/**
- * This service manages the synchronization of the SonarProject branches from the Sonar server in the local storage.
+/*ACR-1fde23ed228a4e16a3a744532fdb310b
+ACR-44b6a8847f28487b9a82af06083315e9
  */
 public class SonarProjectBranchesSynchronizationService {
   private static final SonarLintLogger LOG = SonarLintLogger.get();

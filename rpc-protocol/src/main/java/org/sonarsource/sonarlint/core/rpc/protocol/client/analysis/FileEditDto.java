@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3d0cc73b37b848efb835d28499a49c32
+ACR-00fa68d7120d4ad081e59318aaea76dc
+ACR-ad5cb117ffcb48d5a1715a9fdda3ed77
+ACR-3a45d399cc8744168e246152c5c25aed
+ACR-bf9283244e954b09a87e88d402c742ea
+ACR-f9a3fbfed23d452cb1e76ccca0a51b65
+ACR-0f490ec7b6dc43788978db835474c92f
+ACR-59034ac83f5e4db580694e8f34aec0c9
+ACR-41f02d4d800c4d2abe92eaac0ff8ca7b
+ACR-88d875dd58554018945db897b85bf4dd
+ACR-8e6f0ba8fa00466487a4e71c4a71e4bb
+ACR-c256e351cf88444ab19d3251555b3d31
+ACR-653befd65b1d4aff8786d1733e433029
+ACR-cffece5a74e84e1191e90fe256dbc698
+ACR-ac8fc951a0934b1799c59b3e56bfc978
+ACR-8c51986d49ac4e1188608317401e7de2
+ACR-71aac13c5b0e45c3a8fa2b513a8a8eda
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.analysis;
 
@@ -23,9 +23,9 @@ import java.net.URI;
 import java.util.List;
 import org.sonarsource.sonarlint.core.rpc.protocol.backend.analysis.AnalyzeFilesAndTrackParams;
 
-/**
- * @deprecated since 10.2, replaced by {@link org.sonarsource.sonarlint.core.rpc.protocol.client.issue.FileEditDto}
- * See {@link org.sonarsource.sonarlint.core.rpc.protocol.backend.analysis.AnalysisRpcService#analyzeFilesAndTrack(AnalyzeFilesAndTrackParams)}
+/*ACR-7ecccdfaeb8d4f4ea919dc0180393a55
+ACR-35394626def3460d9d2e44296cc7f633
+ACR-2ce20b87da1c4991bfbca7004852b5ee
  */
 public class FileEditDto {
   private final URI target;

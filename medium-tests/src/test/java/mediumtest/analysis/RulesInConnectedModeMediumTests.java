@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1eba241a8b4f4f089dd3822aa2d684d0
+ACR-ca79b2d4884948808d09bd1580b2f296
+ACR-5dbb703cec3b400eaa3a2d295c35cb8b
+ACR-d81a653b03234169a0c60c50ca0f867a
+ACR-7a73fe4c285c4cab8f91c9b6d6f8c648
+ACR-f2cecbd546f34a7bb739865ab3f80a1a
+ACR-e2b9be69b2a34c4c8889bbf69e0bb168
+ACR-6e2d54e6f2e744b685c29f11d48c2764
+ACR-73fade07ce984427862d8f6efb22bc6e
+ACR-ad3abda6859f48de959d0d5688e72759
+ACR-bf30fffac3e147e98d433dbc79f38588
+ACR-2bf7f903310442dba5d3d6022fa9532f
+ACR-34f94ff770374fadba7ccb2e46b36f70
+ACR-0c3df46f5d2b4bd9930e413c7e791421
+ACR-286d93f74b64452383acd80575301cd3
+ACR-f2e9bc524a9a4489ad36d6436afe8d55
+ACR-415675302dc84f37bb312c7f585d57e0
  */
 package mediumtest.analysis;
 
@@ -66,10 +66,10 @@ class RulesInConnectedModeMediumTests {
         .withProject(JAVA_MODULE_KEY, project -> project
           .withMainBranch("main")
           .withRuleSet("java", ruleSet -> ruleSet
-            // Emulate server returning a deprecated key for local analyzer
+            //ACR-88f3df6689534db8819ff3f61922b1af
             .withActiveRule("squid:S106", "BLOCKER")
             .withActiveRule("java:S3776", "BLOCKER", Map.of("blah", "blah"))
-            // Emulate server returning a deprecated template key
+            //ACR-c4eee3bbcab040e78328755e63f4dadf
             .withCustomActiveRule("squid:myCustomRule", "squid:S124", "MAJOR", Map.of("message", "Needs to be reviewed", "regularExpression", ".*REVIEW.*")))))
       .start(client);
 

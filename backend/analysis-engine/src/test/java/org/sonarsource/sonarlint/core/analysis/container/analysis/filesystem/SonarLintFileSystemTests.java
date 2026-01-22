@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3b204b76f86d40b199d3516b747ba32f
+ACR-391d976a07f2476194576f76ae89c924
+ACR-c5fec0c410ce4bc0b1c901bfc164b151
+ACR-746f21bf4fe6467c8d6e599fbc66b079
+ACR-d5f34621215f4d0d9f21c70accfb8d38
+ACR-8e0a02721b2a48e6b8a4c78f8e51579c
+ACR-fb888e1a99fe4c67885cec6a8a2ad013
+ACR-d8f8f1fe2c514ac6b0f4fd3c4af99801
+ACR-2b0d98f33ab24a3a8fe0cae5eba65295
+ACR-ab6eec72b4994d4abff6c2cfb7cce2d0
+ACR-1e91970947394183940394c8cf813bd8
+ACR-1b572d6ebfa64016bcb8ed57f623c26b
+ACR-35dcdc33fc0448cebe5eac41b7077f26
+ACR-bcd5215263414c16bb3c831c125bac94
+ACR-fe711b3cf2584d6d8639b088f18b5b67
+ACR-e0dca557541d4f43ac47fdc8b9d898a2
+ACR-52a873542f68407e8ef4b75aad23d8e0
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -72,10 +72,10 @@ class SonarLintFileSystemTests {
     inputFileCache.doAdd(new TestInputFileBuilder("src/Bar.java").setBaseDir(basedir).setLanguage(SonarLanguage.JAVA).build());
     inputFileCache.doAdd(new TestInputFileBuilder("src/Baz.java").setBaseDir(basedir).setLanguage(SonarLanguage.JAVA).build());
 
-    // no language
+    //ACR-48a9aef459374d67bc3a05ac0d09898d
     inputFileCache.doAdd(new TestInputFileBuilder("src/readme.txt").setBaseDir(basedir).build());
 
-    // needed for CFamily
+    //ACR-5683dca4784f4e9a9351915126592cd3
     assertThat(fs.inputFile(fs.predicates().is(inputFile.file()))).isNotNull();
 
     assertThat(fs.inputFile(fs.predicates().hasURI(new File(basedir.toFile(), "src/Bar.java").toURI()))).isNotNull();
@@ -116,7 +116,7 @@ class SonarLintFileSystemTests {
   void input_file_supports_non_indexed_predicates() {
     inputFileCache.doAdd(new TestInputFileBuilder("src/Bar.java").setLanguage(SonarLanguage.JAVA).build());
 
-    // it would fail if more than one java file
+    //ACR-740e5ff795f7435692a96b60ccf38669
     assertThat(fs.inputFile(fs.predicates().hasLanguage("java"))).isNotNull();
   }
 

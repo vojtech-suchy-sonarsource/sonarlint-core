@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dc32de12decf41dc9e980872af1b791e
+ACR-34e823aa11194f4692f67b68f21ac689
+ACR-b6a0fbee55aa43b3818879d81902f108
+ACR-555f8262daea4efaaa63295fcb3b86ba
+ACR-522ece22a00446179ae6a182e3272dc2
+ACR-0f9553d4bd4844e8b83bf7e4eff6cfa8
+ACR-c014640a3686404f880139fc79a14591
+ACR-939d7252c5ec451593c5bf43565f8f06
+ACR-a85e5bbebbab48d5901c7cac51c525a2
+ACR-77530a4bf25c48778b47dc817062de18
+ACR-d4e2adfad252490cbb545cd14fec2fc9
+ACR-551666f927ef4de688aa8b9a2fa02a95
+ACR-0fd4774f74fc4efeb253962f0c823433
+ACR-38e41fe2c80e42ddb055de82faf6c6c3
+ACR-30824a1bb3e5406dbc1deff1bc89ef3b
+ACR-559e059bffd84d33af4c6b409c015af1
+ACR-83c103a02b054dc691a3c204fd7765dc
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.common;
 
@@ -24,9 +24,9 @@ import java.util.function.Function;
 import org.eclipse.lsp4j.jsonrpc.validation.NonNull;
 
 /*
- * A class to use in place of {@link org.eclipse.lsp4j.jsonrpc.messages.Either} to stop depending on lsp4j types in API
- * and services.
- * See SLCORE-663 for details.
+ACR-b4422e5c849442f6a7cde7112d07bf7e
+ACR-6a6b2c1ea17540e98cc644789e6a33b5
+ACR-19b872d35cb14e1c923636ab84f1de7f
  */
 public class Either<L, R> {
 

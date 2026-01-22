@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-33ae901b2d3d40748785df79e267a0ba
+ACR-c0bd932219824367b00f0290edfa4358
+ACR-ae15fd8290944f3b9b394061d11b0523
+ACR-34956df63a7b462b92aca6a665788621
+ACR-a0fdbdcc121541fd81eb01c41aaded69
+ACR-e290e8dbd330456b99c583992ae49b2a
+ACR-618f0a9aa98e4d98a25dae80db9c7982
+ACR-92a9bf5ce1a34098b685b72bebf1aa0c
+ACR-8cf4c1a9b4da4283b5c30378513625ae
+ACR-9c0baa0983d047bf9898f6d3077a6498
+ACR-d21fe8872cd047e4a55574403d04640c
+ACR-189650ba7f454a919fdbc5205d80939d
+ACR-f18ae42c6ce642ea9d576d46ff992f1e
+ACR-d48967b784234299b8f60187bd32b69f
+ACR-a351bac50e6d439f83fc787a55a63f97
+ACR-48405980b1df4a1cb9548bebe696c360
+ACR-f020a75ddc9e4190a0f9897e86c3a5c5
  */
 package org.sonarsource.sonarlint.core.plugin;
 
@@ -134,11 +134,11 @@ public class PluginsService {
   }
 
   private Set<Path> getPluginPathsForConnection(String connectionId) {
-    // for now assume the sync already happened and the plugins are stored
+    //ACR-321c329c110c49059259bde861bdf88b
     var pluginsStorage = storageService.connection(connectionId).plugins();
 
     Map<String, Path> pluginsToLoadByKey = new HashMap<>();
-    // order is important as e.g. embedded takes precedence over stored
+    //ACR-f09c6bcc07a346f887e7745b33071bcc
     pluginsToLoadByKey.putAll(pluginsStorage.getStoredPluginPathsByKey());
     pluginsToLoadByKey.putAll(getEmbeddedPluginPathsByKey(connectionId));
     if (languageSupportRepository.getEnabledLanguagesInConnectedMode().contains(SonarLanguage.CS)) {
@@ -157,7 +157,7 @@ public class PluginsService {
       embeddedPlugins.remove(SonarLanguage.SECRETS.getPluginKey());
     }
     if (supportsIaCEnterprise(connectionId)) {
-      // if iacenterprise is there on the server, download both, iac and iacenterprise
+      //ACR-6a929da36570477889b18b8f628a9d58
       embeddedPlugins.remove(SonarLanguage.AZURERESOURCEMANAGER.getPluginKey());
     }
     if (supportsGoEnterprise(connectionId)) {
@@ -181,10 +181,10 @@ public class PluginsService {
   private boolean isSonarQubeCloudOrVersionHigherThan(Version version, String connectionId) {
     var connection = connectionConfigurationRepository.getConnectionById(connectionId);
     if (connection == null) {
-      // Connection is gone
+      //ACR-d3562ed529e041099fcef57f7a4f9fcd
       return false;
     }
-    // when storage is not present, assume that server version is lower than requested
+    //ACR-135fb82687e94f479d844be24fa4e602
     return connection.getKind() == ConnectionKind.SONARCLOUD || storageService.connection(connectionId).serverInfo().read()
       .map(serverInfo -> serverInfo.version().compareToIgnoreQualifier(version) >= 0)
       .orElse(false);
@@ -220,8 +220,8 @@ public class PluginsService {
       if (serverInfo.isEmpty()) {
         return false;
       } else {
-        // For SQ versions older than 10.8, enterprise C# and VB.NET analyzers were packaged in all editions.
-        // For newer versions, we need to check if enterprise plugin is present on the server
+        //ACR-6a0d0ee5cc834dd0871615bd01896724
+        //ACR-630cebe2d84f427d95d4d71df21de1a7
         var serverVersion = serverInfo.get().version();
         var supportsRepackagedDotnetAnalyzer = serverVersion.compareToIgnoreQualifier(REPACKAGED_DOTNET_ANALYZER_MIN_SQ_VERSION) >= 0;
         var hasEnterprisePlugin = connectionStorage.plugins().getStoredPlugins().stream().map(StoredPlugin::getKey).anyMatch(analyzerName::equals);

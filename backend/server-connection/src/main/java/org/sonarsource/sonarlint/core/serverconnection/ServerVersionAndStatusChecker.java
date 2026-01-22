@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-95b48e2133974d69994bd8650a7e795e
+ACR-4d40d4dc140a450a823ba846da488cdf
+ACR-6b78f1d887fc47cca90cb5d77e137c68
+ACR-f0ceb21c433e4f94998b3e2b50b22a19
+ACR-a17107c2ddc14d03b56423262a22bd4d
+ACR-939d01ec799e4ae4a336a41c87f9d881
+ACR-dd9b379a142642c5b798f135b2311e05
+ACR-7ffa1d3bda874cbba9f8212e292095ab
+ACR-1fca36abac7f4bcd89bad38e018a069c
+ACR-bac69ae4f4b84163949862b9f08f978f
+ACR-1a91357023d54ae898c2b5ebf8787d78
+ACR-70afd1a137a1470a930b3ff6d3e0b13d
+ACR-37154e01f2ae460ab5179e0692365f9f
+ACR-d6ccd55c91454279b68f6c35364e4121
+ACR-852501ce2aea4245acebf877c38bf0ea
+ACR-7713897e0dbc4a22b5704c0ea19e7654
+ACR-ed042c5a5b7d4bfd991be8719e0594ce
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -38,12 +38,12 @@ public class ServerVersionAndStatusChecker {
     this.isSonarCloud = serverApi.isSonarCloud();
   }
 
-  /**
-   * Checks SonarQube availability status and version against the minimum version supported by the core
-   * or only server availability status for SonarCloud
-   *
-   * @throws UnsupportedServerException if version &lt; minimum supported version
-   * @throws IllegalStateException      If server is not ready
+  /*ACR-31b9ab7c4d6d4f9db1fd48afd2b4dd6e
+ACR-e2e6c717107b46a78e39074a8c37f400
+ACR-63c587bb2cdb467a97b986ce6225e11e
+ACR-23344a0d9a6b4957a1ec595736b49be9
+ACR-2843bf8def8f41f4968af426146717b6
+ACR-5d28aaaea76a4f108f87ad7c2607ac6c
    */
   public void checkVersionAndStatus(SonarLintCancelMonitor cancelMonitor) {
     var serverStatus = systemApi.getStatus(cancelMonitor);

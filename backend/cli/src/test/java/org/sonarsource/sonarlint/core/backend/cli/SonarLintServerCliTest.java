@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Backend CLI
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-65a92aa4264a46c3940fc1189309640f
+ACR-ca63ff967b814cdba4c564f6e08ce49e
+ACR-005514a3405d4995b803c649ee169cb5
+ACR-4a0d9741fab744408df4a7764a2d3f6c
+ACR-624a5bc107e14ebfa4c8470e264625f9
+ACR-3d83260165a04e7bbe2d13e733bd79de
+ACR-bf24d81014b1489099f921c22c3258e2
+ACR-6974a8ddf8574ce0abae74557160ad70
+ACR-eed47f9c897442b8899ad20981916acf
+ACR-47ad52f450bb417096bcfd28ae19fcc1
+ACR-a7b1d4d693744eeeadbeec86b96c42b6
+ACR-70f3c04029994815b24697861e181dea
+ACR-44b25fcb1a93423f96a4dc7699c233d2
+ACR-6cef76c7334d420ba97974da51e168d9
+ACR-cd0f110766014b4dabc3b9e37eca052a
+ACR-836e7e7aeb994ae79b6087263e1942c4
+ACR-cbdfc173849c428098600967cd82c90f
  */
 package org.sonarsource.sonarlint.core.backend.cli;
 

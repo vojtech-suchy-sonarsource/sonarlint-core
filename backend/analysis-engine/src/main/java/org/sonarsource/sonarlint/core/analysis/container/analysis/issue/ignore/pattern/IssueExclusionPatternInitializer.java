@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8cbc48bbb4784573934aeef9f03db5e3
+ACR-8f90037bddef418999e058a9dd40d4d3
+ACR-eeb0ee8dd43b4ca89e806158af937481
+ACR-fdecc7dec20142fa9cbac4ba3cb1767e
+ACR-2d8ff579575440a6b543917f7659f752
+ACR-0d27df755a01438cb14ce4b082887fe8
+ACR-b9ea1b62e1a849649f6c99647b1ac1cd
+ACR-6fc9e0478dbe4121bbc577077315a1b8
+ACR-5bc6725b5e0646f8a71a0f96cf5cf1ab
+ACR-2074eca184d74058ba23534c40d55e96
+ACR-18246ec7ccae4c2a901791cf228e8410
+ACR-2f19d2e23c5d4980b80dbf73338f518f
+ACR-ad3a1b50f4334dec948cf9087ff97005
+ACR-953cec99401e42bf885c04f5ea017b4e
+ACR-bda2a718e22d4ea8a19ef96107eb9581
+ACR-a52b6cf7fd584bb18048b5d4e0d36232
+ACR-c31812eefc8640e4a522bf67d9e0edd5
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.issue.ignore.pattern;
 
@@ -58,7 +58,7 @@ public class IssueExclusionPatternInitializer extends AbstractPatternInitializer
   }
 
   private void loadFileContentPatterns() {
-    // Patterns Block
+    //ACR-3470cf19659b43b5a838b715345df71b
     blockPatterns = new ArrayList<>();
     for (String id : getSettings().getStringArray(PATTERNS_BLOCK_KEY)) {
       var propPrefix = PATTERNS_BLOCK_KEY + "." + id + ".";
@@ -68,13 +68,13 @@ public class IssueExclusionPatternInitializer extends AbstractPatternInitializer
         continue;
       }
       var endBlockRegexp = getSettings().get(propPrefix + END_BLOCK_REGEXP).orElse(null);
-      // As per configuration help, missing second field means: from start regexp to EOF
+      //ACR-2a08b15254db4bf99f4f74cf614530e4
       var pattern = new BlockIssuePattern(nullToEmpty(beginBlockRegexp), nullToEmpty(endBlockRegexp));
       blockPatterns.add(pattern);
     }
     blockPatterns = Collections.unmodifiableList(blockPatterns);
 
-    // Patterns All File
+    //ACR-5484c8df94d74092803add8f75d40588
     allFilePatterns = new ArrayList<>();
     for (String id : getSettings().getStringArray(PATTERNS_ALLFILE_KEY)) {
       var propPrefix = PATTERNS_ALLFILE_KEY + "." + id + ".";

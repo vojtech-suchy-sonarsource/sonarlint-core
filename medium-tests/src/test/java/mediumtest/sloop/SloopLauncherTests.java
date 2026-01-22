@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ef546ccf2a334eeb89d122fdc08bad93
+ACR-b0e771855648499ea4151b6a3a957dce
+ACR-de5233878c6a4172b5cd5185c13612fa
+ACR-7104dda766eb4e7dbe7f49ba292e6637
+ACR-dabcce8e8a0644b9b96200e21beb82ea
+ACR-573e65b07db24292a43c5f7f88f925d8
+ACR-faf75b94975f4cdd9050afaa360b9c49
+ACR-287ee0d8e51d48709d8ea3a98051627a
+ACR-1f9d71c672974951b7d64367785b9a7d
+ACR-0ef815eb9b4643b8bb7ad626cb81e39a
+ACR-7399cccbc27f4e769ee0d73d8e69058b
+ACR-22092d79058e4e1c8a5a4864a548dee3
+ACR-0c06d5be651b48d6812032eff519f7be
+ACR-383e7ef7a3de45e5a94f60de7e74f8b5
+ACR-157848c9c4184d6483de5f57ce437680
+ACR-569a9fcdbfc84971adedc5a1306318b0
+ACR-c25ccc985e99422f89da2211758fd9d1
  */
 package mediumtest.sloop;
 
@@ -153,7 +153,7 @@ class SloopLauncherTests {
     shutdownRequested = true;
     sloop.shutdown().join();
 
-    // it can take some time for the process to finish
+    //ACR-372bbedd250340f0ae20d4e7781f6c3e
     await().atMost(Duration.ofSeconds(30)).untilAsserted(() -> assertThat(exitValue).isZero());
   }
 

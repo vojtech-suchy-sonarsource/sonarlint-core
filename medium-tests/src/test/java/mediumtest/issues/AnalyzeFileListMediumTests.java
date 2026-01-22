@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-62d6c376c02d416185cb36094e998497
+ACR-12eb722a97cc44eb843b067a693b6911
+ACR-43a9989673274a6f8e86f01b2ae2cc93
+ACR-82d9cddc301646d49fa21c8c1b0b1488
+ACR-c04966b6014d43a6bff0c09818c0fde4
+ACR-12d53afa11be4003b03b20b1caa9c761
+ACR-ad2a21dfe4e24dc48acfe9410250f036
+ACR-dc9409c353ca46989226a9a940b0ffff
+ACR-f84ca418948a4d19bec3cc33eb1ead32
+ACR-e1e54a5ff44d4ac980f3397db4878ec1
+ACR-07062a556b294fb7a8bef1f3fcc24479
+ACR-ace366c35d1c46daad43240715730260
+ACR-129328c062cd496dafa9a3261fe69066
+ACR-55a4650d5e254506a3e24c01963b3184
+ACR-d790b5461fff467cab4df263059c6d6b
+ACR-bfd01f45e74e45b59d762837a057375c
+ACR-323b0356d1184a198f3284b109c0f84e
  */
 package mediumtest.issues;
 
@@ -280,7 +280,7 @@ class AnalyzeFileListMediumTests {
       .POST(HttpRequest.BodyPublishers.ofString(requestBody))
       .build();
 
-    // Print request sent
+    //ACR-2dba7f852ad741a18ee6c10c769bc651
     System.out.println("Sending request: " + request);
     System.out.println("Sending request to: " + request.uri());
     System.out.println("Request body sent: " + requestBody);

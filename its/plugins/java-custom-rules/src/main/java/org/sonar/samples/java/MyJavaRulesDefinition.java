@@ -1,21 +1,21 @@
 /*
- * Java Custom Rules Plugin
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c4cc567a48064350b3c9ca4d3cc88b1a
+ACR-76a6227869d54e9ca1e3cffcec4c5767
+ACR-44e8393e583046e49ce15b46a8144ad1
+ACR-02a7f48ef58f488482a978129ac70128
+ACR-6cf38e7a481c4d56aa4bf405b96058c0
+ACR-5543f24b69ee4b328f4fd22d590aaa4f
+ACR-17530ea52ef34855b39206390c11e047
+ACR-147b1a3649874cb58e556823c5adb19f
+ACR-6f9fae0811754f97a207a93b610b4a9b
+ACR-1d122accafca4fbdb868efe23ad5229b
+ACR-5df3de5ca5594e799367be30adc93467
+ACR-e3e5bdfd84154f5d876250fcf52a9d1a
+ACR-d54bfe0f1f4b44e8865f7e9526e7ffca
+ACR-813b97c19dd64117895a9b94dc4ba184
+ACR-36ded4e4f06f4e5aa7955f115ee510aa
+ACR-a84753fb894640098758d4d777aaae35
+ACR-808421d01307479f829dec1f3440617b
  */
 package org.sonar.samples.java;
 
@@ -31,26 +31,26 @@ import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.utils.Version;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
-/**
- * Declare rule metadata in server repository of rules.
- * That allows to list the rules in the page "Rules".
+/*ACR-83da892cf54e4c7c8ba40714866ae591
+ACR-524534bb963f4da196d1bf43f804980c
+ACR-17655f14ae954e869bef456bb8731fba
  */
 public class MyJavaRulesDefinition implements RulesDefinition {
 
-  // don't change that because the path is hard coded in CheckVerifier
+  //ACR-0b5e798035854c10b70cc9d8303b30c9
   private static final String RESOURCE_BASE_PATH = "org/sonar/l10n/java/rules/java";
 
   public static final String REPOSITORY_KEY = "mycompany-java";
 
-  // Add the rule keys of the rules which need to be considered as template-rules
+  //ACR-c3970e8e935c4bdb9de0710dea3bdff4
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
   @Override
   public void define(Context context) {
     NewRepository repository = context.createRepository(REPOSITORY_KEY, "java").setName("MyCompany Custom Repository");
 
-    // The runtime version shouldn't matter. The analyzer is supposed to use it to change behavior based on its runtime version.
-    // But normally, they don't do it in the SonarLint context.
+    //ACR-509d04e534234e0aa9989dc2b6b0fc64
+    //ACR-0eceac7554084fb998097444d6488507
     RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, getSonarLintRuntime(Version.parse("10.3.0")));
 
     ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));

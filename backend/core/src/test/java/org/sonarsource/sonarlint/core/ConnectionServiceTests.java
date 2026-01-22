@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c16da2e6f1214c43876ff2467cd5204e
+ACR-28cbc7f88a7a4c36827a8506a00a5a2c
+ACR-a39c4b0d914c45019261425a6774831d
+ACR-60d0a739194d4613a24cb61beabc2cc8
+ACR-da5318dc2c15450bafbe6851a1f520a2
+ACR-b8eb54975dd24647997ac73311a5dbe5
+ACR-1a389325a57a43efb791d9d9bf875cdc
+ACR-393681622b184defa1b3a773d5febfd1
+ACR-fab81104f8d94716ba0109bba4cc0a25
+ACR-ab8f03ad26714885a51cbf728f38ff2a
+ACR-2d062be664a049c98a1f5d87b886edf7
+ACR-4df2e37a3f6f4e038aa5cb420f782b1a
+ACR-5da1220e6ecf4566a03c569da6f14b13
+ACR-33cdea13033349368e45d5a8381168d8
+ACR-3206d66078bb4827b1fd1a0aa645cba4
+ACR-d37747e09ce349d2a5551bca8a29e28c
+ACR-fba43be7fb2347f284d78f693ea4eb4c
  */
 package org.sonarsource.sonarlint.core;
 
@@ -202,7 +202,7 @@ class ConnectionServiceTests {
     var mockedRepo = mock(ConnectionConfigurationRepository.class);
     underTest = new ConnectionService(eventPublisher, mockedRepo, List.of(), List.of(), SonarCloudActiveEnvironment.prod(), null, null);
 
-    // Emulate a race condition on the repository: the connection is gone between get and remove
+    //ACR-e8bef8e4fffc4e84991b6e133ea54dfe
     when(mockedRepo.getConnectionsById()).thenReturn(Map.of("id", new SonarQubeConnectionConfiguration("id", "http://foo", true)));
     when(mockedRepo.remove("id")).thenReturn(null);
 
@@ -235,7 +235,7 @@ class ConnectionServiceTests {
     var mockedRepo = mock(ConnectionConfigurationRepository.class);
     underTest = new ConnectionService(eventPublisher, mockedRepo, List.of(), List.of(), SonarCloudActiveEnvironment.prod(), null, null);
 
-    // Emulate a race condition on the repository: the connection is gone between get and add
+    //ACR-9a9587d26232432aa277251b12cf18ad
     when(mockedRepo.getConnectionsById()).thenReturn(Map.of(SQ_DTO_2.getConnectionId(), new SonarQubeConnectionConfiguration(SQ_DTO_2.getConnectionId(), "http://foo", true)));
     when(mockedRepo.addOrReplace(any())).thenReturn(null);
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-376d96cb378b48f0b3af10e08b8dd75a
+ACR-177cb1c5ceda4cbb9743cda0b531286f
+ACR-f495119cb7414b3995610f74b9088d55
+ACR-eb03e0eec80d4299ad58e13089cf8448
+ACR-38d92670ecba448487b48579ca8c7253
+ACR-b5b9896953334fba88af8274a68271f6
+ACR-147626028ab24d45bf3dd41afcd2b5dc
+ACR-c7f7f3770b6543e681951857d27d1e3c
+ACR-d6cf3b1079da4794b43cc780f146d746
+ACR-53cff16762c1435c8df314d6c260974e
+ACR-b1b705e6b0794579a9c03cb1e10454e2
+ACR-e4cf8e2a60ac4d2b9591e702059d7f08
+ACR-711e54a906e74c9f9b702d9e3d9c2fad
+ACR-a49d2e01a92b48f9b78b57aad5333f83
+ACR-9eeed610de084c7fbfaf76cf6be4a2fb
+ACR-1f7d760ac239468f90c9c5f7fc392bf8
+ACR-e606a1ca2f134bcf8f3aca3e1fdf67fb
  */
 package org.sonarsource.sonarlint.core.analysis;
 

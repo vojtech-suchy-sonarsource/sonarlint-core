@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-50c7524211ef40cdba726ed4526f10c1
+ACR-11190e42de884fafb4cc6db1dea88793
+ACR-4902a480fd024e8f991108bb7c9d3d19
+ACR-73d2237223d0460991d64233bbc13d70
+ACR-f48c015cd18a49579fcb5f42c6a1b928
+ACR-fa8aa0a16d544dd6b66012e0e9572b58
+ACR-4c03b7f0e83d4a2695da16ed51d1c3b0
+ACR-800a442ae40846f88deb80c160d32bd6
+ACR-eaffb931ab9b4c5c9fb3c722a3bb74af
+ACR-2428a48b17644cca8a105fc714dcf751
+ACR-1c4766eb5d97431d8e215b914dce5c1a
+ACR-157158b03cb04734a2b63d93813cb2c4
+ACR-c0cf25f3ee7a415eabec066a0c625931
+ACR-84ddc794121d4ebc94a94716c716bd2f
+ACR-75a55326c47842cf9435f43d6dae5b24
+ACR-eb8eb911dbbd4d9994ac38ad259a19fa
+ACR-04522e575b4248bbafab788b085055cf
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.hotspot;
 
@@ -30,66 +30,66 @@ public interface HotspotRpcService {
   @JsonNotification
   void openHotspotInBrowser(OpenHotspotInBrowserParams params);
 
-  /**
-   * <p>Request if the local detection of hotspots is supported. It is the case when the configuration scope provided as a parameter is bound.</p>
-   * <p>
-   * If the configuration scope has no effective binding, local detection is not supported. The corresponding reason will be returned in the response.
-   * </p>
-   * <p>
-   * This method will fail if:
-   * <ul>
-   *   <li>the provided configuration scope is unknown</li>
-   *   <li>the configuration scope is bound to an unknown connection</li>
-   * </ul>
-   * In those cases, a failed future will be returned.
-   * </p>
+  /*ACR-ec6875272e1f4fb490f2d64cacdee8cd
+ACR-43b2106b30e144a8bb0b06b98fc4486b
+ACR-3030f469d56046a88c80cc33210a0031
+ACR-8e6e2b9d68c84297a68f0936d9694ca7
+ACR-5451568316284d60bf423d289e1e6420
+ACR-11c4bf0e73244947a34b7bd97e1e8ce1
+ACR-25dc3af65a2c452093172508eaa39dce
+ACR-eb226dcb0e174740b275dbabd3d33441
+ACR-23d566dcd6944aa79c4de5e3a076e867
+ACR-ed91ea16e2b643f398a7007cc2708868
+ACR-0b13f4df945d4311a23d832f259d0eb0
+ACR-941c7d5550b746fd9ec69e72ce3e4411
+ACR-d21daa764258441daf52107ae2f56735
    */
   @JsonRequest
   CompletableFuture<CheckLocalDetectionSupportedResponse> checkLocalDetectionSupported(CheckLocalDetectionSupportedParams params);
 
-  /**
-   * Checks if the user has permission to change the hotspot review status.
-   * Also returns the list of allowed statuses.The list differs between SonarQube and SonarCloud, so different values will be returned based on the connectionId:
-   * <ul>
-   *   <li>For SonarCloud, the allowed statuses are {@link HotspotStatus#TO_REVIEW}, {@link HotspotStatus#SAFE} and {@link HotspotStatus#FIXED}</li>
-   *   <li>For SonarQube, on top of the previous ones, the {@link HotspotStatus#ACKNOWLEDGED} status is also allowed</li>
-   * </ul>
-   * <p>
-   * This method will fail if:
-   * <ul>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   *   <li>the connectionId provided as a parameter is unknown</li>
-   * </ul>
-   * In those cases, a failed future will be returned.
-   * </p>
+  /*ACR-eeb72fe797f24c298934c83a61441c77
+ACR-40726af04a63476ebb98a795b3cbfc81
+ACR-1e14c026c4154bca9937d98857c20d0b
+ACR-49d842a753484475bd90f337bec3ad01
+ACR-42df7b0a0f64415180e7d98947f84560
+ACR-97776ef638a34dc58eefd230fcbc5882
+ACR-2ddba99962674de9aa7a451856cba60f
+ACR-b501c6b212ec47108bca8e287e13bfab
+ACR-dc6ce9abc10742b3b4fa03b26c3f5c9c
+ACR-82393988df474f5f8cc154b1862cad72
+ACR-81b843eb86a04c8cb9524872c3250c29
+ACR-8cb5d02689694f89b25ea68e982ad498
+ACR-1f4b2e16916144d9b77a5b24725cfd9c
+ACR-0ebf95f686a64d0e8e83999b128eac99
+ACR-e4219980c1ce4e0faf6f4747b947beee
    */
   @JsonRequest
   CompletableFuture<CheckStatusChangePermittedResponse> checkStatusChangePermitted(CheckStatusChangePermittedParams params);
 
-  /**
-   * <p>This method achieves several things:
-   * <ul>
-   *   <li>Changes the hotspot status on the SonarQube/SonarCloud bound to the provided configuration scope</li>
-   *   <li>Updates the hotspot status in the local storage</li>
-   *   <li>Increments the 'hotspot.status_changed_count' counter for telemetry</li>
-   * </ul>
-   * </p>
-   * <p>
-   * This method will fail if:
-   * <ul>
-   *   <li>there is a communication problem with the server: network outage, server is down, unauthorized</li>
-   * </ul>
-   * In those cases, a failed future will be returned.
-   * </p>
-   * <p>
-   * This method will silently deal with the following conditions:
-   * <ul>
-   *   <li>the provided configuration scope ID is unknown</li>
-   *   <li>the connection bound to the configuration scope is unknown</li>
-   *   <li>the hotspotKey is not found in the local storage</li>
-   * </ul>
-   * In those cases, a completed future will be returned.
-   * </p>
+  /*ACR-1203d4b8f8e14b7c8c8e15a8c6ea9ace
+ACR-d16fb6c832b6485e8f8c169c9ae8cd7b
+ACR-4426aea0353346b199a6d43cea3a2806
+ACR-789cb67ca8d54c44adc5baf8c22b6ec1
+ACR-1d2283b1ab924145893c9814634a1ad3
+ACR-d1c81da6a9ff40c98c294505ee619e40
+ACR-2768c6836a78482899849207c6089670
+ACR-97549749c4c84ff3a9b82ad1a2a53151
+ACR-6e73d2ab54384988a9a71640234c1794
+ACR-96f989b4c22841799bff92685740ac09
+ACR-64e96f35c2ec4690a979ac9fcde7a1e3
+ACR-4848e3b8c14743cb8db2dd5622acbed7
+ACR-3ae001ce31ae413880ea1e4866f80675
+ACR-510b8cb3b2674a77af788c54118bd292
+ACR-3331a97c79ed43369cac7d7bfacd6e01
+ACR-69a1810eaaff465cb18a915b8bd3068c
+ACR-29303b06868046578a8f7b0f3bc38361
+ACR-66a944cf2e894e2d99fdc41c3bc7c3d6
+ACR-96bb2659f0704beca0497849995f3ae6
+ACR-e1c4fefa47f746979b4667a573ec9f2a
+ACR-a044297380ae4a91be9915c729bb4681
+ACR-22cf866304dc44f5952174f731f17854
+ACR-c2e86cc2f3de449db47a7104d53e808f
+ACR-edfe3d1f9f284484a69f8a365ba3cbc9
    */
   @JsonRequest
   CompletableFuture<Void> changeStatus(ChangeHotspotStatusParams params);

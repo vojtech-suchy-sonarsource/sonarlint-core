@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1fe8b55ba37942d190debd09c3b2b6f9
+ACR-805deec6a903418983631e048d982c87
+ACR-fd71b4a045b64138af6ba6b564f216e9
+ACR-4ad58f349c994aef99b3dab7485b0540
+ACR-dfb1b1c4745f456e9a20fd33cd5e8bf7
+ACR-d9d2c35e394c47b294e144d7ec744cec
+ACR-23d8c0214dc44591ae79e2d895624623
+ACR-5814552ab70d4f8e95564ab488095284
+ACR-988350ad9a30421eabaa695095a3c529
+ACR-4eb180c320db486dbbdafadca23b7419
+ACR-4d80bb9951cb42a19343e264d113d742
+ACR-ed57c7cf7ef344a5944bb08dc05e74ee
+ACR-dfd13ee14026474bb7ceeccf3c9ab603
+ACR-5af40f333e3947beb3c18b766f69a896
+ACR-0b2687134cf94eaa928a64ee31b3b32c
+ACR-1f18906a00224ca4ab7da793133204ca
+ACR-061e701232cf4b43a98c5d41372b9783
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi.noop;
 
@@ -26,24 +26,24 @@ public class NoOpNewCoverage implements NewCoverage {
 
   @Override
   public NewCoverage onFile(InputFile inputFile) {
-    // no op
+    //ACR-f22f21fe73bb43738771ae30fddd6d76
     return this;
   }
 
   @Override
   public NewCoverage lineHits(int line, int hits) {
-    // no op
+    //ACR-587d6911a8a84f1fa94442dd7f238f02
     return this;
   }
 
   @Override
   public NewCoverage conditions(int line, int conditions, int coveredConditions) {
-    // no op
+    //ACR-fcca0528106341eb8f3958eb436ff7d4
     return this;
   }
 
   @Override
   public void save() {
-    // no op
+    //ACR-7402a5a1db6241b48681faadd91c17af
   }
 }

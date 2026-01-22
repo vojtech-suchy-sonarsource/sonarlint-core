@@ -1,28 +1,28 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7c4edc8af64645e69bcb48e184a7d5c6
+ACR-e8c954e8ea894c12a9fb796ba67c17f5
+ACR-5d7ac5e41f814103995a5d37d2a56586
+ACR-920bff58d3ad4e2e89c6aed7c1e9b3ef
+ACR-c224c050366644149c79bce6699d95b3
+ACR-027ec4f32d734b37878cfaae19dddd7f
+ACR-b8285af0430b4803b8d0d4cc9d6dd658
+ACR-d8559a187c9146e1b916fca45471a2ec
+ACR-4c99be76002c4ae5a1477795ac91edcf
+ACR-4bef94611fbe4363819c3b305be7c382
+ACR-5590bf19ebc04a469283fdc9b9af62be
+ACR-0fad2702d8584803bb7386ad0415fc66
+ACR-bc6ac75a182d44a69e33d40d940cfe7f
+ACR-577cd861250d44f9bcdd7eca1390ce78
+ACR-4d4a9f0c50064e3398353727db19982b
+ACR-9411e8aa9bec459e80d33cf3668e5ad5
+ACR-194e1c6927e84ba49ca58478b83de17c
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.rules;
 
 public enum RuleParamType {
 
-  /**
-   * Keep in sync with constants in org.sonar.api.server.rule.RuleParamType
+  /*ACR-efb61513d20546a6922f52b948863443
+ACR-536fe8eae1504a5fbf42615d446fa636
    */
   STRING, TEXT, BOOLEAN, INTEGER, FLOAT
 

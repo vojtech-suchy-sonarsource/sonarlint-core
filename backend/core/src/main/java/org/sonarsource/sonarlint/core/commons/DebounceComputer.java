@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e44e79b38a9b4dc98ff5d3def20b8df9
+ACR-ce88b8787989451d91b4a38261009458
+ACR-86f3aee5474a4b5e879048e969346afe
+ACR-2201214c97ab4205a30eb9ca4372e8cf
+ACR-fe2565568c2d4bbd927291a95b6104fe
+ACR-551dc687b8b74378996eeaae6f2eebc8
+ACR-16cb5444e401432da2810c4dff46608e
+ACR-f319f0a1710e4cc0b16d7add0afee20e
+ACR-dc404d63fbe447ec912cac9fcf4658d5
+ACR-4208828c61f144368593a1b37ffd1448
+ACR-a5f2328f7ba747f6a17819978a147112
+ACR-95a940e1f9c941a5ba6d313ca5f6578f
+ACR-c657f4cd3d2e4dffad899c38f51351a6
+ACR-68397d3fe50a4c489ab6dc0a9f62dca5
+ACR-ab48cff90c8f4e3e9cecfda4d0b75d0d
+ACR-d81fb5945fb147a4b6087f5c0c1fd293
+ACR-8a5578ca2ec94441b85a3ba39020013e
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -27,10 +27,10 @@ import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.commons.progress.ExecutorServiceShutdownWatchable;
 import org.sonarsource.sonarlint.core.commons.progress.SonarLintCancelMonitor;
 
-/**
- * The goal of this class is to debounce calls to a function that computes a value. Multiple threads can be blocked on the {@link #get()} method, waiting for the end of the computation.
- * If a {@link #scheduleComputationAsync()} is called while a computation is in progress, an attempt will be made to cancel the current computation, and a new computation will be scheduled.
- * Last feature: it is possible to register a listener that will be notified only after a successful computation (not after a cancellation).
+/*ACR-505c0d96f7dc4c15bb6e2597a181f896
+ACR-f22ab175d9444ebcbbdd3072032ba150
+ACR-2de97d87af134b93b431477c5d6e3460
+ACR-1a2ab5023db1430984c3734493a4f298
  */
 class DebounceComputer<V> {
   private final Function<SonarLintCancelMonitor, V> valueComputer;
@@ -40,7 +40,7 @@ class DebounceComputer<V> {
   private CompletableFuture<V> valueFuture = new CompletableFuture<>();
   @Nullable
   private CompletableFuture<V> computeFuture;
-  // The last computed value (a compute task went to completion without cancellation). Can be null if the compute task failed.
+  //ACR-3f40ffb16b494863a899945338eeef93
   @Nullable
   private V value;
   private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
@@ -69,7 +69,7 @@ class DebounceComputer<V> {
         try {
           computeFuture.join();
         } catch (Exception ignore) {
-          // expected Cancellation exception, but we can ignore any other error since we are going to compute a new value anyway
+          //ACR-30cd33e118504d2e8bdec3da7b670559
         }
         computeFuture = null;
       }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-72037888c41649ceb6ea65b815833576
+ACR-609fc616d7b64ffb9465be2982e03f87
+ACR-8756eb8e65244009bc44634ca1e0a44d
+ACR-57c1da0dcdcd40bdb550b400fda036f5
+ACR-bc9e74f749ec448bb0d22cc2d406a5ce
+ACR-ccf10a68dd394debad2df765f5be1987
+ACR-86b6f23c61d94fd3913e7935e21429bd
+ACR-6521bed1f9f04b449155a70a862f26af
+ACR-30deeb338d09464984e7b071e13ce9bf
+ACR-2b7b1b132e894241887175da94626bf0
+ACR-ab0060a836f443079b50262f9ba8105c
+ACR-557ba91e6a164a869a7ef94243255c01
+ACR-d00780cdba0740bda2752ebe863e2a5b
+ACR-2b7dee110b51483a88d5ba8840b41485
+ACR-44e4f363966045a98bac1a700a4d518a
+ACR-d8fc6fccdf4d49a5b526de753e39a3ff
+ACR-e9c3f826baa746d4abdcfd45dfab6d68
  */
 package org.sonarsource.sonarlint.core.branch;
 
@@ -87,20 +87,20 @@ class SonarProjectBranchTrackingServiceTests {
 
     var firstFuture = new CompletableFuture<MatchSonarProjectBranchResponse>();
     when(sonarLintRpcClient.matchSonarProjectBranch(any()))
-      // Emulate a long response for the first request
+      //ACR-247daec9e8714b9fb5d159b32f72ac5e
       .thenReturn(firstFuture)
       .thenReturn(CompletableFuture.completedFuture(new MatchSonarProjectBranchResponse("feature")));
 
-    // This should queue a first branch matching
+    //ACR-bf0ba3d2dfc54c84b8aa5b16936d2ff1
     underTest.onConfigurationScopesAdded(new ConfigurationScopesAddedWithBindingEvent(Set.of(
       new ConfigurationScopeWithBinding(
         new ConfigurationScope(CONFIG_SCOPE_ID, null, true, "scope"),
         BindingConfiguration.noBinding()
       ))));
-    // Wait for the RPC client to be called
+    //ACR-e8db0c5c3f2243d5ba5110ac3c39fbbf
     verify(sonarLintRpcClient, timeout(1000)).matchSonarProjectBranch(any());
 
-    // This should cancel the previous branch matching, and queue a new one
+    //ACR-f4b9cc76f7284e99aa36b1cf74f57672
     underTest.didVcsRepositoryChange(CONFIG_SCOPE_ID);
 
     assertThat(underTest.awaitEffectiveSonarProjectBranch(CONFIG_SCOPE_ID)).contains("feature");
@@ -119,13 +119,13 @@ class SonarProjectBranchTrackingServiceTests {
     when(sonarLintRpcClient.matchSonarProjectBranch(any()))
       .thenReturn(rpcFuture);
 
-    // This should queue a first branch matching
+    //ACR-107e366b8ab242f9b6d2144490fe7b4c
     underTest.onConfigurationScopesAdded(new ConfigurationScopesAddedWithBindingEvent(Set.of(
       new ConfigurationScopeWithBinding(
         new ConfigurationScope(CONFIG_SCOPE_ID, null, true, "scope"),
         BindingConfiguration.noBinding()
       ))));
-    // Wait for the RPC client to be called
+    //ACR-c6aba7cd9f4f49c8b0c0a5509b4c60d0
     verify(sonarLintRpcClient, timeout(1000)).matchSonarProjectBranch(any());
 
     rpcFuture.completeExceptionally(new RuntimeException("Unexpected error"));

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5b10c423ff264133a818e719137086bf
+ACR-a998e239d8b04abc856e114322c6e90b
+ACR-3b98c1a2b3f14f19ae6c32ac9a41689e
+ACR-1959ad5cfa60444f8560e341fdbc6313
+ACR-2fc90417f63f47ed99795dcb96cfe70a
+ACR-e5f8ddd2c9834564a7337fbef2e16242
+ACR-ee8e2af4c9f84911acb5e4d4aba611ca
+ACR-1b7e21a5bab948f6b0547e96290e1300
+ACR-115bc764c0ac423fa4131229c8900eec
+ACR-f8687a304e7741fc9cbf67b2aa41d3dc
+ACR-6d889e23622a4d9f9eed49839d177c14
+ACR-db1b7f218b7f4394889289643bf4222d
+ACR-ae6f95e4561f4191868e3affbcd4a79b
+ACR-0ab345ffab794f0c89d419d69b6d5199
+ACR-edc5dfd42e724fb0817f22399d198efe
+ACR-8d0dacaa4b1f4766a4e7bababee297e8
+ACR-95115a5e559f4dd4bd137db5ee450553
  */
 package mediumtest.taint.vulnerabilities;
 
@@ -200,7 +200,7 @@ class TaintVulnerabilitiesMediumTests {
       .withBackendCapability(FULL_SYNCHRONIZATION)
       .start();
     await().atMost(Duration.ofSeconds(2)).untilAsserted(() -> assertThat(listAllTaintVulnerabilities(backend, "configScopeId")).isNotEmpty());
-    // switch server to simulate a new dataset. Not ideal, should be handled differently
+    //ACR-393f8732aac846aa9759982adf40b256
     backend.getConnectionService()
       .didUpdateConnections(new DidUpdateConnectionsParams(List.of(new SonarQubeConnectionConfigurationDto("connectionId", serverWithAnotherTaint.baseUrl(), true)), List.of()));
 

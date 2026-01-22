@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5613dd11873b4b69b32b596bd68843cd
+ACR-55c9c077a2f146f885e94574cb48a66a
+ACR-74f392ec284a41ba8c26421c766643af
+ACR-2a2ffba628a442f283be2f3836b4b410
+ACR-0ebc6f2f230a4ecf990f4e21059d94ea
+ACR-0240c2b9bcc143f4ac6c6c22c172e5fe
+ACR-267ffbd433a44861a001c5e7ecc5d01d
+ACR-11e9c9b3c2ad49ef8445869ec2736b3b
+ACR-a6699781dfa4493c8d8052ed05e62225
+ACR-27ff265da37e4dbea060efcd71d84325
+ACR-86249ca000be486f95e9ef58678f2572
+ACR-3a32af32422444bc89316fb5eae6f3df
+ACR-9138f11f66fd4f2fb47d53bd60f65437
+ACR-0d643a741bb64010a3d6573525efecdc
+ACR-1e10630882ad41828f909186e6689fa5
+ACR-623925314fb04e509ffce1442242782d
+ACR-01e74042bb0544b78f828127fbd94c68
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 

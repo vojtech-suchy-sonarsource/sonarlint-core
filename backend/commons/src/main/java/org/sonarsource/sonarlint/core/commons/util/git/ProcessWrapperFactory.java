@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d13f236f04c0442c9191225a9d5430b3
+ACR-4bae242b718343a3a533caa75410cc59
+ACR-72b4562ad33a4fcf931dd9f70adf1744
+ACR-ad35c88650b649058bc8363a5dff00d2
+ACR-79118c1833b6414faa477dae6d64555b
+ACR-869d2c1acf49438094da316d68bb4d04
+ACR-95818d7dfe8840e18ab5016b41756915
+ACR-b7976372ef57494082acf568a5d2ce77
+ACR-9bdb0765c55141d599777c734789f98b
+ACR-b575757e833643ac81e93d0ac4cfa1d8
+ACR-ded634ac35e543b3a066a027237c6d00
+ACR-74b0bd87266547358042191a7ffd2188
+ACR-f2d84816dbe6447d90ccc8eee3044638
+ACR-9762c1560d284b12a0c68a126b8b1033
+ACR-74d0267c67834c75bd40aee8342c4c23
+ACR-7c5ae9803330442ea22095b02b55f4c7
+ACR-b0d55a0fb4ba463e8f2a45547db07a62
  */
 package org.sonarsource.sonarlint.core.commons.util.git;
 
@@ -36,7 +36,7 @@ public class ProcessWrapperFactory {
   private static final SonarLintLogger LOG = SonarLintLogger.get();
 
   public ProcessWrapperFactory() {
-    // nothing to do
+    //ACR-faa5267b6d5b47a49a106f111ebbd0ef
   }
 
   public ProcessWrapper create(@Nullable Path baseDir, Consumer<String> lineConsumer, String... command) {

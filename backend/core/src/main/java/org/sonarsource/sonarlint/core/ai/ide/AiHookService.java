@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-95badf0c714449b2bbeb4aa0569f1b3d
+ACR-a26d7ae4cbc94cccb6c0237fe8f1aa28
+ACR-1383ea32fdfc4df6ae5583096ac48ac0
+ACR-0dc125bf617c4b47b00e86884420e190
+ACR-df52493ee7ae4727bf12e0b9d3740151
+ACR-7c2469abff864fa59e49e7e3528296eb
+ACR-e5668a2e821f449cbf50623bb3dbd69f
+ACR-66d03c1c69084e8583cb56b062d5fc67
+ACR-5a6a6452d2b44bf4a6d2dace4036ee20
+ACR-b6c6070f8a424f7fb64f1a51846547fa
+ACR-4f2244725d9f4fdba08e9f2b96fd858b
+ACR-9d83253c74ad4e17a26e9e50a9c93405
+ACR-f683b8d6ce2444a19785360aca88d67f
+ACR-7049056199744294baad9fbaf6baf3e0
+ACR-76db0d7bc419477aa606c05617880ebb
+ACR-b3cc6e2fc7e34dc698f34b0c87d06a73
+ACR-70330a5e630044689007fa564168dba8
  */
 package org.sonarsource.sonarlint.core.ai.ide;
 
@@ -54,7 +54,7 @@ public class AiHookService {
     this(embeddedServer, telemetryService, new ExecutableLocator());
   }
 
-  // For testing
+  //ACR-c469b090e0d7479287b45baeadc0f96f
   AiHookService(EmbeddedServer embeddedServer, TelemetryService telemetryService, ExecutableLocator executableLocator) {
     this.embeddedServer = embeddedServer;
     this.telemetryService = telemetryService;

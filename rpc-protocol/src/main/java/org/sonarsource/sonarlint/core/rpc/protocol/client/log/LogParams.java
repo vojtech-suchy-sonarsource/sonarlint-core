@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-46cfc6d974484a249536e36027699bea
+ACR-64e79acd58ca4f24804dc6645ef5fecf
+ACR-1abe95ba09ca46a096ee1544c1261312
+ACR-2ae2e68d3b2c4ebda3548f760715b8ec
+ACR-a46db01bc169498eb2c045e015021b46
+ACR-97868bbf398a4913b49aecf113597708
+ACR-dd2e02948c1946bfb88767198a80dd52
+ACR-e0fb4b380dc642529151f2ed6f35840e
+ACR-3a95eb2875744edcb890cc2f37a4f25b
+ACR-89e0e27903214b58963f8f1ca6959172
+ACR-307ddd0a4386479fb6247a209e5b5dc2
+ACR-52090107c5d74290b73822932808a396
+ACR-72914aa126384455b0b3e63e164717cc
+ACR-56152aa2f1784e4cb6e9d282177566f3
+ACR-ea03795f18b449e59fd7a541387b1d1b
+ACR-fe29485e02864b0abb40abe87f69bd92
+ACR-4875156326ff46878c9c98305d1f91ab
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.client.log;
 
@@ -62,9 +62,9 @@ public class LogParams {
     return message;
   }
 
-  /**
-   * Some logs are specific to a certain config scope.
-   * This can be used to display the log in the appropriate window, for IDEs that support multiple windows in the same instance (like IntelliJ)
+  /*ACR-8a2cbe64b8c344878d8f7632a3f78129
+ACR-9c9493dd1d4c4b06b9250a71e4b01934
+ACR-64819b327c17426e8d32526534f9dfdc
    */
   @CheckForNull
   public String getConfigScopeId() {

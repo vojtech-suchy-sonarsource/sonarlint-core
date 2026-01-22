@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-741fc5f2f1114e71979c84e2a937bc33
+ACR-aa1a0ce3fbeb4d1ba461aabe9992c443
+ACR-8f800718b2cc427eb7420c0e2bc476f3
+ACR-c19f1f7f6e6b425fbbf147164e6c3e89
+ACR-35644d88e9e74bc59194fdef92c24f8c
+ACR-5a648e0cb36a45eba51335e8948553f4
+ACR-9d0053fb93e14e38a99d275d08a8257f
+ACR-ce91d2aaa3e44df8b325e645f2c126e6
+ACR-055a6684c57f4bf4a2fe9125a7c17ad2
+ACR-8cbe58b15ff64ee6baa9290d51b48ef4
+ACR-78161820baec4790aa0efcc1d67003d3
+ACR-ec4439b4f40e4302a61546951d5252aa
+ACR-2b895b36fbb24a789e30d88675fdfb2c
+ACR-11044999073a4cfbad6eff93adc3514a
+ACR-f7dda10917d9404181daa1abb963b27a
+ACR-e3ca0f54505c40c083b50b840c28329e
+ACR-7eb7c463337d45d5b7303b653b54066b
  */
 package its;
 
@@ -104,7 +104,7 @@ public abstract class AbstractConnectedTests {
         .setProperty("sonar.token", orchestrator.getDefaultAdminToken())
         .setProperties(extraProperties);
     } else {
-      // sonar.token is not supported for 9.9
+      //ACR-2ab2551249854d4b9de655d4dfbc4764
       mavenBuild
         .setProperty("sonar.login", com.sonar.orchestrator.container.Server.ADMIN_LOGIN)
         .setProperty("sonar.password", com.sonar.orchestrator.container.Server.ADMIN_PASSWORD);

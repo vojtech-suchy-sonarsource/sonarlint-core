@@ -1,21 +1,21 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-05f95f9754164a17b5313230fc656122
+ACR-eed3f24dff374775bf4a7e93d26ff4a4
+ACR-9d3a6f64aaff4543bdd8399ecfeecedc
+ACR-0168595c0ecb4896aa4f6aae753077f3
+ACR-ef5e097a002d44ae8c832483b7a3ab0b
+ACR-1d6e7d7be41f4385a9291185a865a963
+ACR-97bcc659b1914d7397553753144f65de
+ACR-05c920ce90b54865869ce1e834649c2e
+ACR-037eddd4231b4df4ba02071bbf525c9e
+ACR-a0b11880cdd840a4961473139b5ee97f
+ACR-7fc4a40d434a48fba7ff1af6327eadd7
+ACR-144d1f9678cd4af28bde89611bb0b05c
+ACR-536004246df946238427eca5ffde4f94
+ACR-e75ed058cb5d40b884cdfabdaf68157e
+ACR-d257d9f98f554f3c92594325355a2707
+ACR-50caacb298a04a1397e268d8846db1bc
+ACR-127981f7a3334355b776a10c0e4945db
  */
 package org.sonarsource.sonarlint.plugin.api;
 
@@ -23,22 +23,22 @@ import org.sonar.api.Plugin;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.utils.Version;
 
-/**
- * Provides extra runtime related information when in the context of SonarLint.
- *
- * An instance of this class can be accessed through the context passed in {@link org.sonar.api.Plugin.Context#define(Plugin.Context)}.
- * @since 6.0
+/*ACR-41f5eaaeb29646b1923dcafd39a06d07
+ACR-4d1889592f9f4e0a9ef03fac38225806
+ACR-b8ffa83ab9604732921241914972a8bf
+ACR-1bfb8085fb2c40d187807ac037d07410
+ACR-248f7456bd154a0c8286b524eb1c88e2
  */
 public interface SonarLintRuntime extends SonarRuntime {
-  /**
-   * @since 6.0
-   * @return the version of the sonarlint-plugin-api
+  /*ACR-35a2bbbd8a62426bba762a9460f2064a
+ACR-02abc11394414c9883aa95b0e15fd0cc
+ACR-5704cd192cb54a22b05cb14a7ab9d53e
    */
   Version getSonarLintPluginApiVersion();
 
-  /**
-   * @since 6.2
-   * @return the PID of the client (IDE)
+  /*ACR-d292f993e4564566b6b23a871bdb24f9
+ACR-3222af6f3d12424088162fcc12e5b7a7
+ACR-ba51707048fb4b8b8de337475ceb8bad
    */
   long getClientPid();
 }

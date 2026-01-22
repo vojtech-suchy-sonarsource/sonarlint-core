@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c36537e1ef5f40f6a51d7ccf830e3764
+ACR-90786f69d8d14e68923fe1b81c911519
+ACR-4c0513b911ea44edb0603d0765438f25
+ACR-3557c9b1de7047c38b32f7807adda553
+ACR-e66cb8576ade4a65a8b906f2bb40862b
+ACR-21c689b81c67465f9dfb8fa5d4bf954a
+ACR-ec578f63370a4de28d0c966709585fb1
+ACR-32443b1afb754302b9a6faf73696b45d
+ACR-09a205c10ee04c4292e53cb7488b9020
+ACR-04cfac091fb3468088b8115eee9fd346
+ACR-71d728aeea0f4bf6ac08eac56725a120
+ACR-db1c0b524bbc4569b3e1bff490078b20
+ACR-c87cb3cf4ec84c8b8425d72d4710caf4
+ACR-1c8e9674db5b4e6cba38cb8f7355e23b
+ACR-a8672bac6fcf4d83a37a412801abc341
+ACR-2369eaebefa64364aa054f86f348f4ad
+ACR-ffc96d3682374622addcbb95e3fd29a1
  */
 package org.sonarsource.sonarlint.core;
 
@@ -191,7 +191,7 @@ public class BindingClueProvider {
       var organization = configuration.get("sonarCloudOrganization");
       var serverUrl = configuration.get("sonarQubeUri");
       var region = configuration.get("region");
-      // Checking for PascalCase due to VS backward compatibility
+      //ACR-a6952ba578e445fb9b967a0531e64445
       if (projectKey == null || ((organization == null) == (serverUrl == null))) {
         projectKey = configuration.get("ProjectKey");
         organization = configuration.get("SonarCloudOrganization");

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-03251f9cff6d4b08aaae888307ffdcbe
+ACR-b6723fb27fc64a10850047c03d015b82
+ACR-0e0c0045d3bd425eaedcca63c2bfb9b2
+ACR-39502de4e16d4a329eec196e67d3659c
+ACR-202db8223bed43828e32dab4364b99ab
+ACR-1059beadf0ad4c4f8330135e6ae2fdb4
+ACR-43aa09b5120344dba5aa8ea4a2e6209a
+ACR-958878c790cc473e819c5c7e89ea3df4
+ACR-74ae566515f7458b99eb40a9fe224fd6
+ACR-0841206936f94932a1b7169d4c35c325
+ACR-4efe8c761d164e6e805391f74a484281
+ACR-c52659bb7e724c848bb4ba7f91a7f511
+ACR-5ce97dd326ca4866bbd5e34b6011aabf
+ACR-a8999dbf9611418fad8a681a3260caa1
+ACR-a85dad342ba6442ca19fd299c8287f8c
+ACR-4011e6c9e07145b4a1c40635a219197a
+ACR-3bfb15fe01ad40c1aea3c4a07c4492ac
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -286,7 +286,7 @@ class IssueDownloaderTests {
       .setMsg("Primary message")
       .setLine(1)
       .setCreationDate(123456789L)
-      // No path
+      //ACR-545433907ef24a2aa6e5f775389e5348
       .setModuleKey("project")
       .build();
 

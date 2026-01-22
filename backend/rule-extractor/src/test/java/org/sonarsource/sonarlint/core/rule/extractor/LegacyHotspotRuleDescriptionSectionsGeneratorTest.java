@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-3ef10720fb46430c9718dbc35c10993c
+ACR-3640b54be0e74ff89b7c991888c91a4e
+ACR-dc2f2cfda100460bbca3400bd33388e0
+ACR-484026dbef204697ae0f88f6b3d9edb2
+ACR-1f33452440b945f086c701ba05e08ac2
+ACR-0fd2751ba8ed4a099a109d0ddea723d8
+ACR-9ea7b3db9b4b42f2acbf4f8b7a0abfb4
+ACR-f3192fdb36324208b31e32a8157d8978
+ACR-f26b3f36a22247cabfcc1ec6c5bb6622
+ACR-89f05ce334864848bcbe4a2127f94cb2
+ACR-35e3355764624a118dd4257d57b5721a
+ACR-b6084784b1a94c9c856af5b5dab6aced
+ACR-db8227a5180b47bb9321b0937da2b69a
+ACR-87efc29483bb4df0852f1a6a7a11031a
+ACR-97b5551ad7fc40a9bcd26923d6372616
+ACR-500adee419624938aa7d2b45e561e87a
+ACR-f651e7e024d144b88fd337edcb1a0b70
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 
@@ -29,13 +29,13 @@ import static org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSe
 import static org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSectionKeys.ROOT_CAUSE_SECTION_KEY;
 import static org.sonarsource.sonarlint.core.rule.extractor.LegacyHotspotRuleDescriptionSectionsGenerator.extractDescriptionSectionsFromHtml;
 
-/**
- * @see <a href="https://github.com/SonarSource/sonar-enterprise/blob/bbb92fe6b1aa426783aff59e97a303b6b79e5b72/server/sonar-webserver-core/src/test/java/org/sonar/server/rule/LegacyHotspotRuleDescriptionSectionsGeneratorTest.java">SonarQube Test</a>
+/*ACR-0298cefeeaaa4959a777bd6298f8f5de
+ACR-989b5b70065f478983bb9e836cda83f1
  */
 class LegacyHotspotRuleDescriptionSectionsGeneratorTest {
 
   /*
-   * Bunch of static constant to create rule description.
+ACR-65549856ba1d445aafd9a266aacb1396
    */
   private static final String DESCRIPTION =
     """

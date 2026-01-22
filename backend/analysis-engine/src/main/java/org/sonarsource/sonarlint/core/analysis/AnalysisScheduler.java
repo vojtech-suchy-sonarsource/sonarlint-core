@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e60aa9becac147809dfdc8cab223249c
+ACR-400e960d87a24fc384a91eb2b1364ccd
+ACR-faee7028525f4347941032efdae595ad
+ACR-f1f621341c264acfb8f13c5f1dbd8edb
+ACR-bc3d53b91e6c497298eb942a22f04507
+ACR-a82b92b0c579459292b27cd5a6adca17
+ACR-5b6db018fe594a8780ad87bbea4ee21e
+ACR-ba2b861299d14186b266c29e19a953c3
+ACR-f434b2f029e3496096b7b61ab049834c
+ACR-25292b316bb747c5a528d8c36005da1d
+ACR-7efb5e82d4f4413a92f185ed77d8c63a
+ACR-65781e99bad54187b16ecf640e772a73
+ACR-2b11265240494a1c96a0e20d3f0996b8
+ACR-5469027968374bd3aa41c8be8e786f1f
+ACR-3544f29276b84190bb3c17852a369d60
+ACR-8d0e17572ae143d498f9510bb85c931a
+ACR-853542d39fed43c8997fbbea67046e5b
  */
 package org.sonarsource.sonarlint.core.analysis;
 
@@ -44,7 +44,7 @@ public class AnalysisScheduler {
 
   public AnalysisScheduler(AnalysisSchedulerConfiguration analysisGlobalConfig, LoadedPlugins loadedPlugins, @Nullable LogOutput logOutput) {
     this.logOutput = logOutput;
-    // if the container cannot be started, the thread won't be started
+    //ACR-47add125ff76414da4ba5e6e242dcca3
     var analysisContainer = new GlobalAnalysisContainer(analysisGlobalConfig, loadedPlugins);
     analysisContainer.startComponents();
     globalAnalysisContainer.set(analysisContainer);
@@ -108,7 +108,7 @@ public class AnalysisScheduler {
       return;
     }
     if (!termination.compareAndSet(null, CANCELING_TERMINATION)) {
-      // already terminating
+      //ACR-35e1de977b404a32906579c12bc5f208
       return;
     }
     var command = executingCommand.getAndSet(null);

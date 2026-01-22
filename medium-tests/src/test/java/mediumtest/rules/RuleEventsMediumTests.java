@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-428a9508fef140949b8eff75a92e5f22
+ACR-6ed9272b6dac421b9b21be3b26fb0b52
+ACR-29b7b58b112b44dfb55e137f3d097744
+ACR-d746a55e8d474ae3baead0bacd2c2377
+ACR-4805f28dfb3145e79a141ae5fb002285
+ACR-b2a1ca5c619345ed91e07bbfa5a6018d
+ACR-c8a0633c83d54fee8d43f83c8b3a6d49
+ACR-41fa31237c6848fc8c7278704d4a2d76
+ACR-c93ab23c680f4030b55c55345c0fb696
+ACR-5a95729c347948b598960b453acf4840
+ACR-f949f6364e86438d98d1ee71e8213684
+ACR-97e2b5d7bb934c7280522856966013d2
+ACR-08e472b4b7334e1ca6588ee00829f0f3
+ACR-20ae23db4c3f4a56a85f2ed0ea992d4d
+ACR-b2b2df681a024537b7f8f35e646821d3
+ACR-0c7292967172449fb81cdce98af4ab13
+ACR-554424817ae14bb8a7a107b712a5aa7d
  */
 package mediumtest.rules;
 
@@ -58,7 +58,7 @@ class RuleEventsMediumTests {
 
   @Nested
   class WhenReceivingRuleSetChangedEvent {
-    // write a test just like this one without the impacts
+    //ACR-f790cb1535844c28b8c2fa9f1c0fe18f
     @SonarLintTest
     void it_should_create_the_ruleset_storage_if_does_not_exist_without_impacts(SonarLintTestHarness harness) {
       var server = harness.newFakeSonarQubeServer("10.0")

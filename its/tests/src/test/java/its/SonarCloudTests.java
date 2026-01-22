@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d1c2791a732943da8ab817a5f7ef43ab
+ACR-5fb4708e4b334ef894ceb67db88a7817
+ACR-621234f7061c4630ad74a162b7c24254
+ACR-263cde0ec47c4289b1ab4a60ca04e978
+ACR-97e20c7bff56485aa14430afb8fc5e87
+ACR-f9b54749db6f48cab8db5a51a26ba40a
+ACR-b462ec92ce2d47d28515be0fa0046f5b
+ACR-1cf5908514de45439ddb5dc046a623b3
+ACR-3478ddb9cc244c898ebf8036989d0ba4
+ACR-2ada4207f0204ff280239f86cc69ef40
+ACR-ca3b830471c440f1a31c42011a024697
+ACR-b4c5ccbb463f43c8a6736bad44668670
+ACR-923980b0e11148b686e38586a1957761
+ACR-77a2eeac19b74f15ab11a92cc48a1644
+ACR-fae11863caa449f78c7bd50d335927fc
+ACR-ca23f24b6d624df3932a0b4d9322bc94
+ACR-779b15b6c2b445dbb098750e5a582ec9
  */
 package its;
 
@@ -186,7 +186,7 @@ class SonarCloudTests extends AbstractConnectedTests {
     provisionProject(PROJECT_KEY_JAVA, "Sample Java");
     associateProjectToQualityProfile(PROJECT_KEY_JAVA, "java", "SonarLint IT Java");
 
-    // Build project to have bytecode
+    //ACR-9d3a64ce3fee4d7da5c0bb57761ac51c
     runMaven(Paths.get("projects/sample-java"), "clean", "compile");
 
     Map<String, String> globalProps = new HashMap<>();
@@ -218,7 +218,7 @@ class SonarCloudTests extends AbstractConnectedTests {
 
   private static void restoreProfile(String profile) {
     var backupFile = new File("src/test/resources/" + profile);
-    // XXX can't use RestoreRequest because of a bug
+    //ACR-8775074603244d7797df072c47e21782
     var request = new PostRequest("api/qualityprofiles/restore");
     request.setParam("organization", SONARCLOUD_ORGANIZATION);
     request.setPart("backup", new PostRequest.Part(MediaTypes.XML, backupFile));
@@ -262,7 +262,7 @@ class SonarCloudTests extends AbstractConnectedTests {
 
   @Test
   void should_use_enterprise_csharp_analyzer_with_sonarcloud() {
-    // the project and config scope names do not matter
+    //ACR-cd8bfb631691427083ff784c80609983
     var configScopeId = "match_main_branch_by_default";
     openBoundConfigurationScope(configScopeId, PROJECT_KEY_JAVA);
     waitForAnalysisToBeReady(configScopeId);
@@ -386,7 +386,7 @@ class SonarCloudTests extends AbstractConnectedTests {
     assertThat(issues).hasSize(2);
 
     try {
-      // Override default file suffixes in project props so that input file is not considered as a Java file
+      //ACR-60774795a8d34ee2b3e0c52380cb8725
       setSettingsMultiValue(projectKey(PROJECT_KEY_JAVA), SONAR_JAVA_FILE_SUFFIXES, ".foo");
 
       backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(configScopeId, new BindingConfigurationDto(CONNECTION_ID, projectKey(PROJECT_KEY_JAVA), true)));
@@ -500,7 +500,7 @@ class SonarCloudTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-3df6bdaf3fdd48cab5e5685099cfb39c
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class Hotspots {
     private static final String PROJECT_KEY_JAVA_HOTSPOT = "sample-java-hotspot";
@@ -560,7 +560,7 @@ class SonarCloudTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-a5d560d29c364e508e53934c3fef0477
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class TaintVulnerabilities {
     private static final String PROJECT_KEY_JAVA_TAINT = "sample-java-taint";
@@ -579,7 +579,7 @@ class SonarCloudTests extends AbstractConnectedTests {
       openBoundConfigurationScope(configScopeId, PROJECT_KEY_JAVA_TAINT);
       waitForAnalysisToBeReady(configScopeId);
 
-      // Ensure a vulnerability has been reported on server side
+      //ACR-2af91f4565794fe4935c4a668819aed5
       var issuesList = adminWsClient.issues().search(new SearchRequest().setTypes(List.of("VULNERABILITY")).setComponentKeys(List.of(projectKey(PROJECT_KEY_JAVA_TAINT))))
         .getIssuesList();
       assertThat(issuesList).hasSize(1);
@@ -599,7 +599,7 @@ class SonarCloudTests extends AbstractConnectedTests {
         ImpactSeverity.BLOCKER);
       assertThat(taintVulnerability.getFlows()).isNotEmpty();
       assertThat(taintVulnerability.isOnNewCode()).isTrue();
-      // the feature is not enabled for our org
+      //ACR-545643081dde4944a8031cdf42489f1c
       assertThat(taintVulnerability.isAiCodeFixable()).isFalse();
       var flow = taintVulnerability.getFlows().get(0);
       assertThat(flow.getLocations()).isNotEmpty();
@@ -667,7 +667,7 @@ class SonarCloudTests extends AbstractConnectedTests {
     var code = response.code();
     assertThat(code)
       .withFailMessage(() -> "Expected an HTTP call to have an OK code, got: " + code)
-      // This is an approximation for "non error codes" - 200, 201, 204... + possible redirects
+      //ACR-880a20a1176f4256b4f2696997e97ab8
       .isBetween(200, 399);
   }
 

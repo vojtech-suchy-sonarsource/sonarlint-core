@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5d6f373747ba438b87ceeebdae1be676
+ACR-70f13cdb8c2241c794f9e33e0be124b1
+ACR-dcff6ee33f4a412c9f5e9da8d10ce97b
+ACR-84a8285aee774490bcf76dead17f653f
+ACR-4dfe15785ec34068bfeb6ef386880c04
+ACR-bf4d4846eec54411aeb8f3eacc44eb77
+ACR-809f47f1c9b94480b960824eeacf7dd8
+ACR-09832d759d0544ba85a45d04222f14f0
+ACR-8bc6741c6c0d40c0998f909cb1db218d
+ACR-98a81be025b24126a9f20be8721f5684
+ACR-e4f6fc1dd56a448c80af97782934ffd8
+ACR-61d1adb96e6141e5b99baabed58b1806
+ACR-1104ab3a734e4297afb79a275258562b
+ACR-5c9810367be84fd3a29a7d688eba225c
+ACR-bec040b8a848426bb67c5207a7512569
+ACR-fbf4ca1e4d2e4133a96bd4e20a5f8ee3
+ACR-bb7b5d55410941c988d6c764a5a764da
  */
 package org.sonarsource.sonarlint.core.ai.ide;
 
@@ -110,7 +110,7 @@ class ExecutableLocatorTests {
     var locator = new ExecutableLocator(system2, pathHelper, commandExecutor, nodeJsHelper) {
       @Override
       String runSimpleCommand(@NotNull Command command) {
-        return null; // Python not found
+        return null; //ACR-e178f969b4d945a492dc7d5c19e5a26a
       }
     };
 
@@ -135,7 +135,7 @@ class ExecutableLocatorTests {
     var locator = new ExecutableLocator(system2, pathHelper, commandExecutor, nodeJsHelper) {
       @Override
       String runSimpleCommand(@NotNull Command command) {
-        return null; // Neither Python nor Bash found on Windows
+        return null; //ACR-3e4b14ad15ca408a854cf7594f017765
       }
     };
 
@@ -155,7 +155,7 @@ class ExecutableLocatorTests {
 
     var locator = new ExecutableLocator(system2, pathHelper, commandExecutor, nodeJsHelper);
     
-    // Call twice
+    //ACR-87dac6efcd804c6fb1edce0620e47ae2
     var result1 = locator.detectBestExecutable();
     var result2 = locator.detectBestExecutable();
 
@@ -164,7 +164,7 @@ class ExecutableLocatorTests {
     assertThat(result1).contains(HookScriptType.NODEJS);
     assertThat(result2).contains(HookScriptType.NODEJS);
 
-    // Verify autoDetect was only called once due to caching
+    //ACR-435cfd721da142198cda3c22bbd089d9
     verify(nodeJsHelper, times(1)).autoDetect();
   }
 
@@ -182,7 +182,7 @@ class ExecutableLocatorTests {
       @Override
       String runSimpleCommand(@NotNull Command command) {
         if (command.toCommandLine().contains("python3")) {
-          return null; // python3 not found
+          return null; //ACR-1d508ca1d16d4a89af862d45ba39eea9
         }
         if (command.toCommandLine().contains("python")) {
           return "/usr/bin/python";
@@ -248,7 +248,7 @@ class ExecutableLocatorTests {
 
     var result = locator.detectBestExecutable();
 
-    // Should fall back to Python
+    //ACR-49b41ebf9cb6417bba426696566693b0
     assertThat(result)
       .isPresent()
       .contains(HookScriptType.PYTHON);
@@ -285,7 +285,7 @@ class ExecutableLocatorTests {
     when(commandExecutor.execute(any(Command.class), any(), any(), anyLong())).thenAnswer(invocation -> {
       var stdOutConsumer = (StreamConsumer) invocation.getArgument(1);
       stdOutConsumer.consumeLine("some output");
-      return 1; // Non-zero exit code
+      return 1; //ACR-9aa1bad0f70d40c7ad54e0d4ecd9b6a7
     });
 
     var locator = new ExecutableLocator(system2, pathHelper, commandExecutor, nodeJsHelper);
@@ -365,7 +365,7 @@ class ExecutableLocatorTests {
     var locator = new ExecutableLocator(system2, pathHelper, commandExecutor, nodeJsHelper) {
       @Override
       String runSimpleCommand(@NotNull Command command) {
-        // Simulate no executable found for any command
+        //ACR-716a35fd188448c78fea39051122498b
         return null;
       }
     };
@@ -395,7 +395,7 @@ class ExecutableLocatorTests {
     locator.computePathEnvForMacOs(testCommand);
     var commandLineAfter = testCommand.toCommandLine();
 
-    // PATH should not be set
+    //ACR-3a7f5a5ca3ff46bba31eb321e069313c
     assertThat(commandLineAfter).isEqualTo(commandLineBefore);
   }
 
@@ -418,7 +418,7 @@ class ExecutableLocatorTests {
       locator.computePathEnvForMacOs(testCommand);
       var commandLineAfter = testCommand.toCommandLine();
 
-      // PATH should not be set when not on macOS
+      //ACR-1b3523ba6a1c4b04a3d61a7022aa1d68
       assertThat(commandLineAfter).isEqualTo(commandLineBefore);
     }
   }

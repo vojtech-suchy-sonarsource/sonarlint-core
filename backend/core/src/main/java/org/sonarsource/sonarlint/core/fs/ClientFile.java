@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-de93e0a9a2c74819bf20af4d8d0e171d
+ACR-bf8aa63613a0493d97d98dc149d41e33
+ACR-f6998b4b3f0a446ab08c0faef7b0b2c6
+ACR-7b3669bf25da4e36afd3c5bddccaed6f
+ACR-9e8568360a45444bafbe662549d7cac3
+ACR-96c8962255b946879bd596fceda8a9c1
+ACR-5739fceb93c348e3867aacbbca7fa1cf
+ACR-c6737c18905e493b8431dead2b60bfae
+ACR-d10ed834880543ae9c8f90cec1e8d2dd
+ACR-5929e923f5064b38aa691a7b4b42b359
+ACR-b887bffc32c0449aadea964a17730992
+ACR-f731d7f9fe054b009c37f23ce05542e4
+ACR-16865a340e8246dab38f6162aeb6e7ba
+ACR-1ff08d31fadf40fd84ff00eb9ade85d0
+ACR-2f76a8aed81447a0815525b0cea38a3d
+ACR-85bc4e1349b54de8bdfe65daf566d8ce
+ACR-3ffa23743c2f447689dfb1d32d5d3bbf
  */
 package org.sonarsource.sonarlint.core.fs;
 
@@ -38,22 +38,22 @@ public class ClientFile {
 
   private static final String SONARLINT_FOLDER_NAME = ".sonarlint";
 
-  /**
-   * Unique identifier for this file on the client side
+  /*ACR-d50a6a7bcda64d41b4fdd5879443af33
+ACR-576ddc8b86634102a07129f8193efada
    */
   private final URI uri;
 
   private final String configScopeId;
 
-  /**
-   * Relative path for this file on the client side. We use the {@link Path} class for convenience for filename separators,
-   * but it is not necessary to have a file on the filesystem.
+  /*ACR-e277ac12e04b4598b569bd9f7434f125
+ACR-babd44a9d6784bf2a67aab24cd628176
+ACR-94c9bc5aec34481bb2a13a5f4f5f629f
    */
   private final Path relativePath;
 
-  /**
-   * For some clients, deciding if a file is a test is costly, and will be computed only when a file is opened in an editor.
-   * null means unknown
+  /*ACR-a9d65d7bc6c74065b8c8c587ffedba8a
+ACR-17949e687b364f91b86a234cb1d50034
+ACR-70125dbb7a594dd5a0287f004b2a4abe
    */
   @Nullable
   private final Boolean isTest;
@@ -61,22 +61,22 @@ public class ClientFile {
   @Nullable
   private final Charset charset;
 
-  /**
-   * The absolute path on the local filesystem, if available.
+  /*ACR-3c5d4ed5d9da463698c9c047941f3a59
+ACR-ee30df59036847dabdc4ec37fdab01ff
    */
   @Nullable
   private final Path fsPath;
   @Nullable
   private final SonarLanguage detectedLanguage;
 
-  /**
-   * Tell if the file content is flushed on disk?
-   * If the file is dirty, it means that the content is not flushed on disk, and the backend get the content from the client.
+  /*ACR-aedaa4a790a34b17810b68fe03c2ad63
+ACR-849af635397a45c398a9a63502124026
+ACR-451caf0bd8084a7a898270362f1796ee
    */
   private boolean isDirty;
 
-  /**
-   * When the file is dirty, the content should be provided by the client.
+  /*ACR-1acb7c4d38f544ec9789fb3d43c02250
+ACR-a93795d980ea45b187ed74cb65892bd9
    */
   @Nullable
   private String clientProvidedContent;
@@ -131,7 +131,7 @@ public class ClientFile {
       throw new IllegalStateException("File " + uri + " is not dirty or does not have content but has no OS Path defined");
     }
     return BOMInputStream.builder().setInputStream(Files.newInputStream(fsPath))
-      // order list of BOMs by length descending, as anyway a sort is made in the constructor
+      //ACR-de63b1ef00254094b8e45c67634feb8a
       .setByteOrderMarks(ByteOrderMark.UTF_32LE, ByteOrderMark.UTF_32BE, ByteOrderMark.UTF_8, ByteOrderMark.UTF_16LE, ByteOrderMark.UTF_16BE).get();
   }
 
@@ -166,7 +166,7 @@ public class ClientFile {
   }
 
   public boolean isSonarlintConfigurationFile() {
-    // Considering .sonarlint/*.json for compatibility with settings exported from Visual Studio
+    //ACR-1a08b306b4f14a43ad55a2e4b68173ce
     return isInDotSonarLintFolder() && hasJsonExtension();
   }
 

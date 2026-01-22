@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a061ac34aa774c2a8f78519357e31562
+ACR-4724835598f44080af8eeb96716e2ad9
+ACR-afd6a1bd6d1248f79e412fb01560b9fb
+ACR-eb3b0d6a02694f50ad773dc1722b2887
+ACR-42e191d6ebbd4f80862ddc6e927f7da1
+ACR-96aee7c4d50540a987e5a40a5e5cd2a9
+ACR-ea8bddc0d7c440aabc8dae6adbef7c45
+ACR-7ba43bbb1db244d6afdc4d000618115c
+ACR-35b6eabe4015431494fb493ea986271a
+ACR-fe26343456d344058a9d316e0645c41c
+ACR-49b5c11d62bb44ac8cbc6a62f71f9741
+ACR-1332f3e0230445f5add347103c7fd6ff
+ACR-0a16978db8ae46edbc1c9b167e452b4d
+ACR-13095f4b29a348eeb9e2d4a84aa64b49
+ACR-f43d79c58f4443f59c5d57e4ee7932e4
+ACR-33b9f18f288143558c8ba29ff0f784b2
+ACR-d30622f4f3ee4dff866a5012189c1d79
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -171,7 +171,7 @@ class SonarPluginRequirementsCheckerTests {
       path -> createPluginManifest(path, SonarLanguage.JS.getPluginKey(), V1_0));
     Set<Path> jars = Set.of(fakePlugin, fakeBasePlugin);
 
-    // Ensure base plugin is skipped because JS language is not enabled
+    //ACR-6935dbb263bd444da98a28838340e9ee
     var enabledLanguages = Set.of(SonarLanguage.C);
 
     var loadedPlugins = underTest.checkRequirements(jars, enabledLanguages, null, null, false);
@@ -243,7 +243,7 @@ class SonarPluginRequirementsCheckerTests {
     assertThat(logsWithoutStartStop()).contains("Plugin 'pluginkey' dependency on 'required2' is unsatisfied. Skip loading it.");
   }
 
-  // SLCORE-259
+  //ACR-cdd3fa16c5f54a8ba1538033a1a531a3
   @Test
   void load_plugin_ignore_dependency_between_sonarjs_and_sonarts(@TempDir Path storage) throws IOException {
     var fakePlugin = fakePlugin(storage, "sonarjs.jar",

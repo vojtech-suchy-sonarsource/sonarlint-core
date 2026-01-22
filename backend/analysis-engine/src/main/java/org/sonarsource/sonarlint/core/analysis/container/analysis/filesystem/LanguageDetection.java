@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d4ae1fc4e18d44d383a4f32133123bfe
+ACR-4967a4e853e84aeaa5ee998ab0ad04ee
+ACR-b964f646409245219d7bc776e98382f3
+ACR-20283e7d94f640db8ebd9851ea0b7cda
+ACR-ed727977490c4a788a813dc0cb884e17
+ACR-00599e964bfd4169b4176850f25a5e09
+ACR-e26e8eafbe074ff7a9338a1496df5126
+ACR-acfefdcc46904f0a8f9a441b9ce61577
+ACR-e1a4e1ec88804e98afe2673f39b1eb2e
+ACR-1e3ce93723824b8099d2936473213b3d
+ACR-f2ceadf5f83e42ecbb342421d649f541
+ACR-e9d48eddc2204b4ea1641a268d0de049
+ACR-2fbfe33ba153480baa49aa449e3edd55
+ACR-ca35fba40b644443ae10572c9c7f28a3
+ACR-e8ef6fa5d2004e4ea6ec5db09fc531ef
+ACR-8a1c1e25fa894ad19508dd8afeae0d8f
+ACR-bbd223e837e349bc8211e8134a88c11f
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -34,15 +34,15 @@ import org.sonar.api.utils.MessageException;
 import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
-/**
- * Detect language of a source file based on its suffix and configured patterns.
+/*ACR-7c347e82cfc2461ca7efa565cbc1e654
+ACR-910eff84d0e64245b44d5de071885573
  */
 public class LanguageDetection {
 
   private static final SonarLintLogger LOG = SonarLintLogger.get();
 
-  /**
-   * Lower-case extension -> languages
+  /*ACR-2fe65022c74a4fa39502c501c6171713
+ACR-8f2803816d7b449f950e35063da33279
    */
   private final Map<SonarLanguage, String[]> extensionsByLanguage = new LinkedHashMap<>();
 
@@ -70,7 +70,7 @@ public class LanguageDetection {
         if (detectedLanguage == null) {
           detectedLanguage = languagePatterns.getKey();
         } else {
-          // Language was already forced by another pattern
+          //ACR-3cb793d0d9194772a9257174536e3016
           throw MessageException.of(MessageFormat.format("Language of file \"{0}\" can not be decided as the file extension matches both {1} and {2}",
             fileUri, getDetails(detectedLanguage), getDetails(languagePatterns.getKey())));
         }

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7289e414debc4240a94c7972cdf50ddd
+ACR-409415ee88ca4ccf923cb7b743d48c02
+ACR-2ec253a378984954bf1039055f64528b
+ACR-8f4a892d795e4e2f9c11a011145ee301
+ACR-bc939483a71e41b6b892121050411a33
+ACR-57fd55f3d6e649b0b166748be5071433
+ACR-1b3f0a0f7d88413e99bdda8576e2ec7e
+ACR-635814354b0044a7b7a22c499156ec7d
+ACR-f8f8dea462ee460c99a8e86fa83c9017
+ACR-f1429f15d82b4529b6b2d9a9c3ac0247
+ACR-b99519860f904bd0a633fee4229c383f
+ACR-1442e8f07c1c4c3fb9725a476cea3604
+ACR-8a9f3b2a33f54c3caa70e3764eaf1265
+ACR-731dce9541e74cbf8a8cbdc1b906131f
+ACR-e95f1642c0514519b697cb76e5de8a28
+ACR-b2751952342d49aa971542cc785a7cfe
+ACR-0a800500f02b4699ae9f1c9946e999b8
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 
@@ -59,7 +59,7 @@ public class SonarLintRuleDefinition {
   private final Set<String> deprecatedKeys;
   private final Set<String> educationPrincipleKeys;
   private final Optional<String> internalKey;
-  // Relevant for Hotspot rules only
+  //ACR-bbbcef8fc3c7467392b40ef771b6d7a3
   private final Optional<VulnerabilityProbability> vulnerabilityProbability;
 
   public SonarLintRuleDefinition(RulesDefinition.Rule rule) {

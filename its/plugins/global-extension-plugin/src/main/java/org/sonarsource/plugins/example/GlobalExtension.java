@@ -1,21 +1,21 @@
 /*
- * Example Plugin with global extension
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-acd1a3239d57475b954e8b00d7c2af1c
+ACR-51a8edfe19ae4a08afe96e8ccf3668c5
+ACR-de87cf5352fb420e88367a8ceda94574
+ACR-2e760548c29245e0b3220c1d985f3248
+ACR-9271cc5618f54bbebe9dc5f886947405
+ACR-c370ac9f75714c99b478f628bf9b9429
+ACR-6868735ee8ff4c8ea2077d96551eec4a
+ACR-57bb17e347754542859cc14329bfcf1a
+ACR-51f5e5ab8591480bb86f7d8b394f8b11
+ACR-795b8ff1814241b79080c0f56e62e78e
+ACR-792038b3e7a74623b4897deca68c7d3e
+ACR-30d87750eea74e0db7b3cfc016e6db3b
+ACR-de2f25c26e894f5b84d21fb473c70088
+ACR-1c3f2b82e5894c45a01e63663179169f
+ACR-f25f6c0f2d49480e911ea54728e2d148
+ACR-c5befdac39414048bc5e964f17c9f0b4
+ACR-cea350e594f74fe6834aa1acd17b5dfe
  */
 package org.sonarsource.plugins.example;
 

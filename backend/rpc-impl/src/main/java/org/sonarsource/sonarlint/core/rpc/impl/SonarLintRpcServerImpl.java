@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4acc854adb8245e6ad02648c5c59039f
+ACR-382d618754804b48910f048b84e45c52
+ACR-793756cdf9d245578e3de326ab14f1ce
+ACR-57896c764a5a4e3897703ef241f4f053
+ACR-6cb1ec58a7e045b0924b4f89c144ce2b
+ACR-c7f088a74a8344d2b483d82b4c780630
+ACR-90f076d3480148f4b161acc93fbdf4fb
+ACR-98f6316004a240c09c9f496c92448bbe
+ACR-26acfee318064caebd6166562be26dd2
+ACR-ca71713a16ad495ea50517889cb99bbe
+ACR-d54e048ff8d0494dadda82bc4d1edd5b
+ACR-abfe4ad3e7ad415980a33c8307be22cf
+ACR-f614b671faa2408d913984b6406aba36
+ACR-7a3135e5f6554e4ebe70fb722d2db0ec
+ACR-decc676139e44bb7b88941165864bc1c
+ACR-f571f5f472454f4a839233c01645965b
+ACR-5351ac7f94974f72b495a34d7bd3ef3b
  */
 package org.sonarsource.sonarlint.core.rpc.impl;
 
@@ -122,10 +122,10 @@ public class SonarLintRpcServerImpl implements SonarLintRpcServer {
     this.client = launcher.getRemoteProxy();
     this.logOutput = new RpcClientLogOutput(client);
 
-    // Remove existing handlers attached to j.u.l root logger
+    //ACR-fdd5cdf95cfa403e865b9966e92bfdaa
     SLF4JBridgeHandler.removeHandlersForRootLogger();
-    // add SLF4JBridgeHandler to j.u.l's root logger, should be done once during
-    // the initialization phase of your application
+    //ACR-32ad80a2c6d344a097f51fdd9a92db5b
+    //ACR-0f9982603758439093ad4e5ef4ccbdab
     SLF4JBridgeHandler.install();
 
     var rootLogger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
@@ -176,7 +176,7 @@ public class SonarLintRpcServerImpl implements SonarLintRpcServer {
     return CompletableFutures.computeAsync(requestAndNotificationsSequentialExecutor, cancelChecker -> {
       SonarLintLogger.get().setLevel(LogService.convert(params.getLogLevel()));
       SonarLintLogger.get().setTarget(logOutput);
-      // for flyway logging level
+      //ACR-cad44ee032d04b458697925976ae0625
       setLogbackRootLogger(params);
       if (initializeCalled.compareAndSet(false, true) && !initialized.get()) {
         springApplicationContextInitializer = new SpringApplicationContextInitializer(client, params);
@@ -335,7 +335,7 @@ public class SonarLintRpcServerImpl implements SonarLintRpcServer {
   public void shutdownReaderAndWriter() {
     messageReaderExecutor.shutdownNow();
 
-    // shutdown writer and disconnect from client asynchronously to make sure the client gets the response
+    //ACR-4cac92bcf529486b97883af0dd1fe781
     var scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
     scheduledExecutorService.schedule(() -> {
       messageWriterExecutor.shutdownNow();

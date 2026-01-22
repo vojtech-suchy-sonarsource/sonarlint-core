@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-36b863f9219a450c8c87ebb997d0e532
+ACR-57be56df79874a1aa38cc95a62056359
+ACR-5efbbd579ef9424f91eb749b4816ce8f
+ACR-a7ebb4764a5a4b5584585d1fe6ad7150
+ACR-5e0ecdca5ca24f4c99eee4b1f1052dd6
+ACR-63b4dfe9b359494cb51227c0965a35ff
+ACR-9b7e945cdad34bb993fdcd7b43a823b3
+ACR-736af17c291143f3a3e9c3595ecd8cf5
+ACR-f73d6397ceef4e8ba815a136e40a8540
+ACR-334a03403276424181716f413d55eb5f
+ACR-8f747f8bda044aa498530d32bec7092b
+ACR-9627b41c52e44e2fa83ed28aacab750f
+ACR-2f6df6a862f14c9f8189cb87f524e372
+ACR-677ed61c094142fb891475b62281697b
+ACR-c71eef5a24d94236b04ea4a64f7cf465
+ACR-275b681a68cd44be92a281aa12d4fe82
+ACR-8c5c5c3204ae4a0c835cdfa44a640b10
  */
 package its;
 
@@ -112,7 +112,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
 
   @RegisterExtension
   static OrchestratorExtension ORCHESTRATOR = OrchestratorUtils.defaultEnvBuilder()
-    // for versions up to 2025.4
+    //ACR-4877d2610b184ede855ca258c6cf8f07
     .setServerProperty(SONAR_LEGACY_SCA_FEATURE_ENABLED_PROPERTY_KEY, "true")
     .setServerProperty(SONAR_SCA_FEATURE_ENABLED_PROPERTY_KEY, "true")
     .setServerProperty(SONAR_EARLY_ACCESS_MISRA_ENABLED_PROPERTY_KEY, "true")
@@ -146,7 +146,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
   static void prepare() {
     adminWsClient = newAdminWsClient(ORCHESTRATOR);
     adminWsClient.settings().set(new SetRequest().setKey("sonar.forceAuthentication").setValue("true"));
-    // we have to set it again via API because the server property value is not returned by api/settings/values
+    //ACR-c179ab5a642c416a86ac446cb4028eff
     adminWsClient.settings().set(new SetRequest().setKey(SONAR_LEGACY_SCA_FEATURE_ENABLED_PROPERTY_KEY).setValue("true"));
     adminWsClient.settings().set(new SetRequest().setKey(SONAR_EARLY_ACCESS_MISRA_ENABLED_PROPERTY_KEY).setValue("true"));
 
@@ -193,7 +193,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-8748fab7f10e429b815898f82901edb2
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class CommercialAnalyzers {
 
@@ -243,7 +243,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
     }
 
     @Test
-    // New property was introduced in SonarCFamily 6.18 part of SQ 8.8
+    //ACR-5f1369766256444581151620c8a1045d
     @OnlyOnSonarQube(from = "8.8")
     void analysisC_new_prop() {
       String configScopeId = "analysisC_old_build_wrapper_prop";
@@ -274,11 +274,11 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
     }
 
     @Test
-    // the compile commands file is specific to Unix-like platforms, so skip on Windows
+    //ACR-8a0f438b3add46f58be82a7ac7a7be6d
     @DisabledOnOs(OS.WINDOWS)
     @OnlyOnSonarQube(from = "2025.4")
     void analysisMisraRules(@TempDir Path tmpDir) throws IOException {
-      // early-access flag will be removed in 2025.6, MISRA rules will be available out of the box
+      //ACR-1411e342aa5f4446944d2845427f85ff
       assumeTrue(ORCHESTRATOR.getServer().version().compareTo(Version.create("2025.6")) < 0);
       var configScopeId = "analysisMisraRules";
       start(configScopeId, PROJECT_KEY_MISRA);
@@ -358,7 +358,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-e1976a8ec839403eb52a49cf3f82b001
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class WithEmbeddedAnalyzer {
 
@@ -367,10 +367,10 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
       startBackend(Map.of("cpp", PluginLocator.getCppPluginPath()));
     }
 
-    /**
-     * SLCORE-365 c:FunctionSinglePointOfExit has been deprecated in SonarCFamily 6.32.0.44918 (SQ 9.4) so older versions of SQ will
-     * return a QP with rule c:FunctionSinglePointOfExit,
-     * while embedded analyzer contains the new rule key. So SLCORE should do the translation.
+    /*ACR-c8f623c88b534e69973be822f48a8ec2
+ACR-8c45e4275ebc4de99ead1108f17d0e1c
+ACR-d649c0d7c7314b8d832993978076e835
+ACR-cbd9d4973dce4b43a18e7ce243c624d0
      */
     @Test
     void analysisWithDeprecatedRuleKey() {
@@ -402,7 +402,7 @@ class SonarQubeEnterpriseEditionTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-3f58d466c98545739d73c5d0e3768305
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   @OnlyOnSonarQube(from = "2025.4")
   class Sca {

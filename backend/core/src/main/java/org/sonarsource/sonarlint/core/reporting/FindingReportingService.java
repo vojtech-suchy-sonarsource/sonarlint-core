@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8680d74da07b4b33be7e96e83f1460fa
+ACR-adc6e3682c304ceb98f51f3843de6b47
+ACR-90a4d73ead91411cab23e1f0d2cb5dae
+ACR-201b4c8a2314451796ac665aa31abe13
+ACR-c19b6a959dd24689a27a65d86006f89a
+ACR-168fd1b2807e48f693a5c8dd24088510
+ACR-5cec97a051c64c478c7718c2a7383285
+ACR-cca7f454ffe74d90839d175ea920d46e
+ACR-0024fbf6f6fc4d268f5448311474ce1a
+ACR-96880a0bcfd44f319bbcf1f2dd555ad4
+ACR-3a98a95d15ac4e319ad0d2acc80a49ff
+ACR-721446e989fa461e8e517a394062cb0f
+ACR-4b8a9238e21c4557ba54755e1e4e9010
+ACR-1757b5b59378412a90aa504a3a5e1e52
+ACR-a7befb69ea3e46c885a68448374245ac
+ACR-f4d30b67b98b40318ffc5ce4ae62f257
+ACR-c4c7ecbe6ff4448a943ddba199fb010d
  */
 package org.sonarsource.sonarlint.core.reporting;
 
@@ -101,7 +101,7 @@ public class FindingReportingService {
   @EventListener
   public void onStandaloneRulesConfigurationChanged(StandaloneRulesConfigurationChanged event) {
     if (event.isOnlyDeactivated()) {
-      // if no rules were enabled (only disabled), trigger only a new reporting, removing issues of disabled rules
+      //ACR-775c7bcece7942daa6f00ad979963c9f
       configurationRepository.getConfigScopeIds().stream()
         .filter(configScopeId -> configurationRepository.getEffectiveBinding(configScopeId).isEmpty())
         .forEach(configScopeId -> {
@@ -124,7 +124,7 @@ public class FindingReportingService {
   @EventListener
   private void onServerActiveRulesChanged(ServerActiveRulesChanged event) {
     var deactivatedRules = event.deactivatedRules();
-    // if rules were activated, an analysis will be triggered in the AnalysisService, and a new reporting will occur
+    //ACR-4af47412376d4e53bc0552f6aa26ac36
     if (event.activatedRules().isEmpty() && !deactivatedRules.isEmpty()) {
       var changedProjectKeys = event.projectKeys();
       configurationRepository.getAllBoundScopes().stream()
@@ -153,10 +153,10 @@ public class FindingReportingService {
   }
 
   public void streamIssue(String configurationScopeId, UUID analysisId, TrackedIssue trackedIssue) {
-    // Cache is cleared on new analysis, but it's possible that 2 analyses almost start at the same time.
-    // In this case, same issues will be reported twice for the same file during the streaming, which will be sent to the client.
-    // A quick workaround is to replace the existing issue with the duplicated one (which should be the most up-to-date).
-    // Ideally, we should be able to cancel the previous analysis if it's not relevant.
+    //ACR-c4efe967180349da857d4c1771191df8
+    //ACR-78f4dfdb460649ee956b48c1246b2b1b
+    //ACR-06ee2b6eccfc4c6e92b2614fded3017b
+    //ACR-2ed2998764da467bb6693a7d2a0b8995
     if (trackedIssue.isSecurityHotspot()) {
       insertTrackedIssue(securityHotspotsPerFileUri, trackedIssue);
     } else {
@@ -169,7 +169,7 @@ public class FindingReportingService {
 
   private static void insertTrackedIssue(Map<URI, Collection<TrackedIssue>> map, TrackedIssue trackedIssue) {
     map.compute(trackedIssue.getFileUri(), (fileUri, fileFindings) -> {
-      // make sure to return an immutable list as it might be iterated over in parallel
+      //ACR-99977f63eeb7430fb3badcb2bf1d6b32
       if (fileFindings == null) {
         return List.of(trackedIssue);
       }
@@ -200,7 +200,7 @@ public class FindingReportingService {
   }
 
   public void reportTrackedFindings(String configurationScopeId, UUID analysisId, Map<Path, List<TrackedIssue>> issuesToReport, Map<Path, List<TrackedIssue>> hotspotsToReport) {
-    // stop streaming now, we will raise all issues one last time from this method
+    //ACR-54716e3c826d447b9f75ce8af0595bcd
     stopStreaming(configurationScopeId);
     var effectiveBinding = configurationRepository.getEffectiveBinding(configurationScopeId);
     var connectionId = effectiveBinding.map(Binding::connectionId).orElse(null);
@@ -224,7 +224,7 @@ public class FindingReportingService {
     client.raiseIssues(new RaiseIssuesParams(configurationScopeId, fileIssues, isIntermediatePublication, analysisId));
     var effectiveBindingOpt = configurationRepository.getEffectiveBinding(configurationScopeId);
     if (effectiveBindingOpt.isPresent()) {
-      // security hotspots are only supported in connected mode
+      //ACR-b0ee8e5a9dea4221a205353296f388c9
       var hotspotsToRaise = previouslyRaisedFindingsRepository.replaceHotspotsForFiles(configurationScopeId, updatedHotspots);
       client.raiseHotspots(new RaiseHotspotsParams(configurationScopeId, hotspotsToRaise, isIntermediatePublication, analysisId));
     }

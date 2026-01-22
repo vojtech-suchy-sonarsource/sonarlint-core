@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-31eef3eb00774727a9c9cec2e22f9b20
+ACR-f29c9c8bcfeb44cc9aa81b6d43ef3fd6
+ACR-5b8be0233b404281b730938f7a303853
+ACR-8b3e196752a74874ad5a87d62e10be04
+ACR-e23f359b6ae646fd9ebb8232019f6bc6
+ACR-3b23208bf0d8440f80732a40513f4c6d
+ACR-3a15063a02934c36a35c485c7ae9c725
+ACR-c62c2788a4fa4a06a790dabeb89b5673
+ACR-c0a5203a7cdc4f72ab686697f3d19a16
+ACR-fd2280dda110438b966025f66e4fda7e
+ACR-c1feb3821e854ea1af9261066132a96b
+ACR-5604da4669dd42bab54742a365f1f70c
+ACR-6356eefc18294d1ab12c162e5565ac2a
+ACR-0e2a980dd73d47169be2f874bf28af86
+ACR-b5100a06c7ea4ae0ae5a4a6a559f58ab
+ACR-497e4d21fee0455c9a58f541c4f84520
+ACR-976d642f40394b40b9311b03f61c7d8c
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -61,7 +61,7 @@ public class DefaultSonarLintIssueLocation implements NewIssueLocation, IssueLoc
 
   @Override
   public NewIssueLocation message(String message, List<NewMessageFormatting> newMessageFormatting) {
-    // ignore formatting for now
+    //ACR-fe0d2c3607254a43bf7a2ca8ebc99d97
     return message(message);
   }
 

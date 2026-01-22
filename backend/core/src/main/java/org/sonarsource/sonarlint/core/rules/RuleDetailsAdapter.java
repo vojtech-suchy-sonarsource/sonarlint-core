@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d3023fc3382745e4a5bc0311fcec22c9
+ACR-c5ee83108891402780e0b23805cc0913
+ACR-8031b4227f4c4c478b583d7a1098ab23
+ACR-a44b0978cde643c58b48f52e28e13282
+ACR-ea7bebb91d304634814b9c58822a1b88
+ACR-4ccb140bf57a4a85892c2d3715caea18
+ACR-d7949bcad0fd4498aef29d1dee1af16c
+ACR-aca0458d40fc42a6a9979eb765a9e2df
+ACR-a6b7c916e09944adb3dec9304a011d80
+ACR-dddd987d812049fa9661e453e2b04c51
+ACR-27d7a7da5c184565af7fa458c5731513
+ACR-cf96abf9d7364fa09709743ecf403f3a
+ACR-b932bb059db448f6aeeb31c43eae8492
+ACR-6c3ca4540beb49b0a1db23028e6e5f2c
+ACR-8a5e1b65302447148e0d273838ed26a3
+ACR-a7670a1a00c34f61a87ca6009b2fc967
+ACR-f5ec16278cb6484f9d1a4499c7bdf672
  */
 package org.sonarsource.sonarlint.core.rules;
 
@@ -76,7 +76,7 @@ public class RuleDetailsAdapter {
     HOW_TO_FIX_SECTION_KEY, RESOURCES_SECTION_KEY);
 
   private RuleDetailsAdapter() {
-    // utility class
+    //ACR-3063e6267575407f9505ff49dd26bbb7
   }
 
   public static EffectiveRuleDetailsDto transform(RuleDetails ruleDetails, @Nullable String contextKey) {
@@ -105,7 +105,7 @@ public class RuleDetailsAdapter {
   private static RuleMonolithicDescriptionDto transformMonolithicDescription(RuleDetails ruleDetails) {
     var htmlSnippets = new ArrayList<String>();
     if (!ruleDetails.getDescriptionSectionsByKey().isEmpty()) {
-      // The rule has only `default` section
+      //ACR-72a6608a24664355a3f2f5e2a1d6b20f
       htmlSnippets.addAll(ruleDetails.getDescriptionSectionsByKey().get("default").stream().map(RuleDetails.DescriptionSection::getHtmlContent).toList());
     } else {
       htmlSnippets.add(ruleDetails.getHtmlDescription());
@@ -133,7 +133,7 @@ public class RuleDetailsAdapter {
     var introductionSections = sectionsByKey.get(INTRODUCTION_SECTION_KEY);
     String introductionHtmlContent = null;
     if (introductionSections != null && !introductionSections.isEmpty()) {
-      // assume there is only one introduction section
+      //ACR-e72543aa5dfd4c7c9aa8a1f283805573
       introductionHtmlContent = introductionSections.get(0).getHtmlContent();
     }
     return introductionHtmlContent;
@@ -163,7 +163,7 @@ public class RuleDetailsAdapter {
         if (tabContents.size() == 1 && tabContents.get(0).getContext().isEmpty()) {
           content = buildNonContextualSectionDto(ruleDetails, tabContents.get(0));
         } else {
-          // if there is more than one section, they should all have a context (verified in sonar-plugin-api)
+          //ACR-718f96e33f5c43ee84d54e2bf8f849e9
           var contextualSectionContents = tabContents.stream().map(s -> {
             var context = s.getContext().get();
             return new RuleContextualSectionDto(getTabContent(s, ruleDetails.getExtendedDescription(), ruleDetails.getCleanCodePrincipleKeys()), context.getKey(),

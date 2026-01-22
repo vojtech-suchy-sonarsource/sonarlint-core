@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b7eec67508c44c808a27460678f54b78
+ACR-3778a462a9a741d88b4b0fac83dfd501
+ACR-aa30b9f0d18f4f85a74704a6fcdd1046
+ACR-06039a98213d4b2d807d1363f889dba0
+ACR-36b30009d6f6446eb13f43fa70c6a6af
+ACR-1a82606c3f2e4ce089354db36d75b35a
+ACR-c4c02c9956cd42eb927a51f8632d77ea
+ACR-46a72d00fbe84d53872c01535d65c5f8
+ACR-0d031b9695614e22835b471e60948983
+ACR-9ffbf2f1a813468ea90397a8a1d9b512
+ACR-6d0e6dc10ce6416da9ffe1728e74826b
+ACR-4e75228f57a84ccfa9967cf3f7f97b3d
+ACR-fcbe43b33b574f57a52125530467bcfd
+ACR-3cb3829b125045b397a2d4c6c1b1e5af
+ACR-0a63dbeb387b48e6acc639a6d8ceb41e
+ACR-56d3281c89b54ef1b7b3375b3d05de04
+ACR-792700a5266a460d807eed3f7f2ea5c8
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.sensor;
 
@@ -45,7 +45,7 @@ class SensorsExecutorTests {
   public static final DefaultSensorContext DEFAULT_SENSOR_CONTEXT = new DefaultSensorContext(null, null, null, null, null, null, null, new ProgressIndicator() {
     @Override
     public void notifyProgress(@Nullable String message, @Nullable Integer percentage) {
-      // no-op
+      //ACR-cf69cbb13c324da5b501364c355c88dc
     }
 
     @Override

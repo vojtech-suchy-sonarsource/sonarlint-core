@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-90d0b3bc036d4b5892c63def82a741a6
+ACR-be13f323bac14ea8a73c87c0fae74ced
+ACR-f561edb3263647b19c86e53fd2cd48cb
+ACR-b0c35ef89a25476fbcf5c1306ebe71a3
+ACR-7c1143c7536d47d5a46fa730fbaafebf
+ACR-f75f6a08fb8746b08cbefc9d5e66d416
+ACR-d0f836798b104d6c83eb6fffd0b000a4
+ACR-31227f43fa26420eab447f0fba13e0e1
+ACR-81caedcba5f14370a9f6ae70f5655ea0
+ACR-ef6c118c32fc40458ec29a088e1cd9d5
+ACR-1a54e73619ee4de19272ffbe827171ad
+ACR-784607f186c14344965de191e99f1b8f
+ACR-defbe49def9345909e2b82a5492add20
+ACR-cff3d886920d499eac3445823550def9
+ACR-36cce8cdad874210a0d3b58bb329836d
+ACR-5953867496cc47d58864831d1c6e2d9d
+ACR-a817af575eb24ff3851b6fb8b24b450b
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -24,10 +24,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.lang.Nullable;
 
-/**
- * Taken from Spring's GenericApplicationContext.ClassDerivedBeanDefinition.
- * The goal is to support multiple constructors when adding extensions for plugins when no annotations are present.
- * Spring will pick the constructor with the highest number of arguments that it can inject.
+/*ACR-2b4fe43fcc664836be257ac467eaa8b4
+ACR-f2da1f03746f4bd6b02bad0b9f4bf5cd
+ACR-808a2689191c41e9a37da367178219d3
+ACR-461ef599ef8d49a7912840e83b23a1dc
  */
 public class ClassDerivedBeanDefinition extends RootBeanDefinition {
   public ClassDerivedBeanDefinition(Class<?> beanClass) {
@@ -38,9 +38,9 @@ public class ClassDerivedBeanDefinition extends RootBeanDefinition {
     super(original);
   }
 
-  /**
-   * This method gets called from AbstractAutowireCapableBeanFactory#createBeanInstance when a bean is instantiated.
-   * It first tries to look at annotations or any other methods provided by bean post processors. If a constructor can't be determined, it will fallback to this method.
+  /*ACR-fbe0bd99a38c49cb95906f6a1623e9b5
+ACR-ce4197f2fd9f4023a691f31f49203373
+ACR-33e05b277ab74498b5c75223122518a5
    */
   @Override
   @Nullable

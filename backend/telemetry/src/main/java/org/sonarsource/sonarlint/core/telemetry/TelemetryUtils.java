@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-db60525484654fb9a7426b37d633660e
+ACR-3b5de08bde97491bac41818cafc2c03c
+ACR-1f598fbb978145bb97f2a2a1ea9be623
+ACR-faf21a2576654e6fafbcd3836c4e2aff
+ACR-27cae8b4bce843c6bc05fdf9cf70706a
+ACR-16025958ef4a459090f8fe92c929b7d2
+ACR-1b9d62d481784bfb86441b592ce6fca3
+ACR-2fbfc5a2478840a281a9bde65a5722c8
+ACR-53b55c4f334b4a268d574bad1770ad66
+ACR-ae286ad1888c4c8b8e14529c88a968a2
+ACR-e2f9340f3e034a08878a6bf21079fa4e
+ACR-6cd5f9ac39604b2fb0fdfc450dd0504d
+ACR-76dddf3b3bdc41ae963a7915b761609d
+ACR-7fc8ae17bf5e415da8622c096dc299e9
+ACR-9a4995b2407a42f7a1f93f2abd990d50
+ACR-864a713597ea4dfea62392e0e2bef8ec
+ACR-e858d15f19454c49972e05f8f2c2d32a
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -39,21 +39,21 @@ import org.sonarsource.sonarlint.core.telemetry.payload.TelemetryNotificationsPa
 class TelemetryUtils {
 
   private TelemetryUtils() {
-    // utility class, forbidden constructor
+    //ACR-2456bd1e491e4f3f94accac8bcd42a41
   }
 
-  /**
-   * Check if "now" is a different day than the reference.
-   *
-   * @param date reference date
-   * @return true if it's a different day than the reference
+  /*ACR-66b782dda86740c7b411dca7f342aff6
+ACR-7bc8b0b934b54d02acbaa63142efd233
+ACR-835fdd0ff4fd4907a931d771df8e48fd
+ACR-b32497fc2fe8422d8533ec1ae7445316
+ACR-645d1cb4e73541c88245f41d7569e9f7
    */
   static boolean isGracePeriodElapsedAndDayChanged(@Nullable LocalDate date) {
     return date == null || !date.equals(LocalDate.now());
   }
 
-  /**
-   * Transforms stored information about analyzers performance to payload to be sent to server.
+  /*ACR-0811c72483de4b768ef9dcd190cabbd5
+ACR-67fcf8e0698346ad96798c78e3333556
    */
   static TelemetryAnalyzerPerformancePayload[] toPayload(Map<String, TelemetryAnalyzerPerformance> analyzers) {
     return analyzers.entrySet().stream()
@@ -106,12 +106,12 @@ class TelemetryUtils {
     }).toArray(TelemetryFixSuggestionPayload[]::new);
   }
 
-  /**
-   * Check if "now" is a different day than the reference, and some hours have elapsed.
-   *
-   * @param dateTime reference date
-   * @param hours minimum hours that must have elapsed
-   * @return true if it's a different day than the reference and at least hours have elapsed
+  /*ACR-960397ecd9e047719b8fcb42c24cfdf2
+ACR-8ff9e9490a984169b24da81dd836b0c1
+ACR-2c272597c36e4d4ca1949182ba2ed329
+ACR-fc75a22b408140a3a28eccc6726953d8
+ACR-7014235cca7d4608a1a6e2b3d6b34797
+ACR-0f5fc22cef8743939668973ab902433a
    */
   static boolean isGracePeriodElapsedAndDayChanged(@Nullable LocalDateTime dateTime, long hours) {
     return dateTime == null ||

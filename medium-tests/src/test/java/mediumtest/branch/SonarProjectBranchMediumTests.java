@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b07cd088c5ba4d4c8249b79e939165e6
+ACR-26bc224c7c424f10b8aab867aae84116
+ACR-c356b8c8096040c9ae487a19965c58fa
+ACR-82f1b2a3759c4bc794300d495b9d26c5
+ACR-22a6bc0aaba9428da7bb8e22f91d7f4d
+ACR-6de68497cf1e43719a497de35ae33e2d
+ACR-9188ec471d864a6fb4da82f5cd2342e2
+ACR-ed08a02a2a9447b3bcc8e641ebf2b423
+ACR-8e36b34335cb4c3ca18a4d1cd2092225
+ACR-37273cb80d9d4c0da8c5232635f06e26
+ACR-376a77c9245e46099f9f71f7a24e0c8d
+ACR-9b5fe6fcb3b542ea91e3696bc9d85a8b
+ACR-20a42d61135240afbbaa08c35a15368f
+ACR-dc2cb4b064e44db98e4fbdfcfe4ed153
+ACR-8e8b651d44be403ea3a93ca5b9542123
+ACR-18d0d23baace4d86ae9e7c3192eb4316
+ACR-552033b6e61e45f18f554a7bfbd30a2d
  */
 package mediumtest.branch;
 
@@ -90,10 +90,10 @@ class SonarProjectBranchMediumTests {
       .withBoundConfigScope("configScopeId", "connectionId", "projectKey")
       .start(client);
 
-    // Wait for the first branch matching
+    //ACR-14dd7d4cb0b24f47a84403d54c470b06
     verify(client, timeout(5000)).didChangeMatchedSonarProjectBranch(eq("configScopeId"), any());
 
-    // Trigger another branch matching
+    //ACR-4df424b28f1448cf8a186d02f43375b5
     notifyVcsRepositoryChanged(backend, "configScopeId");
 
     verify(client, timeout(1000).times(2)).matchSonarProjectBranch(eq("configScopeId"), eq("main"), eq(Set.of("main", "myBranch")), any());
@@ -159,7 +159,7 @@ class SonarProjectBranchMediumTests {
       .withBoundConfigScope("configScopeId", "connectionId", "projectKey")
       .start(client);
 
-    // Wait for initial branch matching
+    //ACR-41f58cafd0fe40eaad3e7b92bd657630
     verify(client, timeout(5000)).didChangeMatchedSonarProjectBranch("configScopeId", "branchA");
 
     backend.getSonarProjectBranchService().didVcsRepositoryChange(new DidVcsRepositoryChangeParams("configScopeId"));
@@ -183,7 +183,7 @@ class SonarProjectBranchMediumTests {
       .withBoundConfigScope("configScopeId", "connectionId", "projectKey")
       .start(client);
 
-    // Initial matching
+    //ACR-2719bce367824cb1be8707695cea138f
     verify(client, timeout(1000)).didChangeMatchedSonarProjectBranch("configScopeId", "main");
 
     notifyVcsRepositoryChanged(backend, "configScopeId");
@@ -215,11 +215,11 @@ class SonarProjectBranchMediumTests {
       .withBackendCapability(PROJECT_SYNCHRONIZATION)
       .start(client);
 
-    // Wait for first sync
+    //ACR-984fbff7a2ca4ec9989df7dd0ca8f2f0
     verify(client, timeout(5000)).didChangeMatchedSonarProjectBranch(eq("configScopeId"), eq("main"));
     verify(client, timeout(5000)).didSynchronizeConfigurationScopes(Set.of("configScopeId"));
 
-    // Now emulate a branch change
+    //ACR-f9ee2b0c20294a3696e2ea023e118c18
     backend.getSonarProjectBranchService().didVcsRepositoryChange(new DidVcsRepositoryChangeParams("configScopeId"));
 
     verify(client, timeout(5000)).didChangeMatchedSonarProjectBranch(eq("configScopeId"), eq("myBranch"));
@@ -245,7 +245,7 @@ class SonarProjectBranchMediumTests {
 
     verify(client, timeout(5000)).didChangeMatchedSonarProjectBranch(eq("configScopeId"), eq("myBranch"));
 
-    // Emulate a binding change to a project having no branches
+    //ACR-75f523f0b6a74a2dab3fa0ad0af5fdae
     bind(backend, "configScopeId", "connectionId", "projectKey2");
 
     assertThat(backend.getSonarProjectBranchService().getMatchedSonarProjectBranch(new GetMatchedSonarProjectBranchParams("configScopeId")))

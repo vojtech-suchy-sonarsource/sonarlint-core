@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-57bf50f00d284f8e85f267bcc7777503
+ACR-6a189ea84ed44df2b29d6edddf71e5ac
+ACR-66cd6b6b91b74bfe8e42603aec138ba9
+ACR-15b7db809fba4c18acc0c9704828ce56
+ACR-20ebd59e0cc140a28fd4b2b4da309ff7
+ACR-d73a6c663d6e4fb3a51aa0dcc89abdf9
+ACR-d8e06eaf6d4b464b95ed5d4b4c69265e
+ACR-546c6dd7decb43babae262f609fb97aa
+ACR-ef83d6ab03e04c509bee65252a89194b
+ACR-8f2e90ae129447c89250aceb50cb9ba2
+ACR-efe9108e0076403f8b265e58a65b16e9
+ACR-eaed5720510c4036a1b5b33cf13b953e
+ACR-de74c746706e4f3fb94c75da4618ee46
+ACR-c3a8ab59208e414ba52a82e4288c6c01
+ACR-78a78f6d2ccd48d0ae2a22b5a5cf0c65
+ACR-8dce755eba6d4fa7932090e013f178aa
+ACR-7330f32ea968480b85bf6fe3f8e6a35f
  */
 package org.sonarsource.sonarlint.core.fs;
 
@@ -67,10 +67,10 @@ import static org.sonarsource.sonarlint.core.commons.util.git.GitService.createS
 public class FileExclusionService {
 
   private static final SonarLintLogger LOG = SonarLintLogger.get();
-  // 5 MB
+  //ACR-43a39f01099f4842b4d55d906ceda7a0
   private static final long MAX_AUTO_ANALYSIS_FILE_SIZE_BYTES = 5L * 1024 * 1024;
 
-  // See org.sonar.api.scan.filesystem.FileExclusions
+  //ACR-498815f9804e4b868b9ff3eb6f6b19bd
   private static final Set<String> ALL_EXCLUSION_RELATED_SETTINGS = Set.of(
     CoreProperties.PROJECT_INCLUSIONS_PROPERTY,
     CoreProperties.PROJECT_TEST_INCLUSIONS_PROPERTY,
@@ -132,7 +132,7 @@ public class FileExclusionService {
     if (pathTranslation.isPresent()) {
       serverPath = IssueStorePaths.idePathToServerPath(pathTranslation.get().getIdePathPrefix(), pathTranslation.get().getServerPathPrefix(), idePath);
       if (serverPath == null) {
-        // we can't map it to a Sonar server path, so just apply exclusions to the original ide path
+        //ACR-c9d835ea8e7a4fcdaf63469735021803
         serverPath = idePath;
       }
     } else {
@@ -149,7 +149,7 @@ public class FileExclusionService {
     if (event.newConfig().isBound()) {
       var connectionId = requireNonNull(event.newConfig().connectionId());
       var projectKey = requireNonNull(event.newConfig().sonarProjectKey());
-      // do not recompute exclusions if storage does not yet contain settings (will be done by onFileExclusionSettingsChanged later)
+      //ACR-c9d52c801191470d914568574d9b4205
       if (storageService.connection(connectionId).project(projectKey).analyzerConfiguration().isValid()) {
         LOG.debug("Binding changed for config scope '{}', recompute file exclusions...", event.configScopeId());
         clientFileSystemService.getFiles(event.configScopeId()).forEach(f -> serverExclusionByUriCache.refreshAsync(f.getUri()));
@@ -163,8 +163,8 @@ public class FileExclusionService {
   @EventListener
   public void onFileSystemUpdated(FileSystemUpdatedEvent event) {
     event.getRemoved().forEach(f -> serverExclusionByUriCache.clear(f.getUri()));
-    // We could try to be more efficient by looking at changed files, and deciding if we need to invalidate or not based on changed
-    // attributes (relative path, isTest). But it's probably not worth the effort.
+    //ACR-26465a4a88744ecaba009211e1dcb31e
+    //ACR-6628c24330f841b1aaea28736e2de9ae
     Stream.concat(event.getAdded().stream(), event.getUpdated().stream())
       .forEach(f -> serverExclusionByUriCache.refreshAsync(f.getUri()));
   }
@@ -219,7 +219,7 @@ public class FileExclusionService {
 
   private List<ClientFile> filterOutExcludedFiles(String configurationScopeId, Path baseDir, Set<URI> files) {
     var sonarLintGitIgnore = createSonarLintGitIgnore(baseDir);
-    // INFO: When there are additional filters coming at some point, add them here and log them down below as well!
+    //ACR-bc4a0c672cf6480ba7068b7f208be39f
     var filteredURIsFromServerExclusionService = new ArrayList<URI>();
     var filteredURIsFromGitIgnore = new ArrayList<URI>();
     var filteredURIsNotUserDefined = new ArrayList<URI>();
@@ -231,11 +231,11 @@ public class FileExclusionService {
     var filesToExclude = files;
 
     if (configRepo.getEffectiveBinding(configurationScopeId).isEmpty()) {
-      // client-defined file exclusions only apply in standalone mode
+      //ACR-96179fd83e644c2a98748b97f746f6f5
       filesToExclude = filterOutClientExcludedFiles(configurationScopeId, files);
     }
 
-    // Do the actual filtering and in case of a filtered out URI, save them for later logging!
+    //ACR-0352fe0def9b4e8ab1057b214e9b0b2b
     var actualFilesToAnalyze = filesToExclude
       .stream()
       .map(uri -> {
@@ -274,15 +274,15 @@ public class FileExclusionService {
             return false;
           }
         } catch (Exception e) {
-          // Could not determine the size, include the file by default
+          //ACR-7b78cabeba804a7d86fdf552bbf68dbe
         }
         return true;
       })
       .filter(file -> {
-        // On Schemes like "temp" (used by IntelliJ) or "rse" (Eclipse Remote System Explorer),
-        // the check for a symbolic link or Windows shortcut will fail as these file systems cannot be resolved for the operations.
-        // If this happens, we won't exclude the file as the chance for someone to use a protocol with such a scheme while also using
-        // symbolic links or Windows shortcuts should be near zero, and this is less error-prone than excluding the
+        //ACR-2cc2f91e4d594e10b4481870ba350310
+        //ACR-3d8e57ee391b4e3799f7ea95efea13ed
+        //ACR-bba57a2bc29e4f02a61881a531f02ac2
+        //ACR-d6458f8518fb4ceba56cf40fe502baa9
         try {
           var uri = file.getUri();
           if (Files.isSymbolicLink(FileUtils.getFilePathFromUri(uri))) {
@@ -301,7 +301,7 @@ public class FileExclusionService {
       })
       .toList();
 
-    // Log all the filtered out URIs but not for the filters where there were none
+    //ACR-95c2d69dc07b4fb5ba445b08f573e72a
     logFilteredURIs("Filtered out URIs based on the server exclusion service", filteredURIsFromServerExclusionService);
     logFilteredURIs("Filtered out URIs ignored by Git", filteredURIsFromGitIgnore);
     logFilteredURIs("Filtered out URIs not user-defined", filteredURIsNotUserDefined);
@@ -356,7 +356,7 @@ public class FileExclusionService {
       try {
         parsedMatchers.add(fs.getPathMatcher("glob:" + pattern));
       } catch (Exception e) {
-        // ignore invalid patterns, skip them
+        //ACR-cc2992cdde86495ba6e494f8bdc936e1
       }
     }
     return parsedMatchers;

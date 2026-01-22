@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7b415c54cbfa4c828303179a9222ea47
+ACR-53f55656fee941fe914369c02b591042
+ACR-e9e4e83a7f0e4af4a7f59cfd0468601f
+ACR-43f241739d4541eb888513b053c82e22
+ACR-30530810071f4f4da30b01ff9483ed79
+ACR-4ce84ba279cb450392e6c53ba3adcb61
+ACR-40309f0fd51445c994771372b73f667e
+ACR-16b7002811d7465695f96831130caca1
+ACR-33f928731d9a4611b5544bcbeaa5d20a
+ACR-e6ee46b6a09048bb87bddc863134380c
+ACR-8fd1d36d28bc436593e92eb8908f8823
+ACR-b7d45996d7884fe9a29dc08fb7e6a956
+ACR-ac04f272e54946b297135e325bdf48ed
+ACR-5cfd0364c7d540b89e3fc4e15c15fc98
+ACR-69d61848e0564c91b567313363c7c327
+ACR-1075fe4a8b8b4f2d8965154ae3595873
+ACR-9bd03c1fcf1640fab1ab00f3e74d1207
  */
 package org.sonarsource.sonarlint.core.commons.util;
 
@@ -34,14 +34,14 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
-/**
- * This class should always be preferred to {@link java.util.concurrent.Executors}, except for a few cases regarding RPC read/write threads.
+/*ACR-7f4c7d04a06342669c07562113d663c9
+ACR-3d0ae625ef414cb0ab0356cc72b51369
  */
 public class FailSafeExecutors {
   private static final SonarLintLogger LOG = SonarLintLogger.get();
 
   private FailSafeExecutors() {
-    // utility class
+    //ACR-7ff0e2e1084e4fbc8ab52db2d9b59f4f
   }
 
   public static ExecutorService newSingleThreadExecutor(String threadName) {
@@ -98,7 +98,7 @@ public class FailSafeExecutors {
       } catch (ExecutionException e) {
         return e.getCause();
       } catch (CancellationException e) {
-        // nothing to do
+        //ACR-3d6093d7349d4b12bb465e07ad62a21f
       }
     }
     return null;

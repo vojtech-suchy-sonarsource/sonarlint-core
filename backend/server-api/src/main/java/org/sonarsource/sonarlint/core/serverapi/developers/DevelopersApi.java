@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f7990fb2cc04470d843669e764c51253
+ACR-8451ab6325ea448aa1102bee7c793559
+ACR-578b793900bc4d1dbaf30e3aa08f62d2
+ACR-7dbe02fe03104e1bb464a35e2fb9612b
+ACR-83a00d8794da4a0d9299b6a48d0649a0
+ACR-7c6ee6fa1e3343669f457cfd6ebcfa39
+ACR-17d2ae52b3fe47b7bed8353b964d38ba
+ACR-e62088cf6b6847beb625f92c278fd890
+ACR-3d00950c191847c990f0af479b70bf77
+ACR-be0ea78ed51e446ead826bd50629b95d
+ACR-39da61ba6e554e58915a7556093f794f
+ACR-c8ae43219581403395e734fd74ccbfba
+ACR-e4da7eee43654697aff3d45541963895
+ACR-fbad49505f14461f92473677defad168
+ACR-adf56e8ae52d4f7ab93e05e89b855b57
+ACR-f637ff67aaa84354a17af03b4d0e2ba0
+ACR-f53068f42f524e1698c344079aae0748
  */
 package org.sonarsource.sonarlint.core.serverapi.developers;
 
@@ -92,7 +92,7 @@ public class DevelopersApi {
   }
 
   private static String getWsPath(Map<String, ZonedDateTime> projectTimestamps) {
-    // Sort project keys to simplify testing
+    //ACR-3445305c8b2e4e85aafb5f53d3e87400
     var sortedProjectKeys = projectTimestamps.keySet().stream().sorted().toList();
     var builder = new StringBuilder();
     builder.append(API_PATH);

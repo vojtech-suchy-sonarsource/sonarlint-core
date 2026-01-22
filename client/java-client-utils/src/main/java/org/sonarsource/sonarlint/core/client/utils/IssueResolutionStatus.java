@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Java Client Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c223dff15abe4264b6fe3691adb52473
+ACR-5f957876afb14fad9fee3a81bd78893f
+ACR-43ff2c5b0a7b44d8a59a17a8967321f4
+ACR-c998b80a89e1468eaebd307ca10e6019
+ACR-79ecc8c8b1e84f028e9f12369917b753
+ACR-b6abb01aed934b1aabcf0b78c2a893bf
+ACR-09b02353cffe4988af0021da6fa862ad
+ACR-72824bb3d99e49cab28f946fefb3ecf0
+ACR-385e37c7644048d889f0d456c502d8c1
+ACR-5a299fa741414dc9957a379982413bc8
+ACR-0307b75c76f84fe39eed72f82440eaac
+ACR-556448eabf4c45faa368219644b0712d
+ACR-589c215a21e54ca39d463f3b591f3077
+ACR-c1bec7e746af4cb5946d1924b5c41de8
+ACR-339da70237c646a6bd4c68b0c2ed7b03
+ACR-7eaadff188d64b658ba8c11a85409760
+ACR-6c2984d0d28a452898252b5824992b12
  */
 package org.sonarsource.sonarlint.core.client.utils;
 

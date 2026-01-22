@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6c294991ea4c48a79513ff96e96d19e6
+ACR-ba2a3a0acaaf49a981b4d896982b1fb6
+ACR-726e6d6189ae4138a335f37db0cbb52f
+ACR-f1645b718b094f5ebb05f19a2b8c3b19
+ACR-43d72a32939d4ecb9eec730edbd8c0cc
+ACR-d7b21bb5303f4d88a240b53c97c7a261
+ACR-cb084822a4684689b83c6a57d3016b08
+ACR-625224a39a424d17b2ea2c2297130ef3
+ACR-ab30a395ae154d6288457ee7abdc6690
+ACR-061195be40864beb8a9f387bb8c76530
+ACR-71da92b063984ae68cd523b9271e6162
+ACR-6173583ef8c04c00b660f409b7541c03
+ACR-99688625136747f7946980d55b2cf8e6
+ACR-4154102fdd4c41c7a6a6f3e4949ade63
+ACR-b0610d824d334923b7582c87cf01235d
+ACR-e066e0c7537a44518459b0acc1504413
+ACR-c47c0fa9450e4401aff7aca4ec5db47c
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -126,7 +126,7 @@ public class TelemetryServerAttributesProvider {
       .count();
   }
 
-  // We are looking for leaf config scope IDs that are bound to a different project key than their parents
+  //ACR-dd0d4cff4fde49da818c539b621d63e1
   private int countChildBindings() {
     return (int) configurationRepository.getLeafConfigScopeIds().stream()
       .filter(scopeId -> {

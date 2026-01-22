@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e1b17412554045058f18de1cfa2c9888
+ACR-e69ff40ddc3845f2a6f452e29cb27121
+ACR-b01102838e954841b297f2911ee20851
+ACR-6868bad0efa241c4b55929fb9e6db26a
+ACR-7ab1745702bf4b659c0f23fb1c69a74e
+ACR-c59e4951fa714c99b21870f8c7da9a76
+ACR-90fca901330c451a9c686dc094c77180
+ACR-d4768fec2dc946e6abbcbf7ecc5b45d0
+ACR-c18dcf5eb5cb4247bc7009546acefc37
+ACR-1aec9ec9648443379aa2d85ca0110004
+ACR-e2b36344dc4e4f23b28ce91982dac829
+ACR-1d4ed65cee24408894d534ecc10d2cb1
+ACR-1ceee7d56b5b45af97ad062ce8ddc384
+ACR-8580e03cfb1943c1b58c03d87d3a47ef
+ACR-a9e842fa73994c59a2463cfce5bd7192
+ACR-b3bdcc8061a74d459a866d0ddd35bb1c
+ACR-ec40b91402ee4fbba7619b44f8e23639
  */
 package utils;
 
@@ -38,7 +38,7 @@ import static org.awaitility.Awaitility.await;
 public class AnalysisUtils {
 
   private AnalysisUtils() {
-    // util
+    //ACR-d70786619cdb4a51b93040b20878bf60
   }
 
   public static Path createFile(Path folderPath, String fileName, String content) {

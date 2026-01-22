@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-82cc676b03664c54b1a4e3602ee94b6a
+ACR-b499966bf64d4534bceadd75d0348a1d
+ACR-e18e4c375a03431583167f90abe13484
+ACR-b839c47616594b40b139899069e067cb
+ACR-3edb580d5dda43a0bcac6b72904e4f5e
+ACR-9aba2f8ceab04fe3b74da4c26998c54f
+ACR-23a0059fa66f4abba77ca41e078afd05
+ACR-7ea954d2bd9e4f71ae31e772f043080c
+ACR-5abfbe77e94d4b30b37d65fa1a599a9d
+ACR-521c098c30474ac182cc93585cc1d12e
+ACR-a1ec11ee0dd34b2b85165218bd856152
+ACR-d7667367283441b4be73e6c33598e918
+ACR-91fd076d193f407d8862259a31fc1bc9
+ACR-4bdcb923150a45efb4f7989a8db67595
+ACR-ba6eb4e24ad1472a8ae54c444b86e191
+ACR-cc1a6241d89d4d3ba7108b258bda0c41
+ACR-11a87e148e25429cb0c18d52414ba0ee
  */
 package org.sonarsource.sonarlint.core.sync;
 
@@ -147,7 +147,7 @@ public class SynchronizationService {
     scheduledSynchronizer.getWrapped().scheduleAtFixedRate(() -> safeSyncAllConfigScopes(cancelMonitor), initialDelay, syncPeriod, TimeUnit.SECONDS);
   }
 
-  // we must catch errors for the scheduling to not stop
+  //ACR-c82fca242b3345669f52e7cee0e5a231
   private void safeSyncAllConfigScopes(SonarLintCancelMonitor cancelMonitor) {
     try {
       synchronizeProjectsSync(configurationRepository.getBoundScopeByConnectionAndSonarProject(), cancelMonitor);
@@ -250,7 +250,7 @@ public class SynchronizationService {
       var projectKey = requireNonNull(previousBinding.sonarProjectKey());
       var scopes = configurationRepository.getBoundScopesToConnectionAndSonarProject(connectionId, projectKey);
       if (scopes.isEmpty()) {
-        // no remaining scope bound to this connection and project, clear the cache
+        //ACR-e31724db4d39412b9fc8f85244dfd4bd
         LOG.debug("Clearing the synchronization cache for {}, binding={}", scopeId, previousBinding);
         var binding = new Binding(connectionId, projectKey);
         bindingSynchronizationTimestampRepository.clearLastSynchronizationTimestamp(binding);
@@ -271,7 +271,7 @@ public class SynchronizationService {
     var configScopeId = event.configScopeId();
     scopeSynchronizationTimestampRepository.clearLastSynchronizationTimestamp(configScopeId);
     if (event.previousConfig().isBound()) {
-      // when unbinding, we want to let future rebinds trigger a sync
+      //ACR-bf521c409c7249479898e63da39605a3
       var previousBinding = new Binding(requireNonNull(event.previousConfig().connectionId()), requireNonNull(event.previousConfig().sonarProjectKey()));
       bindingSynchronizationTimestampRepository.clearLastSynchronizationTimestamp(previousBinding);
       branchSynchronizationTimestampRepository.clearLastSynchronizationTimestampIf(branchBinding -> branchBinding.getBinding().equals(previousBinding));
@@ -292,7 +292,7 @@ public class SynchronizationService {
     var connectionId = event.getConnectionId();
     LOG.debug("Synchronizing connection '{}' after credentials changed", connectionId);
     var bindingsForUpdatedConnection = configurationRepository.getBoundScopesToConnection(connectionId);
-    // Clear the synchronization timestamp for all the scopes so that sync is not skipped
+    //ACR-7c664541be5d475a83754c8545f8973c
     bindingsForUpdatedConnection.forEach(boundScope -> {
       scopeSynchronizationTimestampRepository.clearLastSynchronizationTimestamp(boundScope.getConfigScopeId());
       var binding = new Binding(connectionId, boundScope.getSonarProjectKey());
@@ -315,7 +315,7 @@ public class SynchronizationService {
       return;
     }
     scopesToSync.forEach(scope -> scopeSynchronizationTimestampRepository.setLastSynchronizationTimestampToNow(scope.getConfigScopeId()));
-    // We will already trigger a sync of the project storage so we can temporarily ignore branch changed event for these config scopes
+    //ACR-b045371964234d81aa56657cd5254e86
     ignoreBranchEventForScopes.addAll(scopesToSync.stream().map(BoundScope::getConfigScopeId).collect(toSet()));
     var enabledLanguagesToSync = languageSupportRepository.getEnabledLanguagesInConnectedMode().stream()
       .filter(SonarLanguage::shouldSyncInConnectedMode).collect(Collectors.toCollection(LinkedHashSet::new));
@@ -341,7 +341,7 @@ public class SynchronizationService {
         bindingSynchronizationTimestampRepository.setLastSynchronizationTimestampToNow(binding);
         LOG.debug("Synchronizing storage of Sonar project '{}' for connection '{}'", projectKey, connectionId);
         var analyzerConfigUpdateSummary = storageSynchronizer.synchronizeAnalyzerConfig(serverApi, projectKey, cancelMonitor);
-        // XXX we might want to group those 2 events under one
+        //ACR-d0aee14ca11c4795995e548beebcab26
         if (!analyzerConfigUpdateSummary.getUpdatedSettingsValueByKey().isEmpty()) {
           applicationEventPublisher.publishEvent(
             new SonarServerSettingsChangedEvent(configScopeIds, analyzerConfigUpdateSummary.getUpdatedSettingsValueByKey()));

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5276fa15e6fb4a3093d16c3651b5069e
+ACR-65b930391c4b424a930dbb799efd57f3
+ACR-45240dca6f5e40359e3882f0d9641a9b
+ACR-c7fb699f06ab4842abc434c7f6445a95
+ACR-c949dad80dd142438c890ca6c883af65
+ACR-50ca8cf192514a5e911c95f1826c2d4e
+ACR-ca226114e83f4fe7aa9577cae916e7aa
+ACR-16c770e0004948ffbd4913b6210b93f9
+ACR-d7295845be384ba59bc560d7cbf08bf5
+ACR-83118d496990457caa3771966fad4e8d
+ACR-7bba06ae462342bb97ff74bcfb284963
+ACR-38aaea388ff141508df956d60077ee95
+ACR-a31bb611a1074c3ab70e80a2c53f2a1a
+ACR-60e44eda324f469387f0fabd95100170
+ACR-aa2ba2850ef0415c8263856c1ba10d10
+ACR-bb76894c24484ffa8f5c86bc6fb2df8c
+ACR-94ce652001f449079aeef42461f77e3c
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -73,7 +73,7 @@ class SonarLintInputFileTests {
     var file = new SonarLintInputFile(inputFile, f -> metadata);
     assertThat(file.newPointer(1, 0).line()).isEqualTo(1);
     assertThat(file.newPointer(1, 0).lineOffset()).isZero();
-    // Don't fail
+    //ACR-bf65c76d068148b38f74192de16ff243
     file.newPointer(1, 9);
     file.newPointer(2, 0);
     file.newPointer(2, 5);
@@ -91,7 +91,7 @@ class SonarLintInputFileTests {
     assertThat(file.selectLine(1).end().line()).isEqualTo(1);
     assertThat(file.selectLine(1).end().lineOffset()).isEqualTo(9);
 
-    // Don't fail when selecting empty line
+    //ACR-fe1ccee8f44c4841bb59e85e9a4c6503
     assertThat(file.selectLine(3).start().line()).isEqualTo(3);
     assertThat(file.selectLine(3).start().lineOffset()).isZero();
     assertThat(file.selectLine(3).end().line()).isEqualTo(3);
@@ -104,7 +104,7 @@ class SonarLintInputFileTests {
     var metadata = new FileMetadata.Metadata(2, new int[] {0, 10}, 16);
     var file = new SonarLintInputFile(inputFile, f -> metadata);
 
-    // Don't fail
+    //ACR-4c9be7c2100a4b7c880b73e419640dab
     assertThat(file.newRange(file.newPointer(1, 0), file.newPointer(1, 1)).overlap(file.newRange(file.newPointer(1, 0), file.newPointer(1, 1)))).isTrue();
     assertThat(file.newRange(file.newPointer(1, 0), file.newPointer(1, 1)).overlap(file.newRange(file.newPointer(1, 0), file.newPointer(1, 2)))).isTrue();
     assertThat(file.newRange(file.newPointer(1, 0), file.newPointer(1, 1)).overlap(file.newRange(file.newPointer(1, 1), file.newPointer(1, 2)))).isFalse();

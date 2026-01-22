@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c562be5a7ff04e43891489f803aca163
+ACR-fc8105ac46774868bb39f323751c1ffe
+ACR-92cc08a921ff44649447c88b75dbd356
+ACR-6d6038ae58ac44d9a17cfb41dcddd2f6
+ACR-72ba81593e59436dbe1e25a3724cf3e6
+ACR-de614e8d1e494865842d52ee213e0080
+ACR-7f4c571b0dd34888b9c86a318297e7fd
+ACR-57fc0b3437e141c99af0e9ce05cf9607
+ACR-755794ca956f4c61be4b6f38decbd6b3
+ACR-f550b7577bba45c081be60bc0365a64a
+ACR-4f7b755993ed4916ad7096b2f83ea1a9
+ACR-7a0207ac01d541d088fdd5198e4c0f8c
+ACR-5a6eadae463c427aabf52ea86293ed92
+ACR-c6dc3eae4bd747a39f90799598288e44
+ACR-0ab567d050114364b98ef3c76870f9bb
+ACR-6daa5d0bcb0546529c812b27b80329dd
+ACR-5cc49b8bdaa74456ab9d6688547d15fd
  */
 package mediumtest.flight.recorder;
 
@@ -72,14 +72,14 @@ class FlightRecorderMediumTests {
   }
 
   private void setupSentryStubs() {
-    // Stub the Sentry project endpoint (where events are sent)
+    //ACR-3bcddc3dc9354bd6a570f77fca3bd5c4
     sentryServer.stubFor(post(urlPathMatching("/api/\\d+/store/"))
       .willReturn(aResponse()
         .withStatus(200)
         .withHeader("Content-Type", "application/json")
         .withBody("{\"id\": \"event-id-12345\"}")));
 
-    // Stub the Sentry envelope endpoint (used for transactions, etc.)
+    //ACR-4a06605154fe414b90767115ca5d29a7
     sentryServer.stubFor(post(urlPathMatching("/api/\\d+/envelope/"))
       .willReturn(aResponse()
         .withStatus(200)));
@@ -114,10 +114,10 @@ class FlightRecorderMediumTests {
 
     backend.getFlightRecordingService().captureThreadDump();
 
-    // The mock Sentry server receives 3 payloads:
-    // * start of recording
-    // * analysis trace
-    // * thread dump
+    //ACR-6f7817491ac84348a94366a7cabe18d8
+    //ACR-3b50d4e7d3ab4c21a24a0018ad36640c
+    //ACR-77efda5be8364229b152a5295aface09
+    //ACR-eab019e1a69540258e1ebe54a6016537
     await().atMost(1, TimeUnit.SECONDS).untilAsserted(() ->  assertThat(sentryServer.getAllServeEvents()).hasSize(3));
   }
 }

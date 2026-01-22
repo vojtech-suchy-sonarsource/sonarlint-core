@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - ITs - Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8c3c7803afe14915a8eea8a6b2906724
+ACR-e266026392a24f3cb0cf697b3b5938d7
+ACR-2673ba646eda423e8faabd3db28f267b
+ACR-b267458d6e83442fa89c56a524358bcf
+ACR-072ed8ed741e4b70aa43e2241b84d1de
+ACR-62b97257c49d4160876d92ceaa361024
+ACR-c044b6aa30114c2f9a81e8ec6505080a
+ACR-2d5f44579b92426eb4e6f68d50b72648
+ACR-5a9b08eec20e49b69cc2c74c97a3522c
+ACR-9d9c1fbf603c497ea2e81789bf41ecd0
+ACR-d9d8840a321f42deb83591156755193f
+ACR-90b0ac4612dd4a79bd2acb9108eaf3ed
+ACR-ebc0613b1460469cb6637f77ee793a3e
+ACR-fcd13dae4769423792f12d946c264dbc
+ACR-ff126d27abbb4648935cb103c0381832
+ACR-f7604f8ea59d414e807b7ccfcfcd5994
+ACR-26443fc550984ba4965b2447254a6781
  */
 package its;
 
@@ -158,7 +158,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
     .addPlugin(FileLocation.of("../plugins/global-extension-plugin/target/global-extension-plugin.jar"))
     .addPlugin(FileLocation.of("../plugins/custom-sensor-plugin/target/custom-sensor-plugin.jar"))
     .addPlugin(FileLocation.of("../plugins/java-custom-rules/target/java-custom-rules-plugin.jar"))
-    // Ensure SSE are processed correctly just after SQ startup
+    //ACR-7fe96ff1354a4bdfa836a9f68dc5c0bf
     .setServerProperty("sonar.pushevents.polling.initial.delay", "2")
     .setServerProperty("sonar.pushevents.polling.period", "1")
     .setServerProperty("sonar.pushevents.polling.last.timestamp", "1")
@@ -243,7 +243,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       Map<String, String> globalProps = new HashMap<>();
       globalProps.put("sonar.global.label", "It works");
 
-      // This profile is altered in a test
+      //ACR-d5fb0453432449b3bbafa586b70773a1
       ORCHESTRATOR.getServer().restoreProfile(FileLocation.ofClasspath("/java-sonarlint.xml"));
     }
 
@@ -253,7 +253,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       ((MockSonarLintRpcClientDelegate) client).clear();
     }
 
-    // TODO should be moved to a separate class, not related to analysis
+    //ACR-e95782cbc266455bad086b30217056c7
     @Test
     void shouldRaiseIssuesOnAJavaScriptProject() {
       var configScopeId = "shouldRaiseIssuesOnAJavaScriptProject";
@@ -350,7 +350,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
 
       var rawIssues = analyzeFile(configScopeId, "sample-go", "src/sample.go");
 
-      // S5542 was introduced with Go Enterprise in 2025.2
+      //ACR-7a542ace13b745b7a933ea6179552a0b
       var expectedIssues = ORCHESTRATOR.getServer().version().isGreaterThanOrEquals(2025, 2) ? 2 : 1;
       assertThat(rawIssues).hasSize(expectedIssues);
     }
@@ -456,7 +456,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       analyzeFileAndVerifyNoIssues(configScopeId, "sample-java", "src/main/java/foo/Foo.java");
     }
 
-    // TODO should be moved to a medium test
+    //ACR-8a9309439443421db3bba3edd755216b
     @Test
     void globalExtension() {
       var configScopeId = "globalExtension";
@@ -556,7 +556,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
 
       rpcClientLogs.clear();
       didSynchronizeConfigurationScopes.clear();
-      // Override default file suffixes in global props so that input file is not considered as a Java file
+      //ACR-14f30f583d2a42b8b2b2b8def98b80f0
       setSettingsMultiValue(null, "sonar.java.file.suffixes", ".foo");
       backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(configScopeId, new BindingConfigurationDto(CONNECTION_ID, projectKey, false)));
       await().untilAsserted(() -> assertThat(rpcClientLogs.stream().anyMatch(s -> s.getMessage().equals("Stored project analyzer configuration"))).isTrue());
@@ -564,7 +564,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       analyzeFileAndVerifyNoIssues(configScopeId, "sample-java", "src/main/java/foo/Foo.java");
 
       rpcClientLogs.clear();
-      // Override default file suffixes in project props so that input file is considered as a Java file again
+      //ACR-2d9e407ebcfa4e6ab956ba0a2653f2a2
       setSettingsMultiValue(projectKey, "sonar.java.file.suffixes", ".java");
       backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(configScopeId, new BindingConfigurationDto(CONNECTION_ID, projectKey, true)));
       await().untilAsserted(() -> assertThat(rpcClientLogs.stream().anyMatch(s -> s.getMessage().equals("Stored project analyzer configuration"))).isTrue());
@@ -702,13 +702,13 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       provisionProject(ORCHESTRATOR, projectKey, "Sample Branch");
       ORCHESTRATOR.getServer().restoreProfile(FileLocation.ofClasspath("/xml-sonarlint.xml"));
       ORCHESTRATOR.getServer().associateProjectToQualityProfile(projectKey, "xml", "SonarLint IT XML");
-      // Use the pattern of long living branches in SQ 9.9, else we only have issues on changed files
+      //ACR-da733279b58d4aa28dc885f9db9ec5b7
 
-      // main branch
+      //ACR-98844bb4ef3f4e3cabf1c18e316a0410
       analyzeProject("sample-xml", projectKey);
-      // short living branch
+      //ACR-a4bca6b86f0c4f9b98299b64826171c4
       analyzeProject("sample-xml", projectKey, "sonar.branch.name", short_branch);
-      // long living branch
+      //ACR-b29e9c8977c245c4afff2e46480c0bd2
       analyzeProject("sample-xml", projectKey, "sonar.branch.name", long_branch);
 
       openBoundConfigurationScope(configScopeId, projectKey, true);
@@ -798,7 +798,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
 
       analyzeMavenProject("sample-java-taint", PROJECT_KEY_JAVA_TAINT);
 
-      // Ensure a vulnerability has been reported on server side
+      //ACR-e0b38b207fd343e694f494e212662414
       var issuesList = adminWsClient.issues().search(new SearchRequest().setTypes(List.of("VULNERABILITY")).setComponentKeys(List.of(PROJECT_KEY_JAVA_TAINT))).getIssuesList();
       assertThat(issuesList).hasSize(1);
 
@@ -813,12 +813,12 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       assertThat(taintVulnerability.getRuleDescriptionContextKey()).isEqualTo(ruleDescriptionContextKey);
       if (serverVersion.isGreaterThanOrEquals(10, 8)) {
         assertThat(taintVulnerability.getSeverityMode().isRight()).isTrue();
-        // In SQ 10.8+, old MAJOR severity maps to overridden MEDIUM impact
+        //ACR-8fd98f5d2a1a48219ecb7c17338d6a95
         assertThat(taintVulnerability.getSeverityMode().getRight().getImpacts().get(0)).extracting("softwareQuality", "impactSeverity").containsExactly(SoftwareQuality.SECURITY,
           ImpactSeverity.MEDIUM);
         assertThat(taintVulnerability.getSeverityMode().getRight().getCleanCodeAttribute()).isEqualTo(CleanCodeAttribute.COMPLETE);
       } else if (serverVersion.isGreaterThanOrEquals(10, 2)) {
-        // In 10.2 <= SQ < 10.8, the impact severity is not overridden
+        //ACR-ab5679515eb646a2a54b44c4f022055f
         assertThat(taintVulnerability.getSeverityMode().isRight()).isTrue();
         assertThat(taintVulnerability.getSeverityMode().getRight().getImpacts().get(0)).extracting("softwareQuality", "impactSeverity").containsExactly(SoftwareQuality.SECURITY,
           ImpactSeverity.HIGH);
@@ -845,7 +845,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
 
       assertThat(backend.getTaintVulnerabilityTrackingService().listAll(new ListAllParams(CONFIG_SCOPE_ID)).get().getTaintVulnerabilities()).isEmpty();
 
-      // check TaintVulnerabilityRaised is received
+      //ACR-17de6c07fa004f6ba2de2dfda556ac5b
       analyzeMavenProject("sample-java-taint", PROJECT_KEY_JAVA_TAINT);
 
       waitAtMost(1, TimeUnit.MINUTES).until(() -> !didChangeTaintVulnerabilitiesEvents.isEmpty());
@@ -867,11 +867,11 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
         .flatExtracting("locations")
         .extracting("message", "filePath", "textRange.startLine", "textRange.startLineOffset", "textRange.endLine", "textRange.endLineOffset", "textRange.hash")
         .contains(
-          // flow 1 (don't assert intermediate locations as they change frequently between versions)
+          //ACR-684a31eea3d84319973149c189b62592
           tuple("Sink: this invocation is not safe; a malicious value can be used as argument", Paths.get("src/main/java/foo/DbHelper.java"), 11, 35, 11, 64,
             "d123d615e9ea7cc7e78c784c768f2941"),
           tuple("Source: a user can craft an HTTP request with malicious content", Paths.get("src/main/java/foo/Endpoint.java"), 9, 18, 9, 46, "a2b69949119440a24e900f15c0939c30"),
-          // flow 2 (don't assert intermediate locations as they change frequently between versions)
+          //ACR-3430ca74307f42d6a69ead822baded04
           tuple("Sink: this invocation is not safe; a malicious value can be used as argument", Paths.get("src/main/java/foo/DbHelper.java"), 11, 35, 11, 64,
             "d123d615e9ea7cc7e78c784c768f2941"),
           tuple("Source: a user can craft an HTTP request with malicious content", Paths.get("src/main/java/foo/Endpoint.java"), 8, 18, 8, 46, "2ef54227b849e317e7104dc550be8146"));
@@ -888,18 +888,18 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
         .flatExtracting("locations")
         .extracting("message", "filePath", "textRange.startLine", "textRange.startLineOffset", "textRange.endLine", "textRange.endLineOffset", "textRange.hash")
         .contains(
-          // flow 1 (don't assert intermediate locations as they change frequently between versions)
+          //ACR-990562d3a00c4ccf93ceb2f3b9bf4b21
           tuple("Sink: this invocation is not safe; a malicious value can be used as argument", Paths.get("src/main/java/foo/DbHelper.java"), 11, 35, 11, 64,
             "d123d615e9ea7cc7e78c784c768f2941"),
           tuple("Source: a user can craft an HTTP request with malicious content", Paths.get("src/main/java/foo/Endpoint.java"), 9, 18, 9, 46, "a2b69949119440a24e900f15c0939c30"),
-          // flow 2 (don't assert intermediate locations as they change frequently between versions)
+          //ACR-99726885d8ae4f13afc7f150f1f46073
           tuple("Sink: this invocation is not safe; a malicious value can be used as argument", Paths.get("src/main/java/foo/DbHelper.java"), 11, 35, 11, 64,
             "d123d615e9ea7cc7e78c784c768f2941"),
           tuple("Source: a user can craft an HTTP request with malicious content", Paths.get("src/main/java/foo/Endpoint.java"), 8, 18, 8, 46, "2ef54227b849e317e7104dc550be8146"));
 
       resolveIssueAsWontFix(adminWsClient, issueKey);
 
-      // check IssueChangedEvent is received
+      //ACR-208cb0f364d04652b2158322d02904d2
       waitAtMost(1, TimeUnit.MINUTES).until(() -> !didChangeTaintVulnerabilitiesEvents.isEmpty());
       var secondTaintEvent = didChangeTaintVulnerabilitiesEvents.remove(0);
       assertThat(secondTaintEvent)
@@ -912,7 +912,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
 
       reopenIssue(adminWsClient, issueKey);
 
-      // check IssueChangedEvent is received
+      //ACR-e89d387486a0419c95b64574d4d606d7
       waitAtMost(1, TimeUnit.MINUTES).until(() -> !didChangeTaintVulnerabilitiesEvents.isEmpty());
       var thirdTaintEvent = didChangeTaintVulnerabilitiesEvents.remove(0);
       assertThat(thirdTaintEvent)
@@ -923,10 +923,10 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
         .extracting(TaintVulnerabilityDto::isResolved)
         .containsExactly(false);
 
-      // analyze another project under the same project key to close the taint issue
+      //ACR-6adf790a2a1943f3871cd272f7f1c6df
       analyzeMavenProject("sample-java", PROJECT_KEY_JAVA_TAINT);
 
-      // check TaintVulnerabilityClosed is received
+      //ACR-b3e6567f2f2a426099afc63d840def39
       waitAtMost(1, TimeUnit.MINUTES).until(() -> !didChangeTaintVulnerabilitiesEvents.isEmpty());
       var fourthTaintEvent = didChangeTaintVulnerabilitiesEvents.remove(0);
       assertThat(fourthTaintEvent)
@@ -939,7 +939,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
   }
 
   @Nested
-  // TODO Can be removed when switching to Java 16+ and changing prepare() to static
+  //ACR-702ba402653d4b0db8fa504d7eafd9da
   @TestInstance(TestInstance.Lifecycle.PER_CLASS)
   class Hotspots {
 
@@ -951,7 +951,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       ORCHESTRATOR.getServer().restoreProfile(FileLocation.ofClasspath("/java-sonarlint-with-hotspot.xml"));
       ORCHESTRATOR.getServer().associateProjectToQualityProfile(PROJECT_KEY_JAVA_HOTSPOT, "java", "SonarLint IT Java Hotspot");
 
-      // Build project to have bytecode and analyze
+      //ACR-ad56af81eaf74784b4866f57a846ad78
       analyzeMavenProject("sample-java-hotspot", PROJECT_KEY_JAVA_HOTSPOT);
     }
 
@@ -967,7 +967,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
     }
 
     @Test
-    // SonarQube should support opening security hotspots
+    //ACR-17bb97ad5af4494b9c45fbbcbb339144
     @OnlyOnSonarQube(from = "9.9")
     @Disabled
     void shouldShowHotspotWhenOpenedFromSonarQube() throws InvalidProtocolBufferException {
@@ -1059,7 +1059,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       resolveHotspotAsSafe(adminWsClient, hotspotKey);
 
       waitAtMost(1, TimeUnit.MINUTES).untilAsserted(() -> {
-        // wait server event
+        //ACR-36e4ee51dc404ccdac2d4537622f19ed
         var fooIssues = analyzeFileForHotspots(configScopeId, "sample-java-hotspot", "src/main/java/foo/Foo.java");
 
         assertThat(fooIssues)
@@ -1116,7 +1116,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       if (ORCHESTRATOR.getServer().version().isGreaterThan(7, 9)) {
         expected = "<h1>Title</h1><strong>my dummy extended description</strong>";
       } else {
-        // For some reason, there is an extra line break in the generated HTML
+        //ACR-ede2ff5caa534f558e856b5026b2d5ea
         expected = "<h1>Title\n</h1><strong>my dummy extended description</strong>";
       }
 
@@ -1130,7 +1130,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
         var ruleTabs = ruleDescription.getRight().getTabs();
         assertThat(ruleTabs.get(ruleTabs.size() - 1).getContent().getLeft().getHtmlContent()).contains(expected);
       } else {
-        // no description sections at that time
+        //ACR-0b8e7bb508804bc2b64a5a8e685164a5
         assertThat(ruleDescription.isRight()).isFalse();
       }
     }
@@ -1254,7 +1254,7 @@ class SonarQubeDeveloperEditionTests extends AbstractConnectedTests {
       var extendedDescription = activeRuleDetailsResponse.details().getDescription().getRight();
       assertThat(extendedDescription.getIntroductionHtmlContent()).isNull();
       if (ORCHESTRATOR.getServer().version().isGreaterThanOrEquals(10, 4)) {
-        // SONARJAVA-4739 Rule S4792 is deprecated
+        //ACR-1560a87036f54ae3a19dc3af69302432
         assertThat(extendedDescription.getTabs())
           .flatExtracting(this::extractTabContent)
           .containsOnly(

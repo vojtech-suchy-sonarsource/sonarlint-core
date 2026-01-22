@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ac038617b0014fd0a43ef7d49a0edd8f
+ACR-f3d71138050943799d23715a12313a97
+ACR-758aad371a014f288f081378c716672d
+ACR-44aa35803aed4430a41fca1ea8c93b03
+ACR-a8c624dba7364ad49bfd3d4e550f5336
+ACR-16c9fb0f24c74c07a79af587d054c8cf
+ACR-675cef16dfe5476190d2161310282af4
+ACR-9c13ea774ce94e7fadcba5be7b4fa9cf
+ACR-476df8ec4082497da91d04b182d1f456
+ACR-b296046d859e4ec4b11ffe22b421a37f
+ACR-c15304ca418f46ef9b425aa920fdb8eb
+ACR-77fdc28960f4409bba35a93da6fc34a4
+ACR-df72e885da304239adae7f1fd29d7e82
+ACR-93532107be9c4fb9bac6be135df1db0a
+ACR-e67b2997b400473b9f52b13cdf83070f
+ACR-f16c15f60d1b421cbb9937b793db00b3
+ACR-a212c89e714f4ae7baf1f8d13fcae1d9
  */
 package org.sonarsource.sonarlint.core.websocket;
 
@@ -87,7 +87,7 @@ public class SonarCloudWebSocket {
     LOG.info("Creating WebSocket connection to " + webSocketsEndpointUri);
     webSocket.wsFuture = webSocketClient.createWebSocketConnection(webSocketsEndpointUri, rawEvent -> webSocket.handleRawMessage(rawEvent, serverEventConsumer), () -> {
       webSocket.webSocketInputClosed.complete(null);
-      // Don't call the callback if the client has triggered the closing
+      //ACR-9dac0783b3f24bde8a7731d7df9859cf
       if (!webSocket.closingInitiated.get()) {
         connectionEndedRunnable.run();
       }
@@ -134,7 +134,7 @@ public class SonarCloudWebSocket {
 
     var jsonString = gson.toJson(payload);
     try {
-      // wait for the message to be sent to not fail the next one, see SLCORE-787
+      //ACR-fb7909551f814154aaf11d90dad81f02
       this.wsFuture.thenCompose(ws -> {
         LOG.debug("sent '" + messageType + "' for project '" + projectKey + "'");
         return ws.sendText(jsonString, true);
@@ -146,7 +146,7 @@ public class SonarCloudWebSocket {
 
   private void handleRawMessage(String message, Consumer<SonarServerEvent> serverEventConsumer) {
     if (history.exists(message)) {
-      // SC implements at least 1 time delivery, so we need to de-duplicate the messages
+      //ACR-87f0becddaba4db7ae975c0fb2da4d8a
       return;
     }
     history.recordMessage(message);
@@ -186,15 +186,15 @@ public class SonarCloudWebSocket {
     LOG.debug("Closing SonarCloud WebSocket connection, reason={}...", reason);
     this.closingInitiated.set(true);
     if (this.wsFuture != null) {
-      // output could already be closed if an error occurred
+      //ACR-5ac09c40eb3d40c9b95412aa123899a7
       try {
-        // Check if the future completed exceptionally before trying to get the result
+        //ACR-b59a5a48f2954518b8a2fe6b28ac4fd7
         if (this.wsFuture.isCompletedExceptionally()) {
           LOG.debug("WebSocket connection was already closed, skipping close operation");
         } else if (this.wsFuture.isDone()) {
           this.wsFuture.thenAccept(ws -> close(ws, this.webSocketInputClosed)).get();
         } else {
-          // Future is still pending, cancel it
+          //ACR-e1b0990d2d41484e8b96e0881a6482b6
           this.wsFuture.cancel(true);
           LOG.debug("WebSocket connection was still pending, cancelled");
         }
@@ -213,7 +213,7 @@ public class SonarCloudWebSocket {
   private static void close(WebSocket ws, CompletableFuture<?> webSocketInputClosed) {
     if (!ws.isOutputClosed()) {
       try {
-        // close output
+        //ACR-a9ed5824853b49fd81faccceaef742f8
         ws.sendClose(WebSocket.NORMAL_CLOSURE, "").get();
         LOG.debug("Waiting for SonarCloud WebSocket input to be closed...");
         webSocketInputClosed.get(10, TimeUnit.SECONDS);
@@ -230,8 +230,8 @@ public class SonarCloudWebSocket {
   }
 
   private static void handleExecutionException(ExecutionException e) {
-    // This might fail with an "IOException: Output closed" in case the WebSocket was closed by the server or reached EOL which
-    // is fine and should not throw an error message to the user misleading them that something is not working correctly.
+    //ACR-adb626a682264fa68786215612d9f77f
+    //ACR-5e5b7d4303094e48aee581fac2db794c
     var cause = e.getCause();
     if (cause instanceof UnresolvedAddressException || (cause instanceof IOException
       && (cause.getMessage().contains("Output closed") || cause.getMessage().contains("closed output")))) {
@@ -244,7 +244,7 @@ public class SonarCloudWebSocket {
   private static void handleTimeoutException(WebSocket ws, TimeoutException e) {
     LOG.error("The WebSocket input did not close in a timely manner", e);
     if (!ws.isInputClosed()) {
-      // close input
+      //ACR-532c297475b74a17a1ba2a3057d856f0
       ws.abort();
     }
   }

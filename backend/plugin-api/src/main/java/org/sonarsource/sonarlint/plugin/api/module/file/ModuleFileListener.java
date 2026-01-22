@@ -1,34 +1,34 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-edc977a9a2244240a7eb87794afe2c1d
+ACR-46579d1b59a14b91983e8307e57be314
+ACR-81ecb5642e33402592302fcc7d6cdc6b
+ACR-9c0ae8d9c2fc4549b8b2ee642bcb40ee
+ACR-1e29090a9d4242afaa159524e6300031
+ACR-ae8bc1793ff1437498291fe4feb1b9f1
+ACR-b2733968207544a6a59c20ad5592bc76
+ACR-f9d1aeccdc744cb3abf4d9fc485ba56f
+ACR-73ac04b3f89e415d93efd18499bf2fef
+ACR-8eb5448561ce4078ba6ad977f8ec9d63
+ACR-5551a4dbe68d463eb493cea6b67b7abd
+ACR-2cf31d142b344a25901f100828b5eb64
+ACR-5fe6de139a5b4c9fb2d29df6c385bd3d
+ACR-c023da427fae4d78acf1af1e4555699f
+ACR-e636bcb0dc9f46baab6bc02350a85f30
+ACR-4229e9ffe43f444885cc7b802c482fd8
+ACR-ae5bc7ba8aba4dad9a92461f5042f06d
  */
 package org.sonarsource.sonarlint.plugin.api.module.file;
 
-/**
- * Implement this interface and annotate the class with {@code @SonarLintSide(MODULE)} to receive events related to the module file system.
- * @since 6.0
+/*ACR-cd1a331c98f44c9188c635629d5d0a91
+ACR-4355398dae254f40a1c87dfd905eadf9
+ACR-c239c060f0dc426e93e36022be2ea60d
  */
 public interface ModuleFileListener {
-  /**
-   * React to a file creation, deletion or modification event
-   *
-   * @param event an event that concerns a file in the module file system
-   * @since 6.0
+  /*ACR-489e082911104da3931848ab845fc866
+ACR-6638f302135b4f8aac310523c3970147
+ACR-ee671bd7493d4f8783b560276e9d0a80
+ACR-a0f1e3c5ac0e49cfb01b45d168c570bd
+ACR-eba58222f1344213908bfb277dbbcbe9
    */
   void process(ModuleFileEvent event);
 }

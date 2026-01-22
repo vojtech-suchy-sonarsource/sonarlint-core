@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-fafd96308408414f92bad9845f815b6f
+ACR-f61c34c3e82c4b10acd644d30391f1de
+ACR-9ecb3be4074e4a7fbd583a04d02dc37a
+ACR-92dbbd8b9357404fb1acc57aad4068ca
+ACR-d04417965c204bc7a48b2f84465ce963
+ACR-5a27a53becc94a5495bdad5391aa1b78
+ACR-239984d5185741bfac8ac7e655abc919
+ACR-9e42a426e2c84f289bd8f9156300f7e7
+ACR-367eed70b9ba4fe484550cf5313882c9
+ACR-567bdfb31841463a9f08696dbbf0563c
+ACR-de298cee7b9c4c3fa640a5af9b3d2474
+ACR-31eb8f06540b49d58aadaf900340e6e3
+ACR-430a78a9474544bf946629fb68b91fb8
+ACR-c28e41ccd377468590590f8aae557448
+ACR-e30158af70104fa5b8eb442c1cf0a4d3
+ACR-f6b9513b8ae74fb1b24015f0a07eeb73
+ACR-0610098ef5e04fd2b70b9cfa1bea5507
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -31,23 +31,23 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Status;
 import org.sonarsource.sonarlint.core.analysis.container.analysis.SonarLintPathPattern;
 
-/**
- * Factory of {@link org.sonar.api.batch.fs.FilePredicate}
- *
- * @since 4.2
+/*ACR-07cebedec7b746e1aec4fb595aaa2a04
+ACR-d300e00a675f425e96b56382b23f3c72
+ACR-5029dadff2374bff8f331b6157efa9ca
+ACR-ef39b84de82d4e61978f7df4a374fa09
  */
 public class DefaultFilePredicates implements FilePredicates {
 
-  /**
-   * Returns a predicate that always evaluates to true
+  /*ACR-c66ab7cf1d854f8395f4a11de68e2a48
+ACR-c170ef67a1c8457983503596f338db03
    */
   @Override
   public FilePredicate all() {
     return TruePredicate.TRUE;
   }
 
-  /**
-   * Returns a predicate that always evaluates to false
+  /*ACR-0327292f7212400fa6b279a542eede43
+ACR-bf02321139fa4c55b9f77d70e44e2fe9
    */
   @Override
   public FilePredicate none() {
@@ -59,8 +59,8 @@ public class DefaultFilePredicates implements FilePredicates {
     throw new UnsupportedOperationException("hasAbsolutePath");
   }
 
-  /**
-   * non-normalized path and Windows-style path are supported
+  /*ACR-bacaaa62a77942b782b2b1a5ac16de04
+ACR-f9a8945107674aa49ea1c0f6c67f40bd
    */
   @Override
   public FilePredicate hasRelativePath(String s) {
@@ -109,7 +109,7 @@ public class DefaultFilePredicates implements FilePredicates {
 
   @Override
   public FilePredicate is(File ioFile) {
-    // Needed for SonarCFamily
+    //ACR-8cb61529d165441297b86cbe1548728c
     return hasURI(ioFile.toURI());
   }
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-04de55d4631c48dab2efbdb5b191c4e7
+ACR-d8bf60147db04aaea61101fdb8dc8d1b
+ACR-1b728da602fa407088486a0480adcead
+ACR-3452f8d002ca4212abe960fb4a99c85a
+ACR-7f9e24b645f244d180196f616b602483
+ACR-3f427fc3685b4e159213dafb89bb5688
+ACR-b7bbceea264d4e8388c45eac7dd18db6
+ACR-b4af38c2aa194b32842e9ab176a9df96
+ACR-4850555837ba4812a5b6bde90cc00d81
+ACR-66e2db9723ae4cc694c466c523309627
+ACR-53f0803ee556464eb03853f4d125314a
+ACR-7acb86ad7e0a4156b4f02b09628ae1bf
+ACR-69689740bc23429d990ef3a09eb93887
+ACR-355438452a62455ca85d408984cca48b
+ACR-4f9edf30baf14f71adbebec923ab5970
+ACR-7816a90d4baf44d6ab7a0b00f4bf0638
+ACR-745eb2cda9094f3fa18be2a1d4fa84f2
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -103,7 +103,7 @@ public class EntityMapper {
     }
   }
 
-  // only needed to allow deserializing with Jackson
+  //ACR-cd57dac50e5747c8a8f00894141f0719
   record TaintFlow(List<TaintLocation> locations) {
 
   }
@@ -178,7 +178,7 @@ public class EntityMapper {
 
   public ServerFindingsRecord serverIssueToRecord(ServerIssue<?> issue, String branchName, String connectionId, String sonarProjectKey) {
     var rec = new ServerFindingsRecord();
-    // Server Issue fields
+    //ACR-f89332bc6c8f4723b909fa1548bf240f
     rec.setId(issue.getId());
     rec.setServerKey(issue.getKey());
     rec.setResolved(issue.isResolved());
@@ -196,7 +196,7 @@ public class EntityMapper {
     }
     rec.setRuleType(issue.getType().name());
     rec.setImpacts(serializeImpacts(issue.getImpacts()));
-    // Range-Level Issue fields
+    //ACR-8e7c35a478c24a53851ab2a283bd16fb
     if (issue instanceof RangeLevelServerIssue rangeIssue) {
       rec.setStartLine(rangeIssue.getTextRange().getStartLine());
       rec.setStartLineOffset(rangeIssue.getTextRange().getStartLineOffset());
@@ -204,12 +204,12 @@ public class EntityMapper {
       rec.setEndLineOffset(rangeIssue.getTextRange().getEndLineOffset());
       rec.setTextRangeHash(rangeIssue.getTextRange().getHash());
     }
-    // Line Level Issue fields
+    //ACR-25409ed207d34710aa0884dcd72208bf
     if (issue instanceof LineLevelServerIssue lineIssue) {
       rec.setLine(lineIssue.getLine());
       rec.setLineHash(lineIssue.getLineHash());
     }
-    // Record fields
+    //ACR-54f0d406fe7c4d1dadd48a3be4178489
     rec.setFindingType(ServerFindingType.ISSUE.name());
     rec.setBranchName(branchName);
     rec.setConnectionId(connectionId);
@@ -219,13 +219,13 @@ public class EntityMapper {
 
   public ServerFindingsRecord serverHotspotToRecord(ServerHotspot hotspot, String branchName, String connectionId, String sonarProjectKey) {
     var rec = new ServerFindingsRecord();
-    // Server Hotspot fields
+    //ACR-a917edb62ea440b5b7596cbab49f82ed
     rec.setId(hotspot.getId());
     rec.setServerKey(hotspot.getKey());
     rec.setRuleKey(hotspot.getRuleKey());
     rec.setMessage(hotspot.getMessage());
     rec.setFilePath(hotspot.getFilePath().toString());
-    // Text Range fields
+    //ACR-1e847095dba24a5b8613cf1095f33fde
     rec.setStartLine(hotspot.getTextRange().getStartLine());
     rec.setStartLineOffset(hotspot.getTextRange().getStartLineOffset());
     rec.setEndLine(hotspot.getTextRange().getEndLine());
@@ -235,7 +235,7 @@ public class EntityMapper {
     rec.setHotspotReviewStatus(hotspot.getStatus().name());
     rec.setVulnerabilityProbability(hotspot.getVulnerabilityProbability().name());
     rec.setAssignee(hotspot.getAssignee());
-    // Record fields
+    //ACR-7429e2823e674652b0d54118570b79c5
     rec.setFindingType(ServerFindingType.HOTSPOT.name());
     rec.setBranchName(branchName);
     rec.setConnectionId(connectionId);
@@ -245,7 +245,7 @@ public class EntityMapper {
 
   public ServerFindingsRecord serverTaintToRecord(ServerTaintIssue taint, String branchName, String connectionId, String sonarProjectKey) {
     var rec = new ServerFindingsRecord();
-    // Server Taint fields
+    //ACR-98db770988184389b884c00cf4545860
     rec.setId(taint.getId());
     rec.setServerKey(taint.getSonarServerKey());
     rec.setResolved(taint.isResolved());
@@ -273,7 +273,7 @@ public class EntityMapper {
     taint.getCleanCodeAttribute()
       .ifPresent(codeAttribute -> rec.setCleanCodeAttribute(codeAttribute.name()));
 
-    // Record fields
+    //ACR-f0ec0858e4134d379343f5dba98948b7
     rec.setFindingType(ServerFindingType.TAINT.name());
     rec.setBranchName(branchName);
     rec.setConnectionId(connectionId);
@@ -283,7 +283,7 @@ public class EntityMapper {
 
   public ServerDependencyRisksRecord serverDependencyRiskToRecord(ServerDependencyRisk risk, String branchName, String connectionId, String sonarProjectKey) {
     var rec = new ServerDependencyRisksRecord();
-    // Server Dependency Risk fields
+    //ACR-952125e5d938434eb10f4979bc3f37b0
     rec.setId(risk.key());
     rec.setType(risk.type().name());
     rec.setSeverity(risk.severity().name());
@@ -294,7 +294,7 @@ public class EntityMapper {
     rec.setVulnerabilityId(risk.vulnerabilityId());
     rec.setCvssScore(risk.cvssScore());
     rec.setTransitions(serializeTransitions(risk.transitions()));
-    // Record fields
+    //ACR-c0b50d6d5ae4400cbc1fd66e66df2270
     rec.setBranchName(branchName);
     rec.setConnectionId(connectionId);
     rec.setSonarProjectKey(sonarProjectKey);

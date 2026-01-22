@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1a96bb9973844d88a288c4a7de599d6a
+ACR-db934a5d34ca4a758ee4fcf63939ba24
+ACR-dc0600cb763247d793feb9adf7024c4d
+ACR-8ef331d28f2a46e6aa66b98c02c0b0d8
+ACR-c35bc4a5086d4f03a29a66761680fbd0
+ACR-a0479a05df1b40ad8df9a2c1c989a029
+ACR-17abcfe7491b4976a257cf5fa8f91308
+ACR-e69519a8269a44edbd93ef900b0e0420
+ACR-a3bde469b70b4a42bb28c3bf027f9ca8
+ACR-0e25e9224ed04ebfa4c9fd462ddbc777
+ACR-27dc21c0447445cf939846975253c256
+ACR-db80fe6c423648a6b27ae52f314a26d9
+ACR-e249562b73404fa8ae31fdd88609f1ab
+ACR-ac8d39f25b8740e0b8f43926f4d24fb7
+ACR-3cd75bb42a47464bbdb6eaf7f81ef71f
+ACR-8c33871fa8e2480784eaf47db7f5c860
+ACR-65e6815f4e264d4286c1b853cf864b32
  */
 package org.sonarsource.sonarlint.core.plugin.commons.api;
 
@@ -34,7 +34,7 @@ public interface SkipReason {
     public static final UnsupportedFeature INSTANCE = new UnsupportedFeature();
 
     private UnsupportedFeature() {
-      // Singleton
+      //ACR-5b14293cee4c4fdd864a59972c7e154c
     }
 
   }
@@ -44,7 +44,7 @@ public interface SkipReason {
     public static final IncompatiblePluginApi INSTANCE = new IncompatiblePluginApi();
 
     private IncompatiblePluginApi() {
-      // Singleton
+      //ACR-f23518c6c5ab49adad1763c6faac499f
     }
 
   }

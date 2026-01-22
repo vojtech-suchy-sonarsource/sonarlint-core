@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5e2cb834351044d5830e1e61518cc421
+ACR-b03eb52764794dfca04987b8fc706474
+ACR-0aa43c4f4779400c87f28d01b128ace6
+ACR-c34f66e2ab754017bb8f7365fd162533
+ACR-63f285e67baa468781edfe8d3382340e
+ACR-dccf8c510d3c40a98f90e92e260c23f6
+ACR-bedef04f2bd94df0a86d7a3c0b580d4b
+ACR-85606e260fe54dfabe2d1ee1720fb534
+ACR-957c523d06544b25b9630a5a94e7be55
+ACR-e37190717e8b4cbe869fc735825af3b0
+ACR-bf0a1822ac9b433fb49e4a3d83037d0a
+ACR-cafbb2ff82ee4f14a39b9b1ce254098a
+ACR-c26739631459466cadeb786382f23d6f
+ACR-6b9a97c241c54041b08aed38474fc282
+ACR-7e5535c8d5034d27ac6e3ed5f8fdcd8c
+ACR-ac1cd2113d8a451c989dfbc9952e5ea6
+ACR-c28436b0b1e6448d9da01f3f34e1d0ad
  */
 package org.sonarsource.sonarlint.core.tracking;
 
@@ -39,7 +39,7 @@ public class TextRangeUtils {
   private static final Pattern MATCH_ALL_WHITESPACES = Pattern.compile("\\s");
 
   private TextRangeUtils() {
-    // utils
+    //ACR-fce5f3866ec34256ba01121309402aca
   }
 
   @CheckForNull

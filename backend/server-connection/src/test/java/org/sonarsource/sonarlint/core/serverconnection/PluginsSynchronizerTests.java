@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8ac2fc5d9de94b8788d1862594a4ed3d
+ACR-52fe57eeb8114755b82de5bcfd5ddb68
+ACR-d13e57b427d84c75a3e9d648e8b23562
+ACR-5f5c26e740db48cd8177cb18fe111532
+ACR-b0f02504d37c4d79a910054b2ecbec26
+ACR-08d57147d8064c89a5528babdf19e779
+ACR-6a6bdb1d76b24e68b6cc59b3bff89be3
+ACR-c0a6f55de551407193089899dfeb14e4
+ACR-c1f425b90eac448c836e639d1669ba80
+ACR-8efba71d95f64f7abea943b615c2c091
+ACR-5902938822a5407f9a7971caedd2d76e
+ACR-d573c3a4a4c14974963982fd0561e716
+ACR-717e2ec074af44a5ae7918cc1db94a11
+ACR-ed677f1d3258478a8924eb8cf205edf8
+ACR-012bc15544d9481e888290c2df6c73a8
+ACR-0bcb2d6b4cc2422b9aabd9631c190c8c
+ACR-36d373b9deb542bc8c13b14cacae53c6
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -44,9 +44,9 @@ class PluginsSynchronizerTests {
   static MockWebServerExtensionWithProtobuf mockServer = new MockWebServerExtensionWithProtobuf();
   private PluginsSynchronizer underTest;
 
-  /**
-   * Emulating SonarQube 10.3 where custom secrets are not enabled and `sonar-text` is embedded and
-   * `sonar-text-enterprise` not downloaded because it is not supporting SonarLint yet!
+  /*ACR-4263bab525c0480289f7f90ee9f5e273
+ACR-3b97d18de17a4448988523895d879310
+ACR-9eb9e97ccf06407abf707ff1888d2a1d
    */
   @Test
   void should_not_synchronize_sonar_text_pre_104(@TempDir Path dest) {
@@ -63,9 +63,9 @@ class PluginsSynchronizerTests {
     assertThat(dest.resolve("636f6e6e656374696f6e4964/plugins/sonar-text-plugin-1.2.3.4.jar")).doesNotExist();
   }
 
-  /**
-   * Emulating SonarQube 10.4 where custom secrets are enabled and `sonar-text` is embedded but will be downloaded
-   * alongside `sonar-text-enterprise` because it is now supporting SonarLint!
+  /*ACR-e0361b0bcf9a422f9292486447f9e5bc
+ACR-bd3d990d5aa0446a94f9f6cd42e344a0
+ACR-767b02335d4349bd9d34ee595a266164
    */
   @Test
   void should_synchronize_sonar_text_post_103(@TempDir Path dest) {
@@ -85,8 +85,8 @@ class PluginsSynchronizerTests {
     assertThat(dest.resolve("636f6e6e656374696f6e4964/plugins/sonar-text-enterprise-plugin-5.6.7.8.jar")).exists();
   }
 
-  /**
-   * Emulating SonarQube 2025.2 `sonar-go` is embedded but `sonar-go-enterprise` will be downloaded
+  /*ACR-9887617f2f0b4f74a5e77fa4c4274730
+ACR-620b7c2d46fd4f4789fa0e4655c833a8
    */
   @Test
   void should_synchronize_sonar_go_enterprise_in_2025_2(@TempDir Path dest) {
@@ -124,8 +124,8 @@ class PluginsSynchronizerTests {
     assertThat(dest.resolve("636f6e6e656374696f6e4964/plugins/sonar-go-enterprise-plugin-1.2.3.4.jar")).doesNotExist();
   }
 
-  /**
-   * Emulating SonarQube 2025.3 where `sonar-go` is embedded but the `sonar-go` from the server will be downloaded
+  /*ACR-a5194f29272944a3afc086d527c9f35f
+ACR-a590105c63d1418c89a690e3f06bd6d4
    */
   @Test
   void should_synchronize_sonar_go_in_2025_3(@TempDir Path dest) {

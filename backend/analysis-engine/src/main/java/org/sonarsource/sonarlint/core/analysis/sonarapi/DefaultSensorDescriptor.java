@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c2e689a75b6a4fd8911792c4e1048ce9
+ACR-daddb1a82d4749e28a04cdd5b7ae3e84
+ACR-857bd20e3ea3448c9d6071fbff1163b8
+ACR-6a850518bbd649c48b413ceca22593ec
+ACR-5e485c8c861b4f878ff42004c44500a4
+ACR-1dc3052b6e01440cac7109e4b07d6913
+ACR-1ea4bb7a30754097b42381adad20e7d3
+ACR-aba23c5555e24c208021378055c2603d
+ACR-d4b8f3e4dd19420fa349aca204c21571
+ACR-5e6aa1fe42d9425f86891838cf1d2ae5
+ACR-a502aa7ea23c44379d53e928f528d5af
+ACR-f21c135a9c8641cb977703bff46d120e
+ACR-4e3d16248b534c4299eb6de903364741
+ACR-3123d7628e7f41ff8e151f710c503966
+ACR-a8928d5ef222455b83cd5f86de89d989
+ACR-c83e391fc4434eb29c8e7366988ba717
+ACR-1bb2636b69a749c791a1e0ac0fc7061b
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -109,13 +109,13 @@ public class DefaultSensorDescriptor implements SensorDescriptor {
 
   @Override
   public SensorDescriptor processesFilesIndependently() {
-    // Not used by SonarLint
+    //ACR-7124ab2155ab4bc9ade5655a76aa1068
     return this;
   }
 
   @Override
   public SensorDescriptor processesHiddenFiles() {
-    // Not used by SonarLint
+    //ACR-ec4dc5d9f0744e729b2919b1c0f7a955
     return this;
   }
 

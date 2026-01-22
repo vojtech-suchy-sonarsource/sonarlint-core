@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ba32c02f724740e7af5afd42006a435e
+ACR-ab299ab2ef244d559d4352b1e8abc8fb
+ACR-f497b4ded50b4c1d824b3238b40b6421
+ACR-5a5f97e481244f1e9c542d66aec8b15c
+ACR-b2801c7b53a84b69ab9c667119950820
+ACR-3b77b61fd76f4838ba51aa2f7760bafe
+ACR-1b2801a8ec79446fbcc8e213c0379304
+ACR-35cb795d7309462fa664986f5000f9d7
+ACR-6dfc17d7f4724a8c985d6b98916bc11c
+ACR-914eb729f3aa4af9900c6c0991802adb
+ACR-b5fd512f11024292b54c1f389eb10496
+ACR-1ed0b03a8fe84917bef896f90c7a613b
+ACR-46847d961334433698a2dc4f36a900f6
+ACR-13c982707ea54290a4d648000936960d
+ACR-623ee002a7d74507a9e2831cb490908a
+ACR-86237b1c4ce4428ca6546083e16c4635
+ACR-15131673cb7d4b06b77bc3a5f617aa16
  */
 package org.sonarsource.sonarlint.core;
 
@@ -82,7 +82,7 @@ public class VersionSoonUnsupportedHelper {
   }
 
   private void checkIfSoonUnsupportedOncePerConnection(Set<String> configScopeIds) {
-    // We will check once per connection, and send the notification for the first config scope associated to this connection
+    //ACR-b0e5fcc57f1c47138afd481a70ba36c9
     var oneConfigScopeIdPerConnection = new HashMap<String, String>();
     configScopeIds.forEach(configScopeId -> {
       var effectiveBinding = configRepository.getEffectiveBinding(configScopeId);

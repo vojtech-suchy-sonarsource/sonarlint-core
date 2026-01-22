@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Test Utils
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d2d4c2130e7a4ac0b848d8ac00bba2b1
+ACR-9f41edc673854cc497da92533f1332b3
+ACR-9ad1c8af12b14701ad5398df377d2ada
+ACR-999f1569532f416f9c0baa1da565c16a
+ACR-8a7f3c6c5a944e60a4c131f4eac322ce
+ACR-a81e3c15c2624c2eb805c522465ec5f0
+ACR-3f02308406904f9ba278b6e49182eb94
+ACR-1e7e8fb16cff42d0a236c05498436b1c
+ACR-a0640cc533214a09ab6d189da6277409
+ACR-4ee10eae46bb419ea5cd84f23a7f83b9
+ACR-e18dc2c98c2b4890b572c755c29b44de
+ACR-6336eef547bc4fa3809e21daab266cff
+ACR-49e7a19813a24c47942933550cfb50e3
+ACR-2003b6cab703480d9b9ea0aacd29ea4d
+ACR-171e0e0f931b4ff09751df3f4e246487
+ACR-a64d627b8f5241be9a375afed30a388d
+ACR-2bc0f213403c42d8b27e4d17a59cdc57
  */
 package org.sonarsource.sonarlint.core.test.utils.plugins;
 
@@ -33,8 +33,8 @@ import org.sonarsource.sonarlint.core.test.utils.plugins.src.DefaultSensor;
 
 public class SonarPluginBuilder {
 
-  /**
-   * @param pluginKey a plugin key from the whitelist, see {@link org.sonarsource.sonarlint.core.commons.api.SonarLanguage#containsPlugin(String)}
+  /*ACR-a48466d0d34d4727a59da4ff43cc8225
+ACR-f532f98a92674b3cbd60956bd77d4af7
    */
   public static SonarPluginBuilder newSonarPlugin(String pluginKey) {
     return new SonarPluginBuilder(pluginKey);

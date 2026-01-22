@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5b541bc5bdb042ee9ab716c568792a44
+ACR-bee8762aa1f44d63a65d15c87ed5484a
+ACR-b34572bf5c6b4cfbb3720857344345cf
+ACR-0a9a3d133d774b72ba558be4cc3cf91a
+ACR-a3aa1767d511454993b30d9608ffe3b9
+ACR-2ff18dedcbae45239d685efb419f8fa0
+ACR-c1e73542e8f34144876297704360547e
+ACR-dd59a3c50dd14561bdc9a8d96a166e19
+ACR-c7369ee8d4ca4f41abe0c85a9955f49c
+ACR-92bbc517767e4e20b1e641a00b3d4d6f
+ACR-b75e0148122e4fa1ab4dd713d8fe8f65
+ACR-5313bb52e43b4467893a7ba02bd69883
+ACR-1ae5bf93085f4f0ba27cb434e94d64f8
+ACR-3cb6aa3ee73c41b3a2843716b5d1ec26
+ACR-29395c5713e74317bee85956213f70b3
+ACR-bd5226fa202545a2ab1e8f08a2165605
+ACR-7844571b0eac42e6846bc078d9cbe9d3
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -301,11 +301,11 @@ public class TelemetryLocalStorage implements LocalStorage {
     return enabled;
   }
 
-  /**
-   * Register that an analysis was performed.
-   * This should be used when multiple files are analyzed.
-   *
-   * @see #setUsedAnalysis(String, int)
+  /*ACR-3a2a4a7664fb4db7b6186447782742ed
+ACR-18a7767d75bd4cb78284a5bcda8992e9
+ACR-43e1a6784eee41c2ae396fede33bff9b
+ACR-feff432ff75f4bf18d9627e19b05533b
+ACR-103cbbc0a39d414eadac4b321db55394
    */
   void setUsedAnalysis() {
     markSonarLintAsUsedToday();
@@ -319,8 +319,8 @@ public class TelemetryLocalStorage implements LocalStorage {
     lastUseDate = now;
   }
 
-  /**
-   * Register the analysis of a single file, with information regarding language and duration of the analysis.
+  /*ACR-c9afc99b3fee421dada3f83f5c873a3e
+ACR-cb6d848ea3714d5191acb1689ef59b1f
    */
   void setUsedAnalysis(String language, int analysisTimeMs) {
     markSonarLintAsUsedToday();
@@ -341,17 +341,17 @@ public class TelemetryLocalStorage implements LocalStorage {
   public void validateAndMigrate() {
     var today = LocalDate.now();
 
-    // migrate deprecated installDate
+    //ACR-48ada13b57c04c5cac0080814d208afa
     if (installDate != null && (installTime == null || installTime.toLocalDate().isAfter(installDate))) {
       setInstallTime(installDate.atTime(OffsetTime.now()));
     }
 
-    // fix install time if necessary
+    //ACR-119e9981eee9403e801056f777c6f6d7
     if (installTime == null || installTime.isAfter(OffsetDateTime.now())) {
       setInstallTime(OffsetDateTime.now());
     }
 
-    // calculate use days
+    //ACR-1b72f5fa8590477f9f5a31fb2ddc0c7e
     if (lastUseDate == null) {
       numUseDays = 0;
       analyzers.clear();
@@ -408,7 +408,7 @@ public class TelemetryLocalStorage implements LocalStorage {
           (previousIndex != null && previousIndex.equals(snippetIndex));
       })
       .findFirst();
-    // if we already had a status for this snippet, we should replace it
+    //ACR-3eb6c0f0bd9d47debbe5d6ba194d32d8
     existingSnippetStatus.ifPresentOrElse(telemetryFixSuggestionResolvedStatus -> telemetryFixSuggestionResolvedStatus.setFixSuggestionResolvedStatus(status),
       () -> fixSuggestionSnippets.add(new TelemetryFixSuggestionResolvedStatus(status, snippetIndex)));
   }

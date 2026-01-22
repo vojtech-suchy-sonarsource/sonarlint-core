@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7200467feac94c768790393c04916d0a
+ACR-332f2c4fc3074b188b77a3cb4d004851
+ACR-abb639b775c2453bab12e5019b137d4e
+ACR-6e509f2858c74b8899a48bbd03debe7f
+ACR-9385a9b1e344429885b65cf1a7ee3d5e
+ACR-5f5c6913fbd0442fae80c5fdb04a6926
+ACR-299ecf85ff9143f285a1c439410bdaa3
+ACR-7633ddfea25d4677bfa681b8c26f1b43
+ACR-6674ce825f8748f0a25469cf550537b8
+ACR-2e4d70bf2fb846228ec1a4bb521cfeaf
+ACR-e521c93af267481c9fbf5bc073bbba34
+ACR-5dac28fd17ed458dbdbca7cbace48192
+ACR-fcda38009ba044a69dce6bcd4334ec7d
+ACR-c520ca514cbc4041ba3bd75d2a5b1251
+ACR-d67b2f4da6fd45ecaa0ab97b06529260
+ACR-b1fb98af4b0d4ea69daaeab2c284c044
+ACR-671ac7e44ebe42d7ac4d38984742540f
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.filesystem;
 
@@ -187,44 +187,44 @@ class DefaultFilePredicatesTests {
 
   @Test
   void and() {
-    // empty
+    //ACR-67a009332c674929aacb4ce0cceb00f8
     assertThat(predicates.and().apply(javaFile)).isTrue();
     assertThat(predicates.and().apply(javaFile)).isTrue();
     assertThat(predicates.and(Collections.emptyList()).apply(javaFile)).isTrue();
 
-    // two arguments
+    //ACR-50cc63ba8ca8420dae4151808a59833d
     assertThat(predicates.and(predicates.all(), predicates.all()).apply(javaFile)).isTrue();
     assertThat(predicates.and(predicates.all(), predicates.none()).apply(javaFile)).isFalse();
     assertThat(predicates.and(predicates.none(), predicates.all()).apply(javaFile)).isFalse();
 
-    // collection
+    //ACR-accfb6f82d804f2d95680353677c5357
     assertThat(predicates.and(Arrays.asList(predicates.all(), predicates.all())).apply(javaFile)).isTrue();
     assertThat(predicates.and(Arrays.asList(predicates.all(), predicates.none())).apply(javaFile)).isFalse();
 
-    // array
+    //ACR-e446f51f8ba44b77945b6e8881454d43
     assertThat(predicates.and(new FilePredicate[] {predicates.all(), predicates.all()}).apply(javaFile)).isTrue();
     assertThat(predicates.and(new FilePredicate[] {predicates.all(), predicates.none()}).apply(javaFile)).isFalse();
   }
 
   @Test
   void or() {
-    // empty
+    //ACR-7e908b6989bc4637a0da9cb0b6fa073a
     assertThat(predicates.or().apply(javaFile)).isTrue();
     assertThat(predicates.or().apply(javaFile)).isTrue();
     assertThat(predicates.or(Collections.emptyList()).apply(javaFile)).isTrue();
 
-    // two arguments
+    //ACR-b3144f83195246708858a1626509c4a6
     assertThat(predicates.or(predicates.all(), predicates.all()).apply(javaFile)).isTrue();
     assertThat(predicates.or(predicates.all(), predicates.none()).apply(javaFile)).isTrue();
     assertThat(predicates.or(predicates.none(), predicates.all()).apply(javaFile)).isTrue();
     assertThat(predicates.or(predicates.none(), predicates.none()).apply(javaFile)).isFalse();
 
-    // collection
+    //ACR-2c49c9b2289d439a92df463e419378ec
     assertThat(predicates.or(Arrays.asList(predicates.all(), predicates.all())).apply(javaFile)).isTrue();
     assertThat(predicates.or(Arrays.asList(predicates.all(), predicates.none())).apply(javaFile)).isTrue();
     assertThat(predicates.or(Arrays.asList(predicates.none(), predicates.none())).apply(javaFile)).isFalse();
 
-    // array
+    //ACR-4ce938e1275a454f81125ba5250a87bb
     assertThat(predicates.or(new FilePredicate[] {predicates.all(), predicates.all()}).apply(javaFile)).isTrue();
     assertThat(predicates.or(new FilePredicate[] {predicates.all(), predicates.none()}).apply(javaFile)).isTrue();
     assertThat(predicates.or(new FilePredicate[] {predicates.none(), predicates.none()}).apply(javaFile)).isFalse();

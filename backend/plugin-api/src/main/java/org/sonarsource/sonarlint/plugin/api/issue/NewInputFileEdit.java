@@ -1,51 +1,51 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d2cb90bddea343ebb0b6b970c08de3f6
+ACR-02faeacbd6ec475c82982451cb0b5324
+ACR-126b029e6d9f4291b4511932b9425a70
+ACR-00c34ca0a9a343db962fc7f13efca4b4
+ACR-b49aa75edaa14f02a8602bafe75551a1
+ACR-52c34ce77ab5475e980ad2df7c09fd4f
+ACR-b7e0df53740c409fb4a4f9c98248aa97
+ACR-ed012247b6624fc5966946feb5f0aa86
+ACR-4a5670645423478992edda9134535d2a
+ACR-c4fde86b6cba491384ecab8a12c9105b
+ACR-c6e5f5ecf27a48f5b2aba6b5b2a10cb5
+ACR-ed905437f04a4d6db9090f16eb3462d9
+ACR-e74438541cbb45a5a25aa81b85dfa1fa
+ACR-e82175e9de37476dafe2b71d6d4ba6e2
+ACR-1580160c835b498687f0b307c9633c9f
+ACR-61d9ebee40d44ed09acd1f9c94d4b42c
+ACR-aaa41e75d6fe4b61b948e6a373dbb583
  */
 package org.sonarsource.sonarlint.plugin.api.issue;
 
 import org.sonar.api.batch.fs.InputFile;
 
-/**
- * Describe a file edit for a {@link NewQuickFix} as a collection of {@link NewTextEdit}s on a given {@link InputFile}.
- * Text edits are applied in the order they are added, insofar that their ranges do not overlap.
- * @since 6.3
- * @deprecated use org.sonar.api.batch.sensor.issue.fix.NewInputFileEdit from the sonar-plugin-api instead
+/*ACR-8d1c5dd0027a4fb1ae0e61a8c7f2271e
+ACR-37d5b3dd234f45889a467b1e476a008d
+ACR-58b8d93b396048da86c255143678195c
+ACR-36a4cb5468ed48c5b8c00bfb7a4c232f
+ACR-b5cf3fc618bf44c6ba59a3febd6a4123
  */
 @Deprecated(since = "8.12")
 public interface NewInputFileEdit {
 
-  /**
-   * @param inputFile the input file on which to apply this edit
-   * @return the modified edit
+  /*ACR-7d345118ae3a49eda97ce1ba5749e10c
+ACR-6cfc88d60afc4cc0aba8f6ae414ec963
+ACR-fe25108050d8408ea15fc285d85bd43f
    */
   NewInputFileEdit on(InputFile inputFile);
 
-  /**
-   * Create a new text edit
-   * @return a new uninitialized instance of a text edit for a given file edit
+  /*ACR-9546c21878d94bb8aa4c58c5bc206c70
+ACR-6445292ec55f478da7faeed96acfe3f4
+ACR-d748ceb086ac4d8a8f186bfe6dffface
    */
   NewTextEdit newTextEdit();
 
-  /**
-   * Add a text edit to this input file edit
-   * @param newTextEdit the text edit to add
-   * @return this instance
+  /*ACR-c06812abf8de470ba2b5e09df7c54276
+ACR-0bc788a3eeb84a6180c7fe172ca1099e
+ACR-15be89da8e7a448d82e67624d9aadaa1
+ACR-5044d68b970b4ac8a5a4c8e82b29170b
    */
   NewInputFileEdit addTextEdit(NewTextEdit newTextEdit);
 }

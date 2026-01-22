@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a512df2987e646f3ba2aea56dba0a246
+ACR-e89190f6c6c248e494ff930c05f0b321
+ACR-cf4d1000f65d491bae12d9e1815e9013
+ACR-6d0f305cb3b74c6191f44da6949ac940
+ACR-8b8a0b7d4d2d4fa6be59634adb91cc0d
+ACR-30b48a4bae524003ba7d45f9ce6b3a6c
+ACR-5d0cf528d87e435db9fabaaf5bf31c55
+ACR-472f5261f7894da4988f2d52d83638bc
+ACR-c02d39a953a94bbab856c6e3e2b8ec5b
+ACR-1602718f6bfa44adb2262b25ffe13c6b
+ACR-9609a3cb09ef48bcb7a7b2f979168ca2
+ACR-62b7e7f45b904468a881dba0b8110932
+ACR-b344661122a4486986edbc808a8ac126
+ACR-e0cf0e319d32464687defa948f78a3af
+ACR-7a3c0be2ac3147daaf3d4aa9496d6619
+ACR-66fb2256e1834f829e331134a587af73
+ACR-66333a8c34614528a5df6f470647effc
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -139,8 +139,8 @@ public class PluginInfo {
     return this;
   }
 
-  /**
-   * Required
+  /*ACR-8f6e78c6354d4fc09f0eac7db37a098f
+ACR-fbec3b9f370a439aa1f36845a90d05f6
    */
   public PluginInfo setMainClass(String mainClass) {
     this.mainClass = mainClass;
@@ -172,18 +172,18 @@ public class PluginInfo {
     return this;
   }
 
-  /**
-   * Find out if this plugin is compatible with a given version of SonarQube.
-   * The version of SQ must be greater than or equal to the minimal version
-   * needed by the plugin.
+  /*ACR-b3326e2123e249e797cf58775a75aa29
+ACR-ff9a584e8ddb494f9d3cee3b9dd62030
+ACR-2defe7a925d04e48b2720e677a1b10dd
+ACR-8ad782b8f3aa48028b31f992183fb57d
    */
   public boolean isCompatibleWith(String implementedApi) {
     if (null == this.minimalSqVersion) {
-      // no constraint defined on the plugin
+      //ACR-a41537df4edc415c905500ae3de5d5e3
       return true;
     }
 
-    // Ignore patch and build numbers since this should not change API compatibility
+    //ACR-eafefe7bb382405eadc0dc301467b062
     var requestedApi = Version.create(minimalSqVersion.getMajor() + "." + minimalSqVersion.getMinor());
     var implementedApiVersion = Version.create(implementedApi);
     return implementedApiVersion.compareToIgnoreQualifier(requestedApi) >= 0;

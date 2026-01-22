@@ -1,42 +1,42 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5244687e11e045acba1a33df51fedbf7
+ACR-3b16e42cb271469194737f215f975703
+ACR-cf270dd81a2e417c82bb64fd33184cc1
+ACR-495ab610975b4c9e8465c4e70e7e1b4f
+ACR-85f04c879bcb42cf94b75bb1d04148e3
+ACR-835fef4511294af7ac8675cbb66292ac
+ACR-f57e1cac09c24bc1a53ed7460b481737
+ACR-942018fb29e84284a85b8d41f86fc23e
+ACR-3cd1ead0d1984d79992719d23c075d54
+ACR-e1be4edc91154548943f742dc24dfa53
+ACR-46f33248a3b1411ea8a663a44b9475e5
+ACR-e4cac1cc18ff4a848c78c93c604e73f0
+ACR-4d0fbaef67af4ca3a0c6b7a9d9c966a3
+ACR-bdf74a29fe26425a884168eb153638c0
+ACR-c29bc3e2abe14cacbd49d7843bb1bcf2
+ACR-1e05096ff95c42b8b3e14d1701057ec1
+ACR-7a1adda15b67459d8d469085d8c4fbdd
  */
 package org.sonarsource.sonarlint.plugin.api.issue;
 
-/**
- * Extension interface to add {@link NewQuickFix}es to a {@link org.sonar.api.batch.sensor.issue.NewIssue}
- * @since 6.3
- * @deprecated use org.sonar.api.batch.sensor.issue.NewIssue from the sonar-plugin-api instead
+/*ACR-84be20d2f2174755b94a86587c59a889
+ACR-071c3fdc3d1e4145b2ceca4dd8209745
+ACR-151c6bac2c0c4537b005a603bd67f227
+ACR-7caaaa4a8c184ad6bd90f6eca0bc6f6e
  */
 @Deprecated(since = "8.12")
 public interface NewSonarLintIssue {
 
-  /**
-   * Create a new quick fix
-   * @return a new uninitialized instance of a quick fix for a given issue
+  /*ACR-8d5dd514211f4d65abbf5cf3eb0b2f66
+ACR-72b8bb3afa0142999e44f6e53b376ac9
+ACR-a38efcb201e2415c9fd8e0455d3ef13f
    */
   NewQuickFix newQuickFix();
 
-  /**
-   * Add a new quick fix to this issue
-   * @param newQuickFix the quick fix to add
-   * @return this object
+  /*ACR-d3820dd805f04876b9cb0c9bcd7225e2
+ACR-2e9afaa4d1f04c50aac9f885118a9a71
+ACR-58ba031f52b64ae7a8646f28b09ba265
+ACR-ff710bb73e1841d69b67e44f24ca457e
    */
   NewSonarLintIssue addQuickFix(NewQuickFix newQuickFix);
 }

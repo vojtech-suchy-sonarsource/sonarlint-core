@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-198a1f09de6740b090690ed3a9a05e67
+ACR-6d80ea5d99d84df5a8c449096380f110
+ACR-23b8a02a61fb4970999750bc5f2394c6
+ACR-0f69fcef3d73473492cd917062502167
+ACR-92d2cf18f2be401d8be8a9bd196a3b6d
+ACR-0ae65a44e03140b9a1654a824126401d
+ACR-97c53ebe51d74716869f91ba2a88f6c2
+ACR-bc101f7d56b0415e9cc837a7a2927847
+ACR-0036fe73152f4b14ba7647306dd9b470
+ACR-6c2788007a4946a89e952c3a109327fe
+ACR-e214618095bf46489188dce077444413
+ACR-5a68ca200a044f4dac2802df228c3645
+ACR-cea40f668f1e4740940252f3e72ffaa4
+ACR-42799b39215f4f4fa5bebb36ada6be7e
+ACR-f807f0cc05ca448bac51533d74a0c233
+ACR-1dbcd3fc151b4246aff025ea3e179ea0
+ACR-a0b38cf6fd7741a2b22f3ac71f6ea233
  */
 package org.sonarsource.sonarlint.core.plugin.commons;
 
@@ -34,7 +34,7 @@ import static java.util.function.UnaryOperator.identity;
 
 public class MultivalueProperty {
   private MultivalueProperty() {
-    // prevents instantiation
+    //ACR-106988995b5b411aaf371d545fa51591
   }
 
   public static String[] parseAsCsv(String key, String value) {
@@ -61,27 +61,27 @@ public class MultivalueProperty {
     }
   }
 
-  /**
-   * In most cases we expect a single record. <br>Having multiple records means the input value was splitted over multiple lines (this is common in Maven).
-   * For example:
-   * <pre>
-   *   &lt;sonar.exclusions&gt;
-   *     src/foo,
-   *     src/bar,
-   *     src/biz
-   *   &lt;sonar.exclusions&gt;
-   * </pre>
-   * In this case records will be merged to form a single list of items. Last item of a record is appended to first item of next record.
-   * <p>
-   * This is a very curious case, but we try to preserve line break in the middle of an item:
-   * <pre>
-   *   &lt;sonar.exclusions&gt;
-   *     a
-   *     b,
-   *     c
-   *   &lt;sonar.exclusions&gt;
-   * </pre>
-   * will produce ['a\nb', 'c']
+  /*ACR-5ac1152e05f648a18ec290d6c0b469bc
+ACR-698f004b309349d6a2af472391868e00
+ACR-5ff1e16f2a7b40638871205a8884107d
+ACR-7e6a555d00764bf0abe9157ad38a0214
+ACR-5578d370ca504562b10c8f920c97e770
+ACR-2736441da4a943a6953ed94ae95145e6
+ACR-8ed7424fa03b4ae0a6389cb1669d64a3
+ACR-e1fc06a97d224bcd8e73a58a3c51ca3d
+ACR-adba2a7cb99a4f848f742fae4b44e58b
+ACR-0eb540d9d44448a780bc107b1dd3a567
+ACR-c7961078a943425dab368588572d5037
+ACR-f1246ef7e3a34710a2184ffc33ede6af
+ACR-2cdd771b887d475bb28251e8a78f1153
+ACR-079988b2385c4c19976082139c060e74
+ACR-c27bd3f584694cb7adac9685411de0c8
+ACR-aeea2661fb534d68900cdf9d391cec7e
+ACR-b9ac4f96d2e84cfa968c605012635e34
+ACR-b3b17439bd4c4352b2553921c8dacfc3
+ACR-bb2c7a86c135428cba9aafd8729c2ac9
+ACR-ffc5e8c8826e48c384a869d3acc21516
+ACR-acc9590ef1214e49bb15b6f955396340
    */
   private static void processRecords(List<String> result, List<CSVRecord> records, UnaryOperator<String> valueProcessor) {
     for (CSVRecord csvRecord : records) {
@@ -105,36 +105,36 @@ public class MultivalueProperty {
     }
   }
 
-  /**
-   * Removes the empty fields from the value of a multi-value property from empty fields, including trimming each field.
-   * <p>
-   * Quotes can be used to prevent an empty field to be removed (as it is used to preserve empty spaces).
-   * <ul>
-   *    <li>{@code "" => ""}</li>
-   *    <li>{@code " " => ""}</li>
-   *    <li>{@code "," => ""}</li>
-   *    <li>{@code ",," => ""}</li>
-   *    <li>{@code ",,," => ""}</li>
-   *    <li>{@code ",a" => "a"}</li>
-   *    <li>{@code "a," => "a"}</li>
-   *    <li>{@code ",a," => "a"}</li>
-   *    <li>{@code "a,,b" => "a,b"}</li>
-   *    <li>{@code "a,   ,b" => "a,b"}</li>
-   *    <li>{@code "a,\"\",b" => "a,b"}</li>
-   *    <li>{@code "\"a\",\"b\"" => "\"a\",\"b\""}</li>
-   *    <li>{@code "\"  a  \",\"b \"" => "\"  a  \",\"b \""}</li>
-   *    <li>{@code "\"a\",\"\",\"b\"" => "\"a\",\"\",\"b\""}</li>
-   *    <li>{@code "\"a\",\"  \",\"b\"" => "\"a\",\"  \",\"b\""}</li>
-   *    <li>{@code "\"  a,,b,c  \",\"d \"" => "\"  a,,b,c  \",\"d \""}</li>
-   *    <li>{@code "a,\"  \",b" => "ab"]}</li>
-   * </ul>
+  /*ACR-1d8a07e7d5ea4a2ca67cb8f54d697b7f
+ACR-f2c758862aca467db3f7685e556017f7
+ACR-770bfd4354774c4b86c9d26354d9d0f4
+ACR-f30b8524a4564b72ad1282650b456794
+ACR-1086a22a25064959a526bc7f98f50a99
+ACR-df4e7f95762942c89da72102168aa382
+ACR-e4cc3a4517834b98bdda97c88d053297
+ACR-ff46f364559b497eaf5ce6a78d6a0793
+ACR-46d7f4222e4d485bb87f09e59f80d9ce
+ACR-aae4fe6bee88463f9ce2aa8bff7729c0
+ACR-769b171a22004a2e9bf02f98621db44e
+ACR-c602a2e2298f496a854b701f19e108db
+ACR-a4fac97b8793453589da38a24e6a9950
+ACR-dcab40b7542e4f8285e6f3e511b1410b
+ACR-b7dae00538a24effb19142b74a775709
+ACR-241077801efb4135b797c3559c002df4
+ACR-3fe38871bae04ebfab4d792633d09de5
+ACR-cacac13b100b45169223367eac987f03
+ACR-197c91e5d4b842a19146b6a2fc4d5e91
+ACR-c451849380ae489181e56f23a55de667
+ACR-7b9d297abf4344f3b04182eceb9ef687
+ACR-26725a659d6345a78a0bf8922208d358
+ACR-6f0693a04dcf46588f423eb8d510877e
    */
   static String trimFieldsAndRemoveEmptyFields(String str) {
     char[] chars = str.toCharArray();
     var res = new char[chars.length];
     /*
-     * set when reading the first non trimmable char after a separator char (or the beginning of the string)
-     * unset when reading a separator
+ACR-4d3fd6a9caca4da089cc65c26b50bb4f
+ACR-fd59d0784f83430f9b5101e4eddf80d1
      */
     var inField = false;
     var inQuotes = false;
@@ -143,7 +143,7 @@ public class MultivalueProperty {
     for (; i < chars.length; i++) {
       boolean isSeparator = chars[i] == ',';
       if (!inQuotes && isSeparator) {
-        // exiting field (may already be unset)
+        //ACR-8c5437e48293492897138e9dbf269cd3
         inField = false;
         if (resI > 0) {
           resI = retroTrim(res, resI);
@@ -151,7 +151,7 @@ public class MultivalueProperty {
       } else {
         boolean isTrimmed = !inQuotes && istrimmable(chars[i]);
         if (isTrimmed && !inField) {
-          // we haven't met any non trimmable char since the last separator yet
+          //ACR-ab9c35f2a6514db09880821cb3bb37d5
           continue;
         }
 
@@ -160,22 +160,22 @@ public class MultivalueProperty {
           inQuotes = !inQuotes;
         }
 
-        // add separator as we already had one field
+        //ACR-f638b9e8a7924382ac73b2276d0286e6
         if (!inField && resI > 0) {
           res[resI] = ',';
           resI++;
         }
 
-        // register in field (may already be set)
+        //ACR-d9fb653a142a44fbacea4b336662fe06
         inField = true;
-        // copy current char
+        //ACR-3b8f6806c9f54466bcf90bcdd18a14f5
         res[resI] = chars[i];
         resI++;
       }
     }
-    // inQuotes can only be true at this point if quotes are unbalanced
+    //ACR-a1a88f80e5fb41dd8fbe0a8a3c44d153
     if (!inQuotes) {
-      // trim end of str
+      //ACR-34ae16be7a34413bad7e9d9fcca4757d
       resI = retroTrim(res, resI);
     }
     return new String(res, 0, resI);
@@ -189,13 +189,13 @@ public class MultivalueProperty {
     return aChar <= ' ';
   }
 
-  /**
-   * Reads from index {@code resI} to the beginning into {@code res} looking up the location of the trimmable char with
-   * the lowest index before encountering a non-trimmable char.
-   * <p>
-   * This basically trims {@code res} from any trimmable char at its end.
-   *
-   * @return index of next location to put new char in res
+  /*ACR-ba0ebc832c16409aab5186e47075f16b
+ACR-d375f00a835f4e4f9bee0d7a6d1ac902
+ACR-ecc31f597f4d4fea9c792f15148aacd8
+ACR-3a34b483b239404b95aabb74e3afa59c
+ACR-5b6055ce252f42d48e653c6d65e0ef4e
+ACR-b5dd785545eb42c9ba83be1e55bd3288
+ACR-29a5a9cdb10d4646b5256a59997eff75
    */
   private static int retroTrim(char[] res, int resI) {
     int i = resI;

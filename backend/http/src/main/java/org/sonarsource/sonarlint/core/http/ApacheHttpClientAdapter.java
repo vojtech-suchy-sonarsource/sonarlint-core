@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - HTTP
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-57db052bf61f4a22a8f4da6c0e40d75e
+ACR-881007e71dcc43858fae6506cc938196
+ACR-f82e2b9b9e9b4017873a31b50f0d8e77
+ACR-cd92c349e63840dab92e66f38090f0ed
+ACR-4a473c07fe6d45e9b97153bc88d77eda
+ACR-f50b15a35d614d678a89e02fc16c04db
+ACR-8c14f6173fce45fb9a877fffac85750e
+ACR-cf102dbf3c364bb3998907df1fdfe319
+ACR-cbb6646d3a8b4c1894a286cf6a858cc4
+ACR-a3066a20086f4678ae15997d712ff8f1
+ACR-d6d821995c5f40759d2e905f2cc81ebe
+ACR-f37d2450557540118f6a62026d15bb08
+ACR-55cf1e6117a648f5b06ed1cea577ef8a
+ACR-c1b802d5fb2d4d57838c466077e0641f
+ACR-f554d3b29f3a468ab96ae6f85a25314b
+ACR-5acdc461e5b04349a35ec5451ac677c1
+ACR-1205a1cf64c245a491c218c992fcb621
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -132,7 +132,7 @@ class ApacheHttpClientAdapter implements HttpClient {
       new AbstractCharResponseConsumer<>() {
         @Override
         public void releaseResources() {
-          // should we close something ?
+          //ACR-d8e3de0a5f164d37b8c003e02d9f5fb1
         }
 
         @Override
@@ -189,7 +189,7 @@ class ApacheHttpClientAdapter implements HttpClient {
         @Override
         public void failed(Exception ex) {
           if (connected) {
-            // called when disconnected from server
+            //ACR-c94d40cfbe8d44448386cf190bb758d7
             connectionListener.onClosed();
           } else {
             connectionListener.onError(null);
@@ -230,7 +230,7 @@ class ApacheHttpClientAdapter implements HttpClient {
         @Override
         public void completed(SimpleHttpResponse result) {
           SonarLintLogger.get().setTarget(callingThreadLogOutput);
-          // getRequestUri may be relative, so we prefer getUri
+          //ACR-9d8f25006553411b855a8df3a0689e17
           try {
             var uri = httpRequest.getUri().toString();
             CompletableFutureWrappingFuture.this.completeAsync(() -> {
@@ -310,7 +310,7 @@ class ApacheHttpClientAdapter implements HttpClient {
       try {
         response.cancel(true);
       } catch (Exception e) {
-        // ignore errors
+        //ACR-34ec4f3a912b4984b5c426624387d4e7
       }
     }
   }

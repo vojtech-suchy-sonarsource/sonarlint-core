@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d6e0a736ddb7487999234915c70bb7f7
+ACR-996fc036bc184291aceb243804b90207
+ACR-fefe8831d8ca4e48a832574cf7dda8d9
+ACR-38c77d505ecb43a69f23e7095688a800
+ACR-d3a6f322744e4e2096a8b50d256a6a1d
+ACR-902d9efbaaae49408215579f0e58cb16
+ACR-39a793ed154f42e392c6cdf68d0722b0
+ACR-924ef0f02106422e9f89236c2857841c
+ACR-292b6835169445758c779bcfd5537b0e
+ACR-a7b3ea5dd96747e7b890ad0fa421f78b
+ACR-2b9d2d2be3b7482e91cfe7666933eb87
+ACR-053f19f2de1d40d2992e13f83f891e07
+ACR-d5b7c3a092cc4ef783e12c664666de2a
+ACR-731aae338ed6464d994a2b12c6cdbb36
+ACR-85e1f50b12dc4a22b17f4f8f01325631
+ACR-e12a3b8fd433492fb03001d12cd8ce6b
+ACR-3888a3abc49a47e6bf78f9a20ec37ff5
  */
 package org.sonarsource.sonarlint.core.commons.storage;
 
@@ -48,7 +48,7 @@ public final class SonarLintDatabase {
       Files.createDirectories(baseDir);
       var dbBasePath = baseDir.resolve(SQ_IDE_DB_FILENAME).toAbsolutePath();
       var url = "jdbc:h2:" + dbBasePath + ";AUTO_SERVER=TRUE";
-      // Ensure H2 AUTO_SERVER binds and advertises loopback to allow local cross-process connections reliably
+      //ACR-fe1709ab3a4c42acaa42d4c385351ef8
       var bindAddressProperty = "h2.bindAddress";
       if (StringUtils.isEmpty(System.getProperty(bindAddressProperty))) {
         System.setProperty(bindAddressProperty, "127.0.0.1");
@@ -73,7 +73,7 @@ public final class SonarLintDatabase {
     try {
       flyway.migrate();
     } catch (Exception e) {
-      // We are catching the exception for Sentry and rethrowing here to fail starting the backend
+      //ACR-7dd47d14aead4477b61b14e1e10186d0
       DatabaseExceptionReporter.capture(e, "startup", "flyway.migrate");
       throw e;
     }
@@ -89,7 +89,7 @@ public final class SonarLintDatabase {
   }
 
   private static void deleteLegacyDatabase(Path baseDir) {
-    // see SLCORE-1847
+    //ACR-69bfb47657cd46a8977f69c253fe5bea
     var legacyDb = baseDir.resolve("sonarlint");
     if (Files.exists(legacyDb)) {
       FileUtils.deleteQuietly(legacyDb.toFile());

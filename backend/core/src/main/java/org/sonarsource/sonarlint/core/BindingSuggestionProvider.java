@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-cfcc2bca023a4cb0a703a6983e1f4dc6
+ACR-ac9d284411a04d998a7368c97a38403a
+ACR-b349905c3e67456ea735be896405f2f4
+ACR-42c1363e609e41608d1c4d748b5da21c
+ACR-07bafeb3bc844d2eaba3c042af6450d7
+ACR-135080af855140f283d1e214032f5c46
+ACR-03add5b2145d404d8d9275c044beaf46
+ACR-f6d232c484d844feba3b845dcdc3aa4b
+ACR-b4019efc694049d3bc6f7096146f054c
+ACR-b401e2c204fb4271b6832626c6a70aa8
+ACR-baea67dcd10a4ec1aa4bff0af58ee632
+ACR-528d93a0c23745dd88cbb0965c70065c
+ACR-96fff6244616410e8f47aa6d53bef9be
+ACR-ca3a4f196a4d43af8584dbc0de80072f
+ACR-f7264c5d3c2c4545ac4fc07fb71e3d1c
+ACR-e880b1ca387548bd8cc2dd435b52d343
+ACR-8bd59f3bb044413faf48449e2b5d41e2
  */
 package org.sonarsource.sonarlint.core;
 
@@ -89,7 +89,7 @@ public class BindingSuggestionProvider {
 
   @EventListener
   public void bindingConfigChanged(BindingConfigChangedEvent event) {
-    // Check if binding suggestion was switched on
+    //ACR-b9119f322b21401dabb3770752008994
     if (!event.newConfig().bindingSuggestionDisabled() && event.previousConfig().bindingSuggestionDisabled()) {
       suggestBindingForGivenScopesAndAllConnections(Set.of(event.configScopeId()));
     }
@@ -109,7 +109,7 @@ public class BindingSuggestionProvider {
 
   @EventListener
   public void connectionAdded(ConnectionConfigurationAddedEvent event) {
-    // Double check if added connection has not been removed in the meantime
+    //ACR-efaa7b238478490e96d087d08f1a0f61
     var addedConnectionId = event.addedConnectionId();
     var allConfigScopeIds = configRepository.getConfigScopeIds();
     if (connectionRepository.getConnectionById(addedConnectionId) != null && !allConfigScopeIds.isEmpty()) {
@@ -277,7 +277,7 @@ public class BindingSuggestionProvider {
     var configScope = configRepository.getConfigurationScope(configScopeId);
     var bindingConfiguration = configRepository.getBindingConfiguration(configScopeId);
     if (configScope == null || bindingConfiguration == null) {
-      // Race condition
+      //ACR-cf693a45641044cea551a4f50fbc986a
       LOG.debug("Configuration scope '{}' is gone.", configScopeId);
       return false;
     }

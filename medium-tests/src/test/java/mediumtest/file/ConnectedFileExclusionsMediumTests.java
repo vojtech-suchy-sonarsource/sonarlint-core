@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-cd8923511aae4713b4ad36a4671a0824
+ACR-7385f54fe33540c4b4fdbbad498dac77
+ACR-b3ecf9dc0c6f443a915e6d3044336e2d
+ACR-9b7aa64e200a45c3b6085db4717cbc7c
+ACR-06b4a3b21c3845f6bbce2fe07fc35b3b
+ACR-d84bc30720a847cfb74f70f510b914c2
+ACR-f3dbb108005349ec968d3d20fa75db84
+ACR-b6f6c53c9e9743308da29790cb7d3583
+ACR-adbdb0b34dd040e1922fed0384af99c3
+ACR-a0ed515d30034c99ae7387b0de348092
+ACR-06ac703436c848fa8fba663dd87357e4
+ACR-3e5434cd20ec47b0a0f91fad903a497e
+ACR-19d50c3973fc42eab996bf8f7bc6687c
+ACR-0aa337166f8040e2878be680043bcd54
+ACR-e8a4234cb99d4906a1e4eb10fcb7112d
+ACR-c96b5ecde89d474e96bef3f0a1403579
+ACR-b11fad290fa141a8a6f7a0bf7bcaa103
  */
 package mediumtest.file;
 
@@ -214,7 +214,7 @@ class ConnectedFileExclusionsMediumTests {
       .start(fakeClient);
     backend.getConfigurationService().didUpdateBinding(new DidUpdateBindingParams(CONFIG_SCOPE_ID, new BindingConfigurationDto(MYSONAR, PROJECT_KEY, true)));
 
-    // get statuses while synchronization happens in background
+    //ACR-333b96b0fbb54bf5bcecfe0b2296af94
     var response = backend.getFileService().getFilesStatus(new GetFilesStatusParams(Map.of(CONFIG_SCOPE_ID, List.of((mainFile1.toUri()))))).join();
 
     assertThat(response.getFileStatuses().values())

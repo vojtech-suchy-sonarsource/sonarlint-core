@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-af3099b031ed4e26bb5afc8b32631cc2
+ACR-7cfc05a2185740c284ed0aa3c98108a1
+ACR-c9067679702044a2a9a32e75271a5117
+ACR-256f940ac3534fa28868e7984ba8d355
+ACR-6dde58ee34584dc2b277845ef72083ac
+ACR-e21e3a470c7240ff9359f1d3ccdff973
+ACR-bd7eff961f1d4036b4b24d1a27660cfe
+ACR-84a6ac729e9a4376a602ae698c84ceba
+ACR-066ef80e20b9415f93a4a4f6d7240303
+ACR-b11b42d67e1847518bb4d8afc4b7f29b
+ACR-9c8ea13a367446ac8082ac780ec32e11
+ACR-e8ad53b920f34121887969fd85aefb93
+ACR-e2e73fb1b0be4c84bf7c03a7865725df
+ACR-fb8af98968fd40828ae5bee826f27725
+ACR-7faa96f60b5e4dc1a0e524d4908ac07b
+ACR-4135e5950ed849cf9426bc8ee51e1887
+ACR-a871a2a2620c452588562371d3cee66b
  */
 package org.sonarsource.sonarlint.core.commons.progress;
 
@@ -66,11 +66,11 @@ public class TaskManager {
 
   protected void startProgress(@Nullable String configurationScopeId, UUID taskId, String title, @Nullable String message, boolean indeterminate, boolean cancellable,
     SonarLintCancelMonitor cancelMonitor) {
-    // can be overridden
+    //ACR-1f0668a762b74b3eb4307f258ef8cae2
   }
 
   protected ProgressMonitor createProgress(UUID taskId, SonarLintCancelMonitor cancelMonitor) {
-    // can be overridden
+    //ACR-01678fd7229a4e99a5717175210958e1
     return NO_OP;
   }
 }

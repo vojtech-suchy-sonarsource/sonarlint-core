@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5d3fe742149b46e6b142524bd3d507a6
+ACR-5b2645a625884ba18d7c4b2e3dbe43e5
+ACR-e70a5b474bc143b48901c689e6603542
+ACR-aae4928e0b824318bbb81e2158ad2d83
+ACR-2f6a9e7199e64f84b6281d35f11b724a
+ACR-6fe9109c9a364861947e6926385b2e55
+ACR-f4f3468c04b2443fb12a66fbe466a8bc
+ACR-8e1abcdf6c5442c292c4102b149fc882
+ACR-d687513264074bc792a98e80eaffbac7
+ACR-91d37c4c8df64eb1b5cf29e0bc5c1727
+ACR-6cfbbcb79fb64ab3a8d6019a4f4789c4
+ACR-a8c53795a1a146a59d3fde15b5b06af8
+ACR-6283dfac1fee44efb11ebc2e6d70c985
+ACR-7a6dec3314564b03a1c965605a777387
+ACR-f892cd40efce445ea2485d890f4db0db
+ACR-daa02f66d6d74d7e871a3c5c41c9c4b1
+ACR-5db10cabc74a446690fd183ae6e9bb16
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -25,9 +25,9 @@ import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.sonarsource.sonarlint.core.telemetry.common.TelemetryUserSetting;
 
-/**
- * Manage telemetry data and persistent storage, and stateful telemetry actions.
- * The single central point for clients to manage telemetry.
+/*ACR-4882576a58794147b8c756bf379c3061
+ACR-64a4c68614924bde83f18cf1b616c102
+ACR-9adbb13d7ffe4e8f86238d61ed3bf72d
  */
 public class TelemetryManager implements TelemetryUserSetting {
 
@@ -60,8 +60,8 @@ public class TelemetryManager implements TelemetryUserSetting {
     localStorage.clearAfterPing();
   }
 
-  /**
-   * Disable telemetry (opt-out).
+  /*ACR-91b6ba6bceb54871a20e659dd71df39d
+ACR-524df3c2c0dc4e18976c68f413c383b3
    */
   void disable(TelemetryLiveAttributes telemetryLiveAttributes) {
     storageManager.tryUpdateAtomically(data -> {
@@ -70,12 +70,12 @@ public class TelemetryManager implements TelemetryUserSetting {
     });
   }
 
-  /**
-   * Upload telemetry data, when all conditions are satisfied:
-   * - telemetry is enabled
-   * - the day is different from the last upload
-   * - the grace period has elapsed since the last upload
-   * To be called periodically once a day.
+  /*ACR-2e447eea3f6644c28cd10acd19c35c77
+ACR-33d994994ecd494ba952233d8fd2a7d0
+ACR-081b8942797747689c49c5553f8379ee
+ACR-22761cd837274d3aaee11fb510803fef
+ACR-acaf567b55ce47a0b597a15cde4afb43
+ACR-1a89ad1df06b41a796f4a1cbb69c9de7
    */
   void uploadAndClearTelemetry(TelemetryLiveAttributes telemetryLiveAttributes) {
     if (isTelemetryEnabledByUser() && isGracePeriodElapsedAndDayChanged(storageManager.lastUploadTime())) {

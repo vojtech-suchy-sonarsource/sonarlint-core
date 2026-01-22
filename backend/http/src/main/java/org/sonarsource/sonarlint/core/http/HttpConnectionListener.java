@@ -1,40 +1,40 @@
 /*
- * SonarLint Core - HTTP
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f5003fb6dec847c9bee644237ef8167e
+ACR-9da5177d10584df3972363100970a955
+ACR-27ce25d40bcc43daae4ee8e374142a8b
+ACR-c95774b4716d43e085ed17141458afdf
+ACR-7e001dbd36cc407caac2f4734aa14d3f
+ACR-f43ddcd2fa644fd79851ee40c8f1dac5
+ACR-b7a8d858598d448ca66fe78fb42b8f41
+ACR-a6255b108a97493e903cb389ce56fb65
+ACR-2dd9d2700700450594fe4a6be0b74781
+ACR-74e8b6d952234fe1964a76ea1f98faf3
+ACR-454456130cc24e45b19a0c5856e91ff1
+ACR-c6bdc3ba51df47c9b55c76dca92e91ca
+ACR-283df7e60584432bb9f7af384a8e3879
+ACR-645d6d0616714051b2d6204e395b2052
+ACR-de7b6aca9f4147bcb29205dc877e7e30
+ACR-1fa7cf95991a4c3ca7932c6c269d2a3f
+ACR-3bdb148f0e134b1b9ca6ac3a8ec2c1a7
  */
 package org.sonarsource.sonarlint.core.http;
 
 import javax.annotation.Nullable;
 
 public interface HttpConnectionListener {
-  /**
-   * Should be called when the request returns status >= 200 and < 300.
+  /*ACR-25bc78b68e704b6f9b24ed2d8f94ae3f
+ACR-819304065e114f90b5666834b038767c
    */
   void onConnected();
 
-  /**
-   * Should be called when the request returns status < 200 or >= 300, or another error occurs. No need to call {@link #onClosed()} after that.
-   * @param responseCode the HTTP status response, or null for other error types (e.g. timeout)
+  /*ACR-e2483741cf2547679ec288da0f4cf888
+ACR-a3dfc8e0e89f413da229071e9a890c54
+ACR-9f961ff8f3494cf581bdc6783695594b
    */
   void onError(@Nullable Integer responseCode);
 
-  /**
-   * Should be called when the connection is closed, only after it was successfully established (ie after {@link #onConnected()} was called)
+  /*ACR-8086fbe1774e444e83c728467592e938
+ACR-191df78de994440badfd9e361fc191cd
    */
   void onClosed();
 }

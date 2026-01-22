@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-fa73177f13ea4ae7b9591018735a926c
+ACR-3a469916b884440db0a9b571bd51931a
+ACR-d552a93ab33b4af695ca0dfb417fc2af
+ACR-d0bd32e2b2ad4489885daf59e2e0814e
+ACR-d4d8dfabf75c457c9cdcba8edca75f5e
+ACR-90b16d75ec8f4b3ca5dbac881c7072e9
+ACR-db7e7cfd6f1149a88cc4e9f2c09867ad
+ACR-223e7a1fe3e44038bfed764503975629
+ACR-45bfddc864e94a1c99283db0160cbd14
+ACR-0cb7eb9788b14c2c9203408911759764
+ACR-1ce413b5c1554f95bab11cf0525f0bff
+ACR-5657bfc2ae2541ff826e0ccf5ea15d28
+ACR-c5f800e9e8e1449897e1b7691d6f08d9
+ACR-9c60b6129393463ea409cd926989f454
+ACR-28b8f9f8094e4fa293309a19c29e0b57
+ACR-3a07e225ea374f60b11af65fbd986a1c
+ACR-d17a8bf659d8483ab5114bba5d844bbc
  */
 package org.sonarsource.sonarlint.core.commons.util.git;
 
@@ -67,11 +67,11 @@ class NativeGitTest {
     var fileAStr = "fileA";
     createFile(projectDirPath, fileAStr, "line1");
     var yearAgo = calendar.toInstant();
-    // initial commit 2 years ago
+    //ACR-6b6a80f493744a6e9d4a9f9aac151458
     commitAtDate(git, yearAgo, fileAStr);
     var lines = new String[3];
 
-    // second commit 4 months after initial commit
+    //ACR-40b7300562424ba9b3586a04c0314bac
     calendar.add(Calendar.MONTH, 4);
     lines[0] = "line1";
     lines[1] = "line2";
@@ -79,7 +79,7 @@ class NativeGitTest {
     modifyFile(projectDirPath.resolve(fileAStr), lines);
     commitAtDate(git, eightMonthsAgo, fileAStr);
 
-    // third commit 4 months after second commit
+    //ACR-05fba323aa6c4eb1aeb698984a630441
     calendar.add(Calendar.MONTH, 4);
     lines[2] = "line3";
     var oneYearAndFourMonthsAgo = calendar.toInstant();
@@ -108,11 +108,11 @@ class NativeGitTest {
     var fileAStr = "fileA";
     createFile(projectDirPath, fileAStr, "line1");
     var yearAgo = calendar.toInstant();
-    // initial commit 1 year ago
+    //ACR-9515976263014e5c84266b1e3ccd844c
     commitAtDate(git, yearAgo, fileAStr);
     var lines = new String[3];
 
-    // second commit 4 months after initial commit
+    //ACR-7584b822492944289e7e7f77a88977ed
     calendar.add(Calendar.MONTH, 4);
     lines[0] = "line1";
     lines[1] = "line2";
@@ -120,7 +120,7 @@ class NativeGitTest {
     modifyFile(projectDirPath.resolve(fileAStr), lines);
     commitAtDate(git, eightMonthsAgo, fileAStr);
 
-    // third commit 4 months after second commit
+    //ACR-975c7f70fba64c89bf147c4d65c1c20c
     calendar.add(Calendar.MONTH, 4);
     lines[2] = "line3";
     var fourMonthsAgo = calendar.toInstant();
@@ -133,12 +133,12 @@ class NativeGitTest {
     var line1Date = blameResult.getLatestChangeDateForLinesInFile(fileA, List.of(1)).get();
     var line2Date = blameResult.getLatestChangeDateForLinesInFile(fileA, List.of(2)).get();
     var line3Date = blameResult.getLatestChangeDateForLinesInFile(fileA, List.of(3)).get();
-    // provided blame time limit is 180 days, but effective period will be 1 year
-    // line 1 was committed 1 year ago but should have commit date of the first commit made earlier than blame time window - 8 months ago
+    //ACR-d291ae121e1942f78ea50c6a5e27db82
+    //ACR-d5d2a5cccaca437f9e14bcd17860cc24
     assertThat(ChronoUnit.MINUTES.between(line2Date, line1Date)).isZero();
-    // line 2 was committed 8 months ago, it's outside the blame time window, but it's a first commit outside the range, so it has real commit date
+    //ACR-162d5491f408405183820cdfe5d90a4f
     assertThat(ChronoUnit.MINUTES.between(line2Date, eightMonthsAgo)).isZero();
-    // line 3 was committed 4 months ago, it's inside the blame time window, so it has real commit date
+    //ACR-2eefaebca5e14e4f90786fbeecf08e3b
     assertThat(ChronoUnit.MINUTES.between(line3Date, fourMonthsAgo)).isZero();
   }
 

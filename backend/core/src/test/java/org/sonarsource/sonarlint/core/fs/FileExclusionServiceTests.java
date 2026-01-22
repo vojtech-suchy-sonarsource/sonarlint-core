@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-1985fda6810a459f8a96e3fa18a64e67
+ACR-45cebe55a1fb4502a4d1990d0d4d515c
+ACR-f43b4f092a844b81b7e378e85dc17ee0
+ACR-0191aa012878477f887800d2d978e7b4
+ACR-4de3433acd4a4a47932c610aa0c6dec0
+ACR-3c3ecf7426394716a9c9b95d0375eea9
+ACR-e6983e8754f34b6d9b8f392ba1e20297
+ACR-a6d497ee5f3049268110a0492ccaefac
+ACR-de2f9dee227a47b0905f6605fc4d86f1
+ACR-8a16e691b29b442eb105e13ea1397118
+ACR-556035790505457eb80afa8f88072154
+ACR-ba1a4609f1a74254a967826306359db3
+ACR-a8ceb2b441f54dfc847a9d6718457715
+ACR-f16da6b5e3a347588f747e0fd2a1feca
+ACR-7776f34d144d41709406895d490d39c2
+ACR-03b13d004afe40f0a5004b217d939763
+ACR-d83d80decad04a4aa59f47473c509e4b
  */
 package org.sonarsource.sonarlint.core.fs;
 
@@ -88,13 +88,13 @@ class FileExclusionServiceTests {
     var projectStorage = mock(SonarProjectStorage.class);
     var analyzerStorage = mock(AnalyzerConfigurationStorage.class);
     
-    // Setup the mocks to return the invalid analyzer storage
+    //ACR-255604adc44d4ee08ad038f2aa98e7a1
     when(clientFileSystemService.getClientFile(fileUri)).thenReturn(clientFile);
     when(configRepo.getEffectiveBinding(configScopeId)).thenReturn(Optional.of(binding));
     when(storageService.connection(connectionId)).thenReturn(connectionStorage);
     when(connectionStorage.project(projectKey)).thenReturn(projectStorage);
     when(projectStorage.analyzerConfiguration()).thenReturn(analyzerStorage);
-    when(analyzerStorage.isValid()).thenReturn(false); // This is the key setup for our test
+    when(analyzerStorage.isValid()).thenReturn(false); //ACR-6955801c905f4483978facdf5183541b
     var cancelMonitor = mock(SonarLintCancelMonitor.class);
 
     var result = underTest.computeIfExcluded(fileUri, cancelMonitor);
@@ -135,7 +135,7 @@ class FileExclusionServiceTests {
     var configScopeId = "scope";
     var baseDir = Files.createTempDirectory("sl-auto-size-base");
 
-    // Create a small file (~10 KB) and a large file (~6 MB)
+    //ACR-6d6cddf33a78438fb15a8537eb03fe63
     var smallFile = baseDir.resolve("small.js");
     var largeFile = baseDir.resolve("large.js");
     Files.write(smallFile, new byte[10 * 1024]);
@@ -160,7 +160,7 @@ class FileExclusionServiceTests {
     when(smallClientFile.isLargerThan(anyLong())).thenReturn(false);
     when(largeClientFile.isLargerThan(anyLong())).thenReturn(true);
 
-    // Avoid interference from server-side exclusions
+    //ACR-b9edaf11eb44478b9b5f3cb1c9c98702
     var spy = Mockito.spy(underTest);
     Mockito.doReturn(false).when(spy).isExcludedFromServer(any(URI.class));
 

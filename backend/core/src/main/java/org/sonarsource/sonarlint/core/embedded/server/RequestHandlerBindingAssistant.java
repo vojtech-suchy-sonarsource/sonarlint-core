@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-44b3a67f210c41818e92eab9747439b4
+ACR-51e7f0aef5dd4adb847b44db4d21f4d3
+ACR-b7cff8c45b40434f8106294e350aa8a0
+ACR-9c6dd4e2f78a4d6c987f139c925f7d68
+ACR-3119bcf6876f408688985d1820927dac
+ACR-820ab9de4a8c43af8f0509404a8e2a56
+ACR-36b810e8db804a6da2f51446ad4db03f
+ACR-1d11ce20c71f4f66af33509b2e6ba102
+ACR-52abd68bf9f44487912f4f91920b3677
+ACR-fc17f3f9a15748b8929520ff7114e2f1
+ACR-cc92277ea2514f39806019a6927c4c47
+ACR-7fafbb6aa76f49869709caf836721873
+ACR-42ff45908f7542a0b5bbe9eccffc5bb2
+ACR-9ab17430ea0046579364ac44570457a0
+ACR-1b63552fc27149f9aa2988333a4ad199
+ACR-518ed5f5b7584980a31defdf0efb90e9
+ACR-5916720e082d4f6f82983ed63a126719
  */
 package org.sonarsource.sonarlint.core.embedded.server;
 
@@ -110,8 +110,8 @@ public class RequestHandlerBindingAssistant {
       } else {
         var isOriginTrusted = repository.hasConnectionWithOrigin(origin);
         if (isOriginTrusted) {
-          // we pick the first connection but this could lead to issues later if there were several matches (make the user select the right
-          // one?)
+          //ACR-1f91e32a8d11486aa7ab153e3d972cb3
+          //ACR-e72271c757b84593b1881ccce7c270f1
           assistBindingIfNeeded(connectionsMatchingOrigin.get(0).getConnectionId(), isSonarCloud, projectKey, callback, cancelMonitor);
         } else {
           LOG.warn("The origin '" + origin + "' is not trusted, this could be a malicious request");
@@ -133,8 +133,8 @@ public class RequestHandlerBindingAssistant {
     AssistCreatingConnectionParams connectionParams, SonarLintCancelMonitor cancelMonitor) {
     var assistNewConnectionResult = assistCreatingConnection(connectionParams, cancelMonitor);
 
-    // Wait 5s for the connection to be created in the repository. This is happening asynchronously by the
-    // ConnectionService::didUpdateConnections event
+    //ACR-ac8edf5f2cb84a52a0e3e2b8ddcdca7a
+    //ACR-7bf126726e914f32b47433d7fc7e136a
     LOG.debug("Waiting for connection creation notification...");
     for (var i = 50; i >= 0; i--) {
       if (connectionConfigurationRepository.getConnectionsById().containsKey(assistNewConnectionResult.getNewConnectionId())) {
@@ -161,15 +161,15 @@ public class RequestHandlerBindingAssistant {
       callback.andThen(connectionId, boundScopes, assistNewBindingResult.getConfigurationScopeId(), cancelMonitor);
     } else {
       var boundScopes = scopes.stream().map(BoundScope::getConfigScopeId).filter(Objects::nonNull).collect(Collectors.toSet());
-      // we pick the first bound scope but this could lead to issues later if there were several matches (make the user select the right one?)
+      //ACR-70143272f0e343e881a265245d7c97ed
       callback.andThen(connectionId, boundScopes, scopes.iterator().next().getConfigScopeId(), cancelMonitor);
     }
   }
 
   private NewBinding assistBindingAndWaitForRepositoryUpdate(String connectionId, boolean isSonarCloud, String projectKey, SonarLintCancelMonitor cancelMonitor) {
     var assistNewBindingResult = assistBinding(connectionId, isSonarCloud, projectKey, cancelMonitor);
-    // Wait 5s for the binding to be created in the repository. This is happening asynchronously by the
-    // ConfigurationService::didUpdateBinding event
+    //ACR-fab27c9daec547fcba13f909c2efa9ca
+    //ACR-ac9d698c34cd4e49b836a99ca367cbd6
     var configurationScopeId = assistNewBindingResult.getConfigurationScopeId();
     if (configurationScopeId != null) {
       LOG.debug("Waiting for binding creation notification...");
@@ -198,9 +198,9 @@ public class RequestHandlerBindingAssistant {
   }
 
   void startFullBindingProcess() {
-    // we don't want binding suggestions to appear in the middle of a full binding creation process (connection + binding)
-    // the other possibility would be to still notify the client anyway and let it handle UI interactions one at a time (assists, messages,
-    // suggestions, ...)
+    //ACR-92f5a062c8ce4a9da0dcdb20c75fe0cb
+    //ACR-8bc7e824d4834452b93ae6697af41671
+    //ACR-99ac64f9caad4f3da28f70f5fd5d7ee8
     bindingSuggestionProvider.disable();
   }
 
@@ -216,7 +216,7 @@ public class RequestHandlerBindingAssistant {
 
   NewBinding assistBinding(String connectionId, boolean isSonarCloud, String projectKey, SonarLintCancelMonitor cancelMonitor) {
     var configScopeCandidates = bindingCandidatesFinder.findConfigScopesToBind(connectionId, projectKey, cancelMonitor);
-    // For now, we decided to only support automatic binding if there is only one clear candidate
+    //ACR-ff0944d2bcd14ff18c8e678468dd4c9f
     if (configScopeCandidates.size() != 1) {
       client.noBindingSuggestionFound(new NoBindingSuggestionFoundParams(escapeHtml4(projectKey), isSonarCloud));
       return new NewBinding(connectionId, null);

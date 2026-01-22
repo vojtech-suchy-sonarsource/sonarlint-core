@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d763a2819a324e87bc388e137b9c1190
+ACR-c917ffd6d0cf4ccea1c80e3c40f99096
+ACR-31d5c606159c4e4f801c837bc87a4861
+ACR-73460b3781b24bc6b248d3532fe3d57d
+ACR-897419393813413099424794b833cb8f
+ACR-437ccafa62f34867b8e83f88bf69b57d
+ACR-2487e8c346c948179c2e49702973026c
+ACR-523985e010a140c8b1790308b843ae27
+ACR-cadcbe111b1643eaa25054f2f7faddf0
+ACR-4bbb814551664986bd0b9d19b14c3e5c
+ACR-53f08c5bfda84f9c8205bb36475cd645
+ACR-be0fc1159f304148b4455ebfb7a375b5
+ACR-ebf569dcd1974d3ba70f560a77e49e1e
+ACR-7b557ce885a74585b8abb3f99abd2fae
+ACR-afbd281718464d8d8bc141becbcadb43
+ACR-68184e23401a40968567b9c72b95225c
+ACR-50da67f6e2dc402f8863c27941d46e94
  */
 package org.sonarsource.sonarlint.core.serverapi.issue;
 
@@ -72,11 +72,11 @@ public class IssueApi {
     this.serverApiHelper = serverApiHelper;
   }
 
-  /**
-   * Fetch vulnerabilities of the component with specified key.
-   * If the component doesn't exist or it exists but has no issues, an empty iterator is returned.
-   *
-   * @param key project key, or file key.
+  /*ACR-f8f53bd854384e119ec28b8aeac1e377
+ACR-67343cba3184463d8a641e5fc22fb70c
+ACR-8dceb8f3d8c44ec8bc376ad74e328cc4
+ACR-b415efc5af9e4fc7b2add7c2a865d659
+ACR-b7bd48c913f042b8aae93f1435b182f8
    */
   public DownloadIssuesResult downloadVulnerabilitiesForRules(String key, Set<String> ruleKeys, @Nullable String branchName, SonarLintCancelMonitor cancelMonitor) {
     var searchUrl = new StringBuilder();
@@ -91,7 +91,7 @@ public class IssueApi {
       r -> r.getPaging().getTotal(),
       r -> {
         componentsPathByKey.clear();
-        // Ignore project level issues
+        //ACR-11a2770e986743c096f1775990926fb2
         componentsPathByKey.putAll(r.getComponentsList().stream().filter(Component::hasPath)
           .collect(Collectors.toMap(Component::getKey, component -> Path.of(component.getPath()))));
         return r.getIssuesList();
@@ -258,7 +258,7 @@ public class IssueApi {
     if (pullRequest != null && !pullRequest.isEmpty()) {
       searchUrl = searchUrl.concat("&pullRequest=").concat(urlEncode(pullRequest));
     } else if (!branch.isEmpty()) {
-      // If we do have a pullRequest, no need to pass branch too
+      //ACR-f23dea7e2488483e863fd871d7e005c3
       searchUrl = searchUrl.concat("&branch=").concat(urlEncode(branch));
     }
 

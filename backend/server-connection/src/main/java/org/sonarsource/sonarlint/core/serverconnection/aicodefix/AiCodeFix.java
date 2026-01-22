@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-64d0a175641a47b2acbc7184eea113fc
+ACR-6936f75b2b7b4bdcb20cb574c08c4596
+ACR-bf013f7e92524336a4baa86e4ba190ee
+ACR-c9a4c8d8eca1449595d8ad834e28aa09
+ACR-29347fc649d34718a3d37c81c0945c1e
+ACR-e6fa498bf574473e924e5c28be7db8bf
+ACR-4cb95cec53c54bb1b74b39cf476336b3
+ACR-f52f7912806e45df8f6d66f821c0400a
+ACR-f82dc5cc278645aeaa4e3206e90c030a
+ACR-efce75e185194de9aac1f3c112ea5003
+ACR-64c948da1c4b4fe08694110586264fab
+ACR-e8b0be6f52d4454bb87ec33cd62e4c7a
+ACR-50c39e1446c54e24b89834eb691ab858
+ACR-bcd5ee2d963d45bfabc8ea74f4083a60
+ACR-cbfcf6d342da452180969e21f8de49bc
+ACR-83a9eda5f95b4b68a6926b4179f6c08e
+ACR-b3d66433e5a848379f9174de92cbe74d
  */
 package org.sonarsource.sonarlint.core.serverconnection.aicodefix;
 
@@ -23,10 +23,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
-/**
- * Entity representing AI CodeFix settings persisted in the local storage (H2).
- * This mirrors org.sonarsource.sonarlint.core.serverconnection.AiCodeFixSettings but
- * lives in commons to avoid cross-module dependencies.
+/*ACR-9e02341183bc4369a2b8a8c8e425ec72
+ACR-4a6426c4c1334d02837b5ea0b304b14e
+ACR-3984db8395984613a6d1293909e9dcbd
+ACR-282861a00294456f9a1049af8a15979d
  */
 public record AiCodeFix(
   String connectionId,

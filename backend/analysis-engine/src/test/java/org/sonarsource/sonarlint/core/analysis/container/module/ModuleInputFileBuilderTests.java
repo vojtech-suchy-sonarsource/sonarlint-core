@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e3de038b00604439ae22d721bc6ec9c4
+ACR-bcd9c5a0f73f4e039d95cceb2c06a7a3
+ACR-bdd61a69f194445e9ce70a3a13d5c4ac
+ACR-e87e280d84fd486c82293deb0201dbf3
+ACR-2c92c130bebd4710aaa997a48e9a0476
+ACR-7b6c5ee015274255a03bcbcb5677aa6a
+ACR-febf9e4da9ee456aa254f8056290430c
+ACR-077be522b3204be1951a3361d4435d40
+ACR-eb29d21c65b94b6198192155b88b5cb1
+ACR-6dbbb2435ff3452b8809bcc5a4f91ffb
+ACR-f3a268c564b14cb0b9fbdfccbcd58521
+ACR-c430d76c226744f5973a3bff42115ebd
+ACR-666054959da74c5b9281a3ef1d298802
+ACR-f04b1d48726e4f1391f9c9e8b4efce2d
+ACR-7ed166e6359441ee9c6cec05a01630ff
+ACR-413bd4c326bd4bd1aa2ef7c2ad06c608
+ACR-d0804d5bb5d740f9b73f6e583cc0ae85
  */
 package org.sonarsource.sonarlint.core.analysis.container.module;
 
@@ -93,7 +93,7 @@ class ModuleInputFileBuilderTests {
     var builder = new ModuleInputFileBuilder(langDetection, metadata);
     var slFile = builder.create(file);
 
-    // Call any method that will trigger metadata initialization
+    //ACR-c8ce7c3e38ec4f39b18b7c886e836a35
     var thrown = assertThrows(IllegalStateException.class, () -> slFile.selectLine(1));
     assertThat(thrown).hasMessageStartingWith("Failed to open a stream on file");
 

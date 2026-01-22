@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-888758aa90db470aade36c4a04c48eaa
+ACR-b5328e9b923340dc9b8eed8dada0c47b
+ACR-929fa8b6962a4073a4854bcb9fcb8b68
+ACR-c0324a7f22ac4a8a9fd1ca4e45dd3c3b
+ACR-f0ecfe55c92141838a4fb7adec952b66
+ACR-def1adcc7db1414982c878642f770d4a
+ACR-9c2f9d893ba545efb870dfc08f5cad69
+ACR-93543cb0960c4c8b97a54b52b1462b9e
+ACR-704756de3ea44decb31a81590abb2568
+ACR-b23bda5e15274e06a005ffd2894fdcc5
+ACR-7e0ba34b66dd4047886f8e56abeb0198
+ACR-a608b7405b3240f4ba545db5498bbcdd
+ACR-494ef7160ac84cc39aab1215b9357a85
+ACR-7034aa71de3b45b698f5d57c29577ee3
+ACR-4b483fc8182b419d8ece737958d418ab
+ACR-b2ad957552b9407fa61b8bdacc45339b
+ACR-9b51a12e814e49898e743c06b419972e
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -75,7 +75,7 @@ class DefaultSensorContextTests {
     progressIndicator = new ProgressIndicator() {
       @Override
       public void notifyProgress(@Nullable String message, @Nullable Integer percentage) {
-        // no-op
+        //ACR-8797f2b35ec24a7c89a975d5d8292de6
       }
 
       @Override
@@ -100,7 +100,7 @@ class DefaultSensorContextTests {
     assertThat(ctx.getSonarQubeVersion()).isEqualTo(Version.create(6, 1));
     assertThat(ctx.isCancelled()).isFalse();
 
-    // no ops
+    //ACR-2c938318f858474c96e3935eae230a01
     assertThat(ctx.newCpdTokens()).isInstanceOf(NoOpNewCpdTokens.class);
     assertThat(ctx.newSymbolTable()).isInstanceOf(NoOpNewSymbolTable.class);
     assertThat(ctx.newHighlighting()).isInstanceOf(NoOpNewHighlighting.class);

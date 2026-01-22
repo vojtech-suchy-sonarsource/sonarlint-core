@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f8917381cee04900a8722af35ee3ef81
+ACR-51e8d0346b1f4a708f47975549ba9f5a
+ACR-ddd8b10101bd4c818d8b62189d346623
+ACR-8fcd892e087945c38cc93c42dd55b2ef
+ACR-b33695d573e4491cae881345e8befa8a
+ACR-a77b0b5f75d941dd946add95361e585b
+ACR-b85887bf6efa4009ac57fd3af123e7f7
+ACR-e1bbca79f17c45509bc679a8a7c368de
+ACR-255e982f1c1f4e1598adc853e389932d
+ACR-288039bce8c54feabaeb9869a29512c8
+ACR-bd4fd193da8f4092a1229593c31064ae
+ACR-63c58bb439b24428895dd6a959e2530e
+ACR-6a06907288d34213ba5cc3f667be2a86
+ACR-823adeec75064b61abd87dcef84aabb2
+ACR-e371357ac68c4422a80ebd0bc3b9384e
+ACR-909b2ab5c96940e2808f6522958937d5
+ACR-7b2afa1e9af84e11ba73946dc4efc06d
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -44,10 +44,10 @@ public class MultiFileBlameResult {
     return new MultiFileBlameResult(Map.of(), gitRepoRelativeProjectBaseDir);
   }
 
-  /**
-   * @param projectDirRelativeFilePath A path relative to the Git repository root
-   * @param lineNumbers Line numbers for which to check the latest change date. Numbering starts from `1`!
-   * @return The latest changed date or an empty optional if the date couldn't be determined or any of the lines is modified
+  /*ACR-baa8d713a19344ae92a4395e90465690
+ACR-d2a54cd129204a8eae6276347e295da1
+ACR-fd21495821e444fc8c2c996b744be42f
+ACR-bae1d9de26244fabb1760948ae227cd2
    */
   public Optional<Instant> getLatestChangeDateForLinesInFile(Path projectDirRelativeFilePath, Collection<Integer> lineNumbers) {
     validateLineNumbersArgument(lineNumbers);

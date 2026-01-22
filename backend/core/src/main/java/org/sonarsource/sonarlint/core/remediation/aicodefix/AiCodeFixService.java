@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-45d305d6d0144688bac2932b576417e2
+ACR-70e73038ff4446f7ad0793d0e403d3d5
+ACR-0fe6c6ae78584db9b2fe26e9122aa300
+ACR-a87e79cf9996457d9d78bf0d1b8a273c
+ACR-41e1c3135075451eab5512946c7e57a6
+ACR-9096e8a46b5c4c28a0dcdc4fcf2b7440
+ACR-6f8bcefce169447d9147fe40b4396fe7
+ACR-6709cdb5674a43b8975bf7013d581fcd
+ACR-bda9a08f323f48679f65e0fb4c34007b
+ACR-1d39fe545183442783a18a93f5a82fcc
+ACR-9862b77bd5aa43b883b87a77dd358b7d
+ACR-083a91fbf26e4ce09b21991f81058c5b
+ACR-803fbda5abb6468bb9fcc3250422fa46
+ACR-1d09e0d09a2342a18b2f3bd5d676be9f
+ACR-2c24c78886ae42cf91d8ac3af0aba17b
+ACR-618efa9f87144f76bfa97958172babf5
+ACR-5957efe2c5094da788b5c41b4f6a8dcd
  */
 package org.sonarsource.sonarlint.core.remediation.aicodefix;
 
@@ -136,7 +136,7 @@ public class AiCodeFixService {
       fixResponseDto.id().toString(),
       serverApi.isSonarCloud() ? AiSuggestionSource.SONARCLOUD : AiSuggestionSource.SONARQUBE,
       fixResponseDto.changes().size(),
-      // As of today, this is always true since suggestFix is only called by the clients
+      //ACR-dce804250dd34f00944a22ef719338eb
       true));
 
     return fixResponseDto;
@@ -162,7 +162,7 @@ public class AiCodeFixService {
       fixResponseDto.id().toString(),
       serverApi.isSonarCloud() ? AiSuggestionSource.SONARCLOUD : AiSuggestionSource.SONARQUBE,
       fixResponseDto.changes().size(),
-      // As of today, this is always true since suggestFix is only called by the clients
+      //ACR-6cd69e309f954ccabd33af796c50fde2
       true));
 
     return fixResponseDto;
@@ -190,13 +190,13 @@ public class AiCodeFixService {
   }
 
   private AiSuggestionRequestBodyDto toDto(@Nullable String organizationKey, String projectKey, RaisedIssue raisedIssue) {
-    // this is not perfect, the file content might have changed since the issue was detected
+    //ACR-7b7a5c0ecdc94620ab585027bc066ffa
     var clientFile = clientFileSystemService.getClientFile(raisedIssue.fileUri());
     if (clientFile == null) {
       throw new ResponseErrorException(new ResponseError(FILE_NOT_FOUND, "The provided issue ID corresponds to an unknown file", null));
     }
     var issue = raisedIssue.issueDto();
-    // the text range presence was checked earlier
+    //ACR-a8c2097e4653477388712ff9c91f8323
     var textRange = requireNonNull(issue.getTextRange());
     return new AiSuggestionRequestBodyDto(organizationKey, projectKey,
       new AiSuggestionRequestBodyDto.Issue(issue.getPrimaryMessage(), textRange.getStartLine(), textRange.getEndLine(), issue.getRuleKey(),
@@ -213,7 +213,7 @@ public class AiCodeFixService {
     if (clientFile == null) {
       throw new ResponseErrorException(new ResponseError(FILE_NOT_FOUND, "The provided taint ID corresponds to an unknown file", null));
     }
-    // the text range presence was checked earlier
+    //ACR-bd3b1cd408844f55a4ff33806bfb0485
     var textRange = requireNonNull(taint.getTextRange());
     return new AiSuggestionRequestBodyDto(organizationKey, projectKey,
       new AiSuggestionRequestBodyDto.Issue(taint.getMessage(), textRange.getStartLine(), textRange.getEndLine(), taint.getRuleKey(), clientFile.getContent()));

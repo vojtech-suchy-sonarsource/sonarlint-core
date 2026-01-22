@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - HTTP
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-764508e20c904c22a8019fa3656208b4
+ACR-7f07c63e8f294e018883cc4774a7c878
+ACR-c22b722c13d24eb5a8a936263b7b6887
+ACR-6430a4d79619441b8badaf2ed033c92b
+ACR-84b702e26eae481f860aff7894d504c7
+ACR-51f16befe9bc424f80887b113a061766
+ACR-9e351d4c7f5845cbbf7c46aa1b9a4d76
+ACR-3c701798647c4ccba2f8de659045fb23
+ACR-06725c24858f4ff7840619907ea4a36e
+ACR-5cf3bba4f280474dbed78e8b3b6d5b74
+ACR-d02d4a1432754d04bb5d63ef3a136bf0
+ACR-d927cd43432645f5ba75e3ca010e35cc
+ACR-382f27a6c3a44374bdbc628dd067a25f
+ACR-755d33c88abd4401b640a51b9d9e1a8c
+ACR-1c4b23513c514e1f9e8ac075ccbbf7e9
+ACR-6d58f6b66bda4cdfb3a78ba5de0e76a8
+ACR-8e2dd0a7a51d4b9fb7ca962e4fe8bb52
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -41,8 +41,8 @@ public interface HttpClient {
 
     InputStream bodyAsStream();
 
-    /**
-     * Only runtime exception
+    /*ACR-99a40dbdfd95407e8fb5eca81a214fc3
+ACR-14519f469326419293cdb32e3a4c099d
      */
     @Override
     void close();

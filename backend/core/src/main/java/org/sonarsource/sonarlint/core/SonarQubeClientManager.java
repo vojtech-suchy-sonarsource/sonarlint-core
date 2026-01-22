@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e2d37b8e0b404744bd7116b42c8f6452
+ACR-ab0019fa71be4f8b9899d1e71d5fcea3
+ACR-94000c28e8d849999fdb2a40e2f24a27
+ACR-921b4d89024d43b9a30df5fcdbf51295
+ACR-7c95f97d242b4ca48db4eda63cdcfc4f
+ACR-e72c2b55b439424da8681ff1930b8ea5
+ACR-5970cc9d7d494f16a649b3aa1f38f5e0
+ACR-67434a3a6bca4ab5b8dbf65ffa719b06
+ACR-c888430612af422eafcc479fe73d7e83
+ACR-b36d50534bac4c519117d45af2ea4f4b
+ACR-34fc184d21534109a52e427e60c71e75
+ACR-cb78c6482cc14f018d1ae41d306ffab6
+ACR-a16114b70a2e4a3d89e2eaef1a026768
+ACR-0f5a941b449a4c249a0daf9549084afc
+ACR-c71ecc191abc4e75afe7bca126496417
+ACR-83b9da03bf9b4078a4bc42a24e7b5d8c
+ACR-b92ccde2cf024fa4a0ceb41bdcd8c4e9
  */
 package org.sonarsource.sonarlint.core;
 
@@ -66,8 +66,8 @@ public class SonarQubeClientManager {
     this.sonarCloudActiveEnvironment = sonarCloudActiveEnvironment;
   }
 
-  /**
-   * Throws ResponseErrorException if connection with provided ID is not found in ConnectionConfigurationRepository
+  /*ACR-29cd7c0971654d0fb53d2cf053d18732
+ACR-5093f17166024befb02eddf7e04e203f
    */
   public SonarQubeClient getClientOrThrow(String connectionId) {
     return clientsByConnectionId.computeIfAbsent(connectionId, connId ->

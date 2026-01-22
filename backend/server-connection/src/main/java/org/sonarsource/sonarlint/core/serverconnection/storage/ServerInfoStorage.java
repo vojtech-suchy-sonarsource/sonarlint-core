@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-838eab0aaf2d40e9b4a283b66051dbd1
+ACR-39094f468d56419e9283c0f56c65457b
+ACR-625dfffaf399411f81aa20f7a5c956cc
+ACR-73f4d1ee216a4eb0a6a00d8684f3290f
+ACR-75b25b05d6f54316afc303d1b539d52e
+ACR-616987d437094ec6a3e9c98564ad99a5
+ACR-254b1f5eeb314afc8286651439cfb440
+ACR-42c97068bb56495db9b0a87858bd797c
+ACR-71f96d68992e4e119aafc7f3a855c026
+ACR-f997ba0e029445088d75e6530df8f7d0
+ACR-5082461ed81a4f8f91b9bb11a82f5086
+ACR-2d82007d7bae432a87e928371f41a583
+ACR-1fce8da9f3dc42e7915674e900a6b81d
+ACR-4a3e2cfe45744db78e90faaaf0c951bb
+ACR-cbbbe3d2bd574983967dfb45b5c73626
+ACR-9afa3e1d617e4e47a833aa76bfd45988
+ACR-0e2292631665482b8f83dc7472db5c0f
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -74,14 +74,14 @@ public class ServerInfoStorage {
   private static StoredServerInfo adapt(Sonarlint.ServerInfo serverInfo) {
     var globalSettings = serverInfo.getGlobalSettingsMap();
     if (globalSettings.isEmpty()) {
-      // migration for not yet synchronized storage
+      //ACR-a59b043c183546f581b33ef9624ee638
       globalSettings = new HashMap<>();
       if (serverInfo.hasIsMqrMode()) {
         globalSettings.put(MQR_MODE_SETTING, Boolean.toString(serverInfo.getIsMqrMode()));
       }
       globalSettings.put(ServerSettings.EARLY_ACCESS_MISRA_ENABLED, Boolean.toString(serverInfo.getMisraEarlyAccessRulesEnabled()));
     }
-    // Making sure that CFamily analyzer gets updated flag even with old Server/Cloud.
+    //ACR-7f1172c0580947cab2638f28ae77206b
     if (globalSettings.containsKey(ServerSettings.EARLY_ACCESS_MISRA_ENABLED)) {
       globalSettings = new HashMap<>(globalSettings);
       globalSettings.put(ServerSettings.MISRA_COMPLIANCE_ENABLED, globalSettings.get(ServerSettings.EARLY_ACCESS_MISRA_ENABLED));

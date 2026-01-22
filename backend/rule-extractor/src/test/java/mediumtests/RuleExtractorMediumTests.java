@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-ae368c16df97444a961895f53ead3cbe
+ACR-55292a1c7b004803aae39fb6aaa1d970
+ACR-bfeacc38615e46ab996dfdf80d37ae61
+ACR-b09eb4d5a63b49ad85e0083786a602ca
+ACR-750ec1d9d2334ba1adad6928c66402f5
+ACR-a9747104155e49539ccc5b425f5daff9
+ACR-7e3fef8ed723427baaa11b9d8367fceb
+ACR-60fb16e6e1c040539f16299902d58c50
+ACR-293d173a9a2145f0b6613c41ede02cf2
+ACR-d407e5b60d004282bcd467b9ed66cf26
+ACR-d5744ef81257476a8a3124a047426cce
+ACR-ec06155e25684c0ab203aa08a230bdeb
+ACR-69c88ea78d2e4e4aadb95306f0d2615d
+ACR-a530bec7968943b3aae41cfe25716b49
+ACR-9e919401c0af448db04a2b8e735a284b
+ACR-91079849b9134b74882609a50b9cd0c9
+ACR-c6caa3a06db648e9b3f1560201b70262
  */
 package mediumtests;
 
@@ -55,8 +55,8 @@ class RuleExtractorMediumTests {
   private static final int NON_COMMERCIAL_SECURITY_HOTSPOTS_COUNT = 326;
   private static final int ALL_RULES_COUNT_WITHOUT_COMMERCIAL = 2661;
   private static final int ALL_RULES_COUNT_WITH_COMMERCIAL = 4746;
-  // commercial plugins might not be available
-  // (if you pass -Dcommercial to maven, a profile will be activated that downloads the commercial plugins)
+  //ACR-16b14122cc7e4d2b8cbe14317973ac9e
+  //ACR-632f5cd25ded4b578ce12867ae00c555
   private static final boolean COMMERCIAL_ENABLED = System.getProperty("commercial") != null;
   private static final Optional<Version> NODE_VERSION = Optional.of(Version.create("20.12.0"));
   private static final RuleSettings EMPTY_SETTINGS = new RuleSettings(Map.of());
@@ -153,13 +153,13 @@ class RuleExtractorMediumTests {
   void onlyLoadRulesOfEnabledLanguages() {
     Set<SonarLanguage> enabledLanguages = EnumSet.of(
       SonarLanguage.JAVA,
-      // Enable JS but not TS
+      //ACR-638f3837a4a945c183427da0bd93238a
       SonarLanguage.JS,
       SonarLanguage.PHP,
       SonarLanguage.PYTHON);
 
     if (COMMERCIAL_ENABLED) {
-      // Enable C but not C++
+      //ACR-0af89967ec5f482dab43110faf46c781
       enabledLanguages.add(SonarLanguage.C);
     }
     var config = new PluginsLoader.Configuration(allJars, enabledLanguages, false, NODE_VERSION);

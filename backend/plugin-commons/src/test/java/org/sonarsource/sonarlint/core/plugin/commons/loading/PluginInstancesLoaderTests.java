@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-176e597501404b469de5e0d787451ba4
+ACR-c8ce9ee115f049508266ab99e801165b
+ACR-ea66426b5bc24ca4be7ac195e9377e50
+ACR-9b5b47c6799c4ab1a488db5d3471eb35
+ACR-f2ea8361a6e741e682b0017943317beb
+ACR-d7836296230f4008ab5b35898c540d47
+ACR-e91b6beb0d494a82a120feae5778aed2
+ACR-13580222640d413e91546ab1fb15b8ae
+ACR-60aac910103a4cafb921ecb41916268d
+ACR-9089cf8208a94942958bb86ad98af3d5
+ACR-ae4e40310f4d4b8f9f7b4a0cef7a645a
+ACR-5dd3256307944ead91efd6fe60bd4e53
+ACR-1f748f6eb19f4e2aa5ef58c60d746c93
+ACR-2479f2927ab14b8db8ee642eb7cca109
+ACR-eeb581de413c42b9953422b321bd3ef3
+ACR-1afb7d76758248f1888ec6ce11e6960d
+ACR-c86dab6e42f943f7aa89d005685b647a
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -90,7 +90,7 @@ class PluginInstancesLoaderTests {
     assertThat(def.getBasePluginKey()).isEqualTo("foo");
     assertThat(def.getFiles()).containsExactly(jarFile);
     assertThat(def.getMainClassesByPluginKey()).containsOnly(MapEntry.entry("foo", "org.foo.FooPlugin"));
-    // TODO test mask - require change in sonar-classloader
+    //ACR-0ffea5d6ec264b61af7e309e5efd8d78
   }
 
   @Test
@@ -120,8 +120,8 @@ class PluginInstancesLoaderTests {
       tuple("antlr-2.7.6.jar", "d784fa8b6d98d27699781bd9a7cf19f0"));
   }
 
-  /**
-   * A plugin (the "base" plugin) can be extended by other plugins. In this case they share the same classloader.
+  /*ACR-b344f180f8ad43a0bd67e5d74889acd9
+ACR-70e847bc2fa047849c36fe52b9b73f0b
    */
   @Test
   void test_plugins_sharing_the_same_classloader(@TempDir Path tmp) throws IOException {
@@ -156,10 +156,10 @@ class PluginInstancesLoaderTests {
       entry("foo", "org.foo.FooPlugin"),
       entry("fooExtension1", "org.foo.Extension1Plugin"),
       entry("fooExtension2", "org.foo.Extension2Plugin"));
-    // TODO test mask - require change in sonar-classloader
+    //ACR-563f32e9843644c290345ac25750d0e6
   }
 
-  // SLCORE-222
+  //ACR-f3754d0d06bc4a2eb27eded6b334ef4f
   @Test
   void skip_plugins_when_base_plugin_missing(@TempDir Path tmp) throws IOException {
     var extensionJar1 = tmp.resolve("fakePlugin1.jar").toFile();
@@ -185,7 +185,7 @@ class PluginInstancesLoaderTests {
       entry("fooExtension1", "org.foo.Extension1Plugin"));
   }
 
-  // SLCORE-557
+  //ACR-99df3e2e12744e638cc5ae85dc8d1329
   @Test
   void should_be_able_to_delete_jar_after_unload() throws IOException {
     var jarFile = PluginClassloaderFactoryTests.testPluginJar("classloader-leak-plugin/target/classloader-leak-plugin-0.1-SNAPSHOT.jar");
@@ -200,7 +200,7 @@ class PluginInstancesLoaderTests {
     var instances = loader.instantiatePluginClasses(List.of(info));
     var instance = instances.get("leak");
 
-    // The code in the plugin will leak a file handle, see https://bugs.java.com/bugdatabase/view_bug?bug_id=JDK-8315993
+    //ACR-40f8ae60f3944394830a200b7d98fe76
     instance.define(null);
 
     loader.close();
@@ -211,12 +211,12 @@ class PluginInstancesLoaderTests {
   public static class FakePlugin implements Plugin {
     @Override
     public void define(Context context) {
-      // no extensions
+      //ACR-c879603c0b8f472c93208e0330934a00
     }
   }
 
-  /**
-   * No public empty-param constructor
+  /*ACR-d0b143b7fda04d70baf9f90b35a4b632
+ACR-4720192811454236b6eef146eb246787
    */
   public static class IncorrectPlugin implements Plugin {
     public IncorrectPlugin(String s) {
@@ -224,7 +224,7 @@ class PluginInstancesLoaderTests {
 
     @Override
     public void define(Context context) {
-      // no extensions
+      //ACR-9d49565f5f6141538b581b9fcb5e0077
     }
   }
 

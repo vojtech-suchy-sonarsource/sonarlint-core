@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e0f1a1f836354142bf366f08d4a7e60b
+ACR-c9c8e6ed62a5491ab4a0fd6422222478
+ACR-64027bdfc1ad47abb82b499937dbec21
+ACR-5048798d72fe49e6bc07dadbef5a10bd
+ACR-a70c3ca380a84737957804af42c1d0d3
+ACR-296cb864e65b4e8990c7ecd003809c40
+ACR-24cfad7d79214541bc0321e1b4944824
+ACR-1e1b69047a2a4025b8b107cc84b9a2ed
+ACR-06f17f85f4eb4b64b2c5e59b7cd249f6
+ACR-1357ceb227e34842ac9a5caf66adb177
+ACR-b37c7e0d36694f39a875c1067add1f67
+ACR-7791852a9b044cd384372a4f01d6dbe6
+ACR-c0a9d99a282c4d8a8b46168182018255
+ACR-41938f2380324533b04e81083cba4f46
+ACR-6c8b61c201dd4c839d2056d37ecab268
+ACR-c29da033a1f3499ca7b97b3943d4df36
+ACR-29709e23cfdc478d8a9751686dd3ac08
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -43,7 +43,7 @@ public enum HotspotReviewStatus {
   }
 
   public boolean isResolved() {
-    // ACKNOWLEDGED is considered as non-resolved because the hotspot is confirmed
+    //ACR-ad16cf30360344618914302bf60d1d94
     return equals(SAFE) || equals(FIXED);
   }
 

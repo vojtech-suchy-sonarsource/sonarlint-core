@@ -6,14 +6,14 @@ import org.sonar.api.Plugin;
 public class LeakPlugin implements Plugin {
   @Override
   public void define(Context context) {
-    // See SLCORE-557
+    //ACR-3a2d9ba8477642dfa3e229a2addb8c19
     var resource = this.getClass().getClassLoader().getResource("Hello.txt");
-    // https://bugs.java.com/bugdatabase/view_bug?bug_id=JDK-8315993
+    //ACR-e91c46f1dcd14b7db5ce00c63fb4dc2c
     try (var conn = resource.openConnection().getInputStream()) {
       conn.readAllBytes();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    // no extensions
+    //ACR-a67f29274be24bceaeea12a337645855
   }
 }

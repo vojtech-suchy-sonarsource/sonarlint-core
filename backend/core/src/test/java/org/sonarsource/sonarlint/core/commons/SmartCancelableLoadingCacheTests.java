@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c91c4490d2234e0fb1c2766fbd0970bd
+ACR-8ceef34443294415a35579b58b1e5065
+ACR-bf402fa105d8468dbf034e775041c21b
+ACR-0242264112744b0aa7788fa59d2a9146
+ACR-882ac9428e7e443aa7880ed3142ba7a9
+ACR-1c7d538f3c744c9c92a5ddcc61d29e31
+ACR-b8e39814d8d44f1da798822441c01ca6
+ACR-294ba73a4a7c46b28afce79227ffe9d5
+ACR-97b63cd66531489aab733cf8d90d3852
+ACR-45f5112ff8cd43979a33817f4496d6cb
+ACR-9ff21e2194b6406ba8566832f123ad57
+ACR-5c1282f2cde64cc08519aa8a2ef26905
+ACR-e14ae0fa089c4a4888d82f7b3b636886
+ACR-25a8a53879c84b24b8257457d38309ad
+ACR-7449673ff54647ac9b2668493293a73a
+ACR-de7a94d69fea4279a570945139458a18
+ACR-2850249093744f7f9cd0969487aabd53
  */
 package org.sonarsource.sonarlint.core.commons;
 
@@ -131,11 +131,11 @@ class SmartCancelableLoadingCacheTests {
       .thenAnswer(waitingForCancellation(firstComputationStarted, cancelled))
       .thenReturn(ANOTHER_VALUE);
 
-    // Queue a first computation
+    //ACR-1423dd76c87c4f52b682dde1dac26209
     underTest.refreshAsync(A_KEY);
     firstComputationStarted.await();
 
-    // Queue a second computation
+    //ACR-d7407e56b4a3460da709d97338171253
     underTest.refreshAsync(A_KEY);
 
     assertThat(underTest.get(A_KEY)).isEqualTo(ANOTHER_VALUE);
@@ -152,7 +152,7 @@ class SmartCancelableLoadingCacheTests {
     when(computer.apply(eq(A_KEY), any(SonarLintCancelMonitor.class)))
       .thenAnswer(waitingForCancellation(firstComputationStarted, cancelled));
 
-    // Queue a first computation
+    //ACR-475cf3e4685847fe9e21d550a3ca45b3
     underTest.refreshAsync(A_KEY);
     firstComputationStarted.await();
 
@@ -171,7 +171,7 @@ class SmartCancelableLoadingCacheTests {
     when(computer.apply(eq(A_KEY), any(SonarLintCancelMonitor.class)))
       .thenAnswer(waitingForCancellation(key1ComputationStarted, cancelledKey1));
 
-    // Queue a computation of key1
+    //ACR-7f3ce55840ab474a8cb3cd9c1a495ef6
     underTest.refreshAsync(A_KEY);
     key1ComputationStarted.await();
 
@@ -180,13 +180,13 @@ class SmartCancelableLoadingCacheTests {
     when(computer.apply(eq(ANOTHER_KEY), any(SonarLintCancelMonitor.class)))
       .thenAnswer(waitingForCancellation(key2ComputationStarted, cancelledKey2));
 
-    // Queue a computation of key2, that will only start after computation of key1 because the executor service is single threaded
+    //ACR-183be99d4e894f76a6c7e984f2c08d15
     underTest.refreshAsync(ANOTHER_KEY);
 
     underTest.close();
 
     await().untilAsserted(() -> assertThat(cancelledKey1.get()).isTrue());
-    // Second computation was cancelled early, because calling the computer
+    //ACR-5516ab434d12479db9c55ca1b8c0541c
     await().untilAsserted(() -> assertThat(key2ComputationStarted.getCount()).isEqualTo(1));
 
     verify(computer, times(1)).apply(eq(A_KEY), any());
@@ -202,7 +202,7 @@ class SmartCancelableLoadingCacheTests {
       .thenAnswer(waitingForCancellation(firstComputationStarted, cancelled))
       .thenReturn(ANOTHER_VALUE);
 
-    // Queue a first computation
+    //ACR-2c906a17850945828c107e878d08b08f
     AtomicReference<String> value = new AtomicReference<>();
     var t = new Thread(() -> {
       value.set(underTest.get(A_KEY));
@@ -210,7 +210,7 @@ class SmartCancelableLoadingCacheTests {
     t.start();
     firstComputationStarted.await();
 
-    // Queue a second computation
+    //ACR-4d5031744c8e4891a9edee83d9390496
     underTest.refreshAsync(A_KEY);
 
     assertThat(underTest.get(A_KEY)).isEqualTo(ANOTHER_VALUE);

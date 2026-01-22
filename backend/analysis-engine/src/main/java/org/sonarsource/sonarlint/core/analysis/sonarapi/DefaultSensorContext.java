@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-84bf75dfab514b43b38038e955b3339d
+ACR-28ec3ef2645341afbb7ed68aaf48802d
+ACR-3dfd25b99c874317820d878d88d96290
+ACR-bd200573f99d4d739ddd4db5f83c503b
+ACR-6823e5297c0d4571b449291f39845289
+ACR-ba3d17265cba456492d6d75c5357a15b
+ACR-86c638afc9fe4aac8bdb83c8a12d3cdb
+ACR-99ea2ed8729849f79f79d58f974872eb
+ACR-f2571a4839bd4a34bf79b30621d4d261
+ACR-01686fb1a33a4e189bf414e7debb18f0
+ACR-5defcde315484613a00805e4dff82c76
+ACR-b469abf426c6433bb7cd3616a38b84a2
+ACR-60a92dcf742a4b949a9dfc4868adbe8a
+ACR-07a37bde43a94e15bb3d5bfd1043fa27
+ACR-adc09324c19046dbbc6850af3c50ebb3
+ACR-64c5e24b806c4e51bdded19b38961b98
+ACR-739e81d6b52947039704afd811a7d0ad
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
@@ -164,17 +164,17 @@ public class DefaultSensorContext implements SensorContext {
 
   @Override
   public void addContextProperty(String key, String value) {
-    // NO OP
+    //ACR-9ef08e5b4c924784add2a9fc37ddf5e7
   }
 
   @Override
   public void markForPublishing(InputFile inputFile) {
-    // NO OP
+    //ACR-eb0a07cc0f274bd1b23c2116812fd7a2
   }
 
   @Override
   public void markAsUnchanged(InputFile inputFile) {
-    // NO OP
+    //ACR-fefd048242574beba2905b7ec766ec68
   }
 
   @Override
@@ -218,13 +218,13 @@ public class DefaultSensorContext implements SensorContext {
 
   @Override
   public void addTelemetryProperty(String key, String value) {
-    // PLUGINAPI-95 NO OP
+    //ACR-94db1e671c1949bc9486e2e177a5491f
   }
 
   @Override
   public void addAnalysisData(String s, String s1, InputStream inputStream) {
-    // PLUGINAPI-117 analysis data storage
-    // NO OP
+    //ACR-680107a62d8f4072bf48d4fa6eb22dde
+    //ACR-0f768a97f8c84ccfa059378d3237de4b
   }
 
   @Override

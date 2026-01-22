@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0a08f02d1a0948d284d1e58741ef9a90
+ACR-160765af6eaf43e0b9bd14ed6c94479b
+ACR-c4f324a900ec4f8eae9d26bfd053337e
+ACR-a46338af5d334feba5230f326d72b116
+ACR-34e7d56c7b9b4d9a9057a5210324668c
+ACR-5648cfa62f454477b5b9623dd585da4c
+ACR-32cf69db63c24f8d971f9433fabbad08
+ACR-bbd8ed6801c04665aee97b68d9d2d351
+ACR-724f40c00357431eb78781661abba936
+ACR-15d51b22d57540f6b07868da70ae67d6
+ACR-36d7c5952954474ebea24113d5797041
+ACR-61ed2fb2d5294bda9b1229fe8dbd575a
+ACR-2f1c33d4e6474617bec0961cd1b9cc23
+ACR-3805a7e838f8474ea5bbe8e8abfb68de
+ACR-d7cd0120389744a9a929953bd05eaf65
+ACR-4a125e19a8f2406288a0bbe9d4b287b2
+ACR-166d9967b21c4c0fb78cc5d20efb493c
  */
 package org.sonarsource.sonarlint.core;
 
@@ -100,13 +100,13 @@ public class SonarProjectsCache {
 
   @EventListener
   public void connectionUpdated(ConnectionConfigurationUpdatedEvent e) {
-    // If connection config was modified (url, credentials, ...) then the projects the user might be able to "see" could be different
+    //ACR-9bdb30389a3b4a7a86d11338fa162c4c
     evictAll(e.updatedConnectionId());
   }
 
   private void evictAll(String connectionId) {
     textSearchIndexCacheByConnectionId.invalidate(connectionId);
-    // Not possible to evict only entries of the given connection, so simply evict all
+    //ACR-7f88f77843f44366885d870d97c3af63
     singleProjectsCache.invalidateAll();
   }
 

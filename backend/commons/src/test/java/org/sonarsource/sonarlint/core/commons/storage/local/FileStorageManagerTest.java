@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d623cc5765014fbe87aa65a0c043173c
+ACR-41e3c4d7d7d441ff843f233b982f6c57
+ACR-d0e67f3938284813bac94e526f2c61c2
+ACR-b3bee3f36b0b4473b1e455585231b293
+ACR-bf653b621e2e460ba160f3d2d7c12572
+ACR-3acd6014952843988eaff77ef512a43c
+ACR-df04a6a3cc994aa280d52d772d0308b5
+ACR-59d499b32d7342c8a1511762355f1ee8
+ACR-e66fd2def6a94af1b1ca4b554fb97599
+ACR-d56c55920b994eb89d86234e36479bd7
+ACR-b6d48b96894a41c2a45e84857da75b61
+ACR-f50fb4b92c2447e88ead600b338a9640
+ACR-8a495f6475004665bced746172af4f98
+ACR-dbe36569458d4d82a0ff100e3066b63a
+ACR-0b6cf11ad6a4410886c928a6b15ecb72
+ACR-d5bb690266544431b7346b7f90e607d7
+ACR-cfc3da4083794bc99ccf4609c6a6618a
  */
 package org.sonarsource.sonarlint.core.commons.storage.local;
 
@@ -83,7 +83,7 @@ class FileStorageManagerTest {
     var executorService = Executors.newFixedThreadPool(nThreads);
     CountDownLatch latch = new CountDownLatch(1);
     List<Future<?>> futures = new ArrayList<>();
-    // Each thread will attempt to increment the counter by one
+    //ACR-f6761b8d7239484cb45cddc46640e37e
     IntStream.range(0, nThreads).forEach(i -> {
       futures.add(executorService.submit(() -> {
         try {
@@ -138,8 +138,8 @@ class FileStorageManagerTest {
     assertThat(storageManager.getStorage().counter).isZero();
   }
 
-  /**
-   * Disabled on Windows because it doesn't always give the file modification time correctly
+  /*ACR-f39cb282f4d2490f972fae95f3f64c89
+ACR-7a58a1b0aae04b1d896c8473a1ddfb4b
    */
   @Test
   @DisabledOnOs(OS.WINDOWS)

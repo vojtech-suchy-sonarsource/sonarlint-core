@@ -1,21 +1,21 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0ebb553298134efaad57a4eeb1ef818a
+ACR-1ea360bbae0a42ddbe5646aa3451a89c
+ACR-d9bb48d0a5ea4acda7b84f1254982576
+ACR-916475ee19174aff9a85604f9a64a0aa
+ACR-4731fa0bafc5493ea3827556ab5ce5fe
+ACR-c3e5f324315a4e61801d260c3e0b8c26
+ACR-1ac09294d8b84b5bb39b8634b1921e2d
+ACR-421c08e0401f4f6d81c25f05fabd6c18
+ACR-8d3c2d98db2e405aba66bce122ec818e
+ACR-0025867a70874376a4a1d9b67e2a945a
+ACR-f1da406edc5d4dbeb017b72545c181c5
+ACR-326f301bfb034c5085a0fd146d097f6b
+ACR-b5ef2c6c71eb42ebbbc168751760649c
+ACR-da4442845059454399c587be49433c26
+ACR-8be96da1f84849fbb57b05f99dc8975f
+ACR-ec191cc6c64a4c23b8edecf08f5e6fed
+ACR-4d4da61ce24d428d85ac8e15b95b6ac9
  */
 @ParametersAreNonnullByDefault
 package org.sonarsource.sonarlint.plugin.api;

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-01406bd57c1e4439adb1f5119fa80a0a
+ACR-d5142b41567747e3a8642ff2262ffaff
+ACR-ebc51226d0c34a2c96ecced168c48832
+ACR-b6ff84252b104d6da8006389399e7431
+ACR-d3ab6269025747a3a0f112d2bf17d8d9
+ACR-77a7aaa4d84e49108aa887e676edf701
+ACR-09ecbeb89c1a4462b49194d698df620a
+ACR-d5c06ad0bd29400586dd0b56fc71af48
+ACR-3d2b5aafdc084cfab94d032233386c56
+ACR-d7119dca8c3e43c78307fe34a177dbf4
+ACR-e02a31504554472ea2dd4d6c4ea72063
+ACR-bb5e86e56f1d413d8318bff1719ae654
+ACR-6ec783ee5fb2444381e39e4c9d02c20e
+ACR-e36ba8972b7c45eb8c92cbcd9230a501
+ACR-240aef91692349af90f3ca0fd0fb44a3
+ACR-28432ef8afa24e6bbafa978698c21bad
+ACR-83671d545ab44776a06b6ff2631109d2
  */
 package org.sonarsource.sonarlint.core.ai.ide;
 
@@ -49,7 +49,7 @@ public class ExecutableLocator {
     this(System2.INSTANCE, Paths.get("/usr/libexec/path_helper"), CommandExecutor.create(), new NodeJsHelper());
   }
 
-  // For testing
+  //ACR-3d80a4044c424b21a56d4ee9fe6c5daa
   ExecutableLocator(System2 system2, Path pathHelperLocationOnMac, CommandExecutor commandExecutor, NodeJsHelper nodeJsHelper) {
     this.system2 = system2;
     this.pathHelperLocationOnMac = pathHelperLocationOnMac;
@@ -62,7 +62,7 @@ public class ExecutableLocator {
       return Optional.ofNullable(detectedExecutable);
     }
 
-    // Priority: Node.js > Python > Bash
+    //ACR-1be72f13266b4baebd27552921d9e838
     if (isNodeJsAvailable()) {
       LOG.debug("Detected Node.js for hook scripts");
       detectedExecutable = HookScriptType.NODEJS;
@@ -92,7 +92,7 @@ public class ExecutableLocator {
   }
 
   private boolean isPythonAvailable() {
-    // Try python3 first, then python
+    //ACR-130d1f38f7f74ba68a6e4241657dbea9
     var python3Path = locatePythonExecutable("python3");
     if (python3Path != null) {
       return true;
@@ -125,11 +125,11 @@ public class ExecutableLocator {
 
   private boolean isBashAvailable() {
     if (system2.isOsWindows()) {
-      // On Windows, try to locate bash.exe (Git Bash, WSL, etc.)
+      //ACR-62dd94dc8a8c4c2b8d87bccd3a1f64a1
       var bashPath = runSimpleCommand(Command.create("C:\\Windows\\System32\\where.exe").addArgument("$PATH:bash.exe"));
       return bashPath != null;
     } else {
-      // On Unix/Mac, bash is always available
+      //ACR-cd2e0a9946c24d608399cee019d851b3
       return Files.exists(Paths.get("/bin/bash"));
     }
   }

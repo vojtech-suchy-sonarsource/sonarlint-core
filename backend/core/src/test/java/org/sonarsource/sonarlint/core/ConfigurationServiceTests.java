@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-42e07500ddee4bd9b65dca02e8d3ff8b
+ACR-f22670a939d54e999a2f19ac4a9da219
+ACR-4b5aa8d9e07142e5aad232ebe9f68084
+ACR-aa8261b88d3d4f89b6c47b62ccb12e52
+ACR-a9455e6ac85a43118b645e63eacc724c
+ACR-d0d0d8b36a84485b9742a7a1aa14fae6
+ACR-dbeef1b11a1847b69c0dbd637c24e472
+ACR-25461a0401074d80b7b5e8e182fd22db
+ACR-f9afcfac8e1243a6bd7053ce956016fb
+ACR-5ea90a76e9314e31a4cf779eb6c55dd3
+ACR-3d4cbd88b0424492976534372a2c7b9c
+ACR-86ad3a88d5d44f62849645ea6ca4face
+ACR-4b818c62ef5c4fada9a8fc954c7b63ce
+ACR-03e800cbcadf498aae05dada49c591e1
+ACR-357e7f3ad0444f62af50dec65cbc47c9
+ACR-3a305b4f7c104093b58d8c743749b0cd
+ACR-82a77097619e4e6ca0cbf2297d67c07c
  */
 package org.sonarsource.sonarlint.core;
 
@@ -144,7 +144,7 @@ class ConfigurationServiceTests {
     underTest.didAddConfigurationScopes(List.of(CONFIG_DTO_1));
     assertThat(repository.getBindingConfiguration("id1")).usingRecursiveComparison().isEqualTo(BINDING_DTO_1);
 
-    // Ignore add event
+    //ACR-8e65f1bba99f49e2b36afc980ef0fe46
     Mockito.reset(eventPublisher);
 
     underTest.didUpdateBinding("id1", BINDING_DTO_2);

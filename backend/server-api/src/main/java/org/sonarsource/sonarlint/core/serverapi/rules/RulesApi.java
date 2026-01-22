@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f7e457f3a0ee43cab157dc1f36a19771
+ACR-327dfa60bdd44c52a195cfd247fc73b4
+ACR-c13924b5b95e46cf8a0b65847bad45ac
+ACR-66ddec05b7e94dfd81ad15c4e8eb2af8
+ACR-0842eab80cf849f8892bc54b9760a7b8
+ACR-fa87f244555a460c8e5720ce7ac93033
+ACR-4161ed54f4e046b992eb7267aa4bcd34
+ACR-3ab0469baf11478186c0a3a3d5d51516
+ACR-3224812e8474430697d3344104bb6c9a
+ACR-92b419f5e85d4266b4fd91892032977f
+ACR-acc559a9171840f1aeec1c119a24540d
+ACR-2fc83ef54fd74af9b11e472449f2c84a
+ACR-e7220bd6c26840b88ad2487372cff2dc
+ACR-ce56e9f32544463eb5410d55bc5e006d
+ACR-e96471b88b3e4377904ccc986bcf0c37
+ACR-d225a505c44d4266bc101e25ff32e3c3
+ACR-f02e1778bf454efdb9641daa90a77580
  */
 package org.sonarsource.sonarlint.core.serverapi.rules;
 
@@ -104,7 +104,7 @@ public class RulesApi {
   }
 
   public Collection<ServerActiveRule> getAllActiveRules(String qualityProfileKey, SonarLintCancelMonitor cancelMonitor) {
-    // Use a map to avoid duplicates during pagination
+    //ACR-33b9c5a1120942d189572443c8d5220e
     Map<String, ServerActiveRule> activeRulesByKey = new HashMap<>();
     Map<String, String> ruleTemplatesByRuleKey = new HashMap<>();
     serverApiHelper.getPaginated(getSearchByQualityProfileUrl(qualityProfileKey),
@@ -116,7 +116,7 @@ public class RulesApi {
       },
       activeEntry -> {
         var ruleKey = activeEntry.getKey();
-        // Since we are querying rules for a given profile, we know there will be only one active rule per rule
+        //ACR-88b053f3b4614520a92975b17475c24f
         Rules.Active ar = activeEntry.getValue().getActiveListList().get(0);
         activeRulesByKey.put(ruleKey, new ServerActiveRule(
           ruleKey,
@@ -159,7 +159,7 @@ public class RulesApi {
     builder.append("/api/rules/search.protobuf?repositories=");
     builder.append(repositories.stream().map(UrlUtils::urlEncode).collect(joining(",")));
     serverApiHelper.getOrganizationKey().ifPresent(org -> builder.append("&organization=").append(UrlUtils.urlEncode(org)));
-    // Add only f=repo even if we don't need it, else too many fields are returned by default
+    //ACR-301a41b3531c49af9a7b0aca29c4560a
     builder.append("&f=repo&s=key");
     return builder.toString();
   }

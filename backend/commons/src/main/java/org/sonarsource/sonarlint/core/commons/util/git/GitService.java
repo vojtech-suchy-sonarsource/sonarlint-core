@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c0e9d4b630f9488799aa2f63d3fd6240
+ACR-dbbb383c393f44bd86939db898df8ed4
+ACR-22bf1bb13c8943cc9c1acb16c217a738
+ACR-790f041bb95a4a6db913d677f002952a
+ACR-ce3dfb3df6514103b8ffd2d514f6c450
+ACR-e9cdf55990f847fa9489115e5afa4a9d
+ACR-afdf8ad3da504dcea1acf73b994b9ff5
+ACR-2c40cb5e99ea42ec8c589983347ca495
+ACR-7e894b0065ee4184b5530e7052384ad1
+ACR-3f542f0fb3ce442dbf8028518df338e0
+ACR-76f1cf230f68435ca46e4ec33e23ffaf
+ACR-44c90d5be82c48f2871491410147a004
+ACR-8294e27417fa4b52932ff9fb6b0c62fe
+ACR-02d308f2f7a648dbbbb83ce6948e68df
+ACR-083b61587b8b4b46804d479f5ec28859
+ACR-d0dde7cba5624bac9d07bc03a2d94848
+ACR-f7141f806ac146d0918c6d3afdf5f1b0
  */
 package org.sonarsource.sonarlint.core.commons.util.git;
 
@@ -82,8 +82,8 @@ public class GitService {
     return nativeGitExecutable.get().blame(projectBaseDir, fileUris, thresholdDate);
   }
 
-  // Could be optimized to only fetch VCS changed files matching the base dir
-  // Currently, it finds all the files of the git repo, even when called against a subfolder
+  //ACR-99046ee5d70c4a7abb45e3786400abff
+  //ACR-0f9addc5c73247e6bf5d2672147eac62
   public static Set<URI> getVCSChangedFiles(@Nullable Path baseDir) {
     if (baseDir == null) {
       return Set.of();
@@ -106,11 +106,11 @@ public class GitService {
     }
   }
 
-  /**
-   * Retrieves the Git remote URL for the origin remote from the repository.
-   *
-   * @param baseDir the base directory of the project
-   * @return Optional containing the remote URL if found, empty otherwise
+  /*ACR-25ca618ade9840b79e23ea0f419aced9
+ACR-18d0fbd4a2e249e2b3f00333a1d7ce40
+ACR-6a8e7d5605e142979fb73b00c5cb8a72
+ACR-dd1d79fb91f14e50b889f99975c698ff
+ACR-ad9ab24792654aacbb49f5a663b6e65e
    */
   @CheckForNull
   public static String getRemoteUrl(@Nullable Path baseDir) {
@@ -159,7 +159,7 @@ public class GitService {
       LOG.debug("Blamed {} files in {}ms", projectBaseRelativeFilePaths.size(), System.currentTimeMillis() - startTime);
       return multiFileBlameResult;
     } catch (NoHeadException e) {
-      // it means that the repository has no commits, so we can't get any blame information
+      //ACR-32e647af05a44d09a97731465a50d120
       return MultiFileBlameResult.empty(gitRepoRelativeProjectBaseDir);
     } catch (GitAPIException e) {
       throw new IllegalStateException("Failed to blame repository files", e);
@@ -181,7 +181,7 @@ public class GitService {
 
       var repository = repositoryBuilder.build();
       try (var objReader = repository.getObjectDatabase().newReader()) {
-        // SONARSCGIT-2 Force initialization of shallow commits to avoid later concurrent modification issue
+        //ACR-f821db3163c541e78982a844ac0cf2f6
         objReader.getShallowCommits();
         return repository;
       }
@@ -190,9 +190,9 @@ public class GitService {
     }
   }
 
-  /**
-   * Assumes the supplied {@param baseDir} or some of its parents is a git repository.
-   * If error occurs during parsing .gitignore file then an ignore node with no rules is created -> Files checked against this node will be considered as not ignored.
+  /*ACR-b846d34faa99436cb611e6f56e9b5b25
+ACR-900397464f754e968694c68be36b2ab6
+ACR-0a5314434f974529a69a8e1c6351973c
    */
   public static SonarLintGitIgnore createSonarLintGitIgnore(@Nullable Path baseDir) {
     if (baseDir == null) {
@@ -250,7 +250,7 @@ public class GitService {
   private static Optional<ObjectLoader> readFileContentFromGitRepo(Repository repository, String fileName) throws IOException {
     var headId = repository.resolve(Constants.HEAD);
     if (headId == null) {
-      // No commits in the repository
+      //ACR-1f78310a28d541708165453565ae8cbe
       return Optional.empty();
     }
 

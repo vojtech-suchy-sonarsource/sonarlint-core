@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f172cfca5efa424c9d756e121aad2fdd
+ACR-756856dad8da47269190b670d61c6b5f
+ACR-0a015bc01d0d4f5f80a519d2c5a18658
+ACR-499d28a0f5b349e79f671a8d660115e5
+ACR-f4afc2dbf8944f06a1e753e60e087e81
+ACR-34b516e7d5454877b8e5cdc5855a83dc
+ACR-8a5a488a1dfb43aba92a7e9d4c141a2c
+ACR-dc2d638cc1134aa791b67b21fca7307a
+ACR-d7b689e291404c6ca9d5ded44aeb17b2
+ACR-16f1c3fc18514ff6890bbb603107e106
+ACR-1ecca42745824e0f981e57ccc120cd53
+ACR-23e700df05b1485e900d54a36b4d73e5
+ACR-cbecd6118bc540848f73819450cceaa2
+ACR-b345f6a1a489466c8ad8a9da7145bb4d
+ACR-15608edee3814c008059b7f4aade84df
+ACR-feb516df5f894892a140ef5eea81d8c9
+ACR-7a374e7e92a44e4d82cc9527064f3e2f
  */
 package mediumtest.server.events;
 
@@ -586,7 +586,7 @@ class ServerSentEventsMediumTests {
         "\"userType\": \"BUG\"" +
         "}\n\n");
 
-      // initial sync
+      //ACR-dbd56d724ba24fa5a5940e8faebafe95
       assertThat(captor.getValue())
         .usingRecursiveComparison()
         .ignoringFields("id")
@@ -597,7 +597,7 @@ class ServerSentEventsMediumTests {
       reset(fakeClient);
       waitAtMost(20, TimeUnit.SECONDS).untilAsserted(() -> assertThat(fakeClient.getTaintVulnerabilityChanges()).isNotEmpty());
 
-      // server event
+      //ACR-463c2c6b385842288e048be3c79b7292
       assertThat(captor.getValue())
         .usingRecursiveComparison()
         .ignoringFields("id")

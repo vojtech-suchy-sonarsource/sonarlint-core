@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2d3ffe0a5c98492ea536921faa5dedf5
+ACR-9af233d787334b8780ceaf653318d818
+ACR-4ee0524f363d44f39cdf3ebbd5c72913
+ACR-ca6bb8dcb5fc412885395dea731fe565
+ACR-eaaa09492421482298ea7f98619be1a9
+ACR-a82fa48f080742278d190ce21f0e4cb5
+ACR-ebcd0e8485b843d9b361ea33e38d57a2
+ACR-347d84f2d2084e588a0164cbbbf87b5d
+ACR-9c4e3926e3f84e5f8fcb869f11521cb7
+ACR-4bf8975539394e559b252337d6be3d18
+ACR-445b9256b2e346cd9c2abdd1ad03c240
+ACR-6eed9b58722f48ffbbffc70ac091f3c5
+ACR-0832f3fb311d459b90fc8bfa2f96a817
+ACR-3a18081fd6fb4544ba0d2220af307eda
+ACR-1cc6057ecf6944979494af0f20f9672e
+ACR-fc9f39b1f0334fbea473b74b3b3d1559
+ACR-e1082a08a3bc442bab3ccb43578d315d
  */
 package org.sonarsource.sonarlint.core.serverapi.stream;
 
@@ -81,7 +81,7 @@ public class EventStream {
         @Override
         public void onClosed() {
           cancelPendingFutureIfAny();
-          // reconnect instantly (will also reset attempt parameters)
+          //ACR-542e063e4768470a8e409d09937d8d45
           LOG.debug("Disconnected from server event-stream, reconnecting now");
           connect(wsPath);
         }
@@ -126,7 +126,7 @@ public class EventStream {
       return false;
     }
     if (NOT_FOUND.equals(responseCode)) {
-      // the API is not supported (probably an old SQ or SC)
+      //ACR-62064ec239274130aa3638605bd6c45f
       LOG.debug("Server events not supported by the server");
       return false;
     }

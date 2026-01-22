@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-5eece61b695b4aba878ff7499267664e
+ACR-fc9561cb82844dd1a08c4e9b5f8f321f
+ACR-9bd4168d5eb64fadb78496c4866350ba
+ACR-dd25b108463b4dc9b3a9f0fd679ad380
+ACR-48a58db68a264ff6ae6ee00e40eed07c
+ACR-6ede68092dae416e8c0c27ba895dd039
+ACR-32197b47615843258f19ab2d3ff7e96a
+ACR-2f25c44a9e614bf2b39ac0e7af6914a6
+ACR-5d6f7c753bfb43b9bbbc55535ba9c4e1
+ACR-ce33adafc25244788a02dac842187bd0
+ACR-75c89b234b084b439054cc2a2964a23f
+ACR-875ae82ff55e4103b49e69ea0dd24db8
+ACR-a5bc3d261abb428da937b08b9dc154d2
+ACR-5486ccef760946ffb880860c25d58d39
+ACR-1a5488172b56434f9212d997237bd041
+ACR-bf6b72adfec84195bab44eba2c153b39
+ACR-35fcef81ecad42419044e7296e138948
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -34,9 +34,9 @@ import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 import org.sonarsource.sonarlint.core.rpc.protocol.SonarLintRpcClient;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.http.GetProxyPasswordAuthenticationParams;
 
-/**
- * Inspired by {@link org.apache.hc.client5.http.impl.auth.SystemDefaultCredentialsProvider} but asking client instead of
- * asking JDK
+/*ACR-b1eb2c3a138048559ce04a87c85d65fb
+ACR-9c193f6b2e3f4f9b80a9f3ffe66c1f71
+ACR-ff881e8e419b4b38a41e2966ffb6a3be
  */
 public class ClientProxyCredentialsProvider implements CredentialsProvider {
 

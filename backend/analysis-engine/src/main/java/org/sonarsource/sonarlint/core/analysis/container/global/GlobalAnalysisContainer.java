@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-8ec24bdeb0864e1c8e35b66f355f6237
+ACR-c683efca7e1e4c5f9a1c936eab473047
+ACR-160b71028ff6467aaabcf95bcc594845
+ACR-35e683c1eef04ed2a8edac7b94939e98
+ACR-02edf52eda7647d1b1b81ee3ba5de1fd
+ACR-5197d92c7f9a4a96bca15af4f141f1aa
+ACR-5eecb9e906464721b0346bc1f540540c
+ACR-87997a0922d94302965d71072ddfff97
+ACR-617728536fb44ec8a90836db452a1626
+ACR-f5f7c01037f84d3981535f7cd24a062f
+ACR-586cdec808c34388b55bc1e55819bee4
+ACR-f0fb2ea9b80042f087942f7808359df0
+ACR-d81f2d145a71487e95477e867b41f21a
+ACR-9289899cd50741bb8e66f5ef34338117
+ACR-e907e651aa3a465cadeedbf0f873808f
+ACR-9e5d6621044a417b9d0fb4a59b581c26
+ACR-8d787ffd513c4076afd3458583579cda
  */
 package org.sonarsource.sonarlint.core.analysis.container.global;
 
@@ -92,7 +92,7 @@ public class GlobalAnalysisContainer extends SpringComponentContainer {
     loadedPlugins.getAnalysisPluginInstancesByKeys().values().forEach(this::declareProperties);
   }
 
-  // Visible for medium tests
+  //ACR-1d521d764a4c41be9972f87e2fb91004
   public ModuleRegistry getModuleRegistry() {
     return moduleRegistry;
   }

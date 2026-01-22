@@ -1,44 +1,44 @@
 /*
- * SonarLint Plugin API
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0c33bec8b60d4683acaf1f531ea366b9
+ACR-7b09b6157c8a479595ffd2ea4c6a5b87
+ACR-898cced98281434c85fb5a707ad0f824
+ACR-d00e9415cf7e4b08899afe67d5b8b14b
+ACR-1c457f3609c242a9a39d9933ec8d6896
+ACR-15057fe1acc14401879308698f0f2f57
+ACR-fc72c25e440d400aade13c5542caece0
+ACR-baf0ba08a2cc45938e0aefaea9826051
+ACR-984fffc25a704f81a8b101b67f684cd3
+ACR-82b2867f8b844302be4d717ff96ef288
+ACR-69151e3a99a840edbfbb4d7c818d7dcb
+ACR-2e833b2ab54f4fcebfbb3f53ffe0c115
+ACR-504f2f322fce4879bfa32840301562a8
+ACR-f8967c14af4c4efbb22fd29ac5b3a98e
+ACR-1322a5d3186a483db719f18182309347
+ACR-ad41918c097e481fb3902e3a5a457d36
+ACR-cc652d771daa4734b8115aa9c220c8a0
  */
 package org.sonarsource.sonarlint.plugin.api.module.file;
 
 import org.sonar.api.batch.fs.InputFile;
 
-/**
- * @since 6.0
+/*ACR-57092cff798f4c6fa6b2a157f7970a07
+ACR-02e46040b8a04d59a677a10c7681b1f1
  */
 public interface ModuleFileEvent {
-  /**
-   * @return the InputFile concerned by the event
-   * @since 6.0
+  /*ACR-25cd759e8a0e4c24bba9b9473aca032b
+ACR-3b9481b066a04ac085a2749ceeabec3f
+ACR-72ade82e94a0457ab570864d72a48b07
    */
   InputFile getTarget();
 
-  /**
-   * @return the event Type
-   * @since 6.0
+  /*ACR-a45d783dbf5b4579874fd112dead18d0
+ACR-6547546db6ab48e4ab7efdae5b7f3b5f
+ACR-18c708fcd8e843b09df0645223162217
    */
   Type getType();
 
-  /**
-   * @since 6.0
+  /*ACR-3850699d663543c9870f4c1f3b6723af
+ACR-4b2c67440fc54fec976a8558de808a34
    */
   enum Type {
     CREATED, MODIFIED, DELETED

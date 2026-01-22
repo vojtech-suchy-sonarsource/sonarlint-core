@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-4c6132b05f4349e2af240d2b6d3bbeb6
+ACR-d66f128f2ad64d2b8de4d21206679ddf
+ACR-004d4408e3824c45aba1ce7c1d91e8bc
+ACR-65f711e849a74f558b05a1c6a61f26ce
+ACR-73dcdc8138504b4c853dfa710a8b6fdd
+ACR-d471a11fc19e4a0f85e87d09db5423e0
+ACR-a9a306af13984615b966dc4c5085aea8
+ACR-c10f81fbbaeb4ef2b24cd29b97d75632
+ACR-ffb419dcaf15442483509459d26f9c83
+ACR-00dc3e37de04418ca15efcaaa2c4f222
+ACR-87b941f522ab4106bef2a3a75e8d5940
+ACR-1d0929607b774b0b8d1aa6c0b12b5a2a
+ACR-2875319572274b5594d6f1fbef81423a
+ACR-46515f26e7f34e4fb60774c89376f1c5
+ACR-e5487f23614340aa8b89a7143c7bc919
+ACR-5f805a7e87af42cc87fed431f9347ab4
+ACR-2064aa4408cf488092e06a873502fc59
  */
 package org.sonarsource.sonarlint.core.plugin.commons.loading;
 
@@ -158,7 +158,7 @@ class PluginInfoTests {
 
   @Test
   void fail_when_jar_is_not_a_plugin(@TempDir Path temp) throws IOException {
-    // this JAR has a manifest but is not a plugin
+    //ACR-8f0c0ac2525d4ca69dffa21a9e1e0bfb
     var jarRootDir = Files.createTempDirectory(temp, "myPlugin").toFile();
     FileUtils.write(new File(jarRootDir, "META-INF/MANIFEST.MF"), "Build-Jdk: 1.6.0_15", StandardCharsets.UTF_8);
     var jar = temp.resolve("myPlugin.jar");

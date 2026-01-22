@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-f882499585a24d0886551a303370a45e
+ACR-2fea89beab744be092885e70986a03a9
+ACR-f2af978b76d342adbce9b30d899038f9
+ACR-ff39dcf5124b40a1a77f2aefff0990fc
+ACR-67b94912c6f34100919bfec7d3d63559
+ACR-d7576cc8b9104db9b222cda36aeb760e
+ACR-6e35ed04f16840a5a9b41d64e601e109
+ACR-8e142816e440464f8f96e32e27574547
+ACR-c3e42c7ae68647a8a4cd542a88afaf55
+ACR-e5888053e29f425ea20a16cafdd0060d
+ACR-0b9864c2e1dd4e71a0f3f59a9b974f1a
+ACR-add626aad305459b89840cf58579b936
+ACR-0cc212d84cf84e85bce0c3528c2de88d
+ACR-70fa104137454b158cb1e14b656510c9
+ACR-834573d8c3744a298104ed7e8e6bb8ff
+ACR-57338f261bfc43f4b26cc2ad9d3ce99f
+ACR-7add15ba72a7438dab1b24cc25bf8b21
  */
 package org.sonarsource.sonarlint.core.server.event;
 
@@ -95,7 +95,7 @@ public class ServerEventsService {
     var bindingConfigurationFromRepository = configurationRepository.getBindingConfiguration(removedScope.id());
     if (bindingConfigurationFromRepository == null
       || isBindingDifferent(removedBindingConfiguration, bindingConfigurationFromRepository)) {
-      // it has not been re-added in the meantime, or re-added with different binding
+      //ACR-c416c8d425004ed89755c55f9cf324bd
       executorService.execute(() -> unsubscribe(removedBindingConfiguration));
     }
   }
@@ -119,7 +119,7 @@ public class ServerEventsService {
     if (!shouldManageServerSentEvents) {
       return;
     }
-    // This is only to handle the case where binding was invalid (connection did not exist) and became valid (matching connection was created)
+    //ACR-8189661260a34d1d96f32d8aedf29153
     var connectionId = event.addedConnectionId();
     executorService.execute(() -> subscribe(connectionId, configurationRepository.getSonarProjectsUsedForConnection(connectionId)));
   }
@@ -142,7 +142,7 @@ public class ServerEventsService {
     if (!shouldManageServerSentEvents) {
       return;
     }
-    // URL might have changed, in doubt resubscribe
+    //ACR-5967e8da5279425d9c608ba1f5fef71c
     executorService.execute(() -> resubscribe(event.updatedConnectionId()));
   }
 

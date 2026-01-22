@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-bda76c0709e041d582753c8d1c402c79
+ACR-4efcdc3fae88418c8d6dfdc4570ffd7b
+ACR-718bd1308126419da260c819a5bdb3d2
+ACR-c3349cb1fa694b8dbfa4e103dc3c18f8
+ACR-37cc7f712e4c42da9f06489f7550c93c
+ACR-68adfe8754034c5b9367f792f736c70b
+ACR-30106afe137d470e948880378e44f642
+ACR-e8a6b940c5c744a983c9bb7d0d901160
+ACR-0787549435184292a0dae37e198acc42
+ACR-b9e19b12f1ce4582bb8288dae1273124
+ACR-529de57bbcaa45498fd0022cb0fcc357
+ACR-62564eb14b264a268222d3e66ee47b96
+ACR-b1ce3ca89fde40a584c80ae7b4b99eff
+ACR-c5528a148c5a441787d528e48b57e9d5
+ACR-d3f61f93c42a471ba4f01455d8f22c2e
+ACR-850715aca6884c0784b1a72043e20dd2
+ACR-a7eba3c1e3204639b5c49cb75ae38e4d
  */
 package org.sonarsource.sonarlint.core.telemetry.measures.payload;
 
@@ -45,10 +45,10 @@ public class TelemetryMeasuresValue {
   }
 
   /*
-   * From the telemetry measures specification:
-   *  - Entire key: ^([a-z_][a-z0-9_]{1,126}\.)[a-z_][a-z0-9_]{1,126}$
-   *  - Group name: ^[a-z_][a-z0-9_]{1,126}\.$
-   *  - Measure name: ^[a-z_][a-z0-9_]{1,126}$
+ACR-aef449605f644dedbe1d07dc913efb36
+ACR-f2a739bf7e6841c4bb85176eea057601
+ACR-58855e2d414141378ff907856c04059f
+ACR-91207ed738b74b42be2e851b440ac72b
    */
   private static String validateKey(String maybeKey) throws IllegalArgumentException {
     if (maybeKey.matches(KEY_PATTERN)) {

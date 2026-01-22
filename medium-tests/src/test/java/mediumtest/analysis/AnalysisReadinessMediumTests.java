@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-957eac6bd6b04a5fb492b2bde53f2079
+ACR-2f6eaa550a15438e8615f4c891421534
+ACR-d2b8869bf8d141a0bdb8c04bbb8d8cf6
+ACR-02673c7ba52b40bea3b5cb101eab05de
+ACR-304e6cfd1f9a46e5baec279c6dd935ec
+ACR-bbf4ea0018e741969f1075ec2b14ed54
+ACR-022052440fe84799a8a0fd733f7daa5a
+ACR-e556d755a91b461a9f1602093297e7a3
+ACR-7444395e6d2740e8835b75162e366e05
+ACR-a3ab44d355874d19ac9905548105493a
+ACR-ba01c578cf3b43d5ae884d66a2d8bcb8
+ACR-e61171594301433b81e73b13b0dc7f3e
+ACR-a0c989db37e94ad6884e7eb47cf06e23
+ACR-60715f5b1e0c46e18900cc3caff67c92
+ACR-e65d3b2a81e14e919b0298cc3eb2e065
+ACR-3e2047abab6f4ae3b029a0c67873155d
+ACR-0ef3391844f94f0fa6e520b8d8512c5d
  */
 package mediumtest.analysis;
 
@@ -97,13 +97,13 @@ class AnalysisReadinessMediumTests {
 
     verify(client, never()).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), true);
 
-    // File opened but not analyzed since analysis is not ready yet
+    //ACR-e6ae8d471f5847c0a0ce2f3c6a2fd105
     backend.getFileService().didOpenFile(new DidOpenFileParams(CONFIG_SCOPE_ID, fileUri));
     verify(client, never()).raiseIssues(eq(CONFIG_SCOPE_ID), any(), eq(false), any());
 
     client.waitForSynchronization();
 
-    // analysis is ready
+    //ACR-e73a64f5a22c4c2d8123187839b0a59f
     await().atMost(1, TimeUnit.SECONDS)
       .untilAsserted(() -> verify(client).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), true));
     await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getRaisedIssuesForScopeIdAsList(CONFIG_SCOPE_ID)).isNotEmpty());
@@ -143,13 +143,13 @@ class AnalysisReadinessMediumTests {
 
     verify(client, never()).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), true);
 
-    // File opened but not analyzed since analysis is not ready yet
+    //ACR-bae72c5b630d41dfbce85ce5b467b8ea
     backend.getFileService().didOpenFile(new DidOpenFileParams(CONFIG_SCOPE_ID, fileUri));
     verify(client, never()).raiseIssues(eq(CONFIG_SCOPE_ID), any(), eq(false), any());
 
     client.waitForSynchronization();
 
-    // analysis is ready
+    //ACR-7ef0d0b342034b6a821d7d643fd8fb65
     await().atMost(1, TimeUnit.SECONDS)
       .untilAsserted(() -> verify(client).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), true));
     await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getRaisedIssuesForScopeIdAsList(CONFIG_SCOPE_ID)).isNotEmpty());
@@ -158,21 +158,21 @@ class AnalysisReadinessMediumTests {
     assertThat(publishedIssues).containsOnlyKeys(fileUri);
     clearInvocations(client);
 
-    // bind to 2nd project
+    //ACR-2e61e908faee40dea08e5f4d37d79143
     backend.getConfigurationService()
       .didUpdateBinding(new DidUpdateBindingParams(CONFIG_SCOPE_ID, new BindingConfigurationDto("connectionId", "projectKey2", true), BindingMode.MANUAL, null));
 
-    // analysis becomes not ready after binding change
+    //ACR-2cb50010003342b0b918658050e7f921
     verify(client, timeout(200)).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), false);
 
     client.waitForSynchronization();
 
-    // analysis is ready, no issues are raised by the second QP
+    //ACR-f34029a411b54d06ae9f1bfa3cc6b088
     await().atMost(1, TimeUnit.SECONDS)
       .untilAsserted(() -> verify(client).didChangeAnalysisReadiness(Set.of(CONFIG_SCOPE_ID), true));
     await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getRaisedIssuesForScopeIdAsList(CONFIG_SCOPE_ID)).isEmpty());
 
-    // bind again to 1st project that should be ready
+    //ACR-5dde25d0465b4660bf957c42e395dde3
     backend.getConfigurationService()
       .didUpdateBinding(new DidUpdateBindingParams(CONFIG_SCOPE_ID, new BindingConfigurationDto("connectionId", "projectKey", true), BindingMode.MANUAL, null));
 

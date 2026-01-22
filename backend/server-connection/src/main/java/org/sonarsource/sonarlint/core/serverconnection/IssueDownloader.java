@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-404b9100d0ad456a9c5e53b09f3820fa
+ACR-13b416429e82403088d0cf75359f8fdc
+ACR-4ffcb95914f24547a212f519765b40c7
+ACR-73d8eb0841ee44729498b3810c437d21
+ACR-1820af81e84c4a57a735cf883756ab05
+ACR-6a9bbc4463f14b65ba79f731b57383da
+ACR-fd638a6fc652405ab56bc03a5330509c
+ACR-9ece30117eac46a1ae966899d98f9512
+ACR-70ef6574aa5c4e74ba409adb573de3c2
+ACR-1fc73447faf14aecbab4d524de6082d2
+ACR-f00ee511d77c411ebbb6126084c34906
+ACR-5386998999554870af84cf2947764238
+ACR-4041bce1e5fe4c7e891d48ca79c6c360
+ACR-4ea9207c7dd74d10baa57fc77ddb71c9
+ACR-02149380264c468dbfecbf7d0bf38346
+ACR-06dd7f1fd30c439ab0793d3b32022987
+ACR-5b0d1bdf208d465aa2cb28151bcec624
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -63,14 +63,14 @@ public class IssueDownloader {
     this.enabledLanguages = enabledLanguages;
   }
 
-  /**
-   * Fetch all issues of the component with specified key.
-   * If the component doesn't exist or it exists but has no issues, an empty iterator is returned.
-   *
-   * @param key           project key, or file key.
-   * @param branchName    name of the branch.
-   * @param cancelMonitor
-   * @return List of issues. It can be empty but never null.
+  /*ACR-681574ebbd48441b9bcdfc05818a2889
+ACR-46262a9dc63141df9104efb7feba6192
+ACR-7c89679c4cef4ff9b0a9e7e268e660b2
+ACR-e6418716ab5a4c45a34d555ad9a2d998
+ACR-2170d6506ebf49949df7de89a5597ff3
+ACR-f909f6c1c5ff45b5beb5452c6564e1cd
+ACR-a964b472d85343dfa5f64f3532be0207
+ACR-5c38e34a42be4a8abeb84456ec1f039d
    */
   public List<ServerIssue<?>> downloadFromBatch(ServerApi serverApi, String key, @Nullable String branchName, SonarLintCancelMonitor cancelMonitor) {
     var issueApi = serverApi.issue();
@@ -80,7 +80,7 @@ public class IssueDownloader {
     var batchIssues = issueApi.downloadAllFromBatchIssues(key, branchName, cancelMonitor);
 
     for (ScannerInput.ServerIssue batchIssue : batchIssues) {
-      // We ignore project level issues
+      //ACR-d02fef000c7947d58aa76c325321d59c
       if (!RulesApi.TAINT_REPOS.contains(batchIssue.getRuleRepository()) && batchIssue.hasPath()) {
         result.add(convertBatchIssue(batchIssue));
       }
@@ -89,28 +89,28 @@ public class IssueDownloader {
     return result;
   }
 
-  /**
-   * Fetch all issues of the project with specified key, using new SQ 9.6 api/issues/pull
-   *
-   * @param projectKey project key
-   * @param branchName name of the branch.
-   * @return List of issues. It can be empty but never null.
+  /*ACR-d7c43811c7204fc2885ef1cdfc06c3c2
+ACR-1b37a3edd618473aa195d2d028b5b37a
+ACR-8df569483c5449f28b89b5c5b77fe20b
+ACR-91939aadef014bf2852959b1d98fed6a
+ACR-8ada4859e7ed40c3851254e8badc84bf
+ACR-f2b80cac8ab04d14bc566bad598a0478
    */
   public PullResult downloadFromPull(ServerApi serverApi, String projectKey, String branchName, Optional<Instant> lastSync, SonarLintCancelMonitor cancelMonitor) {
     var issueApi = serverApi.issue();
 
     var apiResult = issueApi.pullIssues(projectKey, branchName, enabledLanguages, lastSync.map(Instant::toEpochMilli).orElse(null), cancelMonitor);
-    // Ignore project level issues
+    //ACR-fb9fcc673c0347d99c2dea16a576ecc6
     List<ServerIssue<?>> changedIssues = apiResult.getIssues()
       .stream()
-      // Ignore project level issues
+      //ACR-39269e1d52794056b33d448a452b3471
       .filter(i -> i.getMainLocation().hasFilePath())
       .filter(not(IssueLite::getClosed))
       .map(IssueDownloader::convertLiteIssue)
       .collect(Collectors.toList());
     var closedIssueKeys = apiResult.getIssues()
       .stream()
-      // Ignore project level issues
+      //ACR-08dd5363ecd84aecbb490710ff1a7f2b
       .filter(i -> i.getMainLocation().hasFilePath())
       .filter(IssueLite::getClosed)
       .map(IssueLite::getKey)
@@ -121,7 +121,7 @@ public class IssueDownloader {
 
   private static ServerIssue<?> convertBatchIssue(ScannerInput.ServerIssue batchIssueFromWs) {
     var ruleKey = batchIssueFromWs.getRuleRepository() + ":" + batchIssueFromWs.getRuleKey();
-    // We have filtered out issues without file path earlier
+    //ACR-7ddd1087a58042d5b4d8b067523fe666
     var filePath = Path.of(batchIssueFromWs.getPath());
     var creationDate = Instant.ofEpochMilli(batchIssueFromWs.getCreationDate());
     var userSeverity = batchIssueFromWs.getManualSeverity() ? IssueSeverity.valueOf(batchIssueFromWs.getSeverity().name()) : null;
@@ -141,7 +141,7 @@ public class IssueDownloader {
 
   private static ServerIssue<?> convertLiteIssue(IssueLite liteIssueFromWs) {
     var mainLocation = liteIssueFromWs.getMainLocation();
-    // We have filtered out issues without file path earlier
+    //ACR-877e3726097440f880a5c322de880aa4
     var filePath = Path.of(mainLocation.getFilePath());
     var creationDate = Instant.ofEpochMilli(liteIssueFromWs.getCreationDate());
     var userSeverity = liteIssueFromWs.hasUserSeverity() ? IssueSeverity.valueOf(liteIssueFromWs.getUserSeverity().name()) : null;

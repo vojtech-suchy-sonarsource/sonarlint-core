@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-cc0641b6a7a64bb39d1db1a36d9597f3
+ACR-c9ab868a85714a95876ced288ec912e8
+ACR-24fa508d7fc04df8a2969d227c65b9df
+ACR-d516dfc0f1e745f8bf3190fb34ba34b8
+ACR-c1f8aa8cc978420d99fac4a46036dbc2
+ACR-d65017e7ecf549e68b2994d3488283d4
+ACR-e95df24fcdd44e2486cb39f3337a92ba
+ACR-8467638e604044abbc652d123cf246cc
+ACR-16f199d5516244a1bd16fd332c96d012
+ACR-888fb083019b4f929bda2c07241347ae
+ACR-ba40530734bf45ef93af65fc41fd4019
+ACR-213a6f78ba3e4e0891fcebb9db3475e9
+ACR-a36fe0242fec42098a8ac6f6e81f6d46
+ACR-ad29a78871eb4b6abd14a4ea9ce8d8ad
+ACR-d772342bd0824a3da787e364327eb6fc
+ACR-6271bce80a9a4add963dd0aed50ae937
+ACR-a75f60f7e1bf40acb743e44f8ecac46e
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -213,7 +213,7 @@ class SpringComponentContainerTests {
     SpringComponentContainer container = new SimpleContainer(jsr, api, closeable) {
       @Override
       public void doAfterStart() {
-        // force lazy instantiation
+        //ACR-e7d859e2eab949bf9eb8a9cd68de6498
         getComponentByType(JsrLifecycleCallbacks.class);
         getComponentByType(ApiStartable.class);
         getComponentByType(AutoClose.class);

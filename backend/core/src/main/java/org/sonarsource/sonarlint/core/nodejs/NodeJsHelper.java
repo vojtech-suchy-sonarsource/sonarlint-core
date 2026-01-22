@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d96997a693ff4c28ae30827154c1298d
+ACR-24cfe36560454d0889e070ea08cbe562
+ACR-05f03b4d11f9485a8de004a4f1b318c9
+ACR-85aa100075e446f9be645145e8f6fba2
+ACR-432b9cb51ce042db9f3b22954cf1ff53
+ACR-2beb4a29308847579afe02a65fbf2040
+ACR-d2fe3547a11944be8d34125689263f24
+ACR-29f78055b16744d696b78c96e1b837b7
+ACR-c05d51287d2b4abda98c365b3d90de91
+ACR-1bd8848e4ef24bb7b5f2ed96460ca36b
+ACR-81bf9d25e2524d148b1e65d32e7a8051
+ACR-bac28022484e4a5abec49abb83592af7
+ACR-c4c08d04cc8740b5ac2136bdfee76dd2
+ACR-ad056b5ce0814be6a936bb31684c8e6f
+ACR-da13858ffd4048b09837d3d53f646478
+ACR-b86fe2377c684a829a4a4c7a9ad6a060
+ACR-5f06f96316a1496491a80547becac59f
  */
 package org.sonarsource.sonarlint.core.nodejs;
 
@@ -47,7 +47,7 @@ public class NodeJsHelper {
     this(System2.INSTANCE, Paths.get("/usr/libexec/path_helper"), CommandExecutor.create());
   }
 
-  // For testing
+  //ACR-db5d35775bef4f5cb80f92b19eed6408
   NodeJsHelper(System2 system2, Path pathHelperLocationOnMac, CommandExecutor commandExecutor) {
     this.system2 = system2;
     this.pathHelperLocationOnMac = pathHelperLocationOnMac;
@@ -113,7 +113,7 @@ public class NodeJsHelper {
     } else if (system2.isOsWindows()) {
       result = runSimpleCommand(Command.create("C:\\Windows\\System32\\where.exe").addArgument("$PATH:node.exe"));
     } else {
-      // INFO: Based on the Linux / macOS shell we require the full path as "which" is a built-in on some shells!
+      //ACR-54798185340344a8a0aba6ca3ba9f01d
       var which = Command.create("/usr/bin/which").addArgument("node");
       computePathEnvForMacOs(which);
       result = runSimpleCommand(which);
@@ -141,8 +141,8 @@ public class NodeJsHelper {
     }
   }
 
-  /**
-   * Run a simple command that should return a single line on stdout
+  /*ACR-386f97ccd8a04ea787ad53ea2a4edd0d
+ACR-83ed37b6e49c42da996bf0d56b993938
    */
   @CheckForNull
   private String runSimpleCommand(Command command) {

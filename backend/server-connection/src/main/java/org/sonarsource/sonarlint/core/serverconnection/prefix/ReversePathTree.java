@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-2d31b64c52644445bddbf89869928935
+ACR-2ca99121d2ce4f0e85a49b96fb6da91f
+ACR-ddc411e0f1de45b6b0a1986196c14173
+ACR-4a7c1ab790114dc197f235ebb33c9256
+ACR-afd396214ad844389876f879698b62e8
+ACR-0c62165fa0e64b609d58f41d4c8d5be8
+ACR-1628a71514744b67842c7b225313056d
+ACR-9532c4aa85904d53a1b00dd7dfa82fc2
+ACR-91575a0a9c854d8c88117f155ab65d13
+ACR-60be96f4d4ef451eb3c8c3f15845015e
+ACR-4aa6d820e88a4c8389c65ecb6408f8be
+ACR-21a7f627704f45c2bd6ed04e8e793f27
+ACR-9e5b5ee097604c46ae7f1a4f0b5b4208
+ACR-04c2aa8e18ec46d9ba38f63ac75c4d2f
+ACR-63b565a588304c5386f9837849df41e0
+ACR-3735efbd807c4b42a7e48ed763345e67
+ACR-e5145dc5194b4dcd83924fb4cb764995
  */
 package org.sonarsource.sonarlint.core.serverconnection.prefix;
 
@@ -86,8 +86,8 @@ class ReversePathTree {
     }
   }
 
-  /**
-   * Since it is very common that a node will have only one child, we save memory by lazily creating a children HashMap only when a second item is added.
+  /*ACR-eab100110a5e4d5592e58d127f0e5ac9
+ACR-bcd3cd9654884833b034141879cbf1a3
    */
   private interface Node {
     Node[] computeChildrenIfAbsent(Node parent, Path currentNodePath, Path childNodePath);

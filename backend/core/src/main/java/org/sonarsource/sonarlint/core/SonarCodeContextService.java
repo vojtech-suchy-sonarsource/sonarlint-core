@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-64456ced6c944d06bbac7871ca4d59df
+ACR-3fbbbc95d5f34d37ae5cf5d535833dbd
+ACR-9a46a54b29bb471b864c59a6971575c6
+ACR-b0e304c39439447ca9c189e119f1686b
+ACR-d89898d98f2e4bfe9ee41f982f838363
+ACR-40d9cdfcd94a4bd1b8c715a65d7c1f25
+ACR-f7dee6e6cf59487ba19981cf12002e16
+ACR-c4155fccb26c46d9a015707708b89cf3
+ACR-50cd51f2c11648218f73b1770715cd0f
+ACR-109e8479c3c9436ca2204fe03b00780c
+ACR-f91db864c2e74e6bafb2e541314c83dd
+ACR-ebb5a07886244491abd9fd8a5beb90af
+ACR-4a2dce9e4c934102b16bb113cda1f3fe
+ACR-d0f231ba1fdc48a8bb3486e06fe5ca94
+ACR-f3205f4ceda241f89a93ad57df687ea7
+ACR-6579eb1679ce40008356ffc1dd1da029
+ACR-7f8a1ee7c210419899ebd8b18a169003
  */
 package org.sonarsource.sonarlint.core;
 
@@ -43,10 +43,10 @@ import org.sonarsource.sonarlint.core.rpc.protocol.backend.initialize.Initialize
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.GetCredentialsParams;
 import org.springframework.context.event.EventListener;
 
-/**
- * Dogfooding-only integration that runs SonarCodeContext CLI on repository open in connected mode.
- * Commands executed (in order): init, generate-md-guidelines, merge-md, install.
- * Outputs are expected under the '.sonar-code-context' directory.
+/*ACR-de6751250e2c484ba275cd47fb9bedf3
+ACR-e25f6eb4931443c18e10ae1043be5570
+ACR-fff6a2349a874041b1be62bb6fc88671
+ACR-2dfdba3bf04646cfa4ce2b7956f5c2e3
  */
 public class SonarCodeContextService {
 
@@ -90,7 +90,7 @@ public class SonarCodeContextService {
 
     for (var configScopeId : event.getConfigScopeIds()) {
       var baseDir = clientFileSystemService.getBaseDir(configScopeId);
-      // Only run for scopes that are directly bound (not inherited from parent)
+      //ACR-3aa0382567474197ab13a15c5a655ba5
       var bindingOpt = configurationRepository.getConfiguredBinding(configScopeId);
       if (baseDir != null && bindingOpt.isPresent()) {
         handleGeneration(configScopeId, baseDir, bindingOpt.get());
@@ -225,13 +225,13 @@ public class SonarCodeContextService {
         current = current.getParent();
       }
     } catch (Exception e) {
-      // ignore and fallback
+      //ACR-8242a521c15a4bbd931ce40eeea4360c
     }
     return baseDir;
   }
 
   private static String resolveCliExecutable() {
-    // Used for testing
+    //ACR-1716dec9e3ae47aca66f9b5fb6262949
     var prop = System.getProperty("sonar.code.context.executable");
     if (prop != null && !prop.isBlank()) {
       return prop;

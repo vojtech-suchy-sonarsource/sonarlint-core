@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b3c904888c7b43b6a34a572a859d5ec0
+ACR-c43a1e85964a4ee69b4c0b8b2450cde3
+ACR-53026ee7cc7c41b198124b26e4152115
+ACR-e4e5f65d341944a9823e327630230a2d
+ACR-1484d03ee640423b8e6a55ddd8896062
+ACR-b942a78058d8475ca48abb031f8c451f
+ACR-ea0075616b744ae98bbc1d068de2fd58
+ACR-6dfbfee5362a4a66ae44e01fe916c0a7
+ACR-47f1c158481b48b89c63a71b394a99f4
+ACR-0e4fc599e88f4061a396589d18dcf8fa
+ACR-24af050fa81348ab851e1ce0b3d9ef0a
+ACR-fd3de9eb80c9433899bf8ba6d85a3110
+ACR-c3914e58498c4c09bb2550c7df51d631
+ACR-fb7f006490994913b72938a138e7465b
+ACR-b033d55db11a4cf5951c2621ca16c8b4
+ACR-48f98883c0e3423eb2c95416ec5ced5e
+ACR-2a50ce1f49e54c4ab979f5446a96adaa
  */
 package mediumtest;
 
@@ -58,8 +58,8 @@ class ConnectedIssueMediumTests {
   private static final SonarLintLogTester logTester = new SonarLintLogTester();
   private static final String CONFIG_SCOPE_ID = "configScopeId";
   private static final String CONNECTION_ID = "connectionId";
-  // commercial plugins might not be available
-  // (if you pass -Dcommercial to maven, a profile will be activated that downloads the commercial plugins)
+  //ACR-90fe1f0eb62f4775917968307c762a32
+  //ACR-d2fc05b57de442cf9badb5c103e142a4
   private static final boolean COMMERCIAL_ENABLED = System.getProperty("commercial") != null;
 
   @SonarLintTest

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Rule Extractor
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6804b63921e943c7a3470b411bd53a49
+ACR-2cb9637220f24e42837f61ffa7d924f1
+ACR-3ec46aea5a74466fb1cd85262ba05e89
+ACR-afa20a9ea7df4f4bba8ed5e20f43c990
+ACR-ad35c7f9e8804f3bbc5cb1cfa62e0669
+ACR-63e6d926532f40ba8e3176390fd817d5
+ACR-f53dd00d7726415d9b8c3d74c2f9eea6
+ACR-c0faa4e055384fed8d8be376d0c7a560
+ACR-780ee0e61457429fa2e3b708c7c2a1f5
+ACR-faa6a6f220e54c2da72c6c9d9291b154
+ACR-17c2a77d6c034b5fb7f587388d71b217
+ACR-4024d811030a444db3701199dd4b834a
+ACR-363d7d1a5e5c4e0c85f35bdb00fa05fb
+ACR-adc747e3fa99415f810d777a5585dcb4
+ACR-2e2287d6a8d84f3b83f3d0ea190b4d61
+ACR-8af6f09e3726445795f3abf15fce11a2
+ACR-31011986fde44c6f9d2116f8d3192fc8
  */
 package org.sonarsource.sonarlint.core.rule.extractor;
 
@@ -31,13 +31,13 @@ import static org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSe
 import static org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSectionKeys.HOW_TO_FIX_SECTION_KEY;
 import static org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSectionKeys.ROOT_CAUSE_SECTION_KEY;
 
-/**
- * @see <a href="https://github.com/SonarSource/sonar-enterprise/blob/36eae8ba853a6a411d1932d6faa2265510843580/server/sonar-webserver-core/src/main/java/org/sonar/server/rule/LegacyHotspotRuleDescriptionSectionsGenerator.java">Original on SonarQube</a>
+/*ACR-7e40803eeebf476f80b7b71cd9d6bb55
+ACR-5d64f0b3f62e4be397adb50347192e19
  */
 public class LegacyHotspotRuleDescriptionSectionsGenerator {
 
   private LegacyHotspotRuleDescriptionSectionsGenerator() {
-    // Static stuff only
+    //ACR-ac451c68e4c94aa5972de152055d7609
   }
 
   static List<SonarLintRuleDescriptionSection> extractDescriptionSectionsFromHtml(@Nullable String descriptionInHtml) {

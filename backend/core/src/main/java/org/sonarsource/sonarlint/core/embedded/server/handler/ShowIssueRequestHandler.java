@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-c41f95bc59824f879db288ccbe798fdb
+ACR-f40614ce4aea44299bca307bb5f79b78
+ACR-8b9c9d4a0ec54748bfafc3702e878b83
+ACR-9222e9f7c46d42adb595d460152b33ff
+ACR-a6cb8862e0f244ccb3ad62a7ad3d4fde
+ACR-6bffe933501f44d199f96ac5ed755842
+ACR-50390d133b814c0a9eed2da81e37038d
+ACR-1c494bc328074f96802296a24a6ab058
+ACR-57bcf67529764f5196f955cf4eae13a4
+ACR-98084564d63747b0bc5a168e53739b52
+ACR-6d1ce74796ff4c0382f7cbd3fc187962
+ACR-686eb385d5a6439aa35297c0ce4ee7db
+ACR-73c998a302744fd6a79eaec740d182c4
+ACR-5ff1d813ac0345ef801c262721178ecb
+ACR-5f84d0e6d94e434ab89bc8aa7b487906
+ACR-317adbfa628b4c04adad3cfbef1ae90b
+ACR-50e690ef4e59435ebdff14786c350091
  */
 package org.sonarsource.sonarlint.core.embedded.server.handler;
 
@@ -242,8 +242,8 @@ public class ShowIssueRequestHandler implements HttpRequestHandler {
       return true;
     }
 
-    /**
-     * Either we get a token combination or we don't get a token combination: There is nothing in between
+    /*ACR-6759a60e47e34eabbc8ccf0c3f589d7a
+ACR-54230fb4d066413f88fe8c19b901fe01
      */
     public boolean isTokenValid() {
       if (tokenName != null && tokenValue != null) {

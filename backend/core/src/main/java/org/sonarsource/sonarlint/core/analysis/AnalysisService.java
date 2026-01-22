@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-a7e77ee3a6564c91969fe462cf052bc0
+ACR-41f10198cd614ba597c899e1d1061663
+ACR-e074d4efaef746d9a240a216883b0e3d
+ACR-c678150d587942cd8db1fc7a7ce61131
+ACR-64caae3fcdf0403c868cbe2e42fa1e43
+ACR-0471664902b54d4c8b93cb67bc39f1da
+ACR-842fdf03bbb74b99bb793e8e33d2c911
+ACR-d660d8e0924a46c0b8793447c9b95506
+ACR-ede671ccf4b44af1be502386aa230e51
+ACR-6411f120d6b9456fb57ec53fb346eff7
+ACR-49b784cefebc477d90a917dc975175fe
+ACR-7804444858b8451f993d51ca80c82d38
+ACR-1a7ac01a040940b2a555fced6dbf316a
+ACR-ff07d6c85bc5483894e8d3a3394ff450
+ACR-c2cee42869464071babbfdc483bebedb
+ACR-313cb2f066d14f00bccdb74d080df88d
+ACR-828c0ef63a874f2fb80d81b69c55a140
  */
 package org.sonarsource.sonarlint.core.analysis;
 
@@ -185,7 +185,7 @@ public class AnalysisService {
       analysisSettings = storageService.binding(effectiveBinding.get())
         .analyzerConfiguration().read().getSettings().getAll();
     }
-    // TODO merge client side analysis settings
+    //ACR-e422cf8e659e4a1faaa4f0d45dd160aa
     return getPatterns(enabledLanguages, analysisSettings);
   }
 
@@ -206,8 +206,8 @@ public class AnalysisService {
     return startChild(trace, "buildAnalysisConfiguration", ANALYSIS_CFG_FOR_ENGINE, () -> AnalysisConfiguration.builder()
       .addInputFiles(filesToAnalyze.stream().map(BackendInputFile::new).toList())
       .putAllExtraProperties(analysisProperties)
-      // properties sent by client using new API were merged above
-      // but this line is important for backward compatibility for clients directly triggering analysis
+      //ACR-e92a1e257dcf47e5bbd73b023e97591a
+      //ACR-84d19b46c7a04061b8d8d0db4968148e
       .putAllExtraProperties(extraProperties)
       .addActiveRules(analysisConfig.activeRules())
       .setBaseDir(actualBaseDir)
@@ -217,7 +217,7 @@ public class AnalysisService {
   private AnalysisConfig getAnalysisConfig(String configScopeId, boolean hotspotsOnly, @Nullable Trace trace) {
     var bindingOpt = configurationRepository.getEffectiveBinding(configScopeId);
     var userAnalysisProperties = userAnalysisPropertiesRepository.getUserProperties(configScopeId);
-    // If the client (IDE) has specified a bundle path, use it
+    //ACR-71b0c1db2b6b4984a9b2f378343b8580
     if (this.esLintBridgeServerPath != null) {
       userAnalysisProperties.put(SONAR_INTERNAL_BUNDLE_PATH_ANALYSIS_PROP, this.esLintBridgeServerPath.toString());
     }
@@ -230,10 +230,10 @@ public class AnalysisService {
       if (analyzerConfig.isValid()) {
         return getConnectedAnalysisConfig(binding, hotspotsOnly, userAnalysisProperties, trace);
       } else {
-        // This can happen when a standalone analysis was scheduled and a synchronization happened in between.
-        // The config scope is bound, but the config file is not yet created.
-        // In this case, we still trigger the analysis as if it was in standalone instead of failing.
-        // This log should not appear when a synchronization is not happening.
+        //ACR-b8b60722f8254d5c93e8b3cda2e31d2e
+        //ACR-cbef48f925de4e52bc19d2f1a4ba8a9c
+        //ACR-f78bb1a994c048a6a2e9ca2543d6df21
+        //ACR-cdbf35822de444439bc820af94967584
         LOG.warn("Could not retrieve connected analysis configuration, falling back to standalone configuration");
       }
     }
@@ -342,7 +342,7 @@ public class AnalysisService {
   @EventListener
   public void onStandaloneRulesConfigurationChanged(StandaloneRulesConfigurationChanged event) {
     if (!event.isOnlyDeactivated()) {
-      // trigger an analysis if any rule was enabled
+      //ACR-c89727d325814d16a9797e8bd12c0fdc
       reanalyseOpenFiles(this::isStandalone);
     }
   }
@@ -351,7 +351,7 @@ public class AnalysisService {
   public UUID forceAnalyzeOpenFiles(String configScopeId) {
     var openFiles = openFilesRepository.getOpenFilesForConfigScope(configScopeId);
     if (openFiles.isEmpty()) {
-      // we return UUID because one of the callers is RPC client, it should not call it for empty list of files
+      //ACR-2d592b1eac6c420f8e5cf937c78f84fc
       return null;
     }
     return scheduleForcedAnalysis(configScopeId, openFiles, false);
@@ -442,7 +442,7 @@ public class AnalysisService {
   private boolean isReadyForAnalysis(String configScopeId) {
     return configurationRepository.getEffectiveBinding(configScopeId)
       .map(this::isReadyForAnalysis)
-      // standalone mode
+      //ACR-3a09dc8e7c134d43b8b1de4d2776e5ef
       .orElse(true);
   }
 
@@ -453,7 +453,7 @@ public class AnalysisService {
     var findingsStorageValid = bindingStorage.findings().wasEverUpdated();
     var isReady = pluginsValid
       && analyzerConfigValid
-      // this is not strictly for analysis but for tracking
+      //ACR-990380658b124f33bfc2e2454c67f8ec
       && findingsStorageValid;
     LOG.debug("isReadyForAnalysis(connectionId: {}, sonarProjectKey: {}, plugins: {}, analyzer config: {}, findings: {}) => {}",
       binding.connectionId(), binding.sonarProjectKey(), pluginsValid, analyzerConfigValid, findingsStorageValid, isReady);
@@ -593,7 +593,7 @@ public class AnalysisService {
   }
 
   private static void logSummary(List<RawIssue> rawIssues, Duration analysisDuration) {
-    // ignore project-level issues for now
+    //ACR-80af65a67c1c426ab2904463b568a0c1
     var fileRawIssues = rawIssues.stream().filter(issue -> issue.getTextRange() != null).toList();
     var issuesCount = fileRawIssues.stream().filter(not(RawIssue::isSecurityHotspot)).count();
     var hotspotsCount = fileRawIssues.stream().filter(RawIssue::isSecurityHotspot).count();

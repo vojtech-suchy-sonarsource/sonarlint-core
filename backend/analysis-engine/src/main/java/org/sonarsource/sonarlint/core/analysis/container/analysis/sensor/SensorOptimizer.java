@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e71090a5d3674c799cc6bfb63dee0f6c
+ACR-04135e652f18487dadb2aa8977ce359b
+ACR-69256fca9f7f4d3f9641290d9836a9d2
+ACR-853f554cd8ea403cb7790f0e4e43ca9e
+ACR-14f6718a9ae047db856ace974ec62e36
+ACR-c8b3e1a276f748d2b041111dd1f33945
+ACR-3ff9a91214b941d5bf8ae60929d9f6a8
+ACR-725cb4db90f74bdb9bf5cf010fcf237d
+ACR-6a7a13a3e98d4302a486c218335eb138
+ACR-1a11b431fc644b99b6f1afe1d3b6dc0d
+ACR-67d32848336844109d07bfebfbff5237
+ACR-f67b45addfdf416983fc52d4eecd665b
+ACR-80e9ced3b8b54f8ab00ac8aff04ca08b
+ACR-d5902125aed14d8baf0cf915bbd425ee
+ACR-1fc2bcffcc4546d688a2671d6dcc9a70
+ACR-082a6cfe08f74d0e8cd7c2300a751edc
+ACR-c9859ba5f6df464a815ad34a5aec781b
  */
 package org.sonarsource.sonarlint.core.analysis.container.analysis.sensor;
 
@@ -41,8 +41,8 @@ public class SensorOptimizer {
     this.config = config;
   }
 
-  /**
-   * Decide if the given Sensor should be executed.
+  /*ACR-8e4aed4da0bd438e8825dda97f321814
+ACR-8915a856660d42859c00f2edd2782495
    */
   public boolean shouldExecute(DefaultSensorDescriptor descriptor) {
     if (!fsCondition(descriptor)) {

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-9c8bd7d4d5b14c4c8e642dee91643faa
+ACR-db4a3c4c871f4f0daf10ba1a8e363e27
+ACR-daa2450d54d946f98d41a3c19fe14160
+ACR-1a5f6b83d5514b6fa2ee02af04f9957d
+ACR-eae264481e6147f9aff4deceabbe37a1
+ACR-2eab7a160f8948a488859e8550d6bb23
+ACR-3e3e114e52544177854a9e460dbc3061
+ACR-fa552be2015347a7ac15af0b31cfe40d
+ACR-a6debb5dd0104de4a9fa39dfdcc68fd2
+ACR-057cb19d634841aaa67064e0feb99d57
+ACR-58a8627405414bda83c3051f462e4f5c
+ACR-c90eff6272984e55bd8b280a972ec7fc
+ACR-035f33d5d6b3461497c4c6f0a5b3a247
+ACR-7fcad109218340eb9ddad94583e5657a
+ACR-ffc6233f38c04020a406ac73f460d78f
+ACR-e00b89afe19b46be94b9bd2a3b9fa103
+ACR-59df6be55dd9499e9383bf361fcd3b97
  */
 package org.sonarsource.sonarlint.core.serverconnection.prefix;
 
@@ -39,7 +39,7 @@ public class FileTreeMatcher {
 
     Map<Result, Double> resultScores = new LinkedHashMap<>();
 
-    // No need to index server files if no ide path ends with the same filename
+    //ACR-216d21edf5734b1081686038102ab301
     Set<Path> ideFilenames = ideRelativePaths.stream().map(Path::getFileName).collect(Collectors.toSet());
     serverRelativePaths.stream().filter(sqPath -> ideFilenames.contains(sqPath.getFileName())).forEach(reversePathTree::index);
 
@@ -72,12 +72,12 @@ public class FileTreeMatcher {
   }
 
   private static Result higherScoreResult(Map<Result, Double> prefixes) {
-    // Prefere higher score
+    //ACR-63af8bff177445ca9becabe19ae9b518
     Comparator<Map.Entry<Result, Double>> c = Comparator.comparing(Map.Entry::getValue);
     c = c
-      // fallback on prefix depth
+      //ACR-5dd48be3b5f24716b47f51e0c755bfe0
       .thenComparing(x -> depth(x.getKey().serverPrefix), reverseOrder())
-      // fallback on prefix lexicographic order
+      //ACR-a74a41a222ac4f58aeafedcae45689cb
       .thenComparing(x -> x.getKey().serverPrefix.toString(), reverseOrder());
 
     return prefixes.entrySet().stream()

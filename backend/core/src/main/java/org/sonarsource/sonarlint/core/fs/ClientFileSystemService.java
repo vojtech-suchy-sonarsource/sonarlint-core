@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-b51dbf44e6754f6db4a289f990709fd1
+ACR-d9e60e57f8234cc086bbe328c75395c9
+ACR-918dc84e14054d779df276c439a188ae
+ACR-d3a2d6ca47df4252a3d0d6be505be658
+ACR-34cf3ec625dc47ffbcc19dbf600afec0
+ACR-34163074135443a0a39bc06e4e295717
+ACR-ba1dafd5a7e948828c57a7fe72963d50
+ACR-9b5c9a46fb7f4ef2a8edfa6cdfd13211
+ACR-0327cf9bf1614ed5ab5de10372dd0ecd
+ACR-fa7077a48bc34833bf0b2f75c63277a0
+ACR-c1d3b0fd435943ce8343a456edb25b13
+ACR-371798e648154c53974efc7e90e617b2
+ACR-154475b03b3d423489d6d09d6cf6af97
+ACR-c99be4f73a324976806e289c46db9a62
+ACR-d066bcf75a1f4710ab139a028f033f40
+ACR-debb00bad7114d8a8451bb26144c7a81
+ACR-90c6a29ad8654186a7bca1a8193ae9d4
  */
 package org.sonarsource.sonarlint.core.fs;
 
@@ -147,7 +147,7 @@ public class ClientFileSystemService {
     params.getAddedFiles().forEach(clientFileDto -> {
       var clientFile = fromDto(clientFileDto);
       var previousFile = filesByUri.put(clientFileDto.getUri(), clientFile);
-      // We only send send the ADDED event for files that were actually added (not existing before)
+      //ACR-06e153a77c304c3198e86c94678fa258
       if (previousFile == null) {
         added.add(clientFile);
       }
@@ -159,7 +159,7 @@ public class ClientFileSystemService {
     params.getChangedFiles().forEach(clientFileDto -> {
       var clientFile = fromDto(clientFileDto);
       var previousFile = filesByUri.put(clientFileDto.getUri(), clientFile);
-      // Modifying an unknown file is equals to adding it
+      //ACR-6c6ef104cee24734bad05ce894c25d41
       if (previousFile != null) {
         updated.add(clientFile);
       } else {
@@ -186,16 +186,16 @@ public class ClientFileSystemService {
     filesByConfigScopeIdCache.close();
   }
 
-  /**
-   * This will trigger loading the FS from the client if needed
+  /*ACR-21f88ac5557b43ea98a3013c087cdf49
+ACR-6d4a71c7873c417f9b9be3ef90d17848
    */
   @CheckForNull
   public ClientFile getClientFiles(String configScopeId, URI fileUri) {
     return filesByConfigScopeIdCache.get(configScopeId).get(fileUri);
   }
 
-  /**
-   * This will NOT trigger loading the FS from the client
+  /*ACR-682bbe77a94b4e54b19503899b221c66
+ACR-810ebeeba52e457095729e4031f72cf1
    */
   @CheckForNull
   public ClientFile getClientFile(URI fileUri) {

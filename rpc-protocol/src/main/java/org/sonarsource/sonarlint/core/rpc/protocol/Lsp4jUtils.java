@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e5df72dd7f87433ba5af4f2816af95e4
+ACR-5ace3d239adf449ebe506952f5c057d5
+ACR-2f5c241969aa4a6d8083cfad8ba21c67
+ACR-d1957c5b1c1d44f8a3239de691cc12a4
+ACR-d438ff0b9ed2468882c8b567cfeafaf2
+ACR-0b8cf2028d914192964498c86c16a1f8
+ACR-6ab591cc1e8e4c06bcddd7ca96fe8ea3
+ACR-768fe64779c34242be012a243068fbad
+ACR-fde69da414344a30bdd77174ac9e029a
+ACR-54728544f64242ecba1bbec1c2b5a881
+ACR-2167df8b33144230a37e18dfab69e482
+ACR-6f04ebe3b27a4f78a7b6e78d8a777730
+ACR-6361e6aba9db48f58fb018c5e25a683d
+ACR-f2519db6cf9443a6b64f7b89c196650c
+ACR-e8f0eae6237c4074b05ec2b387e0b142
+ACR-29ae08fb9b6042bab61a53ec8ec5bdc4
+ACR-9cccbd3d1df544ccafad664ad96b18ea
  */
 package org.sonarsource.sonarlint.core.rpc.protocol;
 
@@ -26,11 +26,11 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.Either;
 public class Lsp4jUtils {
 
   private Lsp4jUtils() {
-    // Utils class
+    //ACR-e72cd421fcf74af49479cf95381f71f3
   }
 
-  /**
-   * Test whether the given type is Either.
+  /*ACR-8b0adc12a58e4c4f9319a9ed0303ecd5
+ACR-57eda581d4db4fec974bf5a0b636d8df
    */
   public static boolean isEither(Type type) {
     if (type instanceof ParameterizedType) {

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Plugin Commons
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e112fe71a44c496187505d49ffd7e9b2
+ACR-434bee204fa0460bad82d15bc14062fe
+ACR-009341d3a359490f8373b4bb3b8a237f
+ACR-3561125538b241dbbd6153dc70418661
+ACR-8222f3dd6b9c478486e37807f16a3dfc
+ACR-85186f12c913411cb4436295f2e2415a
+ACR-43b438691d574139a825a27f15d3f542
+ACR-fd95fd8b467c4756bac7441c47bb2c33
+ACR-0e852f4ba507461cbab2670902137607
+ACR-d16201e99bf64cc69aa86da3b7866c54
+ACR-27c280d8a3be4de7ace1fdbce6189d5b
+ACR-fa0225a3ff12403fb92062f1ff84dc3a
+ACR-6d186f83617e4c4897f51427832b61cf
+ACR-5612ff12529040eab77da44545c0ece2
+ACR-592202c55969436fbfdb20187daa688e
+ACR-ee1509bcd1ab4e01a838164fdaa70e37
+ACR-bd3629b7f10147948465ff2fe8bfed7b
  */
 package org.sonarsource.sonarlint.core.plugin.commons.container;
 
@@ -30,14 +30,14 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 
 public class PriorityBeanFactory extends DefaultListableBeanFactory {
-  /**
-   * Determines highest priority of the bean candidates.
-   * Does not take into account the @Primary annotations.
-   * This gets called from {@link DefaultListableBeanFactory#determineAutowireCandidate} when the bean factory is finding the beans to autowire. That method
-   * checks for @Primary before calling this method.
-   *
-   * The strategy is to look at the @Priority annotations. If there are ties, we give priority to components that were added to child containers over their parents.
-   * If there are still ties, null is returned, which will ultimately cause Spring to throw a NoUniqueBeanDefinitionException.
+  /*ACR-f91ce6a7c1384704bff5f8662d67aa45
+ACR-ea0fd7ea8a87475fa0c9f678c6992f03
+ACR-f6db0e251baa4808a8e94efd90bd2fc4
+ACR-f4362846997c4200a3f80344ce905020
+ACR-510213c85e0e42a3a145bbafc00cff43
+ACR-d48d5d009f864e528f312cc91c3c7232
+ACR-91a0faa67d9f4dce9df10227d38c0c85
+ACR-2b93fc76670641b4bff40ee5fecea63f
    */
   @Override
   @Nullable
@@ -99,10 +99,10 @@ public class PriorityBeanFactory extends DefaultListableBeanFactory {
     return null;
   }
 
-  /**
-   * A common mistake when migrating from Pico Container to Spring is to forget to add @Inject or @Autowire annotations to classes that have multiple constructors.
-   * Spring will fail if there is no default no-arg constructor, but it will silently use the no-arg constructor if there is one, never calling the other constructors.
-   * We override this method to fail fast if a class has multiple constructors.
+  /*ACR-6c2dc7a199b7496383cf7e0321953abb
+ACR-e47b7f6aeb2e4c5f80749ca8a1335733
+ACR-89ef573770ac41b08688f296d48ef4ef
+ACR-614fa1e2402a4d0480d7607499d60950
    */
   @Override
   protected BeanWrapper instantiateBean(String beanName, RootBeanDefinition mbd) {

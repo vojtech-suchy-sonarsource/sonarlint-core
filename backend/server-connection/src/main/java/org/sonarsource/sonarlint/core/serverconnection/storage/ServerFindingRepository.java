@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-dc147b8d43c144cc8400325556d560d9
+ACR-3497a07ca37e4f8f9b2300b8597afd3f
+ACR-1241f1d75e6a41af88359eefd0899daf
+ACR-ba6268dfb5c041acb0749f4d62f0691c
+ACR-7026bdeed90f4fd8a6aa9da6e16ed81f
+ACR-a213b4a6447d4f3b9076d6f4eb7701f5
+ACR-6f78e747277146d4997b47bcc0ca6278
+ACR-c5cdc1d859d1461cb79dd69d04a4f25d
+ACR-4468a607b157405aa3ee6cae45f7aecc
+ACR-9bd8cc862db5438096f4927f178a633d
+ACR-f007c560d62840b79df0e90acd17c234
+ACR-32f0cfbd9da043d6aa79f5e48076961e
+ACR-2fd79597f985447594b2f280a91b4602
+ACR-5759ffa9c269453eb855e6ce9e95c8fd
+ACR-2054a488d85147dfaf2855bb35439ce0
+ACR-65f49bad77c942338c3c5a0fab31c555
+ACR-2bba9ca3a24b4c88a436499c0f212a52
  */
 package org.sonarsource.sonarlint.core.serverconnection.storage;
 
@@ -118,7 +118,7 @@ public class ServerFindingRepository implements ProjectServerIssueStore {
     });
   }
 
-  // we don't consume return value for now, probably should be void
+  //ACR-6bccab712ddf406096f6d825d1e0adda
   @Override
   public boolean changeHotspotStatus(String hotspotKey, HotspotReviewStatus newStatus) {
     database.update(SERVER_FINDINGS)

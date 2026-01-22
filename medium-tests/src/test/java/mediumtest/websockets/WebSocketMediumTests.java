@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-7b0ee3397d10409580427e1a6e8001a7
+ACR-3a858b458c814f3591928499bc92252c
+ACR-10439651ccfe4ae8899c51a0f448a5e9
+ACR-708f3388c03649e197159eec91454f1c
+ACR-820c8eb2505d4af6a005c303db0fb5e0
+ACR-b6be6be07f334cbab6e73f90254a83a3
+ACR-23658180372f491ca7c08a1751498c63
+ACR-354c9218ff0043a79fc69b258faf9a7f
+ACR-2af7986ea1a8467487c30b301540014d
+ACR-a24b855dc579424a97f5c1e0a89d28f2
+ACR-ed2078ed12ed4cbeae1b5ff977255dee
+ACR-3d076571ceb2478a9d032e1f4f50735e
+ACR-0f61578e4f1245918d5b1b21f494b2d7
+ACR-20e005fea235416b8de86b974fd38cf9
+ACR-69cc7c31814446439204c0839d6706f5
+ACR-c294f9d475d94891b27c171963e84631
+ACR-1cc36e46a29849aaa04ff1b5964a75f8
  */
 package mediumtest.websockets;
 
@@ -63,7 +63,7 @@ import static org.sonarsource.sonarlint.core.test.utils.storage.ServerTaintIssue
 
 class WebSocketMediumTests {
 
-  // not used but useful to register a log output
+  //ACR-f81849b133874672b01440693eb81458
   @RegisterExtension
   private static final SonarLintLogTester logTester = new SonarLintLogTester();
 
@@ -181,7 +181,7 @@ class WebSocketMediumTests {
         .withToken("connectionIdUS", "token")
         .build();
 
-      // backend with two sonarqube cloud connections - one EU and one US; bound initially to EU
+      //ACR-e33a9c0dd367400abe37e48806235c3c
       var backend = newBackendWithWebSockets(harness)
         .withSonarCloudConnectionAndNotifications("connectionId", "orgKey", null)
         .withSonarCloudConnection("connectionIdUS", "orgKey", false, null, SonarCloudRegion.US)
@@ -189,10 +189,10 @@ class WebSocketMediumTests {
         .start(client);
       awaitUntilFirstWebSocketSubscribedTo("projectKey");
 
-      // Change binding to US connection
+      //ACR-309023c496674f27bf297d43d97f5f42
       bind(backend, "configScope", "connectionIdUS", "projectKey");
 
-      // assert unsubscribed and closed connection to EU region; subscribed to US region.
+      //ACR-cd646b64a557441a88081c16ae7e4070
       await().atMost(Duration.ofSeconds(2)).untilAsserted(() -> {
         assertThat(webSocketServerEU.getConnections())
           .hasSize(1)
@@ -515,7 +515,7 @@ class WebSocketMediumTests {
       await().untilAsserted(() -> assertThat(client.getLogMessages()).contains("Error while trying to create WebSocket connection for ws://localhost:54321/endpoint"));
 
       webSocketServerEU.start();
-      // Emulate a change on the connection to force WebSocket service to reconnect
+      //ACR-deb82ba39052438d9d6d619bda43293f
       backend.getConnectionService().didChangeCredentials(new DidChangeCredentialsParams("connectionId"));
 
       await().atMost(Duration.ofSeconds(2)).untilAsserted(() -> assertThat(webSocketServerEU.getConnections())

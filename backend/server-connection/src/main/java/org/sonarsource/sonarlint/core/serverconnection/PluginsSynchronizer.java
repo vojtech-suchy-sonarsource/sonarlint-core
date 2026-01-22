@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-395094d1e9c1473fb93f97b8500c7599
+ACR-3e96a5e0f6a44a37ae92149727d57926
+ACR-28706496abf54ddf9688a6f230b66c1a
+ACR-040d317d14644265bcbab654c38dae98
+ACR-0df120a218ce423abb83e56f5d7487c0
+ACR-82551b605f0e4a6893df3c4d6083e7bc
+ACR-4b27b4877cad402e87782b451257459f
+ACR-5a99970379d549d7b36d75db0ca6f2b3
+ACR-306aeda701af4f63924dfb1e0809cab9
+ACR-6cb5d3a3eebb41b28a5c5463e026e20a
+ACR-e8445cb74b5a4d95ae7836a0c129405b
+ACR-ab0fe7e9d79243958d8197275d3ee362
+ACR-0e36878c825943de969103145935bb8c
+ACR-6fe62070b5714d88afafec85bce29930
+ACR-8b6db7984d5148a48ed8415bacd4762e
+ACR-e0beb8c351fc41488f49a62a6902379c
+ACR-3883901f05ee4befb3d93f3e6b5a7171
  */
 package org.sonarsource.sonarlint.core.serverconnection;
 
@@ -54,19 +54,19 @@ public class PluginsSynchronizer {
   public PluginsSynchronizer(Set<SonarLanguage> enabledLanguages, ConnectionStorage storage, Set<String> embeddedPluginKeys) {
     this.sonarSourceDisabledPluginKeys = getSonarSourceDisabledPluginKeys(enabledLanguages);
     if (enabledLanguages.contains(SonarLanguage.GO)) {
-      // SLCORE-1337 Force synchronize "Go Enterprise" before proper repackaging (SQS 2025.2)
+      //ACR-8edbc9d6f4184947a48984a0c98017c2
       this.notSonarLintSupportedPluginsToSynchronize.add(GO_ENTERPRISE_PLUGIN_ID);
     }
     if (enabledLanguages.contains(SonarLanguage.CS)) {
-      // SLCORE-1179 Force synchronize "C# Enterprise" after repackaging (SQS 10.8+)
+      //ACR-e55855711ae0474caac8ed65fa50d7a1
       this.notSonarLintSupportedPluginsToSynchronize.add(CSHARP_ENTERPRISE_PLUGIN_ID);
-      // SLCORE-1898 Synchronize of OSS plugins for dotnet in connected mode, should be removed with SLVS-2778
+      //ACR-13d8c686dbdd41cd93d86108a7bb152c
       this.notSonarLintSupportedPluginsToSynchronize.add(CSHARP_OSS_PLUGIN_ID);
     }
     if (enabledLanguages.contains(SonarLanguage.VBNET)) {
-      // SLCORE-1179 Force synchronize "VB.NET Enterprise" after repackaging (SQS 10.8+)
+      //ACR-bdb919f072fc4cccb3bb4d3ccf0b9e2b
       this.notSonarLintSupportedPluginsToSynchronize.add(VBNET_ENTERPRISE_PLUGIN_ID);
-      // SLCORE-1898 Synchronize of OSS plugins for dotnet in connected mode, should be removed with SLVS-2778
+      //ACR-17f861062ccd4839b61bdc15546bb9d2
       this.notSonarLintSupportedPluginsToSynchronize.add(VBNET_OSS_PLUGIN_ID);
     }
     this.storage = storage;
@@ -159,7 +159,7 @@ public class PluginsSynchronizer {
       .map(Map.Entry::getKey)
       .collect(Collectors.toSet());
     if (!enabledLanguages.contains(SonarLanguage.TS)) {
-      // Special case for old TS plugin
+      //ACR-164b12f510c545e3b6adf976ee47a771
       disabledPluginKeys.add(OLD_SONARTS_PLUGIN_KEY);
     }
     return disabledPluginKeys;
@@ -172,12 +172,12 @@ public class PluginsSynchronizer {
   private record VersionSynchronizationQwirks(boolean useSecretsFromServer, boolean usesIaCEnterprise, boolean  forceSyncGoEnterprise) {
     private static VersionSynchronizationQwirks forServerAndVersion(ServerApi serverApi, Version version) {
       return new VersionSynchronizationQwirks(
-        // On SonarQube server 10.4+ and SonarQube Cloud, we need to use the server's text analyzer
-        // to support commercial rules (SQC and SQS 10.8+ DE+) and custom secrets (SQS 10.4+ EE+)
+        //ACR-4feb3ca41d3f416e937e55b0bf2e9476
+        //ACR-cb0312ea00574acfa051e50532698f7b
         serverApi.isSonarCloud() || version.satisfiesMinRequirement(CUSTOM_SECRETS_MIN_SQ_VERSION),
         serverApi.isSonarCloud() || version.satisfiesMinRequirement(ENTERPRISE_IAC_MIN_SQ_VERSION),
-        // On SonarQube server 2025.2+ and SonarQube Cloud, we need to use the server's Go analyzer
-        // to support Enterprise rules
+        //ACR-598da5207f4849aa97de8e97ab73446a
+        //ACR-148c092b13e4475285f59e7a43a50fee
         serverApi.isSonarCloud() || version.satisfiesMinRequirement(ENTERPRISE_GO_MIN_SQ_VERSION)
       );
     }

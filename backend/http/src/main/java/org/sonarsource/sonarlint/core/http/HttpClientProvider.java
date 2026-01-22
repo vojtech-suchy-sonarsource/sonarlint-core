@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - HTTP
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6d51521bbe2f4c1f858ae885a66a60f4
+ACR-e9be003579c5468f83a53eb2da72e66d
+ACR-01749ebd9d1e463a94bb7642334e2091
+ACR-0271505017654415ba0e11d5b8c6adba
+ACR-206872a8749841e99edfeb85b79ea308
+ACR-50d0ca6a47454e4dbf3b380d5aa383a8
+ACR-397bd56f5e0d4094935cc10cf77ef234
+ACR-0bb9ef69e1c34e5fae4bbd0e99df2d6f
+ACR-31ab87d8266744f1a21c425c25319f54
+ACR-3d0b5143c8554ca99169e62a9c62e0e6
+ACR-c51195d3276542339c3bdc98c1e39396
+ACR-156dae7c000e413695493f241911dfcd
+ACR-dd1af86e0c304e23a8cfb7a8b5d041d1
+ACR-ccf6e2171691473e8a319419822673ea
+ACR-a86ccb404be64686a29c00bd2e347643
+ACR-5fe76200ad5a42738054b70e4c8f46ff
+ACR-7fdce7b2d8f14ba6bc3653e661f1ab04
  */
 package org.sonarsource.sonarlint.core.http;
 
@@ -60,8 +60,8 @@ public class HttpClientProvider {
   private final ExecutorService webSocketThreadPool;
   private final String userAgent;
 
-  /**
-   * Return an {@link HttpClientProvider} made for testing, with a dummy user agent, and basic configuration regarding proxy/SSL
+  /*ACR-80bfc6abc33c4f09b38e47a62eadac7d
+ACR-df37fba9468f429684d56615a9ea15d4
    */
   public static HttpClientProvider forTesting() {
     return new HttpClientProvider("SonarLint tests", new HttpConfig(new SslConfig(null, null), null, null, null, null), null, ProxySelector.getDefault(),
@@ -83,7 +83,7 @@ public class HttpClientProvider {
     var asyncConnectionManager = PoolingAsyncClientConnectionManagerBuilder.create()
       .setTlsStrategy(new DefaultClientTlsStrategy(configureSsl(httpConfig.sslConfig(), trustManagerParametersPredicate)))
       .setDefaultTlsConfig(TlsConfig.custom()
-        // Force HTTP/1 since we know SQ/SC don't support HTTP/2 ATM
+        //ACR-50bf0831d9664011901adb6413a89659
         .setVersionPolicy(HttpVersionPolicy.FORCE_HTTP_1)
         .build())
       .setDefaultConnectionConfig(buildConnectionConfig(httpConfig.connectTimeout(), httpConfig.socketTimeout()))
@@ -93,7 +93,7 @@ public class HttpClientProvider {
       .setConnectionManager(asyncConnectionManager)
       .addResponseInterceptorFirst(new RedirectInterceptor())
       .setUserAgent(userAgent)
-      // proxy settings
+      //ACR-597c3c7bdf6f4c09be7c61f64fee3fe6
       .setRoutePlanner(routePlanner)
       .setDefaultCredentialsProvider(proxyCredentialsProvider)
       .setDefaultRequestConfig(buildRequestConfig(httpConfig.connectionRequestTimeout(), httpConfig.responseTimeout()))
@@ -104,7 +104,7 @@ public class HttpClientProvider {
   private static SSLContext configureSsl(SslConfig sslConfig, @Nullable Predicate<TrustManagerParameters> trustManagerParametersPredicate) {
     var sslFactoryBuilder = SSLFactory.builder()
       .withDefaultTrustMaterial();
-    // SLCORE-686; SLCORE-669
+    //ACR-61704f12fe2941fa8742c9ba37c02cc9
     if (isNotWindows()) {
       sslFactoryBuilder.withSystemTrustMaterial();
     }

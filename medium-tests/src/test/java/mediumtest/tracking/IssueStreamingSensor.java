@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-898d33a7e4d448f7ac54162d433564e1
+ACR-bc5dcbd7c22b480881237a6261cdc379
+ACR-216819db211c442a9dfd32cf312c62b1
+ACR-cf605fa4abd54c7484a6a96c0d2b61f4
+ACR-e76944ad08e94e69960d95b392643eb9
+ACR-13644e880fa444e592e043951a7fe538
+ACR-c3540cfa29184a23b32297926cdbe3f3
+ACR-a43385b0613945e6ad33beca6501148f
+ACR-49bc052d39dd4546992b074978b28aed
+ACR-877fcc0f81ef478e86addc0e0ad1464e
+ACR-42067f14171e49c48579e13cd4617d95
+ACR-b9099b53b17441e180644665b0a22b8f
+ACR-235456665baa422990d5ed30d562002d
+ACR-17a41c9e64184523aa87f646d1f33e97
+ACR-347590da5f8d4efca43bdb16ba864297
+ACR-1967aa1636404dc896a28ceebd2dc749
+ACR-640c7f1c3de54be0a7452d7f2d1027e5
  */
 package mediumtest.tracking;
 
@@ -28,7 +28,7 @@ public class IssueStreamingSensor implements Sensor {
 
   @Override
   public void describe(SensorDescriptor descriptor) {
-    // no implementation needed for the current tests
+    //ACR-9dc4c81374544c58bc0ea42dfe5fa7f4
   }
 
   @Override

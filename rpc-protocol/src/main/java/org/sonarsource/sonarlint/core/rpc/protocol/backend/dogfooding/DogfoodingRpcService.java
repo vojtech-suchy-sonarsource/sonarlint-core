@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Protocol
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-32c6161773eb4c299a934bed496feffb
+ACR-0eb9423ed6024b209b129fd7e88d405f
+ACR-49e22c9aaedd47729d0aa75f77dc9004
+ACR-7dd83c3d19d0464690660502dcc89918
+ACR-4c5cee0c54e946b89c4629a951487c97
+ACR-3850baef97c44935b1c6e881afae530f
+ACR-8447053899eb4f62bc0c6746832ccc53
+ACR-83dfcfe1956e4cf791938261795918db
+ACR-fa2a3a74b80c4641ab90a11c4841f334
+ACR-082ccb71bd73418a924f75ea6a9323b9
+ACR-98cdb40dfa4a40cca6039935a6939d9c
+ACR-c9e2e2979c4642b9ba4325365f3d9b5b
+ACR-bd806314f3bc4d43b07c498d54bde55a
+ACR-9a61826d35d849f1811d4251b1c8dc6e
+ACR-3e57c039bdfe412c9bd7bc53fb02a283
+ACR-ab1165310fd54a4c89bf4229fda03c91
+ACR-a5fb1ac758ad43a3b433d9090155def7
  */
 package org.sonarsource.sonarlint.core.rpc.protocol.backend.dogfooding;
 
@@ -23,8 +23,8 @@ import java.util.concurrent.CompletableFuture;
 import org.eclipse.lsp4j.jsonrpc.services.JsonRequest;
 
 public interface DogfoodingRpcService {
-  /**
-   * Returns true if there is a dogfooding environment variable set on user's machine
+  /*ACR-8a816d9d592640389adf9d9a53f6ac16
+ACR-d80a11eaa76e44ddb7c0c1a944a406e0
    */
   @JsonRequest
   CompletableFuture<IsDogfoodingEnvironmentResponse> isDogfoodingEnvironment();

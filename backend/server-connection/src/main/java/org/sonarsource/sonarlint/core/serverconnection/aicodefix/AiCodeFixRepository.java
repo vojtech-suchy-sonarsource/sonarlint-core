@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Server Connection
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-d65bef48f7574761957b5a3cd34bae9e
+ACR-2483bea2e9e1453288d2be93638c6f3a
+ACR-4a97c8739cd3458297f65cb2a24c97ea
+ACR-3a3146c32da0414ca41bfd11cd24431b
+ACR-cccb34dadd634caf81fc3c567b450ae5
+ACR-aa4e7348f6224445afb16318d2982c7f
+ACR-e0c7141d3cbf4fc49c35da68f5394c91
+ACR-9dcd500255e64c1ab78a2c113ec28769
+ACR-b45284fb541e4fd0a8885c18c40cd32b
+ACR-d1f1ba224f4b4c938baa25de3219ccb8
+ACR-cb14c8a1c5044ba59246ecf17518637f
+ACR-eed14578a07a41b98144158cc872db77
+ACR-a82706849fcd42b3893e3adbfbcf25de
+ACR-8a65f64bda9b4c37b8757602d4978650
+ACR-3412af9b71034889877d7417c666639f
+ACR-2e4bf7828a254072867c4817fc4cb257
+ACR-1c872341eeca49fb9d0762b1c8e413df
  */
 package org.sonarsource.sonarlint.core.serverconnection.aicodefix;
 
@@ -26,9 +26,9 @@ import org.sonarsource.sonarlint.core.commons.log.SonarLintLogger;
 
 import static org.sonarsource.sonarlint.core.commons.storage.model.Tables.AI_CODEFIX_SETTINGS;
 
-/**
- * Repository for persisting and retrieving AiCodeFix entity using the local H2 database.
- * Settings are stored per server connection, addressed by connectionId.
+/*ACR-50c1588cadbe4566a7831487aa481167
+ACR-1d170d6f2c634dfdb56ef01893cb365c
+ACR-2a267e2c4ab04869a29037ca95e71c23
  */
 public class AiCodeFixRepository {
   private static final SonarLintLogger LOG = SonarLintLogger.get();

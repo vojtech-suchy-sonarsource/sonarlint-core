@@ -1,28 +1,28 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-6c88326c53424dafa30c35326ea8175b
+ACR-aae9d87793294070b25985f4a374f63e
+ACR-cfe706428f404c0b813e30ff266f5568
+ACR-f9be7ffe838f4b139cb7ce8b9dbd113e
+ACR-6536d89587394adaab586bdc25f082b0
+ACR-932fc67c903d4cc999b67f3751aa3c3f
+ACR-e9e6e943b75147f3aca4cba2b0ec9d8c
+ACR-8090de86651b41cd9f14304880cd3e21
+ACR-c7ed07bf82154bc6b1a4df9639137d24
+ACR-76a99629122047a48c9eaaabae17aeef
+ACR-b62b042bea7641539cc6740a925ca369
+ACR-6e96907c8b0f4c98be102a7f94865e68
+ACR-4bdee325690a4250afbca05901cf17a9
+ACR-94fff1efcdf549dd92814ffe731d9434
+ACR-4e67530e970f4a758bccf6c77c5f20d6
+ACR-37741f646f6645e3a2b2ead4a7fb4ccd
+ACR-47a4f0935b06494ba71e01acba838ed2
  */
 package org.sonarsource.sonarlint.core.repository.config;
 
 import javax.annotation.Nullable;
 
-/**
- * @param name The name of this configuration scope. Used for auto-binding.
+/*ACR-85ae76f2cfca40018063dcb035b68dc3
+ACR-90b5d6fc5da7439fae3631b4ba8a0ed2
  */
 public record ConfigurationScope(String id, @Nullable String parentId, boolean bindable, String name) {
 }

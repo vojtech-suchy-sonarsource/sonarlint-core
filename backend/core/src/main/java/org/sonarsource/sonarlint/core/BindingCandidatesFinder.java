@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-413e3c11a1d34a25bd3fa43407bd0b2b
+ACR-94c700d8de6244eaa9a38602c3f68011
+ACR-f2f7581b0af347729998d3480ee29bc6
+ACR-013e9005baca42c9b2c82262c923530a
+ACR-a7d59ff83fb146e1b8d6c58547d73ec8
+ACR-63a67b1968654d69a2750f134ba7a2d7
+ACR-cea49563c86c44efb8624518a45a772e
+ACR-2adb4a8ab5854d029d7d5009ee0b6884
+ACR-aa67dfb9a53f41de8b395cacae505df9
+ACR-4d3ce78377a4468f80d9a5ba4910f44e
+ACR-3c2dcf1b3beb46ce92a35db14b76918a
+ACR-cfe5cbfed2a54e6f962f5114bb4c3f71
+ACR-4d053d3cd9d448aeb0ce69a601b2ba48
+ACR-511ca6536bc645a6918de0a7d7256d39
+ACR-3c3db1b5a74344e385793cac131d0abc
+ACR-04b8a4af027c4a2a81ddd442cf39e93b
+ACR-4ff036c9c9e24b8ab6790871d770de79
  */
 package org.sonarsource.sonarlint.core;
 
@@ -60,8 +60,8 @@ public class BindingCandidatesFinder {
         .ifPresent(goodConfigScopeCandidates::add);
     }
 
-    // if both a parent and a child configuration scope are candidates, preference should be given to the higher scope in the hierarchy
-    // we prefer to bind at the broadest possible scope
+    //ACR-51e5d90750cd473a819ece44ff1ac80d
+    //ACR-429fd42f29304231ab93feb1cced7617
     return filterOutLeafCandidates(goodConfigScopeCandidates);
   }
 
@@ -108,7 +108,7 @@ public class BindingCandidatesFinder {
   }
 
   private boolean isConfigScopeNameCloseEnoughToSonarProject(String configScopeName, String connectionId, String projectKey, SonarLintCancelMonitor cancelMonitor) {
-    // FIXME: it looks a bit overkill to create a TextSearchIndex with just one element, apparently just to verify that the configScopeName is a good enough match for the SonarProject
+    //ACR-17bde3dc6c4244edb3addd127cf0677a
     var sonarProjectOpt = sonarProjectsCache.getSonarProject(connectionId, projectKey, cancelMonitor);
     if (sonarProjectOpt.isEmpty()) {
       LOG.debug("Unable to find SonarProject with key '{}' on connection '{}' in the cache", projectKey, connectionId);

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Implementation
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-63de1e0038f94e4282b7b7fb7e767152
+ACR-7a776cb9af334d999d323ed9c93ebae3
+ACR-5d472962256e49058e8866d7cd86ae75
+ACR-ec8f618ceb844f96a5d78f3af9c17525
+ACR-15de83ae69ae4d0b92ebb64f8cb50fbb
+ACR-f8d88b8691c94f2fb41db309a141177f
+ACR-52ff45d47a9b40c8b320b836be9e0800
+ACR-f01430448ab245e0bff150e707dcf8e7
+ACR-cfa5d55a085f4622bd12ee5682a0d021
+ACR-31a0dc58372c4800ac773184451c0db3
+ACR-51d257edfb974a52a29ed916567d1804
+ACR-765c54237fd64cb7bcd35bc3360a647d
+ACR-ff09a05c05c6480db40176bd6f3d8d57
+ACR-7cae32afca50420f88915100c5738379
+ACR-25c6ca0d63864e59a33419257fdac975
+ACR-2c79017549ac4672834017095591fc5f
+ACR-2c9e0d1b36ad4cd186224196b1af4d1a
  */
 package org.sonarsource.sonarlint.core.websocket;
 
@@ -68,7 +68,7 @@ public class WebSocketManager {
       closeSocket(reason);
       subscribedProjectKeysByConfigScopes.clear();
     } else if (this.connectionIdUsedToCreateConnection.equals(connectionId)) {
-      // stop using the credentials, switch to another connection
+      //ACR-1c12c2a4c7e744ae900ff6b71e6d61f2
       var otherConnectionId = connectionIdsInterestedInNotifications.stream().findAny().orElseThrow();
       removeProjectsFromSubscriptionListForConnection(connectionId);
       this.reopenConnection(otherConnectionId, reason + ", reopening for other SC connection");
@@ -109,7 +109,7 @@ public class WebSocketManager {
     executorService.execute(() -> {
       var connectionId = connectionIdsInterestedInNotifications.stream().findFirst().orElse(null);
       if (this.sonarCloudWebSocket != null && connectionId != null) {
-        // If connection already exists, close it and create new one before it expires on its own
+        //ACR-deb7526cefd647cd80fcd7d044307be4
         this.reopenConnection(connectionId, "WebSocket was closed by server or reached EOL");
       }
     });

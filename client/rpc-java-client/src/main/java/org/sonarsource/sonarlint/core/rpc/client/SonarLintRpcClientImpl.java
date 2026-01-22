@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - RPC Java Client
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-9b3564ebcaf14f1cabb2c7c2ef146942
+ACR-4b662baf0e4140a18a1d70942d69de65
+ACR-214308905939402092f505e42e75284e
+ACR-302bcef6a94d46c69a205e6bce24e596
+ACR-b233c6f18dce436e99846b242aa5cf35
+ACR-1afccf975aab4c0fa6b6597163a764d2
+ACR-4a4af0f8196c4569a6a864696e3adb29
+ACR-ec68bb38a5da4669a53826136aebe1bd
+ACR-3376f3acaa9846afa362016d32e66061
+ACR-364fe995e8f84c5d9326bed79d73cadf
+ACR-7861cc2d807f4372bf427e6c64250ee3
+ACR-1c6ea4a151b145da974acef130f05e1b
+ACR-6a59d675401a494c802382f7ad05e4df
+ACR-dc1a5846c053482da2226f6517bc9e13
+ACR-246c7d67203c46d1a7337dc58cf93713
+ACR-f3b3d3de2f664f7ca644127901ba184f
+ACR-6f83a37de09e4739a7f32756e00656cd
  */
 package org.sonarsource.sonarlint.core.rpc.client;
 
@@ -90,15 +90,15 @@ import org.sonarsource.sonarlint.core.rpc.protocol.client.sync.InvalidTokenParam
 import org.sonarsource.sonarlint.core.rpc.protocol.client.taint.vulnerability.DidChangeTaintVulnerabilitiesParams;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.telemetry.TelemetryClientLiveAttributesResponse;
 
-/**
- * Implementation of {@link SonarLintRpcClient} that delegates to {@link SonarLintRpcClientDelegate} in order to simplify Java clients and avoid
- * leaking too many RPC-specific concept in each Java IDE.
- * In particular, this class attempt to:
- * <ul>
- *   <li>Hide the fact that RPC is asynchronous (don't let clients manipulate completable futures)</li>
- *   <li>Hide cancellation except if there is a functional need</li>
- *   <li>Convert Java exceptions to RPC error messages</li>
- * </ul>
+/*ACR-fcf73df30d2745859d89a9d97020a087
+ACR-c4dc31dad6094a4b8fec160e9fe0cd4f
+ACR-b2e438810651471f90d47a15383affea
+ACR-1ab17a8e532347c9a75d5466a726a35e
+ACR-e424c23f8bb24518a2becd208c4fb8cd
+ACR-757931f496c241b888c43a27d6ef3981
+ACR-2f16dcf932d04919a59773992c26d0a0
+ACR-b0451852f56e44b3911434e37ebac38e
+ACR-eb5b7faf068d4713a743b608638dad6f
  */
 public class SonarLintRpcClientImpl implements SonarLintRpcClient {
 
@@ -114,14 +114,14 @@ public class SonarLintRpcClientImpl implements SonarLintRpcClient {
 
   protected <R> CompletableFuture<R> requestAsync(Function<CancelChecker, R> code) {
     CompletableFuture<CancelChecker> start = new CompletableFuture<>();
-    // First we schedule the processing of the request on the sequential executor, to maintain ordering of notifications, requests, responses,
-    // and cancellations
+    //ACR-c3140415fbb84672b469858890804f38
+    //ACR-ed314940201a44f086cfa5215ce9bd2e
     var sequentialFuture = start.thenApplyAsync(cancelChecker -> {
-      // We can maybe cancel early
+      //ACR-4db60c77c3ac4f77a1b13e37d7aeab36
       cancelChecker.checkCanceled();
       return cancelChecker;
     }, requestAndNotificationsSequentialExecutor);
-    // Then requests are processed asynchronously to not block the processing of notifications, responses and cancellations
+    //ACR-1931face06ff4d3d9bdab5f8188f8da6
     var requestFuture = sequentialFuture.thenApplyAsync(cancelChecker -> {
       cancelChecker.checkCanceled();
       return code.apply(cancelChecker);
@@ -132,14 +132,14 @@ public class SonarLintRpcClientImpl implements SonarLintRpcClient {
 
   protected CompletableFuture<Void> runAsync(Consumer<CancelChecker> code) {
     CompletableFuture<CancelChecker> start = new CompletableFuture<>();
-    // First we schedule the processing of the request on the sequential executor, to maintain ordering of notifications, requests, responses,
-    // and cancellations
+    //ACR-b442636977f548f99ba845a92d1cacf1
+    //ACR-052915afcc5a4138bc467829832ec0d2
     var sequentialFuture = start.thenApplyAsync(cancelChecker -> {
-      // We can maybe cancel early
+      //ACR-89b628057854488e83f5e8e1b74fb242
       cancelChecker.checkCanceled();
       return cancelChecker;
     }, requestAndNotificationsSequentialExecutor);
-    // Then requests are processed asynchronously to not block the processing of notifications, responses and cancellations
+    //ACR-3fa41586f602487c8cc4e525572d2809
     var requestFuture = sequentialFuture.<Void>thenApplyAsync(cancelChecker -> {
       cancelChecker.checkCanceled();
       code.accept(cancelChecker);
@@ -159,8 +159,8 @@ public class SonarLintRpcClientImpl implements SonarLintRpcClient {
     });
   }
 
-  /**
-   * Client errors don't need to go over RPC, and can instead directly go through the delegate.
+  /*ACR-c0600756b6a84fc892755fa815a22653
+ACR-c4e198426f5b40bfbbae45dc9650bdfd
    */
   void logClientSideError(String message, Throwable throwable) {
     delegate.log(new LogParams(LogLevel.ERROR, message, null, stackTraceToString(throwable), Instant.now()));

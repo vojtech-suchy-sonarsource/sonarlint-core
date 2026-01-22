@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-e2740f9084eb41cd813bf38d6749e771
+ACR-6e2dca744a244ab7b655cf79810509b5
+ACR-e17c6731ec8d4ff98b8a3b8275873c0a
+ACR-e5b93f89b45344209bfa57ea91da50c2
+ACR-2924431d69164e3b9b52b7d650a7c0e2
+ACR-0fb4a1b2f3174f43b92bfceda71272c2
+ACR-7d63ac6fa3d74d7fb298d1a8f809ff16
+ACR-550e699aea244b9289130e640c729837
+ACR-9c30e593d7e74b3b8ec0605cd561318b
+ACR-8bf7f5a1442941d5904358e0cdb77a94
+ACR-5ccb570571ac49909ae3133d905d6bca
+ACR-f18c6e8a3982465b941eec14e5b5f2a6
+ACR-a7caeb5e352340578e141bf160119591
+ACR-9c515a99abcb44fd9889e508d3491786
+ACR-6f06e6f0edf74037b29c27659cbf0092
+ACR-31cd168be44d4f918895646157989164
+ACR-0b8ea0e0ca0c4220934f0c8085704090
  */
 package org.sonarsource.sonarlint.core.telemetry.payload.cayc;
 

@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Telemetry
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-0c67adad43844ca295dd14bbe64a3922
+ACR-5146c5dba635418eae77ea782dda3437
+ACR-9c3b7d79f244435aace8390c95457d81
+ACR-671908cd58564e57a8428b4086cfb322
+ACR-7a12dd7e16064de288fb3f79c4c495a4
+ACR-998e951d062847048162004bb57348b1
+ACR-30dd6ec2b6244db7afbb6cab05a184f0
+ACR-8d4df847526f4b90b7e2e0514953d7fe
+ACR-7cb83f15452a41f88c9dddcea2752051
+ACR-2fbc5363630240299b453e4266742232
+ACR-5caab1ab43074c45be67ac30c220b8f2
+ACR-5ef66d363a8043d7ae4453d596ba03e6
+ACR-89cf7cabca9d4c8bbe8abae04bf5163e
+ACR-c2c00ef91efe42ba959aefefa8e898f6
+ACR-2354db9aa0da4110a498910c91d70b7f
+ACR-58b24ae8f7a94957a64f61762174a35f
+ACR-a50134a92f0b4c81b8860cded72704f4
  */
 package org.sonarsource.sonarlint.core.telemetry;
 
@@ -146,7 +146,7 @@ public class TelemetryHttpClient {
 
   private void sendMetricsPostIfNeeded(TelemetryMeasuresPayload payload) {
     if (!payload.hasMetrics()) {
-      // No metrics to send
+      //ACR-a75901bc47f045e6b01aae8c671e8f1f
       if (isTelemetryLogEnabled()) {
         LOG.info("Not sending empty telemetry metrics payload.");
       }

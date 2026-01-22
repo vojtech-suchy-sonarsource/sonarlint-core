@@ -6,6 +6,6 @@ import org.sonar.api.Plugin.Context;
 public class BasePlugin implements Plugin {
   @Override
   public void define(Context context) {
-    // no extensions
+    //ACR-a8615480c410401594b7f7f41b4e4c7b
   }
 }

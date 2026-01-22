@@ -1,21 +1,21 @@
 /*
- * SonarLint Core - Medium Tests
- * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ACR-26ad64dc59c5408b81b84eaca7b8e5f4
+ACR-a624941508af4327893211ffc8e751f9
+ACR-dee2301aacfd41ea8f9bd298c3b80ff7
+ACR-1d8556cd4c8b47e8a1834ded623907b5
+ACR-11ff0055631d4aa6bececc834f00543b
+ACR-d96ed1c70d454d61b7bcc4a652424bf9
+ACR-5b22b6c7f7374d89add4e5a307003a26
+ACR-ae44470ac85040329e24533098ef9a4a
+ACR-f032b2f69e04495388113b650bc08a4f
+ACR-bd692a193d5d4fbd9db26543d9fc3db0
+ACR-91ae0a75583347bcbb67814d9a1d7f67
+ACR-66f66fa999aa4fe39b6df3026e6d8bd9
+ACR-de81750dc8a544798efd31e89bb015df
+ACR-58f9fb23f37347699c3176c3a2d3d3be
+ACR-e0316391af8146859766d0d861cc421f
+ACR-dfbd78bb0d6b4e2199bed8fe24e600c4
+ACR-70d2d01427e241d4af3a1f58d1a07e8e
  */
 package mediumtest.analysis;
 
@@ -995,7 +995,7 @@ class AnalysisMediumTests {
       new ConfigurationScopeDto(configScope2, null, true, configScope2,
         new BindingConfigurationDto(connectionId2, projectKey2, true)))));
 
-    // analyse files to warmup caches
+    //ACR-0dab667504b240b5b7b0378092c70ac9
     var analysisId1 = UUID.randomUUID();
     backend.getAnalysisService().analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(CONFIG_SCOPE_ID, analysisId1, List.of(fileUri), Map.of(), true, System.currentTimeMillis()))
       .join();
@@ -1003,10 +1003,10 @@ class AnalysisMediumTests {
     backend.getAnalysisService().analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(configScope2, analysisId2, List.of(fileUri2), Map.of(), true, System.currentTimeMillis()))
       .join();
 
-    // unload one of the projects
+    //ACR-99a0edbe6efb4f71ad741cb153910a38
     backend.getConfigurationService().didRemoveConfigurationScope(new DidRemoveConfigurationScopeParams(configScope2));
 
-    // expect corresponding cache to be evicted
+    //ACR-3a0cbedac44941b2a69e9f2be9bdfa7a
     await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getLogMessages()).contains("Evict cached rules definitions for connection 'connectionId-2'"));
   }
 
@@ -1073,7 +1073,7 @@ class AnalysisMediumTests {
       new ConfigurationScopeDto(configScope3, null, true, configScope3,
         new BindingConfigurationDto(connectionId2, projectKey2, true)))));
 
-    // analyse files to warmup caches
+    //ACR-e44deacd1f1f4df2a9a7ddf238f15d00
     var analysisId1 = UUID.randomUUID();
     backend.getAnalysisService().analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(CONFIG_SCOPE_ID, analysisId1, List.of(fileUri), Map.of(), true, System.currentTimeMillis()))
       .join();
@@ -1081,10 +1081,10 @@ class AnalysisMediumTests {
     backend.getAnalysisService().analyzeFilesAndTrack(new AnalyzeFilesAndTrackParams(configScope2, analysisId2, List.of(fileUri2), Map.of(), true, System.currentTimeMillis()))
       .join();
 
-    // unload one of the projects
+    //ACR-1fc99ba5a27642c1ab16d563a21a65a4
     backend.getConfigurationService().didRemoveConfigurationScope(new DidRemoveConfigurationScopeParams(configScope2));
 
-    // expect corresponding cache not to be evicted
+    //ACR-0026ae891cc549598bea9d280d756c23
     await().during(2, TimeUnit.SECONDS).untilAsserted(() -> assertThat(client.getLogMessages())
       .doesNotContain("Evict cached rules definitions for connection 'connectionId-2'"));
   }
