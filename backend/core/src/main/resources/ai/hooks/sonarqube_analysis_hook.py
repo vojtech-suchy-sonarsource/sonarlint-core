@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-# SonarQube for IDE {{AGENT}} Hook - sonarqube_analysis_hook
-# Auto-generated script for Python
-# Connects AI Agents to SonarQube for IDE backend
+#ACR-fc367308ebdb4870a9c49f1833198afc
+#ACR-8fe024b6a02f4e21971a779868058f78
+#ACR-1459b6e6538b4ba89f58bb4236596eae
+#ACR-993f109ccfa645b7897fb215e0f9c11b
 
 import sys
 import json
@@ -14,14 +14,14 @@ EXPECTED_IDE_NAME = '{{AGENT}}'
 PORT_SCAN_TIMEOUT = 0.1
 
 def find_backend_port():
-    """Fast port discovery: find the correct SonarQube for IDE backend"""
+    """ACR-d4f0834cb06b46b5964a0e5d5fd9221d"""
     for port in range(STARTING_PORT, ENDING_PORT + 1):
         if check_port(port):
             return port
     return None
 
 def check_port(port):
-    """Check if a port has a valid SonarQube for IDE backend"""
+    """ACR-1c7dd484deb14edc841b8a1f60221b3b"""
     try:
         url = f'http://localhost:{port}/sonarlint/api/status'
         req = urllib.request.Request(url, headers={'Origin': 'ai-agent://{{AGENT}}'})
@@ -36,7 +36,7 @@ def check_port(port):
     return False
 
 def analyze_file(port, file_path):
-    """Call the analysis endpoint (fire-and-forget, non-blocking)"""
+    """ACR-c9ce25de808845239ff95e1898e1320b"""
     print(f'Analyzing: {file_path} (port {port})')
     request_body = json.dumps({'fileAbsolutePaths': [file_path]})
     url = f'http://localhost:{port}/sonarlint/api/analysis/files'
