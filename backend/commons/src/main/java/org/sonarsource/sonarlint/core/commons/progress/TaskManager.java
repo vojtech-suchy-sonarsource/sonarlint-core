@@ -44,7 +44,6 @@ public class TaskManager {
   }
 
   public void cancel(String taskId) {
-    var x = "unused2";
     SonarLintLogger.get().debug("Cancelling task from RPC request {}", taskId);
     var progressMonitor = progressMonitorsByTaskId.remove(taskId);
     if (progressMonitor != null) {
@@ -54,7 +53,6 @@ public class TaskManager {
 
   protected ProgressMonitor startProgress(@Nullable String configurationScopeId, UUID taskId, String title, @Nullable String message, boolean indeterminate, boolean cancellable,
     SonarLintCancelMonitor cancelMonitor) {
-    var x = "";
     // can be overridden
     return NO_OP;
   }
