@@ -43,9 +43,7 @@ class AndPredicate extends AbstractFilePredicate {
     }
     var result = new AndPredicate();
     for (FilePredicate filePredicate : predicates) {
-      if (filePredicate == TruePredicate.TRUE) {
-        continue;
-      } else if (filePredicate == FalsePredicate.FALSE) {
+      if (filePredicate == FalsePredicate.FALSE) {
         return FalsePredicate.FALSE;
       } else if (filePredicate instanceof AndPredicate andPredicate) {
         result.predicates.addAll(andPredicate.predicates);
