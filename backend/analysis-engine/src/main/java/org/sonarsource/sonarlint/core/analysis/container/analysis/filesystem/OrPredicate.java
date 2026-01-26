@@ -42,7 +42,8 @@ class OrPredicate extends AbstractFilePredicate {
     for (FilePredicate filePredicate : predicates) {
       if (filePredicate == TruePredicate.TRUE) {
         return TruePredicate.TRUE;
-      } else if (filePredicate == FalsePredicate.FALSE) {
+      }
+      if (filePredicate == FalsePredicate.FALSE) {
         continue;
       }
       if (filePredicate instanceof OrPredicate orPredicate) {
