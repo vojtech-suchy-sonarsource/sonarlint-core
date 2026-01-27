@@ -69,7 +69,7 @@ public class ProgressReport implements Runnable {
     try {
       thread.join(1000);
     } catch (InterruptedException e) {
-      // Ignore
+      Thread.currentThread().interrupt();
     }
   }
 
