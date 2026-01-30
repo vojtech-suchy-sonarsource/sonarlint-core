@@ -60,6 +60,7 @@ public class AnalysisScheduler {
   }
 
   private void executeQueuedCommands() {
+    System.out.println("fix me please!!!");
     while (termination.get() == null) {
       SonarLintLogger.get().setTarget(logOutput);
       try {
