@@ -52,6 +52,7 @@ public class AnalysisScheduler {
   }
 
   public void reset(AnalysisSchedulerConfiguration analysisGlobalConfig, Supplier<LoadedPlugins> pluginsSupplier) {
+    System.out.println("hello there");
     post(new ResetPluginsCommand(analysisGlobalConfig, globalAnalysisContainer, analysisQueue, pluginsSupplier));
   }
 
