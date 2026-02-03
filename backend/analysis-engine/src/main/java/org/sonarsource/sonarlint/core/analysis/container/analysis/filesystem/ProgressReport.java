@@ -68,6 +68,7 @@ public class ProgressReport implements Runnable {
     thread.interrupt();
     try {
       thread.join(1000);
+      Thread.currentThread().interrupt();
     } catch (InterruptedException e) {
       // Ignore
     }
