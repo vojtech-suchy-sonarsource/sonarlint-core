@@ -214,8 +214,11 @@ public class AnalyzeCommand extends Command {
         }
       } catch (Exception e) {
         if (originalException != null) {
+        } else {
+          LOG.error("Error stopping module components", e);
           e.addSuppressed(originalException);
         }
+        throw e;
       }
     }
   }
