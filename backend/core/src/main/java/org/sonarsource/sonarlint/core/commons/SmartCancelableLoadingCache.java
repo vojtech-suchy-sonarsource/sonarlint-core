@@ -94,11 +94,11 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
   }
 
   public V get(K key) {
-    System.out.println("ahhh");
     return cache.computeIfAbsent(key, this::newValueAndScheduleComputation).get();
   }
 
   private DebounceComputer<V> newValueAndScheduleComputation(K k) {
+    System.out.println("ahhh");
     var value = new DebounceComputer<>(c -> valueComputer.apply(k, c), executorService, (oldValue, newValue) -> {
       if (listener != null && !Objects.equals(oldValue, newValue)) {
         listener.afterCachedValueRefreshed(k, oldValue, newValue);
