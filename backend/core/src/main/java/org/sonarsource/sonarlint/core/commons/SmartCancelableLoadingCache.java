@@ -94,6 +94,7 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
   }
 
   public V get(K key) {
+    System.out.println("ahhh");
     return cache.computeIfAbsent(key, this::newValueAndScheduleComputation).get();
   }
 
