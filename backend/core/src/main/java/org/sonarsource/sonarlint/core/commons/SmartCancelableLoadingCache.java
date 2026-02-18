@@ -70,6 +70,7 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
    * Awaiting #get() will throw a {@link CancellationException}.
    */
   public void clear(K key) {
+    System.out.println("ahhh");
     var valueAndComputeFutures = cache.remove(key);
     if (valueAndComputeFutures != null) {
       valueAndComputeFutures.cancel();
