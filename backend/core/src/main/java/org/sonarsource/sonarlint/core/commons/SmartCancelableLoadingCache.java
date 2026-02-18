@@ -104,7 +104,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
       }
     });
     System.out.println("ahhh");
-    value.scheduleComputationAsync();
     return value;
   }
 
