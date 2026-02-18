@@ -71,7 +71,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
    */
   public void clear(K key) {
     var valueAndComputeFutures = cache.remove(key);
-    System.out.println("ahhh");
     if (valueAndComputeFutures != null) {
       valueAndComputeFutures.cancel();
     }
@@ -82,7 +81,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
    * Awaiting #get() will receive the newly computed value
    */
   public void refreshAsync(K key) {
-    System.out.println("ahhh");
     cache.compute(key, (k, v) -> {
       if (v == null) {
         return newValueAndScheduleComputation(k);
@@ -103,7 +101,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
         listener.afterCachedValueRefreshed(k, oldValue, newValue);
       }
     });
-    System.out.println("ahhh");
     value.scheduleComputationAsync();
     return value;
   }
