@@ -82,7 +82,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
    * Awaiting #get() will receive the newly computed value
    */
   public void refreshAsync(K key) {
-    System.out.println("ahhh");
     cache.compute(key, (k, v) -> {
       if (v == null) {
         return newValueAndScheduleComputation(k);
