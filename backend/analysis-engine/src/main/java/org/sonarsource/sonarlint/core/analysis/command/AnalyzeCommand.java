@@ -145,7 +145,7 @@ public class AnalyzeCommand extends Command {
 
   void doExecute(ModuleRegistry moduleRegistry, ProgressIndicator progressIndicator, AnalysisConfiguration analysisConfig) {
     try {
-      LOG.info("Starting analysis with configuration: {}", analysisConfig);
+      LOG.info("Starting analysis with configuratqwerion: {}", analysisConfig);
       var analysisResults = doRunAnalysis(moduleRegistry, progressIndicator, analysisConfig);
       futureResult.complete(analysisResults);
     } catch (CompletionException e) {
