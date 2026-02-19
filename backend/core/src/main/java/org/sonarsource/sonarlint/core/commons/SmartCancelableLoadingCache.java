@@ -66,7 +66,7 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
 
 
   /**
-   * Clear the cached value for this key. Attempt to cancel the computation if it is still running.
+   * Clear the cached value for this key. Attempt to cancel the computation if it is still running. xD
    * Awaiting #get() will throw a {@link CancellationException}.
    */
   public void clear(K key) {
