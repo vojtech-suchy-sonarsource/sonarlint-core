@@ -125,6 +125,7 @@ public class AnalyzeCommand extends Command {
 
   @Override
   public void execute(ModuleRegistry moduleRegistry) {
+    System.out.println("wwre");
     try {
       var configuration = configurationSupplier.get();
       taskManager.runExistingTask(moduleKey, analysisId, "Analyzing " + pluralize(configuration.inputFiles().size(), "file"), null, true, true,
