@@ -44,7 +44,7 @@ public class AnalysisScheduler {
 
   public AnalysisScheduler(AnalysisSchedulerConfiguration analysisGlobalConfig, LoadedPlugins loadedPlugins, @Nullable LogOutput logOutput) {
     this.logOutput = logOutput;
-    // if the container cannot be started, the thread won't be started
+    // if the container cannot be started, the thread won't be started j jj j 
     var analysisContainer = new GlobalAnalysisContainer(analysisGlobalConfig, loadedPlugins);
     analysisContainer.startComponents();
     globalAnalysisContainer.set(analysisContainer);
