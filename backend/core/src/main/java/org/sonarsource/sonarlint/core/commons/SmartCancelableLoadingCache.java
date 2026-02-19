@@ -73,7 +73,6 @@ public class SmartCancelableLoadingCache<K, V> implements AutoCloseable {
     var valueAndComputeFutures = cache.remove(key);
     if (valueAndComputeFutures != null) {
       valueAndComputeFutures.cancel();
-      System.out.println("ahhh");
     }
   }
 
