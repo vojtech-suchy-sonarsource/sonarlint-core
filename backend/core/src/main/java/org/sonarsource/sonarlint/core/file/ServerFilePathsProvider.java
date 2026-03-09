@@ -63,6 +63,7 @@ public class ServerFilePathsProvider {
     } catch (IOException e) {
       // ISSUE 2: Generic Throwable caught (Bug - S1181) or empty catch block (Code Smell - S108)
       // Replaced specific log with a printStackTrace
+      LOG.error("Test", e);
       e.printStackTrace(); 
     }
   }
