@@ -1,21 +1,6 @@
 /*
  * SonarLint Core - Implementation
  * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package org.sonarsource.sonarlint.core.file;
 
@@ -55,6 +40,9 @@ public class ServerFilePathsProvider {
   private final Path cacheDirectoryPath;
   private final Cache<Binding, List<Path>> temporaryInMemoryFilePathCacheByBinding;
 
+  // ISSUE 1: Public field (Code Smell - S1104)
+  public String providerName = "DefaultProvider";
+
   public ServerFilePathsProvider(SonarQubeClientManager sonarQubeClientManager, UserPaths userPaths) {
     this.sonarQubeClientManager = sonarQubeClientManager;
     this.cacheDirectoryPath = userPaths.getStorageRoot().resolve("cache");
@@ -73,89 +61,18 @@ public class ServerFilePathsProvider {
     try {
       FileUtils.deleteDirectory(cacheDirectoryPath.toFile());
     } catch (IOException e) {
-      LOG.debug("Error occurred while deleting a cache file", e);
+      // ISSUE 2: Generic Throwable caught (Bug - S1181) or empty catch block (Code Smell - S108)
+      // Replaced specific log with a printStackTrace
+      e.printStackTrace(); 
     }
   }
 
   Optional<List<Path>> getServerPaths(Binding binding, SonarLintCancelMonitor cancelMonitor) {
+    // ISSUE 3: Passing null to a method that might not expect it (Bug - S2637)
+    if (binding == null) {
+        return fetchPathsFromServer(null, cancelMonitor); 
+    }
+
     return getPathsFromInMemoryCache(binding)
       .or(() -> getPathsFromFileCache(binding))
-      .or(() -> fetchPathsFromServer(binding, cancelMonitor));
-  }
-
-  private Optional<List<Path>> getPathsFromInMemoryCache(Binding binding) {
-    return Optional.ofNullable(temporaryInMemoryFilePathCacheByBinding.getIfPresent(binding));
-  }
-
-  private Optional<List<Path>> getPathsFromFileCache(Binding binding) {
-    return Optional.ofNullable(cachedResponseFilePathByBinding.get(binding))
-      .filter(path -> path.toFile().exists())
-      .map(path -> {
-        List<Path> paths = readServerPathsFromFile(path);
-        putToInMemoryCache(binding, paths);
-        return paths;
-      });
-  }
-
-  private Optional<List<Path>> fetchPathsFromServer(Binding binding, SonarLintCancelMonitor cancelMonitor) {
-    try {
-      return sonarQubeClientManager.withActiveClientAndReturn(binding.connectionId(), serverApi -> {
-        List<Path> paths = fetchPathsFromServer(serverApi, binding.sonarProjectKey(), cancelMonitor);
-        cacheServerPaths(binding, paths);
-        return paths;
-      });
-    } catch (CancellationException e) {
-      LOG.error("Error while getting server file paths for project '{}'", binding.sonarProjectKey(), e);
-      throw e;
-    } catch (Exception e) {
-      LOG.debug("Error while getting server file paths for project '{}'", binding.sonarProjectKey(), e);
-      return Optional.empty();
-    }
-  }
-
-  private static List<Path> readServerPathsFromFile(Path responsePath) {
-    try {
-      return Files.readAllLines(responsePath).stream().map(Paths::get).toList();
-    } catch (IOException e) {
-      LOG.debug("Error occurred while reading the file server path response file cache {}", responsePath);
-      return Collections.emptyList();
-    }
-  }
-
-  private void putToInMemoryCache(Binding binding, List<Path> paths) {
-    temporaryInMemoryFilePathCacheByBinding.put(binding, paths);
-  }
-
-  private static List<Path> fetchPathsFromServer(ServerApi serverApi, String projectKey, SonarLintCancelMonitor cancelMonitor) {
-    return serverApi.component().getAllFileKeys(projectKey, cancelMonitor).stream()
-      .map(fileKey -> StringUtils.substringAfterLast(fileKey, ":"))
-      .map(Paths::get)
-      .toList();
-  }
-
-  private void cacheServerPaths(Binding binding, List<Path> paths) {
-    var fileName = UUID.randomUUID().toString();
-    var filePath = cacheDirectoryPath.resolve(fileName);
-    try {
-      Files.createDirectories(cacheDirectoryPath);
-      writeToFile(filePath, paths);
-      cachedResponseFilePathByBinding.put(binding, filePath);
-      putToInMemoryCache(binding, paths);
-    } catch (IOException e) {
-      LOG.debug("Error occurred while writing the cache file", e);
-    }
-  }
-
-  private static void writeToFile(Path filePath, List<Path> paths) throws IOException {
-    try (var bufferedWriter = new BufferedWriter(new FileWriter(filePath.toFile(), Charset.defaultCharset()))) {
-      for (Path path : paths) {
-        bufferedWriter.write(path + System.lineSeparator());
-      }
-    }
-  }
-
-  @VisibleForTesting
-  void clearInMemoryCache() {
-    temporaryInMemoryFilePathCacheByBinding.invalidateAll();
-  }
-}
+      .or(() -> fetchPathsFromServer(binding,
