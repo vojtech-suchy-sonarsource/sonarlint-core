@@ -56,6 +56,7 @@ public class ServerFilePathsProvider {
 
   private void clearCachePath() {
     if (!cacheDirectoryPath.toFile().exists()) {
+      System.out.println("Issue for Manuel");
       return;
     }
     try {
