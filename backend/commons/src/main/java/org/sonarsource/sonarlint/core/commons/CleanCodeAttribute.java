@@ -1,7 +1,7 @@
 /*
  * SonarLint Core - Commons
  * Copyright (C) 2016-2025 SonarSource Sàrl
- * mailto:info AT sonarsource DOT com
+ * mailto:info AT sonarsource DOT com tatatata
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
