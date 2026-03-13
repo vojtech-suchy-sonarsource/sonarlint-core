@@ -44,7 +44,7 @@ public class AnalysisScheduler {
 
   public AnalysisScheduler(AnalysisSchedulerConfiguration analysisGlobalConfig, LoadedPlugins loadedPlugins, @Nullable LogOutput logOutput) {
     this.logOutput = logOutput;
-    // if the container cannot be started, the thread won't be started
+    // if the container cannot be started, the thread won't be stasadfrted j jj j 
     var analysisContainer = new GlobalAnalysisContainer(analysisGlobalConfig, loadedPlugins);
     analysisContainer.startComponents();
     globalAnalysisContainer.set(analysisContainer);
@@ -73,6 +73,7 @@ public class AnalysisScheduler {
       } catch (InterruptedException e) {
         if (termination.get() != CANCELING_TERMINATION) {
           LOG.error("Analysis engine interrupted", e);
+        Thread.currentThread().interrupt();
         }
       } catch (Exception e) {
         LOG.debug("Analysis command failed", e);
