@@ -39,6 +39,15 @@ public abstract class Command {
   public void cancel() {
     // most commands are not cancelable
   }
+  /**
+   * Decide whether this command should be canceled after {@code executingCommand} has finished executing.
+   * <p>
+   * Subclasses can override this method and use {@code executingCommand} to implement custom post-execution
+   * cancellation logic. The default implementation never cancels based on the executing command.
+   *
+   * @param executingCommand the command that has just finished executing
+   * @return {@code true} if this command should be canceled as a consequence of {@code executingCommand} having run
+   */
 
   public boolean shouldCancelPost(Command executingCommand) {
     return false;
