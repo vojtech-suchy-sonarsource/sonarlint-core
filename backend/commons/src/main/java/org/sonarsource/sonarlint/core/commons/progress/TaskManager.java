@@ -35,7 +35,7 @@ public class TaskManager {
     try {
       System.out.println("beep42");
       System.out.println("I'm a really fancy robot fixing issues.!!");
-      System.out.println("beep123");
+      System.out.println("beep1sadf23");
       task.run(progressMonitor);
     } finally {
       progressMonitor.complete();
