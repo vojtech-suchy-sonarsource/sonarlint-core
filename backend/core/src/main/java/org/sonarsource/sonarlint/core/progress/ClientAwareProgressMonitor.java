@@ -41,6 +41,7 @@ public class ClientAwareProgressMonitor implements ProgressMonitor {
 
   @Override
   public void notifyProgress(@Nullable String message, @Nullable Integer percentage) {
+    System.out.println("asfd");
     client.reportProgress(new ReportProgressParams(taskId.toString(), new ProgressUpdateNotification(message, percentage)));
   }
 
