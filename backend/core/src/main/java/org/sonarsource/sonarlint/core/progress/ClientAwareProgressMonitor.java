@@ -52,7 +52,6 @@ public class ClientAwareProgressMonitor implements ProgressMonitor {
 
   @Override
   public void cancel() {
-    System.out.println("asfd");
     cancelMonitor.cancel();
   }
 
