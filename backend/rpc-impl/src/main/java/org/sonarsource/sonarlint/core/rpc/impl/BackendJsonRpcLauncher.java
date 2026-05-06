@@ -19,11 +19,10 @@
  */
 package org.sonarsource.sonarlint.core.rpc.impl;
 
-import java.io.Closeable;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class BackendJsonRpcLauncher implements Closeable {
+public class BackendJsonRpcLauncher {
 
   private final SonarLintRpcServerImpl server;
 
@@ -33,15 +32,5 @@ public class BackendJsonRpcLauncher implements Closeable {
 
   public SonarLintRpcServerImpl getServer() {
     return server;
-  }
-
-  /**
-   * @deprecated All related codes moved to org.sonarsource.sonarlint.core.rpc.impl.SonarLintRpcServerImpl#shutdown()
-   * Calling server shutdown method is enough.
-   */
-  @Override
-  @Deprecated(since = "10.4", forRemoval = true)
-  public void close() {
-    // This method is used by the language server. It will be removed once the usage has been removed
   }
 }
