@@ -28,22 +28,7 @@ import javax.annotation.Nullable;
  */
 public interface LogOutput {
 
-  /**
-   * @deprecated please implement {@link #log(String, Level, String)} instead
-   */
-  @Deprecated(since = "10.0")
-  default void log(String formattedMessage, Level level) {
-    log(formattedMessage, level, null);
-  }
-
-  default void log(@Nullable String formattedMessage, Level level, @Nullable String stacktrace) {
-    if (formattedMessage != null) {
-      log(formattedMessage, level);
-    }
-    if (stacktrace != null) {
-      log(stacktrace, level);
-    }
-  }
+  void log(@Nullable String formattedMessage, Level level, @Nullable String stacktrace);
 
   enum Level {
     OFF, ERROR, WARN, INFO, DEBUG, TRACE;

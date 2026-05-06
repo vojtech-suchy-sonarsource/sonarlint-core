@@ -101,22 +101,14 @@ public class SonarLintInputFile implements InputFile {
     return type;
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
-   */
-  @Deprecated(forRemoval = false)
   @Override
   public String absolutePath() {
     return PathUtils.sanitize(clientInputFile.getPath());
   }
 
-  /**
-   * @deprecated avoid calling this method if possible, since it may require to create a temporary copy of the file
-   */
-  @Deprecated
   @Override
   public File file() {
-    return path().toFile();
+    return Paths.get(clientInputFile.getPath()).toFile();
   }
 
   /**

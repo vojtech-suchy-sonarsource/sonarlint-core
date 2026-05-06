@@ -28,13 +28,12 @@ import org.sonar.api.utils.Version;
 import static java.util.Objects.requireNonNull;
 
 /**
- * This class was removed from the plugin API but still used in older CFamily analyzer
+ * Use {@link SonarRuntime} instead.
  */
 @ScannerSide
 @ServerSide
 @ComputeEngineSide
 @Immutable
-@Deprecated
 public class SonarQubeVersion {
 
   private final Version version;
