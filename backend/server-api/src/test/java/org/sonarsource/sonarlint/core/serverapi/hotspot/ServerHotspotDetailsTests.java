@@ -21,46 +21,17 @@ package org.sonarsource.sonarlint.core.serverapi.hotspot;
 
 import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
-import org.sonarsource.sonarlint.core.commons.VulnerabilityProbability;
-import org.sonarsource.sonarlint.core.commons.api.TextRange;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ServerHotspotDetailsTests {
   @Test
   void it_should_populate_fields_with_constructor_parameters() {
-    var hotspot = new ServerHotspotDetails("message",
+    var hotspot = new ServerHotspotDetails(
       Path.of("path"),
-      new TextRange(0, 1, 2, 3),
-      "author",
-      ServerHotspotDetails.Status.TO_REVIEW,
-      ServerHotspotDetails.Resolution.FIXED, new ServerHotspotDetails.Rule(
-        "key",
-        "name",
-        "category",
-        VulnerabilityProbability.HIGH,
-        "risk",
-        "vulnerability",
-        "fix"),
-      "some code \n content", true);
+      true);
 
-    assertThat(hotspot.message).isEqualTo("message");
     assertThat(hotspot.filePath).isEqualTo(Path.of("path"));
-    assertThat(hotspot.textRange.getStartLine()).isZero();
-    assertThat(hotspot.textRange.getStartLineOffset()).isEqualTo(1);
-    assertThat(hotspot.textRange.getEndLine()).isEqualTo(2);
-    assertThat(hotspot.textRange.getEndLineOffset()).isEqualTo(3);
-    assertThat(hotspot.author).isEqualTo("author");
-    assertThat(hotspot.status).isEqualTo(ServerHotspotDetails.Status.TO_REVIEW);
-    assertThat(hotspot.resolution).isEqualTo(ServerHotspotDetails.Resolution.FIXED);
-    assertThat(hotspot.rule.key).isEqualTo("key");
-    assertThat(hotspot.rule.name).isEqualTo("name");
-    assertThat(hotspot.rule.securityCategory).isEqualTo("category");
-    assertThat(hotspot.rule.vulnerabilityProbability).isEqualTo(VulnerabilityProbability.HIGH);
-    assertThat(hotspot.rule.riskDescription).isEqualTo("risk");
-    assertThat(hotspot.rule.vulnerabilityDescription).isEqualTo("vulnerability");
-    assertThat(hotspot.rule.fixRecommendations).isEqualTo("fix");
-    assertThat(hotspot.codeSnippet).isEqualTo("some code \n content");
     assertThat(hotspot.canChangeStatus).isTrue();
   }
 

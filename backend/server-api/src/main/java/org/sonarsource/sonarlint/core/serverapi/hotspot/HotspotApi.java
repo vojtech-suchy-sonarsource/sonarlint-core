@@ -206,20 +206,8 @@ public class HotspotApi {
 
   private static ServerHotspotDetails adapt(Hotspots.ShowWsResponse hotspot, @Nullable String codeSnippet) {
     return new ServerHotspotDetails(
-      hotspot.getMessage(),
       Path.of(hotspot.getComponent().getPath()),
-      convertTextRange(hotspot.getTextRange()),
-      hotspot.getAuthor(),
-      ServerHotspotDetails.Status.valueOf(hotspot.getStatus()),
-      hotspot.hasResolution() ? ServerHotspotDetails.Resolution.valueOf(hotspot.getResolution()) : null,
-      adapt(hotspot.getRule()),
-      codeSnippet, hotspot.getCanChangeStatus());
-  }
-
-  private static ServerHotspotDetails.Rule adapt(Hotspots.Rule rule) {
-    return new ServerHotspotDetails.Rule(rule.getKey(), rule.getName(), rule.getSecurityCategory(),
-      VulnerabilityProbability.valueOf(rule.getVulnerabilityProbability()),
-      rule.getRiskDescription(), rule.getVulnerabilityDescription(), rule.getFixRecommendations());
+      hotspot.getCanChangeStatus());
   }
 
   private static ServerHotspot adapt(Hotspots.SearchWsResponse.Hotspot hotspot, Path filePath) {

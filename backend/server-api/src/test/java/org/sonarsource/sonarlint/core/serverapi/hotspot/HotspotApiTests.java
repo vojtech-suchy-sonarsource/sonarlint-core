@@ -98,47 +98,7 @@ class HotspotApiTests {
 
     assertThat(remoteHotspot).isNotEmpty();
     var hotspot = remoteHotspot.get();
-    assertThat(hotspot.message).isEqualTo("message");
     assertThat(hotspot.filePath).isEqualTo(Path.of("path"));
-    assertThat(hotspot.textRange).usingRecursiveComparison().isEqualTo(new TextRangeWithHash(2, 7, 4, 9, ""));
-    assertThat(hotspot.author).isEqualTo("author");
-    assertThat(hotspot.status).isEqualTo(ServerHotspotDetails.Status.REVIEWED);
-    assertThat(hotspot.resolution).isEqualTo(ServerHotspotDetails.Resolution.SAFE);
-    assertThat(hotspot.rule.key).isEqualTo("key");
-    assertThat(hotspot.rule.name).isEqualTo("name");
-    assertThat(hotspot.rule.securityCategory).isEqualTo("category");
-    assertThat(hotspot.rule.vulnerabilityProbability).isEqualTo(VulnerabilityProbability.HIGH);
-    assertThat(hotspot.rule.riskDescription).isEqualTo("risk");
-    assertThat(hotspot.rule.vulnerabilityDescription).isEqualTo("vulnerability");
-    assertThat(hotspot.rule.fixRecommendations).isEqualTo("fix");
-    assertThat(hotspot.codeSnippet).isEqualTo("My\n\tCode\n  Snippet");
-  }
-
-  @Test
-  void it_should_extract_single_line_snippet() {
-    mockServer.addProtobufResponse("/api/hotspots/show.protobuf?hotspot=h", Hotspots.ShowWsResponse.newBuilder()
-      .setMessage("message")
-      .setComponent(Hotspots.Component.newBuilder().setPath("path").setKey("myproject:path"))
-      .setTextRange(Common.TextRange.newBuilder().setStartLine(2).setStartOffset(7).setEndLine(2).setEndOffset(9).build())
-      .setAuthor("author")
-      .setStatus("REVIEWED")
-      .setResolution("SAFE")
-      .setRule(Hotspots.Rule.newBuilder().setKey("key")
-        .setName("name")
-        .setSecurityCategory("category")
-        .setVulnerabilityProbability("HIGH")
-        .setRiskDescription("risk")
-        .setVulnerabilityDescription("vulnerability")
-        .setFixRecommendations("fix")
-        .build())
-      .build());
-    mockServer.addStringResponse("/api/sources/raw?key=" + UrlUtils.urlEncode("myproject:path"), "Even\nBefore My\n\tCode\n  Snippet And\n After");
-
-    var remoteHotspot = underTest.fetch("h", new SonarLintCancelMonitor());
-
-    assertThat(remoteHotspot).isNotEmpty();
-    var hotspot = remoteHotspot.get();
-    assertThat(hotspot.codeSnippet).isEqualTo("My");
   }
 
   @Test
@@ -156,7 +116,7 @@ class HotspotApiTests {
   }
 
   @Test
-  void it_should_return_no_resolution_status_when_not_available() {
+  void it_should_return_hotspot_details_when_no_resolution() {
     mockServer.addProtobufResponse("/api/hotspots/show.protobuf?hotspot=h", Hotspots.ShowWsResponse.newBuilder()
       .setComponent(Hotspots.Component.newBuilder().setPath("path"))
       .setTextRange(Common.TextRange.newBuilder().setStartLine(1).setStartOffset(2).setEndLine(3).setEndOffset(4).build())
@@ -175,31 +135,7 @@ class HotspotApiTests {
 
     assertThat(remoteHotspot).isNotEmpty();
     var hotspot = remoteHotspot.get();
-    assertThat(hotspot.resolution).isNull();
-  }
-
-  @Test
-  void it_should_map_acknowledged_status_for_show() {
-    mockServer.addProtobufResponse("/api/hotspots/show.protobuf?hotspot=h", Hotspots.ShowWsResponse.newBuilder()
-      .setComponent(Hotspots.Component.newBuilder().setPath("path"))
-      .setTextRange(Common.TextRange.newBuilder().setStartLine(1).setStartOffset(2).setEndLine(3).setEndOffset(4).build())
-      .setStatus("REVIEWED")
-      .setResolution("ACKNOWLEDGED")
-      .setRule(Hotspots.Rule.newBuilder().setKey("key")
-        .setName("name")
-        .setSecurityCategory("category")
-        .setVulnerabilityProbability("HIGH")
-        .setRiskDescription("risk")
-        .setVulnerabilityDescription("vulnerability")
-        .setFixRecommendations("fix")
-        .build())
-      .build());
-
-    var remoteHotspot = underTest.fetch("h", new SonarLintCancelMonitor());
-
-    assertThat(remoteHotspot).isNotEmpty();
-    var hotspot = remoteHotspot.get();
-    assertThat(hotspot.resolution).isEqualTo(ServerHotspotDetails.Resolution.ACKNOWLEDGED);
+    assertThat(hotspot.filePath).isEqualTo(Path.of("path"));
   }
 
   @Test
