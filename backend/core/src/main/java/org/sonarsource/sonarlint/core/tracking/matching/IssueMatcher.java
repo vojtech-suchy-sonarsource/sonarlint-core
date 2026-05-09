@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * @param <LEFT>  type of the issues that are in the first collection
  * @param <RIGHT> type of the issues that are in the second collection
  */
-public class IssueMatcher<LEFT, RIGHT> {
+public class IssueMatcher<L, R> {
 
   private static final List<MatchingCriterionFactory> MATCHING_CRITERIA = List.of(
     // 1. match issues with same server issue key
@@ -52,16 +52,16 @@ public class IssueMatcher<LEFT, RIGHT> {
     // 7. match issues with same rule and same line hash
     LineHashMatchingCriterion::new);
 
-  private final Map<MatchingCriterionFactory, Map<MatchingCriterion, List<RIGHT>>> rightIssuesByCriterion = new HashMap<>();
-  private final MatchingAttributesMapper<RIGHT> rightMapper;
-  private final Collection<RIGHT> rightIssues;
+  private final Map<MatchingCriterionFactory, Map<MatchingCriterion, List<R>>> rightIssuesByCriterion = new HashMap<>();
+  private final MatchingAttributesMapper<R> rightMapper;
+  private final Collection<R> rightIssues;
 
-  public IssueMatcher(MatchingAttributesMapper<RIGHT> rightMapper, Collection<RIGHT> rightIssues) {
+  public IssueMatcher(MatchingAttributesMapper<R> rightMapper, Collection<R> rightIssues) {
     this.rightMapper = rightMapper;
     this.rightIssues = new ArrayList<>(rightIssues);
     for (var matchingCriterion : MATCHING_CRITERIA) {
-      var issuesByCriterion = new HashMap<MatchingCriterion, List<RIGHT>>();
-      for (RIGHT right : rightIssues) {
+      var issuesByCriterion = new HashMap<MatchingCriterion, List<R>>();
+      for (R right : rightIssues) {
         var criterionAppliedToIssue = matchingCriterion.build(right, rightMapper);
         issuesByCriterion.computeIfAbsent(criterionAppliedToIssue, k -> new ArrayList<>()).add(right);
       }
@@ -70,8 +70,8 @@ public class IssueMatcher<LEFT, RIGHT> {
     }
   }
 
-  public MatchingResult<LEFT, RIGHT> matchWith(MatchingAttributesMapper<LEFT> leftMapper, Collection<LEFT> leftIssues) {
-    var result = new MatchingResult<LEFT, RIGHT>(leftIssues);
+  public MatchingResult<L, R> matchWith(MatchingAttributesMapper<L> leftMapper, Collection<L> leftIssues) {
+    var result = new MatchingResult<L, R>(leftIssues);
 
     for (var matchingCriterion : MATCHING_CRITERIA) {
       if (result.isComplete()) {
@@ -83,8 +83,8 @@ public class IssueMatcher<LEFT, RIGHT> {
     return result;
   }
 
-  private void matchWithCriterion(MatchingResult<LEFT, RIGHT> result, MatchingAttributesMapper<LEFT> leftMapper, MatchingCriterionFactory criterionFactory) {
-    for (LEFT left : result.getUnmatchedLefts()) {
+  private void matchWithCriterion(MatchingResult<L, R> result, MatchingAttributesMapper<L> leftMapper, MatchingCriterionFactory criterionFactory) {
+    for (L left : result.getUnmatchedLefts()) {
       var leftKey = criterionFactory.build(left, leftMapper);
       var rightCandidates = rightIssuesByCriterion.get(criterionFactory).get(leftKey);
       if (rightCandidates != null && !rightCandidates.isEmpty()) {
@@ -97,7 +97,7 @@ public class IssueMatcher<LEFT, RIGHT> {
     }
   }
 
-  private void removeRight(RIGHT right) {
+  private void removeRight(R right) {
     rightIssues.remove(right);
     MATCHING_CRITERIA.forEach(criterion -> {
       var rights = rightIssuesByCriterion.get(criterion).get(criterion.build(right, rightMapper));
