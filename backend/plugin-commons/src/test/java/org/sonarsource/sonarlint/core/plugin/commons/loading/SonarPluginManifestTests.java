@@ -72,7 +72,7 @@ class SonarPluginManifestTests {
   }
 
   @Test
-  void should_parse_jre_min_version() throws URISyntaxException, IOException {
+  void should_parse_jre_min_version() throws URISyntaxException {
     var jar = getClass().getResource("/SonarPluginManifestTests/plugin-with-jre-min.jar");
 
     var manifest = SonarPluginManifest.fromJar(Paths.get(jar.toURI()));
@@ -81,7 +81,7 @@ class SonarPluginManifestTests {
   }
 
   @Test
-  void should_default_jre_min_version_to_null() throws URISyntaxException, IOException {
+  void should_default_jre_min_version_to_null() throws URISyntaxException {
     var jar = getClass().getResource("/SonarPluginManifestTests/plugin-without-jre-min.jar");
 
     var manifest = SonarPluginManifest.fromJar(Paths.get(jar.toURI()));
@@ -90,7 +90,7 @@ class SonarPluginManifestTests {
   }
 
   @Test
-  void should_parse_nodejs_min_version() throws URISyntaxException, IOException {
+  void should_parse_nodejs_min_version() throws URISyntaxException {
     var jar = getClass().getResource("/SonarPluginManifestTests/plugin-with-nodejs-min.jar");
 
     var manifest = SonarPluginManifest.fromJar(Paths.get(jar.toURI()));
