@@ -130,7 +130,7 @@ class FileTreeMatcherTests {
 
   @Disabled("Only used to investigate performance issues like SLCORE-266")
   @Test
-  void performance_test_worst_case() throws Exception {
+  void performance_test_worst_case() {
     var depthFactor = 10;
     var sqNbPerFolder = 10;
     var sqDepth = 5;
@@ -153,7 +153,7 @@ class FileTreeMatcherTests {
 
   @Disabled("Only used to investigate performance issues like SLCORE-266")
   @Test
-  void performance_test_only_index_files_with_same_filename() throws Exception {
+  void performance_test_only_index_files_with_same_filename() {
     var depthFactor = 10;
     var sqNbPerFolder = 10;
     var sqDepth = 5;
@@ -262,13 +262,13 @@ class FileTreeMatcherTests {
     var r3 = new FileTreeMatcher.Result(Paths.get("ide1"), Paths.get("sq2"));
     var r4 = new FileTreeMatcher.Result(Paths.get("ide1"), Paths.get("sq1"));
 
-    assertThat(r1.equals(r1)).isTrue();
-    assertThat(r1.equals(r4)).isTrue();
+    assertThat(r1).isEqualTo(r1);
+    assertThat(r1).isEqualTo(r4);
     assertThat(r1).hasSameHashCodeAs(r4);
 
-    assertThat(r1.equals(r3)).isFalse();
-    assertThat(r3.equals(r2)).isFalse();
-    assertThat(r1.equals(new Object())).isFalse();
-    assertThat(r1.equals(null)).isFalse();
+    assertThat(r1).isNotEqualTo(r3);
+    assertThat(r3).isNotEqualTo(r2);
+    assertThat(r1).isNotEqualTo(new Object());
+    assertThat(r1).isNotEqualTo(null);
   }
 }
