@@ -20,6 +20,7 @@
 package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
 import java.io.File;
+import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -87,7 +88,7 @@ class DefaultTempFolderTests {
   }
 
   @Test
-  void clean_deletes_non_empty_directory(@TempDir File dir) throws Exception {
+  void clean_deletes_non_empty_directory(@TempDir File dir) throws IOException {
     FileUtils.touch(new File(dir, "foo.txt"));
 
     var underTest = new DefaultTempFolder(dir);
