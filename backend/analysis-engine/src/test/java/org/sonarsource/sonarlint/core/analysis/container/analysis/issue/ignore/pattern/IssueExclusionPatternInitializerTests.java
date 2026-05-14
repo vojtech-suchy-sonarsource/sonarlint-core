@@ -105,7 +105,7 @@ class IssueExclusionPatternInitializerTests {
     assertThat(patternsInitializer.hasMulticriteriaPatterns()).isFalse();
     assertThat(patternsInitializer.getMulticriteriaPatterns()).isEmpty();
     assertThat(patternsInitializer.getBlockPatterns()).isEmpty();
-    assertThat(patternsInitializer.getAllFilePatterns()).hasSize(2);
+    assertThat(patternsInitializer.getAllFilePatterns()).containsExactly("@SONAR-IGNORE-ALL", "//FOO-IGNORE-ALL");
   }
 
   @Test
