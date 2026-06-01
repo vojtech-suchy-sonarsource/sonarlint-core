@@ -19,16 +19,18 @@
  */
 package org.sonarsource.sonarlint.core.analysis.sonarapi.noop;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 class NoOpNewCoverageTests {
 
   @Test
   void test() {
-    new NoOpNewCoverage()
-      .onFile(null)
-      .conditions(0, 0, 0)
-      .lineHits(0, 0)
-      .save();
+    var noOpNewCoverage = new NoOpNewCoverage();
+    assertThat(noOpNewCoverage.onFile(null)).isSameAs(noOpNewCoverage);
+    assertThat(noOpNewCoverage.conditions(0, 0, 0)).isSameAs(noOpNewCoverage);
+    assertThat(noOpNewCoverage.lineHits(0, 0)).isSameAs(noOpNewCoverage);
+    noOpNewCoverage.save();
   }
 }

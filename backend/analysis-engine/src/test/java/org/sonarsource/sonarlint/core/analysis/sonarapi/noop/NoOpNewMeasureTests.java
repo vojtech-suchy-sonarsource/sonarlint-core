@@ -21,13 +21,15 @@ package org.sonarsource.sonarlint.core.analysis.sonarapi.noop;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
  class NoOpNewMeasureTests {
   @Test
    void test() {
-    new NoOpNewMeasure<>()
-      .on(null)
-      .forMetric(null)
-      .withValue(null)
-      .save();
+    var measure = new NoOpNewMeasure<>();
+    assertThat(measure.on(null)).isSameAs(measure);
+    assertThat(measure.forMetric(null)).isSameAs(measure);
+    assertThat(measure.withValue(null)).isSameAs(measure);
+    measure.save();
   }
 }
