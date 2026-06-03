@@ -33,6 +33,7 @@ import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.api.io.TempDir;
 import org.sonarqube.ws.client.WsClient;
@@ -51,6 +52,7 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.TokenDto;
 import org.sonarsource.sonarlint.core.rpc.protocol.common.UsernamePasswordDto;
 
 import static java.util.Collections.emptySet;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.sonarsource.sonarlint.core.rpc.protocol.common.Language.JAVA;
 
 class SonarQubeCommunityEditionTests extends AbstractConnectedTests {
@@ -107,6 +109,11 @@ class SonarQubeCommunityEditionTests extends AbstractConnectedTests {
   @AfterAll
   static void stopBackend() throws ExecutionException, InterruptedException {
     serverLauncher.getServer().shutdown().get();
+  }
+
+  @Test
+  void test_backend_is_initialized() {
+    assertThat(backend).isNotNull();
   }
 
   private static SonarLintRpcClientDelegate newDummySonarLintClient() {
