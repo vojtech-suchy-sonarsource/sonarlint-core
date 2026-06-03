@@ -292,6 +292,7 @@ class SpringComponentContainerTests {
     }
 
     public ClassWithMultipleConstructorsIncNoArg(A a) {
+      // intentionally empty, used to test container behavior with multiple constructors
     }
   }
 
