@@ -299,6 +299,7 @@ class SpringComponentContainerTests {
     private boolean gotBothArgs = false;
 
     public ExtensionWithMultipleConstructorsAndNoAnnotations(A a) {
+      // intentionally empty; used to test that the container selects the constructor with the most arguments
     }
 
     public ExtensionWithMultipleConstructorsAndNoAnnotations(A a, B b) {
@@ -311,6 +312,7 @@ class SpringComponentContainerTests {
 
     @Override
     public void start() {
+      // intentionally empty, this class only tests error behavior during stop()
     }
 
     @Override

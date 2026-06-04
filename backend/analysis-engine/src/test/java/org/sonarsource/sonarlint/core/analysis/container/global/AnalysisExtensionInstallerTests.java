@@ -249,11 +249,12 @@ class AnalysisExtensionInstallerTests {
 
     @Override
     public void describe(SensorDescriptor descriptor) {
-
+      // No description needed for this test stub
     }
 
     @Override
     public void execute(SensorContext context) {
+      // intentionally empty, this is a test stub
     }
   }
 
