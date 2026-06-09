@@ -806,6 +806,11 @@ public class ServerFixture {
     public static final String API_COMPONENTS_SHOW_PROTOBUF_COMPONENT = "/api/components/show.protobuf?component=";
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String APPLICATION_JSON = "application/json";
+    private static final String BRANCH_NAME_PARAM = "&branchName=";
+    private static final String BRANCH_PARAM = "&branch=";
+    private static final String REGEX_END_OPTIONAL = "\\E)?";
+    private static final String API_SOURCES_RAW_KEY = "/api/sources/raw?key=";
+    private static final String ORGANIZATION_PARAM = "&organization=";
 
     private final WireMockServer mockServer = new WireMockServer(options().dynamicPort());
 
@@ -937,7 +942,7 @@ public class ServerFixture {
       projectsByProjectKey.forEach((projectKey, project) -> {
         var urlBuilder = new StringBuilder("/api/qualityprofiles/search.protobuf?project=" + projectKey);
         if (project.organizationKey != null) {
-          urlBuilder.append("&organization=").append(project.organizationKey);
+          urlBuilder.append(ORGANIZATION_PARAM).append(project.organizationKey);
         }
         mockServer.stubFor(get(urlBuilder.toString())
           .willReturn(aResponse().withStatus(responseCodes.statusCode).withResponseBody(protobufBody(Qualityprofiles.SearchWsResponse.newBuilder().addAllProfiles(
@@ -961,7 +966,7 @@ public class ServerFixture {
       qualityProfilesByKey.forEach((qualityProfileKey, qualityProfile) -> {
         var url = "/api/rules/search.protobuf?qprofile=" + qualityProfileKey;
         if (qualityProfile.organizationKey != null) {
-          url += "&organization=" + qualityProfile.organizationKey;
+          url += ORGANIZATION_PARAM + qualityProfile.organizationKey;
         }
         url += "&activation=true&f=templateKey,actives&types=CODE_SMELL,BUG,VULNERABILITY,SECURITY_HOTSPOT&s=key&ps=500&p=1";
         mockServer.stubFor(get(url)
@@ -982,7 +987,7 @@ public class ServerFixture {
       qualityProfilesByKey.values().stream().map(qp -> qp.organizationKey).collect(Collectors.toSet()).forEach(organizationKey -> {
         var url = "/api/rules/search.protobuf?repositories=roslyn.sonaranalyzer.security.cs,javasecurity,jssecurity,phpsecurity,pythonsecurity,tssecurity";
         if (organizationKey != null) {
-          url += "&organization=" + organizationKey;
+          url += ORGANIZATION_PARAM + organizationKey;
         }
         url += "&f=repo&s=key&ps=500&p=1";
         mockServer.stubFor(get(url)
@@ -1069,7 +1074,7 @@ public class ServerFixture {
               }
               return builder.build();
             }, toList())));
-        var branchParameter = branchName == null ? "" : ("&branch=" + urlEncode(branchName));
+        var branchParameter = branchName == null ? "" : (BRANCH_PARAM + urlEncode(branchName));
         messagesPerFilePath.forEach((filePath,
           messages) -> mockServer.stubFor(get("/api/hotspots/search.protobuf?projectKey=" + projectKey + "&files=" + urlEncode(filePath) + branchParameter + "&ps=500&p=1")
             .willReturn(aResponse().withResponseBody(protobufBody(Hotspots.SearchWsResponse.newBuilder()
@@ -1126,7 +1131,7 @@ public class ServerFixture {
             var searchUrl = "/api/issues/search.protobuf?issues=".concat(urlEncode(issue.getKey()))
               .concat("&componentKeys=").concat(projectKey)
               .concat("&ps=1&p=1")
-              .concat("&branch=").concat(branchName);
+              .concat(BRANCH_PARAM).concat(branchName);
             mockServer.stubFor(get(searchUrl)
               .willReturn(aResponse().withResponseBody(protobufBody(Issues.SearchWsResponse.newBuilder()
                 .addIssues(
@@ -1186,7 +1191,7 @@ public class ServerFixture {
 
     private void registerApiHotspotsPullResponses() {
       projectsByProjectKey.forEach((projectKey, project) -> project.branchesByName.forEach((branchName, branch) -> {
-        var branchParameter = branchName == null ? "" : ("&branchName=" + branchName);
+        var branchParameter = branchName == null ? "" : (BRANCH_NAME_PARAM + branchName);
         var timestamp = Hotspots.HotspotPullQueryTimestamp.newBuilder().setQueryTimestamp(123L).build();
         var hotspotsArray = branch.hotspots.stream().map(hotspot -> Hotspots.HotspotLite.newBuilder()
           .setKey(hotspot.hotspotKey)
@@ -1207,7 +1212,7 @@ public class ServerFixture {
         System.arraycopy(hotspotsArray, 0, messages, 1, hotspotsArray.length);
         var response = aResponse().withResponseBody(protobufBodyDelimited(messages));
         mockServer.stubFor(
-          get(urlMatching("\\Q/api/hotspots/pull?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + "\\E)?"))
+          get(urlMatching("\\Q/api/hotspots/pull?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + REGEX_END_OPTIONAL))
             .willReturn(response));
       }));
     }
@@ -1282,11 +1287,11 @@ public class ServerFixture {
             allBranchIssues.add(serverIssue);
             return serverIssue;
           }).toArray(Message[]::new);
-          var branchParameter = branchName == null ? "" : "&branch=" + urlEncode(branchName);
+          var branchParameter = branchName == null ? "" : BRANCH_PARAM + urlEncode(branchName);
           mockServer.stubFor(get("/batch/issues?key=" + urlEncode(projectKey + ':' + filePath) + branchParameter)
             .willReturn(aResponse().withResponseBody(protobufBodyDelimited(messages))));
         });
-        var branchParameter = branchName == null ? "" : "&branch=" + urlEncode(branchName);
+        var branchParameter = branchName == null ? "" : BRANCH_PARAM + urlEncode(branchName);
         mockServer.stubFor(get("/batch/issues?key=" + urlEncode(projectKey) + branchParameter)
           .willReturn(aResponse().withResponseBody(protobufBodyDelimited(allBranchIssues.toArray(new Message[0])))));
       }));
@@ -1302,7 +1307,7 @@ public class ServerFixture {
 
     private void registerApiIssuesPullResponses() {
       projectsByProjectKey.forEach((projectKey, project) -> project.branchesByName.forEach((branchName, branch) -> {
-        var branchParameter = branchName == null ? "" : ("&branchName=" + branchName);
+        var branchParameter = branchName == null ? "" : (BRANCH_NAME_PARAM + branchName);
         var timestamp = Issues.IssuesPullQueryTimestamp.newBuilder().setQueryTimestamp(123L).build();
         var issuesArray = branch.issues.stream().map(issue -> Issues.IssueLite.newBuilder()
           .setKey(issue.issueKey)
@@ -1327,14 +1332,14 @@ public class ServerFixture {
         System.arraycopy(issuesArray, 0, messages, 1, issuesArray.length);
         var response = aResponse().withResponseBody(protobufBodyDelimited(messages));
         mockServer.stubFor(
-          get(urlMatching("\\Q/api/issues/pull?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + "\\E)?"))
+          get(urlMatching("\\Q/api/issues/pull?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + REGEX_END_OPTIONAL))
             .willReturn(response));
       }));
     }
 
     private void registerApiIssuesPullTaintResponses() {
       projectsByProjectKey.forEach((projectKey, project) -> project.branchesByName.forEach((branchName, branch) -> {
-        var branchParameter = branchName == null ? "" : ("&branchName=" + branchName);
+        var branchParameter = branchName == null ? "" : (BRANCH_NAME_PARAM + branchName);
         var timestamp = Issues.TaintVulnerabilityPullQueryTimestamp.newBuilder().setQueryTimestamp(123L).build();
         var issuesArray = branch.taintIssues.stream().map(issue -> Issues.TaintVulnerabilityLite.newBuilder()
           .setKey(issue.issueKey)
@@ -1356,7 +1361,7 @@ public class ServerFixture {
         System.arraycopy(issuesArray, 0, messages, 1, issuesArray.length);
         var response = aResponse().withResponseBody(protobufBodyDelimited(messages));
         mockServer.stubFor(get(
-          urlMatching("\\Q/api/issues/pull_taint?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + "\\E)?"))
+          urlMatching("\\Q/api/issues/pull_taint?projectKey=" + projectKey + branchParameter + "\\E(&languages=.*)?(\\Q&changedSince=" + timestamp.getQueryTimestamp() + REGEX_END_OPTIONAL))
             .willReturn(response));
       }));
     }
@@ -1368,18 +1373,18 @@ public class ServerFixture {
     private void registerSourceApiResponses() {
       projectsByProjectKey.forEach((projectKey, project) -> project.pullRequestsByName.forEach((pullRequestName, pullRequest) -> pullRequest.sourceFileByComponentKey
         .forEach((componentKey, sourceFile) -> mockServer
-          .stubFor(get("/api/sources/raw?key=" + urlEncode(componentKey) + "&pullRequest=" + urlEncode(pullRequestName)).willReturn(aResponse().withBody(sourceFile.code))))));
+          .stubFor(get(API_SOURCES_RAW_KEY + urlEncode(componentKey) + "&pullRequest=" + urlEncode(pullRequestName)).willReturn(aResponse().withBody(sourceFile.code))))));
 
       projectsByProjectKey.forEach((projectKey, project) -> project.branchesByName.forEach((branchName, branch) -> {
         if (branchName != null) {
           branch.sourceFileByComponentKey
             .forEach((componentKey, sourceFile) -> mockServer
-              .stubFor(get("/api/sources/raw?key=" + urlEncode(componentKey) + "&branch=" + urlEncode(branchName)).willReturn(aResponse().withBody(sourceFile.code))));
+              .stubFor(get(API_SOURCES_RAW_KEY + urlEncode(componentKey) + BRANCH_PARAM + urlEncode(branchName)).willReturn(aResponse().withBody(sourceFile.code))));
         }
       }));
 
       projectsByProjectKey.forEach((projectKey, project) -> project.branchesByName.forEach((branchName, branch) -> branch.sourceFileByComponentKey
-        .forEach((componentKey, sourceFile) -> mockServer.stubFor(get("/api/sources/raw?key=" + urlEncode(componentKey)).willReturn(aResponse().withBody(sourceFile.code))))));
+        .forEach((componentKey, sourceFile) -> mockServer.stubFor(get(API_SOURCES_RAW_KEY + urlEncode(componentKey)).willReturn(aResponse().withBody(sourceFile.code))))));
     }
 
     private void registerDevelopersApiResponses() {
@@ -1431,7 +1436,7 @@ public class ServerFixture {
           .filter(e -> projectKey.equals(e.getValue().projectKey()))
           .forEach(e -> {
             var projectBinding = e.getValue();
-            var endpoint = "/api/components/search_projects?projectIds=" + projectBinding.projectId() + "&organization=" + organizationKey;
+            var endpoint = "/api/components/search_projects?projectIds=" + projectBinding.projectId() + ORGANIZATION_PARAM + organizationKey;
             var body = """
               {"components":[{"key":"%s","name":"%s"}]}
               """.formatted(projectKey, projectName);
@@ -1459,7 +1464,7 @@ public class ServerFixture {
         .forEach((organizationKey, projects) -> {
           var url = "/api/components/search.protobuf?qualifiers=TRK";
           if (organizationKey.isPresent()) {
-            url += "&organization=" + organizationKey.get();
+            url += ORGANIZATION_PARAM + organizationKey.get();
           }
           url += "&ps=500&p=1";
           mockServer.stubFor(get(url)
@@ -1492,7 +1497,7 @@ public class ServerFixture {
       projectsByProjectKey.forEach((projectKey, project) -> {
         var url = "/api/components/tree.protobuf?qualifiers=FIL,UTS&component=" + projectKey;
         if (project.organizationKey != null) {
-          url += "&organization=" + project.organizationKey;
+          url += ORGANIZATION_PARAM + project.organizationKey;
         }
         url += "&ps=500&p=1";
         mockServer.stubFor(get(url)
