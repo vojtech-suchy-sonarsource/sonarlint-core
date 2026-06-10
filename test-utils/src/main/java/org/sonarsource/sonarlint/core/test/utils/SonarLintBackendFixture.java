@@ -923,6 +923,7 @@ public class SonarLintBackendFixture {
 
     @Override
     public void noBindingSuggestionFound(NoBindingSuggestionFoundParams params) {
+      // Intentionally empty: no-op stub for test purposes
     }
 
     public List<DidChangeTaintVulnerabilitiesParams> getTaintVulnerabilityChanges() {
