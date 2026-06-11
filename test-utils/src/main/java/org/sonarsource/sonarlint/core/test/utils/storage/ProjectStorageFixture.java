@@ -74,6 +74,12 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 public class ProjectStorageFixture {
 
   public static class ProjectStorageBuilder {
+    private static final String RULE_KEY = "ruleKey";
+    private static final String CREATION_DATE = "creationDate";
+    private static final String START_LINE = "startLine";
+    private static final String END_LINE = "endLine";
+    private static final String RANGE_HASH = "rangeHash";
+
     private final String connectionId;
     private final String projectKey;
     private final List<RuleSetBuilder> ruleSets = new ArrayList<>();
@@ -279,23 +285,23 @@ public class ProjectStorageFixture {
       if (issue.resolutionStatus() != null) {
         issueEntity.setProperty("resolutionStatus", issue.resolutionStatus());
       }
-      issueEntity.setProperty("ruleKey", issue.ruleKey());
+      issueEntity.setProperty(RULE_KEY, issue.ruleKey());
       issueEntity.setBlobString("message", issue.message());
-      issueEntity.setProperty("creationDate", issue.introductionDate());
+      issueEntity.setProperty(CREATION_DATE, issue.introductionDate());
       var userSeverity = issue.userSeverity();
       if (userSeverity != null) {
         issueEntity.setProperty("userSeverity", userSeverity);
       }
       if (issue.lineNumber() != null && issue.lineHash() != null) {
         issueEntity.setBlobString("lineHash", issue.lineHash());
-        issueEntity.setProperty("startLine", issue.lineNumber());
+        issueEntity.setProperty(START_LINE, issue.lineNumber());
       } else if (issue.textRangeWithHash() != null) {
         var textRange = issue.textRangeWithHash();
-        issueEntity.setProperty("startLine", textRange.getStartLine());
+        issueEntity.setProperty(START_LINE, textRange.getStartLine());
         issueEntity.setProperty("startLineOffset", textRange.getStartLineOffset());
-        issueEntity.setProperty("endLine", textRange.getEndLine());
+        issueEntity.setProperty(END_LINE, textRange.getEndLine());
         issueEntity.setProperty("endLineOffset", textRange.getEndLineOffset());
-        issueEntity.setBlobString("rangeHash", textRange.getHash());
+        issueEntity.setBlobString(RANGE_HASH, textRange.getHash());
       }
       issueEntity.setBlob("impacts", toProtoImpacts(issue.impacts()));
 
@@ -312,17 +318,17 @@ public class ProjectStorageFixture {
       if (taint.resolutionStatus() != null) {
         taintIssueEntity.setProperty("resolutionStatus", taint.resolutionStatus());
       }
-      taintIssueEntity.setProperty("ruleKey", taint.ruleKey());
+      taintIssueEntity.setProperty(RULE_KEY, taint.ruleKey());
       taintIssueEntity.setBlobString("message", taint.message());
-      taintIssueEntity.setProperty("creationDate", taint.creationDate());
+      taintIssueEntity.setProperty(CREATION_DATE, taint.creationDate());
       taintIssueEntity.setProperty("severity", taint.severity());
       if (taint.textRange() != null) {
         var textRange = taint.textRange();
-        taintIssueEntity.setProperty("startLine", textRange.getStartLine());
+        taintIssueEntity.setProperty(START_LINE, textRange.getStartLine());
         taintIssueEntity.setProperty("startLineOffset", textRange.getStartLineOffset());
-        taintIssueEntity.setProperty("endLine", textRange.getEndLine());
+        taintIssueEntity.setProperty(END_LINE, textRange.getEndLine());
         taintIssueEntity.setProperty("endLineOffset", textRange.getEndLineOffset());
-        taintIssueEntity.setBlobString("rangeHash", textRange.getHash());
+        taintIssueEntity.setBlobString(RANGE_HASH, textRange.getHash());
       }
       taintIssueEntity.setBlob("flows", toProtoFlows(taint.flows()));
       if (taint.ruleDescriptionContextKey() != null) {
@@ -386,15 +392,15 @@ public class ProjectStorageFixture {
     private static void linkHotshotEntity(StoreTransaction txn, ServerSecurityHotspotFixture.ServerHotspot hotspot, Entity fileEntity) {
       var hotspotEntity = txn.newEntity("Hotspot");
       hotspotEntity.setProperty("key", hotspot.key());
-      hotspotEntity.setProperty("ruleKey", hotspot.ruleKey());
+      hotspotEntity.setProperty(RULE_KEY, hotspot.ruleKey());
       hotspotEntity.setBlobString("message", hotspot.message());
-      hotspotEntity.setProperty("creationDate", hotspot.introductionDate());
+      hotspotEntity.setProperty(CREATION_DATE, hotspot.introductionDate());
       var textRange = hotspot.textRangeWithHash();
-      hotspotEntity.setProperty("startLine", textRange.getStartLine());
+      hotspotEntity.setProperty(START_LINE, textRange.getStartLine());
       hotspotEntity.setProperty("startLineOffset", textRange.getStartLineOffset());
-      hotspotEntity.setProperty("endLine", textRange.getEndLine());
+      hotspotEntity.setProperty(END_LINE, textRange.getEndLine());
       hotspotEntity.setProperty("endLineOffset", textRange.getEndLineOffset());
-      hotspotEntity.setBlobString("rangeHash", textRange.getHash());
+      hotspotEntity.setBlobString(RANGE_HASH, textRange.getHash());
 
       hotspotEntity.setProperty("status", hotspot.status());
       hotspotEntity.setProperty("vulnerabilityProbability", hotspot.vulnerabilityProbability().toString());
