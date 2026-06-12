@@ -94,7 +94,7 @@ class SloopLauncherTests {
   private static Sloop sloop;
   private static SonarLintRpcServer server;
   private static Path sloopOutDirPath;
-  private Integer exitValue;
+  private Integer sloopExitValue;
   private boolean shutdownRequested;
 
   @BeforeAll
@@ -107,7 +107,7 @@ class SloopLauncherTests {
   @BeforeEach
   void start() {
     shutdownRequested = false;
-    exitValue = null;
+    sloopExitValue = null;
     var sloopLauncher = new SloopLauncher(new DummySonarLintRpcClient());
     sloop = sloopLauncher.start(sloopOutDirPath.toAbsolutePath());
     server = sloop.getRpcServer();
@@ -148,13 +148,13 @@ class SloopLauncherTests {
     server.initialize(new InitializeParams(clientInfo, telemetryInitDto, HttpConfigurationDto.defaultConfig(), null, Set.of(), sonarUserHome.resolve("storage"), sonarUserHome.resolve("workDir"),
       Set.of(PluginLocator.getPhpPluginPath().toAbsolutePath()), Collections.emptyMap(), Set.of(PHP), Collections.emptySet(), Collections.emptySet(), Collections.emptyList(),
       Collections.emptyList(), sonarUserHome.toString(), Map.of(), false, null, false, null)).join();
-    sloop.onExit().thenAccept(processExitValue -> this.exitValue = processExitValue);
+    sloop.onExit().thenAccept(processExitValue -> this.sloopExitValue = processExitValue);
 
     shutdownRequested = true;
     sloop.shutdown().join();
 
     // it can take some time for the process to finish
-    await().atMost(Duration.ofSeconds(30)).untilAsserted(() -> assertThat(exitValue).isZero());
+    await().atMost(Duration.ofSeconds(30)).untilAsserted(() -> assertThat(sloopExitValue).isZero());
   }
 
   static class DummySonarLintRpcClient implements SonarLintRpcClientDelegate {
