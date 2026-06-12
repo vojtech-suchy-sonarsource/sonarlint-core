@@ -74,6 +74,7 @@ import static org.apache.commons.lang3.StringUtils.trimToEmpty;
 public class ProjectStorageFixture {
 
   public static class ProjectStorageBuilder {
+    private static final String MESSAGE_BLOB_KEY = "message";
     private final String connectionId;
     private final String projectKey;
     private final List<RuleSetBuilder> ruleSets = new ArrayList<>();
@@ -280,7 +281,7 @@ public class ProjectStorageFixture {
         issueEntity.setProperty("resolutionStatus", issue.resolutionStatus());
       }
       issueEntity.setProperty("ruleKey", issue.ruleKey());
-      issueEntity.setBlobString("message", issue.message());
+      issueEntity.setBlobString(MESSAGE_BLOB_KEY, issue.message());
       issueEntity.setProperty("creationDate", issue.introductionDate());
       var userSeverity = issue.userSeverity();
       if (userSeverity != null) {
@@ -313,7 +314,7 @@ public class ProjectStorageFixture {
         taintIssueEntity.setProperty("resolutionStatus", taint.resolutionStatus());
       }
       taintIssueEntity.setProperty("ruleKey", taint.ruleKey());
-      taintIssueEntity.setBlobString("message", taint.message());
+      taintIssueEntity.setBlobString(MESSAGE_BLOB_KEY, taint.message());
       taintIssueEntity.setProperty("creationDate", taint.creationDate());
       taintIssueEntity.setProperty("severity", taint.severity());
       if (taint.textRange() != null) {
@@ -387,7 +388,7 @@ public class ProjectStorageFixture {
       var hotspotEntity = txn.newEntity("Hotspot");
       hotspotEntity.setProperty("key", hotspot.key());
       hotspotEntity.setProperty("ruleKey", hotspot.ruleKey());
-      hotspotEntity.setBlobString("message", hotspot.message());
+      hotspotEntity.setBlobString(MESSAGE_BLOB_KEY, hotspot.message());
       hotspotEntity.setProperty("creationDate", hotspot.introductionDate());
       var textRange = hotspot.textRangeWithHash();
       hotspotEntity.setProperty("startLine", textRange.getStartLine());
