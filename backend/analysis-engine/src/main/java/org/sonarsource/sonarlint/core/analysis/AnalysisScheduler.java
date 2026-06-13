@@ -60,6 +60,7 @@ public class AnalysisScheduler {
   }
 
   private void executeQueuedCommands() {
+    System.out.println("this is an issue!!!!");
     while (termination.get() == null) {
       SonarLintLogger.get().setTarget(logOutput);
       try {
@@ -73,6 +74,7 @@ public class AnalysisScheduler {
       } catch (InterruptedException e) {
         if (termination.get() != CANCELING_TERMINATION) {
           LOG.error("Analysis engine interrupted", e);
+        Thread.currentThread().interrupt();
         }
       } catch (Exception e) {
         LOG.debug("Analysis command failed", e);
