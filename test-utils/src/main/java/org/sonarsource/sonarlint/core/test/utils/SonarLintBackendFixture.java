@@ -20,6 +20,7 @@
 package org.sonarsource.sonarlint.core.test.utils;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import java.net.URL;
 import java.nio.file.Files;
@@ -565,7 +566,7 @@ public class SonarLintBackendFixture {
       try {
         return Files.createTempDirectory(prefix);
       } catch (IOException e) {
-        throw new RuntimeException(e);
+        throw new UncheckedIOException(e);
       }
     }
 
