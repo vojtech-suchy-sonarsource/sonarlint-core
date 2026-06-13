@@ -29,6 +29,9 @@ import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 
 public class StorageUtils {
 
+  private StorageUtils() {
+  }
+
   public static Set<SonarLanguage> deserializeLanguages(Optional<String> lastEnabledLanguages) {
     Set<String> lastIssueEnabledLanguagesStringSet = Collections.emptySet();
     Set<SonarLanguage> lastIssueEnabledLanguagesSet = new HashSet<>();

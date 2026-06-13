@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.Set;
 import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 
-public class ServerUpdaterUtils {
+public final class ServerUpdaterUtils {
   private ServerUpdaterUtils() {
     // utility class
   }
