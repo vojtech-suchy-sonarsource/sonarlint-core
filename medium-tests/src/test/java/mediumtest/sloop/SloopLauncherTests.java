@@ -58,7 +58,6 @@ import org.sonarsource.sonarlint.core.rpc.protocol.client.binding.NoBindingSugge
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.AssistCreatingConnectionParams;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.AssistCreatingConnectionResponse;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.connection.ConnectionSuggestionDto;
-import org.sonarsource.sonarlint.core.rpc.protocol.client.event.DidReceiveServerHotspotEvent;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.fix.FixSuggestionDto;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.hotspot.HotspotDetailsDto;
 import org.sonarsource.sonarlint.core.rpc.protocol.client.http.GetProxyPasswordAuthenticationResponse;
@@ -223,7 +222,7 @@ class SloopLauncherTests {
 
     @Override
     public void showFixSuggestion(String configurationScopeId, String issueKey, FixSuggestionDto fixSuggestion) {
-
+      // Not needed for this dummy test client
     }
 
     @Override
@@ -238,17 +237,17 @@ class SloopLauncherTests {
 
     @Override
     public void startProgress(StartProgressParams params) throws UnsupportedOperationException {
-
+      // No progress tracking needed in tests
     }
 
     @Override
     public void reportProgress(ReportProgressParams params) {
-
+      // Not needed for tests using this dummy client
     }
 
     @Override
     public void didSynchronizeConfigurationScopes(Set<String> configurationScopeIds) {
-
+      // No-op in dummy test client
     }
 
     @Override
@@ -269,11 +268,6 @@ class SloopLauncherTests {
     @Override
     public boolean checkServerTrusted(List<X509CertificateDto> chain, String authType) {
       return false;
-    }
-
-    @Override
-    public void didReceiveServerHotspotEvent(DidReceiveServerHotspotEvent params) {
-
     }
 
     @Override
