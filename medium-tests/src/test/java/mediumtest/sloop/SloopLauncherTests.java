@@ -166,7 +166,7 @@ class SloopLauncherTests {
 
     @Override
     public void suggestBinding(Map<String, List<BindingSuggestionDto>> suggestionsByConfigScope) {
-
+      // Not needed for tests
     }
 
     @Override
@@ -283,7 +283,7 @@ class SloopLauncherTests {
 
     @Override
     public void didChangeMatchedSonarProjectBranch(String configScopeId, String newMatchedBranchName) {
-
+      // Intentionally empty: not needed for this test stub
     }
 
     @Override
@@ -295,6 +295,7 @@ class SloopLauncherTests {
     @Override
     public void didChangeTaintVulnerabilities(String configurationScopeId, Set<UUID> closedTaintVulnerabilityIds, List<TaintVulnerabilityDto> addedTaintVulnerabilities,
       List<TaintVulnerabilityDto> updatedTaintVulnerabilities) {
+      // Intentionally empty: dummy implementation for testing purposes
     }
 
     @Override
@@ -304,12 +305,12 @@ class SloopLauncherTests {
 
     @Override
     public void noBindingSuggestionFound(NoBindingSuggestionFoundParams params) {
-
+      // Not needed for tests
     }
 
     @Override
     public void didChangeAnalysisReadiness(Set<String> configurationScopeIds, boolean areReadyForAnalysis) {
-
+      // No-op: not needed for this test dummy
     }
   }
 }
