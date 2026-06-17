@@ -171,17 +171,17 @@ class SloopLauncherTests {
 
     @Override
     public void suggestConnection(Map<String, List<ConnectionSuggestionDto>> suggestionsByConfigScope) {
-
+      // Not needed for this test stub
     }
 
     @Override
     public void openUrlInBrowser(URL url) {
-
+      // Not needed for tests
     }
 
     @Override
     public void showMessage(MessageType type, String text) {
-
+      // No action needed in test stub
     }
 
     @Override
@@ -198,12 +198,12 @@ class SloopLauncherTests {
 
     @Override
     public void showSoonUnsupportedMessage(ShowSoonUnsupportedMessageParams params) {
-
+      // Not needed for tests using this dummy client
     }
 
     @Override
     public void showSmartNotification(ShowSmartNotificationParams params) {
-
+      // Not needed for tests
     }
 
     @Override
