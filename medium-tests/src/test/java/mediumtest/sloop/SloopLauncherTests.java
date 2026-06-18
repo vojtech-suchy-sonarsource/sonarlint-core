@@ -213,7 +213,7 @@ class SloopLauncherTests {
 
     @Override
     public void showHotspot(String configurationScopeId, HotspotDetailsDto hotspotDetails) {
-
+      // Not needed for tests
     }
 
     @Override
