@@ -130,7 +130,7 @@ public class MockSonarLintRpcClientDelegate implements SonarLintRpcClientDelegat
 
   @Override
   public void showHotspot(String configurationScopeId, HotspotDetailsDto hotspotDetails) {
-
+    // No-op in integration tests
   }
 
   @Override
@@ -227,7 +227,7 @@ public class MockSonarLintRpcClientDelegate implements SonarLintRpcClientDelegat
 
   @Override
   public void didChangeAnalysisReadiness(Set<String> configurationScopeIds, boolean areReadyForAnalysis) {
-
+    // Not needed in mock delegate for integration tests
   }
 
   @Override

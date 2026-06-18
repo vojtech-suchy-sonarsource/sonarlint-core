@@ -6,6 +6,6 @@ public class Foo {
 	}
 	
 	private void foo() {
-		
+		// intentionally empty, used as test fixture for bytecode analysis
 	}
 }
