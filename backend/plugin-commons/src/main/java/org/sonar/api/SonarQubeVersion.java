@@ -28,7 +28,9 @@ import org.sonar.api.utils.Version;
 import static java.util.Objects.requireNonNull;
 
 /**
- * This class was removed from the plugin API but still used in older CFamily analyzer
+ * *
+ * * This class was removed from the plugin API but still used in older CFamily analyzer
+ * @deprecated since 6.5, use {@link org.sonar.api.config.Configuration}
  */
 @ScannerSide
 @ServerSide
