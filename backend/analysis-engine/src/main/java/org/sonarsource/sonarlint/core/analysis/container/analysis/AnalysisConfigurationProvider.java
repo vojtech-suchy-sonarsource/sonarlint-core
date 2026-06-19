@@ -27,8 +27,8 @@ public class AnalysisConfigurationProvider {
 
   private Configuration analysisConfig;
 
-  @Bean("configuration")
-  public Configuration provide(AnalysisSettings settings) {
+  @Bean
+  public Configuration configuration(AnalysisSettings settings) {
     if (analysisConfig == null) {
       this.analysisConfig = new ConfigurationBridge(settings);
     }
