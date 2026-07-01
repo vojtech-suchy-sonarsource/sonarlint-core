@@ -28,30 +28,22 @@ import org.sonarsource.sonarlint.core.commons.VulnerabilityProbability;
 public class SecurityHotspotRaisedEvent implements ServerHotspotEvent {
   private final String hotspotKey;
   private final String projectKey;
-  private final VulnerabilityProbability vulnerabilityProbability;
   private final HotspotReviewStatus status;
   private final Instant creationDate;
   private final String branch;
   private final TaintVulnerabilityRaisedEvent.Location mainLocation;
-  private final String ruleKey;
-  @Nullable
-  private final String ruleDescriptionContextKey;
-  @Nullable
-  private final String assignee;
+  private final HotspotMetadata metadata;
 
-  public SecurityHotspotRaisedEvent(String hotspotKey, String projectKey, VulnerabilityProbability vulnerabilityProbability,
-    HotspotReviewStatus status, Instant creationDate, String branch, TaintVulnerabilityRaisedEvent.Location mainLocation, String ruleKey,
-    @Nullable String ruleDescriptionContextKey, @Nullable String assignee) {
+  public SecurityHotspotRaisedEvent(String hotspotKey, String projectKey,
+    HotspotReviewStatus status, Instant creationDate, String branch, TaintVulnerabilityRaisedEvent.Location mainLocation,
+    HotspotMetadata metadata) {
     this.hotspotKey = hotspotKey;
     this.projectKey = projectKey;
-    this.vulnerabilityProbability = vulnerabilityProbability;
     this.status = status;
     this.creationDate = creationDate;
     this.branch = branch;
     this.mainLocation = mainLocation;
-    this.ruleKey = ruleKey;
-    this.ruleDescriptionContextKey = ruleDescriptionContextKey;
-    this.assignee = assignee;
+    this.metadata = metadata;
   }
 
   public String getHotspotKey() {
@@ -64,7 +56,7 @@ public class SecurityHotspotRaisedEvent implements ServerHotspotEvent {
   }
 
   public VulnerabilityProbability getVulnerabilityProbability() {
-    return vulnerabilityProbability;
+    return metadata.vulnerabilityProbability;
   }
 
   public HotspotReviewStatus getStatus() {
@@ -84,16 +76,20 @@ public class SecurityHotspotRaisedEvent implements ServerHotspotEvent {
   }
 
   public String getRuleKey() {
-    return ruleKey;
+    return metadata.ruleKey;
   }
 
   @Nullable
   public String getRuleDescriptionContextKey() {
-    return ruleDescriptionContextKey;
+    return metadata.ruleDescriptionContextKey;
   }
 
   @Override
   public Path getFilePath() {
     return mainLocation.getFilePath();
+  }
+
+  public record HotspotMetadata(VulnerabilityProbability vulnerabilityProbability, String ruleKey,
+    @Nullable String ruleDescriptionContextKey, @Nullable String assignee) {
   }
 }

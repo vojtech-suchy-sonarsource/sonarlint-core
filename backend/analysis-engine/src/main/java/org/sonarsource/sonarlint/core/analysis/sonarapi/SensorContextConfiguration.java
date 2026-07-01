@@ -1,6 +1,6 @@
 /*
  * SonarLint Core - Analysis Engine
- * Copyright (C) 2016-2025 SonarSource Sàrl
+ * Copyright (C) 2016-2025 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -17,22 +17,10 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package org.sonarsource.sonarlint.core.analysis.container.global;
+package org.sonarsource.sonarlint.core.analysis.sonarapi;
 
 import org.sonar.api.config.Configuration;
-import org.sonarsource.sonarlint.core.plugin.commons.sonarapi.ConfigurationBridge;
-import org.springframework.context.annotation.Bean;
+import org.sonar.api.config.Settings;
 
-public class GlobalConfigurationProvider {
-
-  private Configuration globalConfig;
-
-  @Bean("configuration")
-  public Configuration provide(GlobalSettings settings) {
-    if (globalConfig == null) {
-      this.globalConfig = new ConfigurationBridge(settings);
-    }
-    return globalConfig;
-  }
-
+public record SensorContextConfiguration(Settings settings, Configuration config) {
 }
