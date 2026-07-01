@@ -47,13 +47,13 @@ public class SecurityHotspotRaisedEventParser implements EventParser<SecurityHot
     return Optional.of(new SecurityHotspotRaisedEvent(
       payload.key,
       payload.projectKey,
-      VulnerabilityProbability.valueOf(payload.vulnerabilityProbability),
       HotspotReviewStatus.fromStatusAndResolution(payload.status, payload.resolution),
       Instant.ofEpochMilli(payload.creationDate),
       payload.branch,
       adapt(payload.mainLocation),
-      payload.ruleKey,
-      payload.ruleDescriptionContextKey, payload.assignee));
+      new SecurityHotspotRaisedEvent.HotspotMetadata(
+        VulnerabilityProbability.valueOf(payload.vulnerabilityProbability),
+        payload.ruleKey, payload.ruleDescriptionContextKey, payload.assignee)));
   }
 
   private static class HotspotRaisedEventPayload {

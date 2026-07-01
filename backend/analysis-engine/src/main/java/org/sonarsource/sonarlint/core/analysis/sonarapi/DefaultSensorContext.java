@@ -61,20 +61,18 @@ public class DefaultSensorContext implements SensorContext {
   private static final NoOpNewCoverage NO_OP_NEW_COVERAGE = new NoOpNewCoverage();
   private static final NoOpNewSignificantCode NO_OP_NEW_SIGNIFICANT_CODE = new NoOpNewSignificantCode();
 
-  private final Settings settings;
+  private final SensorContextConfiguration sensorContextConfiguration;
   private final FileSystem fs;
   private final ActiveRules activeRules;
   private final SensorStorage sensorStorage;
   private final SonarLintInputProject project;
   private final SonarRuntime sqRuntime;
   private final ProgressIndicator progressIndicator;
-  private final Configuration config;
 
-  public DefaultSensorContext(SonarLintInputProject project, Settings settings, Configuration config, FileSystem fs, ActiveRules activeRules, SensorStorage sensorStorage,
-    SonarRuntime sqRuntime, ProgressIndicator progressIndicator) {
+  public DefaultSensorContext(SonarLintInputProject project, SensorContextConfiguration sensorContextConfiguration, FileSystem fs, ActiveRules activeRules,
+    SensorStorage sensorStorage, SonarRuntime sqRuntime, ProgressIndicator progressIndicator) {
     this.project = project;
-    this.settings = settings;
-    this.config = config;
+    this.sensorContextConfiguration = sensorContextConfiguration;
     this.fs = fs;
     this.activeRules = activeRules;
     this.sensorStorage = sensorStorage;
@@ -84,12 +82,12 @@ public class DefaultSensorContext implements SensorContext {
 
   @Override
   public Settings settings() {
-    return settings;
+    return sensorContextConfiguration.settings();
   }
 
   @Override
   public Configuration config() {
-    return config;
+    return sensorContextConfiguration.config();
   }
 
   @Override
