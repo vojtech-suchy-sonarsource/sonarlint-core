@@ -34,29 +34,22 @@ import org.sonarsource.sonarlint.core.commons.api.SonarLanguage;
 
 public class ServerRule {
   private final String name;
-  private final String htmlDesc;
-  private final List<DescriptionSection> descriptionSections;
-  private final String htmlNote;
   private final IssueSeverity severity;
   private final RuleType type;
   private final SonarLanguage language;
+  private final RuleDescription ruleDescription;
   private final Set<String> educationPrincipleKeys;
-  private final CleanCodeAttribute cleanCodeAttribute;
-  private final Map<SoftwareQuality, ImpactSeverity> impacts;
+  private final CleanCodeInfo cleanCodeInfo;
 
-
-  public ServerRule(String name, IssueSeverity severity, RuleType type, String language, String htmlDesc, List<DescriptionSection> descriptionSections, String htmlNote,
-    Set<String> educationPrincipleKeys, @Nullable CleanCodeAttribute cleanCodeAttribute, Map<SoftwareQuality, ImpactSeverity> impacts) {
+  public ServerRule(String name, IssueSeverity severity, RuleType type, String language, RuleDescription ruleDescription,
+    Set<String> educationPrincipleKeys, CleanCodeInfo cleanCodeInfo) {
     this.name = name;
     this.severity = severity;
     this.type = type;
     this.language = SonarLanguage.forKey(language).orElseThrow(() -> new IllegalArgumentException("Unknown language with key: " + language));
-    this.htmlDesc = htmlDesc;
-    this.descriptionSections = descriptionSections;
-    this.htmlNote = htmlNote;
+    this.ruleDescription = ruleDescription;
     this.educationPrincipleKeys = educationPrincipleKeys;
-    this.cleanCodeAttribute = cleanCodeAttribute;
-    this.impacts = impacts;
+    this.cleanCodeInfo = cleanCodeInfo;
   }
 
   public String getName() {
@@ -64,15 +57,15 @@ public class ServerRule {
   }
 
   public String getHtmlDesc() {
-    return htmlDesc;
+    return ruleDescription.getHtmlDesc();
   }
 
   public List<DescriptionSection> getDescriptionSections() {
-    return descriptionSections;
+    return ruleDescription.getDescriptionSections();
   }
 
   public String getHtmlNote() {
-    return htmlNote;
+    return ruleDescription.getHtmlNote();
   }
 
   public IssueSeverity getSeverity() {
@@ -93,11 +86,54 @@ public class ServerRule {
 
   @CheckForNull
   public CleanCodeAttribute getCleanCodeAttribute() {
-    return cleanCodeAttribute;
+    return cleanCodeInfo.getCleanCodeAttribute();
   }
 
   public Map<SoftwareQuality, ImpactSeverity> getImpacts() {
-    return impacts;
+    return cleanCodeInfo.getImpacts();
+  }
+
+  public static class RuleDescription {
+    private final String htmlDesc;
+    private final List<DescriptionSection> descriptionSections;
+    private final String htmlNote;
+
+    public RuleDescription(String htmlDesc, List<DescriptionSection> descriptionSections, String htmlNote) {
+      this.htmlDesc = htmlDesc;
+      this.descriptionSections = descriptionSections;
+      this.htmlNote = htmlNote;
+    }
+
+    public String getHtmlDesc() {
+      return htmlDesc;
+    }
+
+    public List<DescriptionSection> getDescriptionSections() {
+      return descriptionSections;
+    }
+
+    public String getHtmlNote() {
+      return htmlNote;
+    }
+  }
+
+  public static class CleanCodeInfo {
+    private final CleanCodeAttribute cleanCodeAttribute;
+    private final Map<SoftwareQuality, ImpactSeverity> impacts;
+
+    public CleanCodeInfo(@Nullable CleanCodeAttribute cleanCodeAttribute, Map<SoftwareQuality, ImpactSeverity> impacts) {
+      this.cleanCodeAttribute = cleanCodeAttribute;
+      this.impacts = impacts;
+    }
+
+    @CheckForNull
+    public CleanCodeAttribute getCleanCodeAttribute() {
+      return cleanCodeAttribute;
+    }
+
+    public Map<SoftwareQuality, ImpactSeverity> getImpacts() {
+      return impacts;
+    }
   }
 
   public static class DescriptionSection {

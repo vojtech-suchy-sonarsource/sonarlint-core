@@ -79,9 +79,10 @@ public class RulesApi {
       var impacts = rule.getImpacts().getImpactsList().stream().collect(toMap(
         impact -> SoftwareQuality.valueOf(impact.getSoftwareQuality().name()),
         impact -> ImpactSeverity.mapSeverity(impact.getSeverity().name())));
-      return Optional.of(new ServerRule(rule.getName(), IssueSeverity.valueOf(rule.getSeverity()), RuleType.valueOf(rule.getType().name()), rule.getLang(), rule.getHtmlDesc(),
-        convertDescriptionSections(rule),
-        rule.getHtmlNote(), Set.copyOf(rule.getEducationPrinciples().getEducationPrinciplesList()), cleanCodeAttribute, impacts));
+      var ruleDescription = new ServerRule.RuleDescription(rule.getHtmlDesc(), convertDescriptionSections(rule), rule.getHtmlNote());
+      var cleanCodeInfo = new ServerRule.CleanCodeInfo(cleanCodeAttribute, impacts);
+      return Optional.of(new ServerRule(rule.getName(), IssueSeverity.valueOf(rule.getSeverity()), RuleType.valueOf(rule.getType().name()), rule.getLang(), ruleDescription,
+        Set.copyOf(rule.getEducationPrinciples().getEducationPrinciplesList()), cleanCodeInfo));
     } catch (Exception e) {
       LOG.error("Error when fetching rule '" + ruleKey + "'", e);
     }

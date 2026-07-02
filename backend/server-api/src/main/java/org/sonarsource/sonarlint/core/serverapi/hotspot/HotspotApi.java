@@ -209,11 +209,12 @@ public class HotspotApi {
       hotspot.getMessage(),
       Path.of(hotspot.getComponent().getPath()),
       convertTextRange(hotspot.getTextRange()),
-      hotspot.getAuthor(),
       ServerHotspotDetails.Status.valueOf(hotspot.getStatus()),
       hotspot.hasResolution() ? ServerHotspotDetails.Resolution.valueOf(hotspot.getResolution()) : null,
       adapt(hotspot.getRule()),
-      codeSnippet, hotspot.getCanChangeStatus());
+      hotspot.getCanChangeStatus())
+      .setAuthor(hotspot.getAuthor())
+      .setCodeSnippet(codeSnippet);
   }
 
   private static ServerHotspotDetails.Rule adapt(Hotspots.Rule rule) {

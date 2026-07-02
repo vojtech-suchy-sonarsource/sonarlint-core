@@ -32,7 +32,6 @@ class ServerHotspotDetailsTests {
     var hotspot = new ServerHotspotDetails("message",
       Path.of("path"),
       new TextRange(0, 1, 2, 3),
-      "author",
       ServerHotspotDetails.Status.TO_REVIEW,
       ServerHotspotDetails.Resolution.FIXED, new ServerHotspotDetails.Rule(
         "key",
@@ -42,7 +41,9 @@ class ServerHotspotDetailsTests {
         "risk",
         "vulnerability",
         "fix"),
-      "some code \n content", true);
+      true)
+      .setAuthor("author")
+      .setCodeSnippet("some code \n content");
 
     assertThat(hotspot.message).isEqualTo("message");
     assertThat(hotspot.filePath).isEqualTo(Path.of("path"));
