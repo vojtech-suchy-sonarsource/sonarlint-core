@@ -33,7 +33,7 @@ public class ServerHotspotDetails {
   @Deprecated(forRemoval = true)
   public final TextRange textRange;
   @Deprecated(forRemoval = true)
-  public final String author;
+  public String author = "";
   @Deprecated(forRemoval = true)
   public final Status status;
   @Deprecated(forRemoval = true)
@@ -43,29 +43,46 @@ public class ServerHotspotDetails {
   public final Rule rule;
   @Deprecated(forRemoval = true)
   @CheckForNull
-  public final String codeSnippet;
+  public String codeSnippet;
   public final boolean canChangeStatus;
 
   public ServerHotspotDetails(String message,
     Path filePath,
     TextRange textRange,
-    String author,
     Status status,
     @Nullable Resolution resolution,
     Rule rule,
-    @Nullable String codeSnippet,
     boolean canChangeStatus) {
     this.message = message;
     this.filePath = filePath;
     this.textRange = textRange;
-    this.author = author;
     this.status = status;
     this.resolution = resolution;
     this.rule = rule;
-    this.codeSnippet = codeSnippet;
     this.canChangeStatus = canChangeStatus;
   }
 
+  /**
+   * @deprecated use alternative API
+   */
+  @Deprecated(forRemoval = true)
+  public ServerHotspotDetails setAuthor(String author) {
+    this.author = author;
+    return this;
+  }
+
+  /**
+   * @deprecated use alternative API
+   */
+  @Deprecated(forRemoval = true)
+  public ServerHotspotDetails setCodeSnippet(@Nullable String codeSnippet) {
+    this.codeSnippet = codeSnippet;
+    return this;
+  }
+
+  /**
+   * @deprecated use alternative API
+   */
   @Deprecated(forRemoval = true)
   public static class Rule {
 
@@ -96,6 +113,9 @@ public class ServerHotspotDetails {
 
   }
 
+  /**
+   * @deprecated use alternative API
+   */
   @Deprecated(forRemoval = true)
   public enum Status {
     TO_REVIEW("To review"), REVIEWED("Reviewed");
