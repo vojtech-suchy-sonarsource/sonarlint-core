@@ -27,13 +27,25 @@ import org.sonarsource.sonarlint.core.commons.api.TextRange;
 
 public class ServerHotspotDetails {
 
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public final String message;
   public final Path filePath;
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public final TextRange textRange;
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public final String author;
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public final Status status;
   @Deprecated(forRemoval = true)
@@ -96,6 +108,9 @@ public class ServerHotspotDetails {
 
   }
 
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public enum Status {
     TO_REVIEW("To review"), REVIEWED("Reviewed");
@@ -107,6 +122,9 @@ public class ServerHotspotDetails {
     public final String description;
   }
 
+  /**
+   * @deprecated
+   */
   @Deprecated(forRemoval = true)
   public enum Resolution {
     FIXED("fixed"), SAFE("safe"), ACKNOWLEDGED("acknowledged");
