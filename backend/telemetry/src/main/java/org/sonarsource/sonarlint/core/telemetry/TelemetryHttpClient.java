@@ -131,11 +131,36 @@ public class TelemetryHttpClient {
     var mergedAdditionalAttributes = new HashMap<>(telemetryLiveAttrs.getAdditionalAttributes());
     mergedAdditionalAttributes.putAll(additionalAttributes);
 
-    return new TelemetryPayload(daysSinceInstallation, data.numUseDays(), product, version, ideVersion, platform, architecture,
-      telemetryLiveAttrs.usesConnectedMode(), telemetryLiveAttrs.usesSonarCloud(), systemTime, data.installTime(), platform, jre,
-      telemetryLiveAttrs.getNodeVersion(), analyzers, notifications, showHotspotPayload, showIssuePayload,
-      taintVulnerabilitiesPayload, telemetryRulesPayload, hotspotPayload, issuePayload, helpAndFeedbackPayload,
-      fixSuggestionPayload, countIssuesWithPossibleAiFixFromIde, cleanAsYouCodePayload, shareConnectedModePayload, mergedAdditionalAttributes);
+    return TelemetryPayload.builder()
+      .setDaysSinceInstallation(daysSinceInstallation)
+      .setDaysOfUse(data.numUseDays())
+      .setProduct(product)
+      .setVersion(version)
+      .setIdeVersion(ideVersion)
+      .setPlatform(platform)
+      .setArchitecture(architecture)
+      .setConnectedMode(telemetryLiveAttrs.usesConnectedMode())
+      .setConnectedModeSonarcloud(telemetryLiveAttrs.usesSonarCloud())
+      .setSystemTime(systemTime)
+      .setInstallTime(data.installTime())
+      .setOs(platform)
+      .setJre(jre)
+      .setNodejs(telemetryLiveAttrs.getNodeVersion())
+      .setAnalyses(analyzers)
+      .setNotifications(notifications)
+      .setShowHotspotPayload(showHotspotPayload)
+      .setShowIssuePayload(showIssuePayload)
+      .setTaintVulnerabilitiesPayload(taintVulnerabilitiesPayload)
+      .setTelemetryRulesPayload(telemetryRulesPayload)
+      .setHotspotPayload(hotspotPayload)
+      .setIssuePayload(issuePayload)
+      .setHelpAndFeedbackPayload(helpAndFeedbackPayload)
+      .setAiFixSuggestionsPayload(fixSuggestionPayload)
+      .setCountIssuesWithPossibleAiFixFromIde(countIssuesWithPossibleAiFixFromIde)
+      .setCleanAsYouCodePayload(cleanAsYouCodePayload)
+      .setShareConnectedModePayload(shareConnectedModePayload)
+      .setAdditionalAttributes(mergedAdditionalAttributes)
+      .build();
   }
 
   private void sendPost(TelemetryPayload payload) {

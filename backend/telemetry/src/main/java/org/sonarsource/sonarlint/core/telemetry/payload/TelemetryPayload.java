@@ -118,41 +118,39 @@ public class TelemetryPayload {
 
   private final transient Map<String, Object> additionalAttributes;
 
-  public TelemetryPayload(long daysSinceInstallation, long daysOfUse, String product, String version, String ideVersion, @Nullable String platform, @Nullable String architecture,
-    boolean connectedMode, boolean connectedModeSonarcloud, OffsetDateTime systemTime, OffsetDateTime installTime, String os, String jre, @Nullable String nodejs,
-    TelemetryAnalyzerPerformancePayload[] analyses, TelemetryNotificationsPayload notifications, ShowHotspotPayload showHotspotPayload,
-    ShowIssuePayload showIssuePayload, TaintVulnerabilitiesPayload taintVulnerabilitiesPayload, TelemetryRulesPayload telemetryRulesPayload, HotspotPayload hotspotPayload,
-    IssuePayload issuePayload, TelemetryHelpAndFeedbackPayload helpAndFeedbackPayload, TelemetryFixSuggestionPayload[] aiFixSuggestionsPayload,
-    int countIssuesWithPossibleAiFixFromIde, CleanAsYouCodePayload cleanAsYouCodePayload, ShareConnectedModePayload shareConnectedModePayload,
-    Map<String, Object> additionalAttributes) {
-    this.daysSinceInstallation = daysSinceInstallation;
-    this.daysOfUse = daysOfUse;
-    this.product = product;
-    this.version = version;
-    this.ideVersion = ideVersion;
-    this.platform = platform;
-    this.architecture = architecture;
-    this.connectedMode = connectedMode;
-    this.connectedModeSonarcloud = connectedModeSonarcloud;
-    this.systemTime = systemTime;
-    this.installTime = installTime;
-    this.os = os;
-    this.jre = jre;
-    this.nodejs = nodejs;
-    this.analyses = analyses;
-    this.notifications = notifications;
-    this.showHotspotPayload = showHotspotPayload;
-    this.showIssuePayload = showIssuePayload;
-    this.taintVulnerabilitiesPayload = taintVulnerabilitiesPayload;
-    this.telemetryRulesPayload = telemetryRulesPayload;
-    this.hotspotPayload = hotspotPayload;
-    this.issuePayload = issuePayload;
-    this.helpAndFeedbackPayload = helpAndFeedbackPayload;
-    this.aiFixSuggestionsPayload = aiFixSuggestionsPayload;
-    this.countIssuesWithPossibleAiFixFromIde = countIssuesWithPossibleAiFixFromIde;
-    this.cleanAsYouCodePayload = cleanAsYouCodePayload;
-    this.shareConnectedModePayload = shareConnectedModePayload;
-    this.additionalAttributes = additionalAttributes;
+  private TelemetryPayload(Builder builder) {
+    this.daysSinceInstallation = builder.daysSinceInstallation;
+    this.daysOfUse = builder.daysOfUse;
+    this.product = builder.product;
+    this.version = builder.version;
+    this.ideVersion = builder.ideVersion;
+    this.platform = builder.platform;
+    this.architecture = builder.architecture;
+    this.connectedMode = builder.connectedMode;
+    this.connectedModeSonarcloud = builder.connectedModeSonarcloud;
+    this.systemTime = builder.systemTime;
+    this.installTime = builder.installTime;
+    this.os = builder.os;
+    this.jre = builder.jre;
+    this.nodejs = builder.nodejs;
+    this.analyses = builder.analyses;
+    this.notifications = builder.notifications;
+    this.showHotspotPayload = builder.showHotspotPayload;
+    this.showIssuePayload = builder.showIssuePayload;
+    this.taintVulnerabilitiesPayload = builder.taintVulnerabilitiesPayload;
+    this.telemetryRulesPayload = builder.telemetryRulesPayload;
+    this.hotspotPayload = builder.hotspotPayload;
+    this.issuePayload = builder.issuePayload;
+    this.helpAndFeedbackPayload = builder.helpAndFeedbackPayload;
+    this.aiFixSuggestionsPayload = builder.aiFixSuggestionsPayload;
+    this.countIssuesWithPossibleAiFixFromIde = builder.countIssuesWithPossibleAiFixFromIde;
+    this.cleanAsYouCodePayload = builder.cleanAsYouCodePayload;
+    this.shareConnectedModePayload = builder.shareConnectedModePayload;
+    this.additionalAttributes = builder.additionalAttributes;
+  }
+
+  public static Builder builder() {
+    return new Builder();
   }
 
   public long daysSinceInstallation() {
@@ -292,6 +290,181 @@ public class TelemetryPayload {
       // Don't override value if it already exists in the target
     }
     return target;
+  }
+
+  public static class Builder {
+    private long daysSinceInstallation;
+    private long daysOfUse;
+    private String version;
+    private String product;
+    private String ideVersion;
+    private String platform;
+    private String architecture;
+    private boolean connectedMode;
+    private boolean connectedModeSonarcloud;
+    private OffsetDateTime systemTime;
+    private OffsetDateTime installTime;
+    private String os;
+    private String jre;
+    private String nodejs;
+    private TelemetryAnalyzerPerformancePayload[] analyses;
+    private TelemetryNotificationsPayload notifications;
+    private ShowHotspotPayload showHotspotPayload;
+    private ShowIssuePayload showIssuePayload;
+    private TaintVulnerabilitiesPayload taintVulnerabilitiesPayload;
+    private TelemetryRulesPayload telemetryRulesPayload;
+    private HotspotPayload hotspotPayload;
+    private IssuePayload issuePayload;
+    private TelemetryHelpAndFeedbackPayload helpAndFeedbackPayload;
+    private TelemetryFixSuggestionPayload[] aiFixSuggestionsPayload;
+    private int countIssuesWithPossibleAiFixFromIde;
+    private CleanAsYouCodePayload cleanAsYouCodePayload;
+    private ShareConnectedModePayload shareConnectedModePayload;
+    private Map<String, Object> additionalAttributes;
+
+    public Builder setDaysSinceInstallation(long daysSinceInstallation) {
+      this.daysSinceInstallation = daysSinceInstallation;
+      return this;
+    }
+
+    public Builder setDaysOfUse(long daysOfUse) {
+      this.daysOfUse = daysOfUse;
+      return this;
+    }
+
+    public Builder setVersion(String version) {
+      this.version = version;
+      return this;
+    }
+
+    public Builder setProduct(String product) {
+      this.product = product;
+      return this;
+    }
+
+    public Builder setIdeVersion(String ideVersion) {
+      this.ideVersion = ideVersion;
+      return this;
+    }
+
+    public Builder setPlatform(@Nullable String platform) {
+      this.platform = platform;
+      return this;
+    }
+
+    public Builder setArchitecture(@Nullable String architecture) {
+      this.architecture = architecture;
+      return this;
+    }
+
+    public Builder setConnectedMode(boolean connectedMode) {
+      this.connectedMode = connectedMode;
+      return this;
+    }
+
+    public Builder setConnectedModeSonarcloud(boolean connectedModeSonarcloud) {
+      this.connectedModeSonarcloud = connectedModeSonarcloud;
+      return this;
+    }
+
+    public Builder setSystemTime(OffsetDateTime systemTime) {
+      this.systemTime = systemTime;
+      return this;
+    }
+
+    public Builder setInstallTime(OffsetDateTime installTime) {
+      this.installTime = installTime;
+      return this;
+    }
+
+    public Builder setOs(String os) {
+      this.os = os;
+      return this;
+    }
+
+    public Builder setJre(String jre) {
+      this.jre = jre;
+      return this;
+    }
+
+    public Builder setNodejs(@Nullable String nodejs) {
+      this.nodejs = nodejs;
+      return this;
+    }
+
+    public Builder setAnalyses(TelemetryAnalyzerPerformancePayload[] analyses) {
+      this.analyses = analyses;
+      return this;
+    }
+
+    public Builder setNotifications(TelemetryNotificationsPayload notifications) {
+      this.notifications = notifications;
+      return this;
+    }
+
+    public Builder setShowHotspotPayload(ShowHotspotPayload showHotspotPayload) {
+      this.showHotspotPayload = showHotspotPayload;
+      return this;
+    }
+
+    public Builder setShowIssuePayload(ShowIssuePayload showIssuePayload) {
+      this.showIssuePayload = showIssuePayload;
+      return this;
+    }
+
+    public Builder setTaintVulnerabilitiesPayload(TaintVulnerabilitiesPayload taintVulnerabilitiesPayload) {
+      this.taintVulnerabilitiesPayload = taintVulnerabilitiesPayload;
+      return this;
+    }
+
+    public Builder setTelemetryRulesPayload(TelemetryRulesPayload telemetryRulesPayload) {
+      this.telemetryRulesPayload = telemetryRulesPayload;
+      return this;
+    }
+
+    public Builder setHotspotPayload(HotspotPayload hotspotPayload) {
+      this.hotspotPayload = hotspotPayload;
+      return this;
+    }
+
+    public Builder setIssuePayload(IssuePayload issuePayload) {
+      this.issuePayload = issuePayload;
+      return this;
+    }
+
+    public Builder setHelpAndFeedbackPayload(TelemetryHelpAndFeedbackPayload helpAndFeedbackPayload) {
+      this.helpAndFeedbackPayload = helpAndFeedbackPayload;
+      return this;
+    }
+
+    public Builder setAiFixSuggestionsPayload(TelemetryFixSuggestionPayload[] aiFixSuggestionsPayload) {
+      this.aiFixSuggestionsPayload = aiFixSuggestionsPayload;
+      return this;
+    }
+
+    public Builder setCountIssuesWithPossibleAiFixFromIde(int countIssuesWithPossibleAiFixFromIde) {
+      this.countIssuesWithPossibleAiFixFromIde = countIssuesWithPossibleAiFixFromIde;
+      return this;
+    }
+
+    public Builder setCleanAsYouCodePayload(CleanAsYouCodePayload cleanAsYouCodePayload) {
+      this.cleanAsYouCodePayload = cleanAsYouCodePayload;
+      return this;
+    }
+
+    public Builder setShareConnectedModePayload(ShareConnectedModePayload shareConnectedModePayload) {
+      this.shareConnectedModePayload = shareConnectedModePayload;
+      return this;
+    }
+
+    public Builder setAdditionalAttributes(Map<String, Object> additionalAttributes) {
+      this.additionalAttributes = additionalAttributes;
+      return this;
+    }
+
+    public TelemetryPayload build() {
+      return new TelemetryPayload(this);
+    }
   }
 
 }

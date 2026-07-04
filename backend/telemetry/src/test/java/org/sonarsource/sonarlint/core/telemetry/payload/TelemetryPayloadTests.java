@@ -75,10 +75,36 @@ class TelemetryPayloadTests {
     additionalPropsSub.put("aSubNumber", 2);
     additionalProps.put("sub", additionalPropsSub);
     var cleanAsYouCodePayload = new CleanAsYouCodePayload(new NewCodeFocusPayload(true, 2));
-    var m = new TelemetryPayload(4, 15, "SLI", "2.4", "Pycharm 3.2", "platform", "architecture",
-      true, true, systemTime, installTime, "Windows 10", "1.8.0", "10.5.2", perf,
-      notifPayload, showHotspotPayload, showIssuePayload, taintVulnerabilitiesPayload, rulesPayload, hotspotPayload, issuePayload, helpAndFeedbackPayload,
-      aiFixSuggestionsPayload, 1, cleanAsYouCodePayload, sharedConnectedModePayload, additionalProps);
+    var m = TelemetryPayload.builder()
+      .setDaysSinceInstallation(4)
+      .setDaysOfUse(15)
+      .setProduct("SLI")
+      .setVersion("2.4")
+      .setIdeVersion("Pycharm 3.2")
+      .setPlatform("platform")
+      .setArchitecture("architecture")
+      .setConnectedMode(true)
+      .setConnectedModeSonarcloud(true)
+      .setSystemTime(systemTime)
+      .setInstallTime(installTime)
+      .setOs("Windows 10")
+      .setJre("1.8.0")
+      .setNodejs("10.5.2")
+      .setAnalyses(perf)
+      .setNotifications(notifPayload)
+      .setShowHotspotPayload(showHotspotPayload)
+      .setShowIssuePayload(showIssuePayload)
+      .setTaintVulnerabilitiesPayload(taintVulnerabilitiesPayload)
+      .setTelemetryRulesPayload(rulesPayload)
+      .setHotspotPayload(hotspotPayload)
+      .setIssuePayload(issuePayload)
+      .setHelpAndFeedbackPayload(helpAndFeedbackPayload)
+      .setAiFixSuggestionsPayload(aiFixSuggestionsPayload)
+      .setCountIssuesWithPossibleAiFixFromIde(1)
+      .setCleanAsYouCodePayload(cleanAsYouCodePayload)
+      .setShareConnectedModePayload(sharedConnectedModePayload)
+      .setAdditionalAttributes(additionalProps)
+      .build();
     var s = m.toJson();
 
     assertThat(s).isEqualTo("{\"days_since_installation\":4,"

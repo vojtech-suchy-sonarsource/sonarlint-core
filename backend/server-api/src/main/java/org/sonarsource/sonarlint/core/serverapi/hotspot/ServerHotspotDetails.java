@@ -36,11 +36,20 @@ public class ServerHotspotDetails {
   public final String author;
   @Deprecated(forRemoval = true)
   public final Status status;
+  /**
+   * @deprecated use a different approach
+   */
   @Deprecated(forRemoval = true)
   @CheckForNull
   public final Resolution resolution;
+  /**
+   * @deprecated use a different approach
+   */
   @Deprecated(forRemoval = true)
   public final Rule rule;
+  /**
+   * @deprecated use a different approach
+   */
   @Deprecated(forRemoval = true)
   @CheckForNull
   public final String codeSnippet;

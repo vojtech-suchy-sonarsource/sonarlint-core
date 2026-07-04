@@ -30,6 +30,7 @@ import picocli.CommandLine;
 @CommandLine.Command(name = "slcore", mixinStandardHelpOptions = true, description = "The SonarLint Core backend")
 public class SonarLintServerCli implements Callable<Integer> {
 
+  @SuppressWarnings("java:S106")
   @Override
   public Integer call() {
     return run(System.in, System.out);
