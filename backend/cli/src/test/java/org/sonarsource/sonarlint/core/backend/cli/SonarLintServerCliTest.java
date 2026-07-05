@@ -54,7 +54,7 @@ class SonarLintServerCliTest {
     when(inputStream.available()).thenReturn(1);
     var exitCode = new SonarLintServerCli().run(inputStream, new PrintStream(new ByteArrayOutputStream()));
 
-    assertThat(outContent.toString()).isEqualToIgnoringNewLines("Input stream has closed, exiting...");
+    assertThat(outContent.toString()).contains("Input stream has closed, exiting...");
 
     assertThat(exitCode).isZero();
     outContent.close();
@@ -70,7 +70,7 @@ class SonarLintServerCliTest {
     try (var ignored = mockConstructionWithAnswer(BackendJsonRpcLauncher.class, invocationOnMock -> mockServer)) {
       var exitCode = new SonarLintServerCli().run(new ByteArrayInputStream(new byte[0]), new PrintStream(new ByteArrayOutputStream()));
 
-      assertThat(outContent.toString()).isEqualToIgnoringNewLines("Server is shutting down...");
+      assertThat(outContent.toString()).contains("Server is shutting down...");
       assertThat(exitCode).isZero();
     }
   }

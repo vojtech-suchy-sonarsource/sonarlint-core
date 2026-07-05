@@ -25,35 +25,55 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
 public class HotspotDetailsDto {
   private final String key;
-  @Deprecated(forRemoval = true)
-  private final String message;
+  private String message;
   private final Path ideFilePath;
-  @Deprecated(forRemoval = true)
-  private final TextRangeDto textRange;
-  @Deprecated(forRemoval = true)
-  private final String author;
-  @Deprecated(forRemoval = true)
-  private final String status;
-  @Deprecated(forRemoval = true)
+  private TextRangeDto textRange;
+  private String author;
+  private String status;
   @Nullable
-  private final String resolution;
-  @Deprecated(forRemoval = true)
-  private final HotspotRule rule;
-  @Deprecated(forRemoval = true)
+  private String resolution;
+  private HotspotRule rule;
   @Nullable
-  private final String codeSnippet;
+  private String codeSnippet;
 
-  public HotspotDetailsDto(String key, String message, Path ideFilePath, TextRangeDto textRange, String author, String status, @Nullable String resolution, HotspotRule rule,
-    @Nullable String codeSnippet) {
+  public HotspotDetailsDto(String key, Path ideFilePath) {
     this.key = key;
-    this.message = message;
     this.ideFilePath = ideFilePath;
+  }
+
+  public HotspotDetailsDto setMessage(String message) {
+    this.message = message;
+    return this;
+  }
+
+  public HotspotDetailsDto setTextRange(TextRangeDto textRange) {
     this.textRange = textRange;
+    return this;
+  }
+
+  public HotspotDetailsDto setAuthor(String author) {
     this.author = author;
+    return this;
+  }
+
+  public HotspotDetailsDto setStatus(String status) {
     this.status = status;
+    return this;
+  }
+
+  public HotspotDetailsDto setResolution(@Nullable String resolution) {
     this.resolution = resolution;
+    return this;
+  }
+
+  public HotspotDetailsDto setRule(HotspotRule rule) {
     this.rule = rule;
+    return this;
+  }
+
+  public HotspotDetailsDto setCodeSnippet(@Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
+    return this;
   }
 
   public String getKey() {
