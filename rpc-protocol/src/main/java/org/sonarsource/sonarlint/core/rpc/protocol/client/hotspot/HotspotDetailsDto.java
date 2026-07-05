@@ -25,35 +25,111 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
 public class HotspotDetailsDto {
   private final String key;
+  /**
+   * @deprecated use other means to get the message
+   */
   @Deprecated(forRemoval = true)
-  private final String message;
+  private String message;
   private final Path ideFilePath;
+  /**
+   * @deprecated use other means to get the text range
+   */
   @Deprecated(forRemoval = true)
-  private final TextRangeDto textRange;
+  private TextRangeDto textRange;
+  /**
+   * @deprecated use other means to get the author
+   */
   @Deprecated(forRemoval = true)
-  private final String author;
+  private String author;
+  /**
+   * @deprecated use other means to get the status
+   */
   @Deprecated(forRemoval = true)
-  private final String status;
+  private String status;
+  /**
+   * @deprecated use other means to get the resolution
+   */
   @Deprecated(forRemoval = true)
   @Nullable
-  private final String resolution;
+  private String resolution;
+  /**
+   * @deprecated use other means to get the rule
+   */
   @Deprecated(forRemoval = true)
-  private final HotspotRule rule;
+  private HotspotRule rule;
+  /**
+   * @deprecated use other means to get the code snippet
+   */
   @Deprecated(forRemoval = true)
   @Nullable
-  private final String codeSnippet;
+  private String codeSnippet;
 
-  public HotspotDetailsDto(String key, String message, Path ideFilePath, TextRangeDto textRange, String author, String status, @Nullable String resolution, HotspotRule rule,
-    @Nullable String codeSnippet) {
+  public HotspotDetailsDto(String key, Path ideFilePath) {
     this.key = key;
-    this.message = message;
     this.ideFilePath = ideFilePath;
+  }
+
+  /**
+   * @deprecated use {@link #setMessage(String)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setMessage(String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setTextRange(TextRangeDto)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setTextRange(TextRangeDto textRange) {
     this.textRange = textRange;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setAuthor(String)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setAuthor(String author) {
     this.author = author;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setStatus(String)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setStatus(String status) {
     this.status = status;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setResolution(String)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setResolution(@Nullable String resolution) {
     this.resolution = resolution;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setRule(HotspotRule)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setRule(HotspotRule rule) {
     this.rule = rule;
+    return this;
+  }
+
+  /**
+   * @deprecated use {@link #setCodeSnippet(String)} instead
+   */
+  @Deprecated
+  public HotspotDetailsDto setCodeSnippet(@Nullable String codeSnippet) {
     this.codeSnippet = codeSnippet;
+    return this;
   }
 
   public String getKey() {
