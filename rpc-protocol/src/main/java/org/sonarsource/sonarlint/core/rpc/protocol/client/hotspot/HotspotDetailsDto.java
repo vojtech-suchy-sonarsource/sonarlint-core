@@ -25,42 +25,14 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
 public class HotspotDetailsDto {
   private final String key;
-  /**
-   * @deprecated use other means to get the message
-   */
-  @Deprecated
   private String message;
   private final Path ideFilePath;
-  /**
-   * @deprecated use other means to get the text range
-   */
-  @Deprecated
   private TextRangeDto textRange;
-  /**
-   * @deprecated use other means to get the author
-   */
-  @Deprecated
   private String author;
-  /**
-   * @deprecated use other means to get the status
-   */
-  @Deprecated
   private String status;
-  /**
-   * @deprecated use other means to get the resolution
-   */
-  @Deprecated
   @Nullable
   private String resolution;
-  /**
-   * @deprecated use other means to get the rule
-   */
-  @Deprecated
   private HotspotRule rule;
-  /**
-   * @deprecated use other means to get the code snippet
-   */
-  @Deprecated
   @Nullable
   private String codeSnippet;
 
