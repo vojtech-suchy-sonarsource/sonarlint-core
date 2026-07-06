@@ -25,20 +25,41 @@ import org.sonarsource.sonarlint.core.rpc.protocol.common.TextRangeDto;
 
 public class HotspotDetailsDto {
   private final String key;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   private final String message;
   private final Path ideFilePath;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   private final TextRangeDto textRange;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   private final String author;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   private final String status;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   @Nullable
   private final String resolution;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   private final HotspotRule rule;
+  /**
+   * @deprecated use the new API instead, will be removed in a future version
+   */
   @Deprecated(forRemoval = true)
   @Nullable
   private final String codeSnippet;
