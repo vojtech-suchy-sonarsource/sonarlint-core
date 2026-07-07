@@ -168,7 +168,7 @@ public class AnalyzeCommand extends Command {
       return new AnalysisResults();
     }
     var moduleContainer = moduleRegistry.getContainerFor(moduleKey);
-    Throwable originalException = null;
+    Exception originalException = null;
     doIfTraceIsSet(t -> {
       int filesCount = configuration.inputFiles().size();
       t.setData("filesCount", filesCount);
@@ -203,7 +203,7 @@ public class AnalyzeCommand extends Command {
       });
       result.setDuration(Duration.ofMillis(System.currentTimeMillis() - startTime));
       return result;
-    } catch (Throwable e) {
+    } catch (Exception e) {
       originalException = e;
       doIfTraceIsSet(t -> t.finishExceptionally(e));
       throw e;
