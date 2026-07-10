@@ -171,50 +171,50 @@ final class MessageFormatter {
     }
 
     var i = 0;
-    int j;
     // use string builder for better multicore performance
     var sbuf = new StringBuilder(messagePattern.length() + 50);
 
-    int L;
-    for (L = 0; L < argArray.length; L++) {
-
-      j = messagePattern.indexOf(DELIM_STR, i);
+    var l = 0;
+    while (l < argArray.length) {
+      var j = messagePattern.indexOf(DELIM_STR, i);
 
       if (j == -1) {
-        // no more variables
-        if (i == 0) { // this is a simple string
-          return new FormattingTuple(messagePattern, throwable);
-        } else { // add the tail string which contains no variables and return
-          // the result.
-          sbuf.append(messagePattern, i, messagePattern.length());
-          return new FormattingTuple(sbuf.toString(), throwable);
+        return noMorePlaceholders(messagePattern, throwable, i, sbuf);
+      }
+      if (isEscapedDelimiter(messagePattern, j)) {
+        if (isDoubleEscaped(messagePattern, j)) {
+          i = appendParameter(messagePattern, argArray[l], i, sbuf, j, j - 1);
+          l++;
+        } else {
+          // DELIM_START was escaped, thus should not be incremented
+          sbuf.append(messagePattern, i, j - 1);
+          sbuf.append(DELIM_START);
+          i = j + 1;
         }
       } else {
-        if (isEscapedDelimiter(messagePattern, j)) {
-          if (!isDoubleEscaped(messagePattern, j)) {
-            L--; // DELIM_START was escaped, thus should not be incremented
-            sbuf.append(messagePattern, i, j - 1);
-            sbuf.append(DELIM_START);
-            i = j + 1;
-          } else {
-            // The escape character preceding the delimiter start is
-            // itself escaped: "abc x:\\{}"
-            // we have to consume one backward slash
-            sbuf.append(messagePattern, i, j - 1);
-            deeplyAppendParameter(sbuf, argArray[L], new HashMap<>());
-            i = j + 2;
-          }
-        } else {
-          // normal case
-          sbuf.append(messagePattern, i, j);
-          deeplyAppendParameter(sbuf, argArray[L], new HashMap<>());
-          i = j + 2;
-        }
+        i = appendParameter(messagePattern, argArray[l], i, sbuf, j, j);
+        l++;
       }
     }
     // append the characters following the last {} pair.
     sbuf.append(messagePattern, i, messagePattern.length());
     return new FormattingTuple(sbuf.toString(), throwable);
+  }
+
+  private static FormattingTuple noMorePlaceholders(String messagePattern, @Nullable Throwable throwable, int i, StringBuilder sbuf) {
+    if (i == 0) { // this is a simple string
+      return new FormattingTuple(messagePattern, throwable);
+    }
+    // add the tail string which contains no variables and return the result.
+    sbuf.append(messagePattern, i, messagePattern.length());
+    return new FormattingTuple(sbuf.toString(), throwable);
+  }
+
+  private static int appendParameter(String messagePattern, Object argument, int patternIndex, StringBuilder sbuf, int delimiterIndex,
+    int appendEndIndex) {
+    sbuf.append(messagePattern, patternIndex, appendEndIndex);
+    deeplyAppendParameter(sbuf, argument, new HashMap<>());
+    return delimiterIndex + 2;
   }
 
   static boolean isEscapedDelimiter(String messagePattern, int delimiterStartIndex) {

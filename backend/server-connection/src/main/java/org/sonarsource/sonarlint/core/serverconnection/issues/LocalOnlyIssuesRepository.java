@@ -71,53 +71,52 @@ public class LocalOnlyIssuesRepository {
   public void storeIssues(Map<String, List<LocalOnlyIssue>> issuesPerConfigScopeId) {
     database.deleteFrom(LOCAL_ONLY_ISSUES).execute();
     database.batchInsert(issuesPerConfigScopeId.entrySet().stream()
-      .flatMap(entry -> {
-        var configScopeId = entry.getKey();
-        return entry.getValue().stream().map(
-          issue -> {
-            var resolution = issue.getResolution();
-            var textRangeWithHash = issue.getTextRangeWithHash();
-            var lineWithHash = issue.getLineWithHash();
-            return new LocalOnlyIssuesRecord(
-              issue.getId(),
-              configScopeId,
-              issue.getServerRelativePath().toString(),
-              issue.getRuleKey(),
-              issue.getMessage(),
-              resolution == null ? null : resolution.getStatus().name(),
-              resolution == null ? null : LocalDateTime.ofInstant(resolution.getResolutionDate(), ZoneOffset.UTC),
-              resolution == null ? null : resolution.getComment(),
-              textRangeWithHash == null ? null : textRangeWithHash.getStartLine(),
-              textRangeWithHash == null ? null : textRangeWithHash.getStartLineOffset(),
-              textRangeWithHash == null ? null : textRangeWithHash.getEndLine(),
-              textRangeWithHash == null ? null : textRangeWithHash.getEndLineOffset(),
-              textRangeWithHash == null ? null : textRangeWithHash.getHash(),
-              lineWithHash == null ? null : lineWithHash.getNumber(),
-              lineWithHash == null ? null : lineWithHash.getHash());
-
-          });
-      })
+      .flatMap(entry -> entry.getValue().stream()
+        .map(issue -> toRecord(entry.getKey(), issue)))
       .toList())
       .execute();
+  }
+
+  private static LocalOnlyIssuesRecord toRecord(String configScopeId, LocalOnlyIssue issue) {
+    var textRangeWithHash = issue.getTextRangeWithHash();
+    var startLine = textRangeWithHash == null ? null : textRangeWithHash.getStartLine();
+    var startLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getStartLineOffset();
+    var endLine = textRangeWithHash == null ? null : textRangeWithHash.getEndLine();
+    var endLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getEndLineOffset();
+    var textRangeHash = textRangeWithHash == null ? null : textRangeWithHash.getHash();
+
+    var lineWithHash = issue.getLineWithHash();
+    var line = lineWithHash == null ? null : lineWithHash.getNumber();
+    var lineHash = lineWithHash == null ? null : lineWithHash.getHash();
+
+    var resolution = issue.getResolution();
+    var resolutionStatus = resolution == null ? null : resolution.getStatus().name();
+    var resolutionDate = resolution == null ? null : LocalDateTime.ofInstant(resolution.getResolutionDate(), ZoneOffset.UTC);
+    var comment = resolution == null ? null : resolution.getComment();
+
+    return new LocalOnlyIssuesRecord(
+      issue.getId(),
+      configScopeId,
+      issue.getServerRelativePath().toString(),
+      issue.getRuleKey(),
+      issue.getMessage(),
+      resolutionStatus,
+      resolutionDate,
+      comment,
+      startLine,
+      startLineOffset,
+      endLine,
+      endLineOffset,
+      textRangeHash,
+      line,
+      lineHash);
   }
 
   public void storeLocalOnlyIssue(String configurationScopeId, LocalOnlyIssue issue) {
     database.transaction((Configuration trx) -> {
       var textRangeWithHash = issue.getTextRangeWithHash();
-      var startLine = textRangeWithHash == null ? null : textRangeWithHash.getStartLine();
-      var startLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getStartLineOffset();
-      var endLine = textRangeWithHash == null ? null : textRangeWithHash.getEndLine();
-      var endLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getEndLineOffset();
-      var textRangeHash = textRangeWithHash == null ? null : textRangeWithHash.getHash();
-
       var lineWithHash = issue.getLineWithHash();
-      var line = lineWithHash == null ? null : lineWithHash.getNumber();
-      var lineHash = lineWithHash == null ? null : lineWithHash.getHash();
-
       var resolution = issue.getResolution();
-      var resolutionStatus = resolution == null ? null : resolution.getStatus().name();
-      var resolutionDate = resolution == null ? null : LocalDateTime.ofInstant(resolution.getResolutionDate(), ZoneOffset.UTC);
-      var comment = resolution == null ? null : resolution.getComment();
 
       trx.dsl().mergeInto(LOCAL_ONLY_ISSUES)
         .using(trx.dsl().selectOne())
@@ -127,16 +126,16 @@ public class LocalOnlyIssuesRepository {
         .set(LOCAL_ONLY_ISSUES.SERVER_RELATIVE_PATH, issue.getServerRelativePath().toString())
         .set(LOCAL_ONLY_ISSUES.RULE_KEY, issue.getRuleKey())
         .set(LOCAL_ONLY_ISSUES.MESSAGE, issue.getMessage())
-        .set(LOCAL_ONLY_ISSUES.RESOLUTION_STATUS, resolutionStatus)
-        .set(LOCAL_ONLY_ISSUES.RESOLUTION_DATE, resolutionDate)
-        .set(LOCAL_ONLY_ISSUES.COMMENT, comment)
-        .set(LOCAL_ONLY_ISSUES.START_LINE, startLine)
-        .set(LOCAL_ONLY_ISSUES.START_LINE_OFFSET, startLineOffset)
-        .set(LOCAL_ONLY_ISSUES.END_LINE, endLine)
-        .set(LOCAL_ONLY_ISSUES.END_LINE_OFFSET, endLineOffset)
-        .set(LOCAL_ONLY_ISSUES.TEXT_RANGE_HASH, textRangeHash)
-        .set(LOCAL_ONLY_ISSUES.LINE, line)
-        .set(LOCAL_ONLY_ISSUES.LINE_HASH, lineHash)
+        .set(LOCAL_ONLY_ISSUES.RESOLUTION_STATUS, getResolutionStatus(resolution))
+        .set(LOCAL_ONLY_ISSUES.RESOLUTION_DATE, getResolutionDate(resolution))
+        .set(LOCAL_ONLY_ISSUES.COMMENT, getResolutionComment(resolution))
+        .set(LOCAL_ONLY_ISSUES.START_LINE, getStartLine(textRangeWithHash))
+        .set(LOCAL_ONLY_ISSUES.START_LINE_OFFSET, getStartLineOffset(textRangeWithHash))
+        .set(LOCAL_ONLY_ISSUES.END_LINE, getEndLine(textRangeWithHash))
+        .set(LOCAL_ONLY_ISSUES.END_LINE_OFFSET, getEndLineOffset(textRangeWithHash))
+        .set(LOCAL_ONLY_ISSUES.TEXT_RANGE_HASH, getTextRangeHash(textRangeWithHash))
+        .set(LOCAL_ONLY_ISSUES.LINE, getLineNumber(lineWithHash))
+        .set(LOCAL_ONLY_ISSUES.LINE_HASH, getLineHash(lineWithHash))
         .whenNotMatchedThenInsert(
           LOCAL_ONLY_ISSUES.ID,
           LOCAL_ONLY_ISSUES.CONFIGURATION_SCOPE_ID,
@@ -159,18 +158,58 @@ public class LocalOnlyIssuesRepository {
           issue.getServerRelativePath().toString(),
           issue.getRuleKey(),
           issue.getMessage(),
-          resolutionStatus,
-          resolutionDate,
-          comment,
-          startLine,
-          startLineOffset,
-          endLine,
-          endLineOffset,
-          textRangeHash,
-          line,
-          lineHash)
+          getResolutionStatus(resolution),
+          getResolutionDate(resolution),
+          getResolutionComment(resolution),
+          getStartLine(textRangeWithHash),
+          getStartLineOffset(textRangeWithHash),
+          getEndLine(textRangeWithHash),
+          getEndLineOffset(textRangeWithHash),
+          getTextRangeHash(textRangeWithHash),
+          getLineNumber(lineWithHash),
+          getLineHash(lineWithHash))
         .execute();
     });
+  }
+
+  private static Integer getStartLine(TextRangeWithHash textRangeWithHash) {
+    return textRangeWithHash == null ? null : textRangeWithHash.getStartLine();
+  }
+
+  private static Integer getStartLineOffset(TextRangeWithHash textRangeWithHash) {
+    return textRangeWithHash == null ? null : textRangeWithHash.getStartLineOffset();
+  }
+
+  private static Integer getEndLine(TextRangeWithHash textRangeWithHash) {
+    return textRangeWithHash == null ? null : textRangeWithHash.getEndLine();
+  }
+
+  private static Integer getEndLineOffset(TextRangeWithHash textRangeWithHash) {
+    return textRangeWithHash == null ? null : textRangeWithHash.getEndLineOffset();
+  }
+
+  private static String getTextRangeHash(TextRangeWithHash textRangeWithHash) {
+    return textRangeWithHash == null ? null : textRangeWithHash.getHash();
+  }
+
+  private static Integer getLineNumber(LineWithHash lineWithHash) {
+    return lineWithHash == null ? null : lineWithHash.getNumber();
+  }
+
+  private static String getLineHash(LineWithHash lineWithHash) {
+    return lineWithHash == null ? null : lineWithHash.getHash();
+  }
+
+  private static String getResolutionStatus(LocalOnlyIssueResolution resolution) {
+    return resolution == null ? null : resolution.getStatus().name();
+  }
+
+  private static LocalDateTime getResolutionDate(LocalOnlyIssueResolution resolution) {
+    return resolution == null ? null : LocalDateTime.ofInstant(resolution.getResolutionDate(), ZoneOffset.UTC);
+  }
+
+  private static String getResolutionComment(LocalOnlyIssueResolution resolution) {
+    return resolution == null ? null : resolution.getComment();
   }
 
   public boolean removeIssue(UUID issueId) {
