@@ -129,81 +129,102 @@ class ApacheHttpClientAdapter implements HttpClient {
     connected = false;
     var cancelled = new AtomicBoolean();
     var httpFuture = apacheClient.execute(new BasicRequestProducer(request, null),
-      new AbstractCharResponseConsumer<>() {
-        @Override
-        public void releaseResources() {
-          // should we close something ?
-        }
-
-        @Override
-        protected int capacityIncrement() {
-          return Integer.MAX_VALUE;
-        }
-
-        @Override
-        protected void data(CharBuffer src, boolean endOfStream) {
-          if (cancelled.get()) {
-            throw new CancellationException();
-          }
-          if (connected) {
-            messageConsumer.accept(src.toString());
-          } else {
-            var possiblyErrorMessage = src.toString();
-            if (!possiblyErrorMessage.isEmpty()) {
-              LOG.debug("Received event-stream data while not connected: " + possiblyErrorMessage);
-            }
-          }
-        }
-
-        @Override
-        protected void start(HttpResponse httpResponse, ContentType contentType) {
-          if (httpResponse.getCode() < 200 || httpResponse.getCode() >= 300) {
-            connectionListener.onError(httpResponse.getCode());
-          } else {
-            connected = true;
-            connectionListener.onConnected();
-          }
-        }
-
-        @Override
-        protected Object buildResult() {
-          return null;
-        }
-
-        @Override
-        public void failed(Exception cause) {
-          if (cause instanceof CancellationException || cause instanceof InterruptedIOException) {
-            return;
-          }
-          LOG.error("Stream failed", cause);
-        }
-      }, new FutureCallback<>() {
-
-        @Override
-        public void completed(Object result) {
-          if (connected) {
-            connectionListener.onClosed();
-          }
-        }
-
-        @Override
-        public void failed(Exception ex) {
-          if (connected) {
-            // called when disconnected from server
-            connectionListener.onClosed();
-          } else {
-            connectionListener.onError(null);
-          }
-        }
-
-        @Override
-        public void cancelled() {
-          cancelled.set(true);
-          LOG.debug("Stream has been cancelled");
-        }
-      });
+      eventStreamConsumer(connectionListener, messageConsumer, cancelled),
+      eventStreamCallback(connectionListener, cancelled));
 
     return new HttpAsyncRequest(httpFuture);
+  }
+
+  private AbstractCharResponseConsumer<Object> eventStreamConsumer(HttpConnectionListener connectionListener, Consumer<String> messageConsumer,
+    AtomicBoolean cancelled) {
+    return new AbstractCharResponseConsumer<>() {
+      @Override
+      public void releaseResources() {
+        // should we close something ?
+      }
+
+      @Override
+      protected int capacityIncrement() {
+        return Integer.MAX_VALUE;
+      }
+
+      @Override
+      protected void data(CharBuffer src, boolean endOfStream) {
+        if (cancelled.get()) {
+          throw new CancellationException();
+        }
+        var content = src.toString();
+        if (connected) {
+          messageConsumer.accept(content);
+          return;
+        }
+        logEventStreamDataWhileNotConnected(content);
+      }
+
+      @Override
+      protected void start(HttpResponse httpResponse, ContentType contentType) {
+        if (!isSuccessfulResponse(httpResponse)) {
+          connectionListener.onError(httpResponse.getCode());
+          return;
+        }
+        connected = true;
+        connectionListener.onConnected();
+      }
+
+      @Override
+      protected Object buildResult() {
+        return null;
+      }
+
+      @Override
+      public void failed(Exception cause) {
+        if (isCancellationOrInterruption(cause)) {
+          return;
+        }
+        LOG.error("Stream failed", cause);
+      }
+    };
+  }
+
+  private FutureCallback<Object> eventStreamCallback(HttpConnectionListener connectionListener, AtomicBoolean cancelled) {
+    return new FutureCallback<>() {
+      @Override
+      public void completed(Object result) {
+        if (connected) {
+          connectionListener.onClosed();
+        }
+      }
+
+      @Override
+      public void failed(Exception ex) {
+        if (!connected) {
+          connectionListener.onError(null);
+          return;
+        }
+        // called when disconnected from server
+        connectionListener.onClosed();
+      }
+
+      @Override
+      public void cancelled() {
+        cancelled.set(true);
+        LOG.debug("Stream has been cancelled");
+      }
+    };
+  }
+
+  private static boolean isSuccessfulResponse(HttpResponse httpResponse) {
+    return httpResponse.getCode() >= 200 && httpResponse.getCode() < 300;
+  }
+
+  private static boolean isCancellationOrInterruption(Exception cause) {
+    return cause instanceof CancellationException || cause instanceof InterruptedIOException;
+  }
+
+  private static void logEventStreamDataWhileNotConnected(String possiblyErrorMessage) {
+    if (!possiblyErrorMessage.isEmpty()) {
+      LOG.debug("Received event-stream data while not connected: " + possiblyErrorMessage);
+    }
   }
 
   private void setAuthHeader(SimpleHttpRequest request) {

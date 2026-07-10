@@ -110,46 +110,38 @@ public class KnownFindingsRepository {
   }
 
   private void storeKnownFindings(String configurationScopeId, Path clientRelativePath, List<KnownFinding> newKnownFindings, KnownFindingType type) {
-    database.dsl().transaction((Configuration trx) -> newKnownFindings.forEach(finding -> {
-      var textRangeWithHash = finding.getTextRangeWithHash();
-      var startLine = textRangeWithHash == null ? null : textRangeWithHash.getStartLine();
-      var startLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getStartLineOffset();
-      var endLine = textRangeWithHash == null ? null : textRangeWithHash.getEndLine();
-      var endLineOffset = textRangeWithHash == null ? null : textRangeWithHash.getEndLineOffset();
-      var textRangeHash = textRangeWithHash == null ? null : textRangeWithHash.getHash();
+    database.dsl().transaction((Configuration trx) -> newKnownFindings.forEach(finding ->
+      mergeKnownFinding(trx, createRecord(finding, configurationScopeId, clientRelativePath, type))));
+  }
 
-      var lineWithHash = finding.getLineWithHash();
-      var line = lineWithHash == null ? null : lineWithHash.getNumber();
-      var lineHash = lineWithHash == null ? null : lineWithHash.getHash();
-      var introDate = LocalDateTime.ofInstant(finding.getIntroductionDate(), ZoneOffset.UTC);
-      trx.dsl().mergeInto(KNOWN_FINDINGS)
-        .using(trx.dsl().selectOne())
-        .on(KNOWN_FINDINGS.ID.eq(finding.getId()))
-        .whenMatchedThenUpdate()
-        .set(KNOWN_FINDINGS.CONFIGURATION_SCOPE_ID, configurationScopeId)
-        .set(KNOWN_FINDINGS.IDE_RELATIVE_FILE_PATH, clientRelativePath.toString())
-        .set(KNOWN_FINDINGS.SERVER_KEY, finding.getServerKey())
-        .set(KNOWN_FINDINGS.RULE_KEY, finding.getRuleKey())
-        .set(KNOWN_FINDINGS.MESSAGE, finding.getMessage())
-        .set(KNOWN_FINDINGS.INTRODUCTION_DATE, introDate)
-        .set(KNOWN_FINDINGS.FINDING_TYPE, type.name())
-        .set(KNOWN_FINDINGS.START_LINE, startLine)
-        .set(KNOWN_FINDINGS.START_LINE_OFFSET, startLineOffset)
-        .set(KNOWN_FINDINGS.END_LINE, endLine)
-        .set(KNOWN_FINDINGS.END_LINE_OFFSET, endLineOffset)
-        .set(KNOWN_FINDINGS.TEXT_RANGE_HASH, textRangeHash)
-        .set(KNOWN_FINDINGS.LINE, line)
-        .set(KNOWN_FINDINGS.LINE_HASH, lineHash)
-        .whenNotMatchedThenInsert(KNOWN_FINDINGS.ID, KNOWN_FINDINGS.CONFIGURATION_SCOPE_ID, KNOWN_FINDINGS.IDE_RELATIVE_FILE_PATH, KNOWN_FINDINGS.SERVER_KEY,
-          KNOWN_FINDINGS.RULE_KEY, KNOWN_FINDINGS.MESSAGE, KNOWN_FINDINGS.INTRODUCTION_DATE, KNOWN_FINDINGS.FINDING_TYPE,
-          KNOWN_FINDINGS.START_LINE, KNOWN_FINDINGS.START_LINE_OFFSET, KNOWN_FINDINGS.END_LINE, KNOWN_FINDINGS.END_LINE_OFFSET, KNOWN_FINDINGS.TEXT_RANGE_HASH,
-          KNOWN_FINDINGS.LINE, KNOWN_FINDINGS.LINE_HASH)
-        .values(finding.getId(), configurationScopeId, clientRelativePath.toString(), finding.getServerKey(), finding.getRuleKey(),
-          finding.getMessage(), introDate, type.name(),
-          startLine, startLineOffset, endLine, endLineOffset, textRangeHash,
-          line, lineHash)
-        .execute();
-    }));
+  private static void mergeKnownFinding(Configuration trx, KnownFindingsRecord knownFindingRecord) {
+    trx.dsl().mergeInto(KNOWN_FINDINGS)
+      .using(trx.dsl().selectOne())
+      .on(KNOWN_FINDINGS.ID.eq(knownFindingRecord.getId()))
+      .whenMatchedThenUpdate()
+      .set(KNOWN_FINDINGS.CONFIGURATION_SCOPE_ID, knownFindingRecord.getConfigurationScopeId())
+      .set(KNOWN_FINDINGS.IDE_RELATIVE_FILE_PATH, knownFindingRecord.getIdeRelativeFilePath())
+      .set(KNOWN_FINDINGS.SERVER_KEY, knownFindingRecord.getServerKey())
+      .set(KNOWN_FINDINGS.RULE_KEY, knownFindingRecord.getRuleKey())
+      .set(KNOWN_FINDINGS.MESSAGE, knownFindingRecord.getMessage())
+      .set(KNOWN_FINDINGS.INTRODUCTION_DATE, knownFindingRecord.getIntroductionDate())
+      .set(KNOWN_FINDINGS.FINDING_TYPE, knownFindingRecord.getFindingType())
+      .set(KNOWN_FINDINGS.START_LINE, knownFindingRecord.getStartLine())
+      .set(KNOWN_FINDINGS.START_LINE_OFFSET, knownFindingRecord.getStartLineOffset())
+      .set(KNOWN_FINDINGS.END_LINE, knownFindingRecord.getEndLine())
+      .set(KNOWN_FINDINGS.END_LINE_OFFSET, knownFindingRecord.getEndLineOffset())
+      .set(KNOWN_FINDINGS.TEXT_RANGE_HASH, knownFindingRecord.getTextRangeHash())
+      .set(KNOWN_FINDINGS.LINE, knownFindingRecord.getLine())
+      .set(KNOWN_FINDINGS.LINE_HASH, knownFindingRecord.getLineHash())
+      .whenNotMatchedThenInsert(KNOWN_FINDINGS.ID, KNOWN_FINDINGS.CONFIGURATION_SCOPE_ID, KNOWN_FINDINGS.IDE_RELATIVE_FILE_PATH, KNOWN_FINDINGS.SERVER_KEY,
+        KNOWN_FINDINGS.RULE_KEY, KNOWN_FINDINGS.MESSAGE, KNOWN_FINDINGS.INTRODUCTION_DATE, KNOWN_FINDINGS.FINDING_TYPE,
+        KNOWN_FINDINGS.START_LINE, KNOWN_FINDINGS.START_LINE_OFFSET, KNOWN_FINDINGS.END_LINE, KNOWN_FINDINGS.END_LINE_OFFSET, KNOWN_FINDINGS.TEXT_RANGE_HASH,
+        KNOWN_FINDINGS.LINE, KNOWN_FINDINGS.LINE_HASH)
+      .values(knownFindingRecord.getId(), knownFindingRecord.getConfigurationScopeId(), knownFindingRecord.getIdeRelativeFilePath(), knownFindingRecord.getServerKey(), knownFindingRecord.getRuleKey(),
+        knownFindingRecord.getMessage(), knownFindingRecord.getIntroductionDate(), knownFindingRecord.getFindingType(),
+        knownFindingRecord.getStartLine(), knownFindingRecord.getStartLineOffset(), knownFindingRecord.getEndLine(), knownFindingRecord.getEndLineOffset(), knownFindingRecord.getTextRangeHash(),
+        knownFindingRecord.getLine(), knownFindingRecord.getLineHash())
+      .execute();
   }
 
   private List<KnownFinding> getKnownFindingsForFile(String configurationScopeId, Path filePath, KnownFindingType type) {
