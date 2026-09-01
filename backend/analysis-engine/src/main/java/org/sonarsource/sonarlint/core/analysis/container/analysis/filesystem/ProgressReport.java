@@ -44,6 +44,7 @@ public class ProgressReport implements Runnable {
       try {
         Thread.sleep(period);
         log(messageSupplier.get());
+        Thread.currentThread().interrupt();
       } catch (InterruptedException e) {
         break;
       }
