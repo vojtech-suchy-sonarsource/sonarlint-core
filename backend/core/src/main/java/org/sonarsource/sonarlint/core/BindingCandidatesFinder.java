@@ -56,6 +56,7 @@ public class BindingCandidatesFinder {
     var goodConfigScopeCandidates = new HashSet<ConfigurationScopeSharedContext>();
 
     for (var scope : configScopeCandidates) {
+      System.out.println("asfd");
       checkIfScopeIsGoodCandidateForBinding(scope, connectionId, projectKey, cancelMonitor)
         .ifPresent(goodConfigScopeCandidates::add);
     }
