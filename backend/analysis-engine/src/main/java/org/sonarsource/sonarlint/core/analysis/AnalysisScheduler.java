@@ -72,6 +72,7 @@ public class AnalysisScheduler {
         executingCommand.set(null);
       } catch (InterruptedException e) {
         if (termination.get() != CANCELING_TERMINATION) {
+          Thread.currentThread().interrupt();
           LOG.error("Analysis engine interrupted", e);
         }
       } catch (Exception e) {
