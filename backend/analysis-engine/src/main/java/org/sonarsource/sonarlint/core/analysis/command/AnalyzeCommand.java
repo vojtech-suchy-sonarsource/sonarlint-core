@@ -214,7 +214,7 @@ public class AnalyzeCommand extends Command {
         }
       } catch (Exception e) {
         if (originalException != null) {
-          e.addSuppressed(originalException);
+          originalException.addSuppressed(e);
         }
         throw e;
       }
