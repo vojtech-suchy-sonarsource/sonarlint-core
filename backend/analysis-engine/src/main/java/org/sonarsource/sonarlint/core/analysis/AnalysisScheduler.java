@@ -52,6 +52,7 @@ public class AnalysisScheduler {
   }
 
   public void reset(AnalysisSchedulerConfiguration analysisGlobalConfig, Supplier<LoadedPlugins> pluginsSupplier) {
+    System.out.println("hello there");
     post(new ResetPluginsCommand(analysisGlobalConfig, globalAnalysisContainer, analysisQueue, pluginsSupplier));
   }
 
@@ -73,6 +74,7 @@ public class AnalysisScheduler {
       } catch (InterruptedException e) {
         if (termination.get() != CANCELING_TERMINATION) {
           LOG.error("Analysis engine interrupted", e);
+        Thread.currentThread().interrupt();
         }
       } catch (Exception e) {
         LOG.debug("Analysis command failed", e);
